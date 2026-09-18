@@ -1,0 +1,21 @@
+function	file	line	col	source	char	type	optimization
+_gcry_sexp_canon_len	sexp.c	2244	20	          *errcode = GPG_ERR_SEXP_BAD_CHARACTER;	=	cjump	O1|O2|O3
+_gcry_sexp_canon_len	sexp.c	2142	16	      *errcode = GPG_ERR_SEXP_NOT_CANONICAL;	=	cjump	O1|O2|O3
+_gcry_sm4_ocb_crypt	sm4.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_sm4_ocb_auth	sm4.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_aria_ocb_auth	aria.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_mpi_print	mpicoder.c	831	17	      *nwritten = n+2;	=	cjump	O1|O2|O3|Oz
+_gcry_mpi_print	mpicoder.c	803	17	      *nwritten = n;	=	cjump	O1|O2|O3
+_gcry_mpi_powm	mpi-pow.c	716	11	          count_trailing_zeros (c0, e0);	c	cjump	O1|O2|O3|Os
+_gcry_mpi_print	mpicoder.c	780	17	      *nwritten = n;	=	cjump	O1|O2|O3
+_gcry_sexp_canon_len	sexp.c	2210	24	              *errcode = GPG_ERR_SEXP_NESTED_DH;	=	cjump	O1|O2|O3
+_gcry_aes_ocb_auth	rijndael.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_cipher_ocb_authenticate	cipher-ocb.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_sexp_canon_len	sexp.c	2238	20	          *errcode = GPG_ERR_SEXP_UNEXPECTED_PUNC;	=	cjump	O1|O2|O3
+_gcry_mpi_print	mpicoder.c	879	17	      *nwritten = 4+n;	=	cjump	O1|O2|O3|Oz
+ocb_crypt	cipher-ocb.c	99	10	  return __builtin_ctz (x);	_	cjump	O1
+_gcry_aria_ocb_crypt	aria.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_aes_ocb_crypt	rijndael.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_sexp_canon_len	sexp.c	2174	24	              *errcode = GPG_ERR_SEXP_INV_LEN_SPEC;	=	cjump	O1|O2|O3
+do_vsexp_sscan	sexp.c	1749	12	   *erroff = p - buffer;	=	cjump	O2|O3
+do_vsexp_sscan	sexp.c	1717	16	       *erroff = p - buffer;	=	cjump	O3

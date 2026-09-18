@@ -1,0 +1,3 @@
+function	file	line	col	source	char	type	optimization
+br_i62_modpow_opt	bearssl-modpow_opt-x8664.c	26	31	        x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	mmem	O1|O2|O3|Ofast|Os|Oz
+cmovznz4	hacl-cmovznz4-riscv64.c	15	32	  uint64_t r0 = (y[0U] & mask) | (x[0U] & ~mask);	|	mmem	Oz

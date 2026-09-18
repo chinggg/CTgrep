@@ -1,0 +1,3 @@
+function	file	line	col	source	char	type	optimization
+OSSL_HTTP_REQ_CTX_nbio	crypto/http/http_client.c	770	31	                rctx->state = i < HTTP_STATUS_CODES_NONFATAL_ERROR	i	cjump	O2--disable-ifcvt-triangle-false|O2--ifcvt-fn-start=0|O2--ifcvt-fn-start=100|O2--ifcvt-fn-start=50|O2--ifcvt-limit=0|O3--disable-ifcvt-triangle-false|O3--ifcvt-fn-start=0|O3--ifcvt-fn-start=100|O3--ifcvt-fn-start=50|O3--ifcvt-limit=0|Os--disable-ifcvt-triangle-false|Os--ifcvt-fn-start=0|Os--ifcvt-fn-start=100|Os--ifcvt-fn-start=50|Os--ifcvt-limit=0
+speed_main	apps/speed.c	4537	44	                   ecdh_results[k][0], 1.0 / ecdh_results[k][0]);	/	mdiv	Oz--ifcvt-fn-start=0|Oz--ifcvt-fn-start=100|Oz--ifcvt-fn-start=50|Oz--ifcvt-limit=0

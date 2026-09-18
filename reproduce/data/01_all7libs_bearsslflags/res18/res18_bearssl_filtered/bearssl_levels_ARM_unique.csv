@@ -1,0 +1,8 @@
+function	file	line	col	source	char	type	optimization
+decode_key	tools/keys.c	65	32	  sk->key.rsa.p = xblobdup(rk->p, rk->plen);	p	mmem	O1
+decode_key	tools/keys.c	82	31	  sk->key.ec.x = xblobdup(ek->x, ek->xlen);	x	mmem	O1
+p256_mulgen	src/ec/ec_p256_m31.c	1281	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O3|Ofast
+p256_mulgen	src/ec/ec_p256_m15.c	1932	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O3|Ofast
+br_i31_modpow_opt	src/int/i31_modpow2.c	141	20	     t2[v] |= mask & base[v];	&	cjump	O3|Ofast
+br_i15_modpow_opt	src/int/i15_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O3|Ofast
+cbc_decrypt	src/ssl/ssl_rec_cbc.c	169	11	  tmp1[v] |= MUX(GE(u, len_nomac) & LT(u, len_withmac),	|	mmem	O3|Ofast

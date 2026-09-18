@@ -1,0 +1,95 @@
+function	file	line	col	source	char	type	optimization
+br_ccm_reset	src/aead/ccm.c	77	3	  | (((unsigned)tag_len - 2) << 2)	|	cjump	O0|O1|O2|O3|Ofast|Os|Oz
+parse_size	tools/names.c	813	27	  if (z < (size_t)d || (z / (size_t)radix) != acc	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+print_ta	tools/ta.c	124	22	 printf("\t\t%s,\n", (ta->flags & BR_X509_TA_CA)	(	cjump	O0|O3|Ofast
+br_x509_minimal_run	src/x509/x509_minimal.c	1019	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_x509_decoder_run	src/x509/x509_decoder.c	520	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i31_keygen_inner.c	325	7	  m11 -= 44 & -GT(m11, 43);	-	cjump	O1|Oz
+br_aes_big_keysched_inv	src/symcipher/aes_big_dec.c	105	11	 return x ^ ((unsigned)(-(int)(x >> 8)) & 0x11B);	^	cjump	O1|O2|O3|Ofast|Os
+api_mul	src/ec/ec_c25519_m64.c	522	28	 z = (unsigned __int128)t0 + (19 & -(t3 >> 63));	+	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i31_decode_mod	src/int/i31_decmod.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_decrypt	src/symcipher/aes_ct_ctrcbc.c	363	9	  carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i31_keygen_inner.c	313	6	  m5 -= 5 & -GT(m5, 4);	-	cjump	O1|Oz
+br_aes_ct64_ctrcbc_decrypt	src/symcipher/aes_ct64_ctrcbc.c	370	9	  carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_ctr	src/symcipher/aes_ct_ctrcbc.c	91	7	  iv0 += carry;	+	cjump	O1|O2|O3|Ofast|Os|Oz
+cbc_decrypt	src/ssl/ssl_rec_cbc.c	169	11	  tmp1[v] |= MUX(GE(u, len_nomac) & LT(u, len_withmac),	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i31_modpow_opt	src/int/i31_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_decrypt	src/symcipher/aes_ct_ctrcbc.c	365	9	  carry &= -(~(iv1 | -iv1) >> 31);	&	cjump	O1|Os
+br_i15_decode_mod	src/int/i15_decmod.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i15_keygen.c	302	7	  m11 -= 88 & -GT(m11, 87);	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i62_modpow_opt	src/int/i62_modpow2.c	438	26	   x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i15_bit_length	src/int/i15_bitlen.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i31_keygen_inner.c	312	6	  m5 -= 10 & -GT(m5, 9);	-	cjump	O1|Oz
+br_aes_ct64_ctrcbc_decrypt	src/symcipher/aes_ct64_ctrcbc.c	372	9	  carry &= -(~(iv1 | -iv1) >> 31);	&	cjump	O1|Os
+api_mul	src/ec/ec_p256_m64.c	837	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+p256_mulgen	src/ec/ec_p256_m31.c	1281	10	   xy[u] |= m & Gwin[k][u];	|	cjump	O1|O2|O3|Ofast|Os|Oz
+api_mul	src/ec/ec_c25519_m64.c	199	18	 cc = (38 & -t4) + (19 & -(t3 >> 63));	+	cjump	O1|O2|O3|Ofast|Os
+br_i15_muladd_small	src/int/i15_muladd.c	44	5	  x -= (-ctl) & d;	-	cjump	O1|O2|Os
+br_aes_ct_ctrcbc_ctr	src/symcipher/aes_ct_ctrcbc.c	100	10	   carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_ctr	src/symcipher/aes_ct_ctrcbc.c	103	8	   iv0 += carry;	+	cjump	O1|O2|O3|Ofast|Os|Oz
+mul_f256	src/ec/ec_p256_m15.c	1138	8	 t[17] -= cc << 3;	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i32_muladd_small	src/int/i32_muladd.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct64_ctrcbc_encrypt	src/symcipher/aes_ct64_ctrcbc.c	232	9	  carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+do_ta	tools/ta.c	124	22	 printf("\t\t%s,\n", (ta->flags & BR_X509_TA_CA)	(	cjump	O1|O2|Os|Oz
+br_pem_decoder_run	src/codec/pemdec.c	457	3	  | (65 & -EQ(c, 0x2F))	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_rsa_i15_compute_pubexp	src/rsa/rsa_i15_pubexp.c	151	12	 return ep & -EQ(ep, eq);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i15_keygen.c	292	6	  m5 -= 5 & -GT(m5, 4);	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i62_modpow_opt	src/int/i62_modpow2.c	424	12	     t2[v] |= mask & base[v];	|	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i31_keygen_inner.c	327	7	  m11 -= 11 & -GT(m11, 10);	-	cjump	O1|Oz
+mkprime	src/rsa/rsa_i15_keygen.c	291	6	  m5 -= 10 & -GT(m5, 9);	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i15_muladd_small	src/int/i15_muladd.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_encrypt	src/symcipher/aes_ct_ctrcbc.c	234	9	  carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_rsa_pss_sig_unpad	src/rsa/rsa_pss_sig_unpad.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Oz
+certificate_to_trust_anchor_inner	tools/certs.c	73	38	  ta->pkey.key.ec.curve = pk->key.ec.curve;	c	cjump	O1
+br_ssl_hs_server_run	src/ssl/ssl_hs_server.c	158	15	 br_ccopy(ctl ^ 1, xcoor, rpms, xcoor_len);	^	cjump	O1|O2|O3|Ofast
+br_pem_decoder_run	src/codec/pemdec.c	456	3	  | (64 & -EQ(c, 0x2B))	|	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i31_keygen_inner.c	326	7	  m11 -= 22 & -GT(m11, 21);	-	cjump	O1|Oz
+br_i32_decode_mod	src/int/i32_decmod.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+certificate_to_trust_anchor_inner	tools/certs.c	66	45	  ta->pkey.key.rsa.n = xblobdup(pk->key.rsa.n, pk->key.rsa.nlen);	n	cjump	O1
+cbc_decrypt	src/ssl/ssl_rec_cbc.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+square_f256	src/ec/ec_p256_m31.c	600	7	 d[7] -= c << 14;	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_pem_decoder_run	src/codec/pemdec.c	458	3	  | EQ(c, 0x3D);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+api_mul	src/ec/ec_p256_m62.c	837	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+api_mul	src/ec/ec_p256_m64.c	1642	6	   c |= -(int32_t)EQ0(c) & CMP(k[u], P256_N[u]);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+decode_key	tools/keys.c	65	32	  sk->key.rsa.p = xblobdup(rk->p, rk->plen);	p	cjump	O1|O3|Ofast
+br_i32_bit_length	src/int/i32_bitlen.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+square_f256	src/ec/ec_p256_m15.c	1227	8	 t[17] -= cc << 3;	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct64_ctrcbc_ctr	src/symcipher/aes_ct64_ctrcbc.c	94	10	   carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i15_keygen.c	304	7	  m11 -= 22 & -GT(m11, 21);	-	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i15_keygen.c	303	7	  m11 -= 44 & -GT(m11, 43);	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_pem_decoder_run	src/codec/pemdec.c	454	3	  | ((q + 28) & -LT(q, 26))	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i31_bit_length	src/int/i31_bitlen.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i32_decode_mod	src/int/i32_decmod.c	837	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i31_keygen_inner.c	311	6	  m5 -= 20 & -GT(m5, 19);	-	cjump	O1|Oz
+br_aes_ct64_ctrcbc_ctr	src/symcipher/aes_ct64_ctrcbc.c	97	8	   iv0 += carry;	+	cjump	O1|O2|O3|Ofast|Os|Oz
+br_hmac_outCT	src/mac/hmac_ct.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_ctr	src/symcipher/aes_ct_ctrcbc.c	88	9	  carry &= -(~(iv2 | -iv2) >> 31);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i31_muladd_small	src/int/i31_muladd.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+mul_f256	src/ec/ec_p256_m31.c	488	7	 d[7] -= c << 14;	-	cjump	O1|O2|O3|Ofast|Os|Oz
+br_rsa_i31_compute_pubexp	src/rsa/rsa_i31_pubexp.c	151	12	 return ep & -EQ(ep, eq);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct64_ctrcbc_encrypt	src/symcipher/aes_ct64_ctrcbc.c	235	7	  iv0 += carry;	+	cjump	O1|O2|O3|Ofast|Os|Oz
+br_divrem	src/int/i32_div32.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i15_decode_mod	src/int/i15_decmod.c	837	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i15_modpow_opt	src/int/i15_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O1|O2|O3|Ofast|Os|Oz
+api_mul	src/ec/ec_p256_m62.c	1626	6	   c |= -(int32_t)EQ0(c) & CMP(k[u], P256_N[u]);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+mkprime	src/rsa/rsa_i15_keygen.c	305	7	  m11 -= 11 & -GT(m11, 10);	-	cjump	O1|O2|O3|Ofast|Os|Oz
+decode_key	tools/keys.c	82	31	  sk->key.ec.x = xblobdup(ek->x, ek->xlen);	x	cjump	O1|O3|Ofast
+br_aes_ct_ctrcbc_encrypt	src/symcipher/aes_ct_ctrcbc.c	237	7	  iv0 += carry;	+	cjump	O1|O2|O3|Ofast|Os|Oz
+br_aes_ct_ctrcbc_decrypt	src/symcipher/aes_ct_ctrcbc.c	366	7	  iv0 += carry;	+	cjump	O2|O3|Ofast|Oz
+br_eax_init	src/aead/eax.c	85	21	  z = (src[i] << 1) ^ cc;	^	cjump	O2|O3|Ofast
+br_aes_ct64_ctrcbc_decrypt	src/symcipher/aes_ct64_ctrcbc.c	373	7	  iv0 += carry;	+	cjump	O2|O3|Ofast|Oz
+p256_mulgen	src/ec/ec_p256_m15.c	1932	10	   xy[u] |= m & Gwin[k][u];	|	cjump	O2|O3|Ofast|Oz
+divrem16	src/int/i15_muladd.c	44	5	  x -= (-ctl) & d;	-	cjump	O3|Ofast|Oz
+ecdh_common	src/ssl/ssl_hs_server.c	158	15	 br_ccopy(ctl ^ 1, xcoor, rpms, xcoor_len);	^	cjump	Os|Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	129	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i62_private	src/rsa/rsa_i62_priv.c	125	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i62_private	src/rsa/rsa_i62_priv.c	69	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i15_public	src/rsa/rsa_i15_pub.c	62	2	 while (z > 0) {	w	mdiv	Oz
+br_x509_minimal_run	src/x509/x509_minimal.c	1222	22	   vd = (uint32_t)(x / 86400) + 719528;	/	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	123	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i62_public	src/rsa/rsa_i62_pub.c	63	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+br_pem_encode	src/codec/pemenc.c	82	46	 dlen = (banner_len << 1) + 30 + (((len + 2) / 3) << 2)	/	mdiv	Oz
+br_rsa_i31_public	src/rsa/rsa_i31_pub.c	61	2	 while (z > 0) {	w	mdiv	Oz
+f255_sub	src/ec/ec_c25519_m64.c	199	18	 cc = (38 & -t4) + (19 & -(t3 >> 63));	+	cjump	Oz

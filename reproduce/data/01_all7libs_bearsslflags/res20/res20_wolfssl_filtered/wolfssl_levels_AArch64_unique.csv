@@ -1,0 +1,250 @@
+function	file	line	col	source	char	type	optimization
+_sp_div_10	wolfcrypt/src/sp_int.c	6932	22	            tt += tr / 10;	/	mdiv	O0|Oz
+_sp_mulmod_tmp	wolfcrypt/src/sp_int.c	12156	5	    DECL_SP_INT(t, a->used + b->used);	D	mdiv	O0
+AddSessionToCache	./src/ssl_sess.c	1843	46	    row = (int)(HashObject(id, ID_LEN, &ret) % SESSION_ROWS);	%	mdiv	O0
+wolfSSL_CTX_SetMinDhKey_Sz	src/ssl.c	3028	57	    if (ctx == NULL || keySz_bits > 16000 || keySz_bits % 8 != 0)	%	mdiv	O0
+TlsSessionCacheGetAndLock	./src/ssl_sess.c	1093	42	    row = HashObject(id, ID_LEN, &error) % SESSION_ROWS;	%	mdiv	O0
+wc_AesSetKeyLocal	wolfcrypt/src/aes.c	4566	30	        aes->rounds = (keylen/4) + 6;	/	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15773	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_RENEGOTIATION_INFO));	T	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15548	21	                    TURN_OFF(semaphore,	T	mdiv	O0
+RsaFunctionSync	wolfcrypt/src/rsa.c	2710	5	    DECL_MP_INT_SIZE_DYN(tmp, mp_bitsused(&key->n), RSA_MAX_SIZE);	D	mdiv	O0
+ecc_map_ex	wolfcrypt/src/ecc.c	2777	10	   err = INIT_MP_INT_SIZE(t1, mp_bitsused(modulus));	I	mdiv	O0
+ecc_sign_hash_sw	wolfcrypt/src/ecc.c	6937	15	        err = INIT_MP_INT_SIZE(b, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+wc_ecc_verify_hash	wolfcrypt/src/ecc.c	8559	5	    NEW_MP_INT_SIZE(r, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap,	N	mdiv	O0
+wc_Chacha_SetKey	wolfcrypt/src/chacha.c	163	23	    if ((wc_ptr_t)key % 4) {	%	mdiv	O0
+wc_ecc_sign_hash_ex	wolfcrypt/src/ecc.c	7241	4	   DECL_MP_INT_SIZE_DYN(e_lcl, ECC_KEY_MAX_BITS(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+_sp_prime_random_trials	wolfcrypt/src/sp_int.c	19396	40	    word32 baseSz = ((word32)bits + 7) / 8;	/	mdiv	O0
+AddSessionToCache	./src/ssl_sess.c	2007	55	            sessRow->nextIdx = (sessRow->nextIdx + 1) % SESSIONS_PER_ROW;	%	mdiv	O0|Oz
+Hash_df	wolfcrypt/src/random.c	393	18	    len = (outSz / OUTPUT_BLOCK_LEN)	/	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15739	21	                    TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+RsaFunctionCheckIn	wolfcrypt/src/rsa.c	3120	5	    NEW_MP_INT_SIZE(c, mp_bitsused(&key->n), key->heap, DYNAMIC_TYPE_RSA);	N	mdiv	O0
+MaskMac	src/internal.c	20988	45	            good |= expMac[i] ^ mac[(i + r) % WC_SHA_DIGEST_SIZE];	%	mdiv	O0
+ecc_map_ex	wolfcrypt/src/ecc.c	2712	4	   DECL_MP_INT_SIZE_DYN(t1, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+RsaFunctionPrivate	wolfcrypt/src/rsa.c	2537	5	    NEW_MP_INT_SIZE(rnd, mp_bitsused(&key->n), key->heap, DYNAMIC_TYPE_RSA);	N	mdiv	O0
+TLSX_GetRequestSize	src/tls.c	15169	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_SUPPORTED_VERSIONS));	T	mdiv	O0
+TLSX_GetRequestSize	src/tls.c	15165	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_SIGNATURE_ALGORITHMS));	T	mdiv	O0
+wc_PRF_TLSv1	wolfcrypt/src/kdf.c	257	39	    sha_half = secret + half - secLen % 2;	%	mdiv	O0
+wolfSSL_CTX_SetMinRsaKey_Sz	src/ssl.c	2978	34	    ctx->minRsaKeySz     = keySz / 8;	/	mdiv	O0
+_sp_prime_trials	wolfcrypt/src/sp_int.c	19275	5	    DECL_SP_INT(r, a->used + 1);	D	mdiv	O0
+Base64_Decode	wolfcrypt/src/coding.c	277	62	    word32 plainSz = inLen - ((inLen + (BASE64_LINE_SZ - 1)) / BASE64_LINE_SZ );	/	mdiv	O0
+DecodeObjectId	wolfcrypt/src/asn.c	6562	37	                out[0] = (word16)(t / 40);	/	mdiv	O0|Oz
+RsaFunctionPrivate	wolfcrypt/src/rsa.c	2531	5	    DECL_MP_INT_SIZE_DYN(rndi, mp_bitsused(&key->n), RSA_MAX_SIZE);	D	mdiv	O0
+GHASH	wolfcrypt/src/aes.c	7469	22	        blocks = cSz / WC_AES_BLOCK_SIZE;	/	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15754	17	                TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_EC_POINT_FORMATS));	T	mdiv	O0
+_ecc_projective_dbl_point	wolfcrypt/src/ecc.c	2418	10	   err = INIT_MP_INT_SIZE(t1, mp_bitsused(modulus));	I	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15606	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_EC_POINT_FORMATS));	T	mdiv	O0
+_sp_exptmod_ex	wolfcrypt/src/sp_int.c	12994	5	    DECL_SP_INT_ARRAY(t, 2 * m->used + 1, 3);	D	mdiv	O0
+RsaFunctionPrivate	wolfcrypt/src/rsa.c	2530	5	    DECL_MP_INT_SIZE_DYN(rnd, mp_bitsused(&key->n), RSA_MAX_SIZE);	D	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	8982	4	   NEW_MP_INT_SIZE(w, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+_ecc_projective_add_point	wolfcrypt/src/ecc.c	1999	7	      NEW_MP_INT_SIZE(t1, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+_sp_submod	wolfcrypt/src/sp_int.c	7905	5	    DECL_SP_INT(t0, used);	D	mdiv	O0
+_ecc_projective_add_point	wolfcrypt/src/ecc.c	2025	10	   err = INIT_MP_INT_SIZE(t1, mp_bitsused(modulus));	I	mdiv	O0
+DecodeObjectId	wolfcrypt/src/asn.c	6563	37	                out[1] = (word16)(t % 40);	%	mdiv	O0
+ecc_map_ex	wolfcrypt/src/ecc.c	2779	13	      err = INIT_MP_INT_SIZE(t2, mp_bitsused(modulus));	I	mdiv	O0
+wolfSSL_CTX_SetMaxDhKey_Sz	src/ssl.c	3064	57	    if (ctx == NULL || keySz_bits > 16000 || keySz_bits % 8 != 0)	%	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15704	25	                        TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+AddSessionToClientCache	./src/ssl_sess.c	1656	48	                ClientCache[clientRow].nextIdx %= CLIENT_SESSIONS_PER_ROW;	%	mdiv	O0|Oz
+wc_ecc_sig_size	wolfcrypt/src/ecc.c	11935	20	    if ((orderBits % 8) == 0) {	%	mdiv	O0
+_sp_invmod	wolfcrypt/src/sp_int.c	12533	5	    DECL_SP_INT_ARRAY(t, m->used + 1, 3);	D	mdiv	O0
+Hash_gen	wolfcrypt/src/random.c	562	48	    len = (outSz / OUTPUT_BLOCK_LEN) + ((outSz % OUTPUT_BLOCK_LEN) ? 1 : 0);	%	mdiv	O0
+sp_unsigned_bin_size	wolfcrypt/src/sp_int.c	18035	38	        cnt = (sp_count_bits(a) + 7) / 8;	/	mdiv	O0|Oz
+RsaFunctionSync	wolfcrypt/src/rsa.c	2723	9	    if (INIT_MP_INT_SIZE(tmp, mp_bitsused(&key->n)) != MP_OKAY) {	I	mdiv	O0
+_sp_div_small	wolfcrypt/src/sp_int.c	6995	21	            tr = tr % d;	%	mdiv	O0|Os|Oz
+sp_div	wolfcrypt/src/sp_int.c	9014	57	            int bits = SP_WORD_SIZE - (sp_count_bits(d) % SP_WORD_SIZE);	%	mdiv	O0|Oz
+ecc_map_ex	wolfcrypt/src/ecc.c	2751	7	      NEW_MP_INT_SIZE(t1, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+ecc_mont_norm_points	wolfcrypt/src/ecc.c	8148	15	        err = INIT_MP_INT_SIZE(mu, mp_bitsused(modulus));	I	mdiv	O0
+Base64_Decode_nonCT	wolfcrypt/src/coding.c	174	62	    word32 plainSz = inLen - ((inLen + (BASE64_LINE_SZ - 1)) / BASE64_LINE_SZ );	/	mdiv	O0
+wc_ecc_sign_hash_ex	wolfcrypt/src/ecc.c	7345	15	   if ((err = INIT_MP_INT_SIZE(e, ECC_KEY_MAX_BITS_NONULLCHECK(key))) != MP_OKAY) {	I	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	471	43	    pLen = v * (((word32)passLen + v - 1) / v);	/	mdiv	O0
+_sp_div	wolfcrypt/src/sp_int.c	8825	5	    DECL_SP_INT_ARRAY(td, used, 4);	D	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15797	17	                TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_STATUS_REQUEST));	T	mdiv	O0
+wolfSSL_CTX_SetMinRsaKey_Sz	src/ssl.c	2965	43	    if (ctx == NULL || keySz < 0 || keySz % 8 != 0) {	%	mdiv	O0
+TLSX_GetRequestSize	src/tls.c	15173	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+_ecc_projective_dbl_point	wolfcrypt/src/ecc.c	2392	7	      NEW_MP_INT_SIZE(t1, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+wolfSSL_CTX_SetMaxDhKey_Sz	src/ssl.c	3075	34	    ctx->maxDhKeySz = keySz_bits / 8;	/	mdiv	O0
+DoClientHello	src/internal.c	38329	36	        if (ssl->clSuites->suiteSz % 2 != 0) {	%	mdiv	O0
+AddSessionToClientCache	./src/ssl_sess.c	1621	37	                    ID_LEN, &error) % CLIENT_SESSION_ROWS;	%	mdiv	O0
+_ecc_projective_dbl_point	wolfcrypt/src/ecc.c	2368	4	   DECL_MP_INT_SIZE_DYN(t2, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+_sp_exptmod_base_2	wolfcrypt/src/sp_int.c	13752	5	    DECL_SP_INT_ARRAY(d, m->used * 2 + 1, 2);	D	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	496	23	        S[i] = salt[i % (word32)saltLen];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ecc_check_order_minus_1	wolfcrypt/src/ecc.c	3865	15	        err = INIT_MP_INT_SIZE(t, mp_bitsused(modulus));	I	mdiv	O0
+SizeASN_Num	wolfcrypt/src/asn.c	622	32	    len = 1 + 1 + (word32)bits / 8;	/	mdiv	O0
+_sp_div_small	wolfcrypt/src/sp_int.c	7022	22	            tt += tr / d;	/	mdiv	O0|Os|Oz
+sp_cond_swap_ct	wolfcrypt/src/sp_int.c	5544	5	    DECL_SP_INT(t, (size_t)cnt);	D	mdiv	O0
+AES_GCM_encrypt_C	wolfcrypt/src/aes.c	8567	24	    word32 blocks = sz / WC_AES_BLOCK_SIZE;	/	mdiv	O0
+GHASH	wolfcrypt/src/aes.c	7452	22	        blocks = aSz / WC_AES_BLOCK_SIZE;	/	mdiv	O0
+Base64_Decode_nonCT	wolfcrypt/src/coding.c	178	33	    plainSz = (plainSz * 3 + 3) / 4;	/	mdiv	O0
+GHASH	wolfcrypt/src/aes.c	7453	23	        partial = aSz % WC_AES_BLOCK_SIZE;	%	mdiv	O0
+wc_ecc_sign_hash_ex	wolfcrypt/src/ecc.c	7381	55	           inlen = (orderBits + WOLFSSL_BIT_SIZE - 1) / WOLFSSL_BIT_SIZE;	/	mdiv	O0
+_ecc_projective_add_point	wolfcrypt/src/ecc.c	2000	7	      NEW_MP_INT_SIZE(t2, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+wolfSSL_SetMinDhKey_Sz	src/ssl.c	3057	42	    ssl->options.minDhKeySz = keySz_bits / 8;	/	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	8912	4	   NEW_MP_INT_SIZE(e_lcl, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+wolfSSL_CTX_SetMinEccKey_Sz	src/ssl.c	2909	28	        keySzBytes = keySz / 8;	/	mdiv	O0
+sp_todecimal	wolfcrypt/src/sp_int.c	18669	9	        DECL_SP_INT(t, a->used + 1);	D	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15648	13	            TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_STATUS_REQUEST));	T	mdiv	O0
+AES_GCM_encrypt_C	wolfcrypt/src/aes.c	8568	25	    word32 partial = sz % WC_AES_BLOCK_SIZE;	%	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	8920	10	   err = INIT_MP_INT_SIZE(e, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+ecc_point_to_mont	wolfcrypt/src/ecc.c	3561	14	       err = INIT_MP_INT_SIZE(mu, mp_bitsused(modulus));	I	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15582	13	            TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_SUPPORTED_VERSIONS));	T	mdiv	O0
+MaskMac	src/internal.c	20965	46	        r = (macSz - (scanStart - macStart)) % WC_SHA_DIGEST_SIZE;	%	mdiv	O0
+TLSX_SupportedCurve_Parse	src/tls.c	5068	41	    if (OPAQUE16_LEN > length || length % OPAQUE16_LEN)	%	mdiv	O0
+wc_ecc_get_curve_id_from_params	wolfcrypt/src/ecc.c	4455	31	    curveSz = (fieldSize + 1) / 8;    /* round up */	/	mdiv	O0|Oz
+ecc_map_ex	wolfcrypt/src/ecc.c	2713	4	   DECL_MP_INT_SIZE_DYN(t2, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	467	43	    sLen = v * (((word32)saltLen + v - 1) / v);	/	mdiv	O0
+TLSX_Write	src/tls.c	14232	9	        TURN_ON(semaphore, TLSX_ToSemaphore((word16)extension->type));	T	mdiv	O0
+_sp_addmod	wolfcrypt/src/sp_int.c	7816	5	    DECL_SP_INT(t, used);	D	mdiv	O0
+HashSigner	src/ssl.c	5404	35	    return MakeWordFromHash(hash) % CA_TABLE_SIZE;	%	mdiv	O0|Oz
+ecc_check_order_minus_1	wolfcrypt/src/ecc.c	3855	5	    DECL_MP_INT_SIZE_DYN(t, mp_bitsused(order), MAX_ECC_BITS_USE);	D	mdiv	O0
+MaskMac	src/internal.c	20994	45	            good |= expMac[i] ^ mac[(i + r) % WC_SHA384_DIGEST_SIZE];	%	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15608	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_SUPPORTED_VERSIONS));	T	mdiv	O0
+ecc_mont_norm_points	wolfcrypt/src/ecc.c	8138	5	    DECL_MP_INT_SIZE_DYN(mu, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+_ecc_projective_dbl_point	wolfcrypt/src/ecc.c	2420	13	      err = INIT_MP_INT_SIZE(t2, mp_bitsused(modulus));	I	mdiv	O0
+_sp_sqrmod	wolfcrypt/src/sp_int.c	17299	5	    DECL_SP_INT(t, a->used * 2);	D	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15613	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+Base64_Decode	wolfcrypt/src/coding.c	280	33	    plainSz = (plainSz * 3 + 3) / 4;	/	mdiv	O0
+_sp_div_small	wolfcrypt/src/sp_int.c	7024	16	            tr %= d;	%	mdiv	O0
+SetASN_Num	wolfcrypt/src/asn.c	826	23	    len = (byte)(bits / 8);	/	mdiv	O0
+TLSX_SignatureAlgorithms_Parse	src/tls.c	7705	31	    if (suites->hashSigAlgoSz % 2 != 0)	%	mdiv	O0
+wolfSSL_SetMinEccKey_Sz	src/ssl.c	2942	28	        keySzBytes = keySz / 8;	/	mdiv	O0
+wc_ecc_sign_hash	wolfcrypt/src/ecc.c	6784	11	    err = INIT_MP_INT_SIZE(r, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+wc_ecc_sig_size	wolfcrypt/src/ecc.c	11931	33	        keySz = (orderBits + 7) / 8;	/	mdiv	O0|Oz
+wc_ecc_sign_hash	wolfcrypt/src/ecc.c	6731	5	    DECL_MP_INT_SIZE_DYN(s, ECC_KEY_MAX_BITS(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+RsaFunctionPrivate	wolfcrypt/src/rsa.c	2548	14	            (INIT_MP_INT_SIZE(rndi, mp_bitsused(&key->n)) != MP_OKAY)) {	I	mdiv	O0
+Sha3Update	wolfcrypt/src/sha3.c	733	18	    blocks = len / (p * 8U);	/	mdiv	O0
+wc_ecc_sign_hash	wolfcrypt/src/ecc.c	6730	5	    DECL_MP_INT_SIZE_DYN(r, ECC_KEY_MAX_BITS(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+_ecc_projective_dbl_point	wolfcrypt/src/ecc.c	2393	7	      NEW_MP_INT_SIZE(t2, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+EncodedDottedForm	wolfcrypt/src/asn.c	41716	37	                out[1] = (word16)(t % 40);	%	mdiv	O0
+wc_AesCbcEncrypt	wolfcrypt/src/aes.c	5757	21	        blocks = sz / WC_AES_BLOCK_SIZE;	/	mdiv	O0
+wolfSSL_SetMinRsaKey_Sz	src/ssl.c	2986	43	    if (ssl == NULL || keySz < 0 || keySz % 8 != 0) {	%	mdiv	O0
+_sp_invmod_div	wolfcrypt/src/sp_int.c	12392	5	    DECL_SP_INT(d, m->used + 1);	D	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15625	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_RENEGOTIATION_INFO));	T	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	498	25	        P[i] = passwd[i % (word32)passLen];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ecc_mulmod	wolfcrypt/src/ecc.c	3169	51	    int      bytes = (mp_count_bits(modulus) + 7) / 8;	/	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15696	21	                    TURN_OFF(semaphore,	T	mdiv	O0
+TLSX_GetSize	src/tls.c	13978	9	        TURN_ON(semaphore, TLSX_ToSemaphore((word16)extension->type));	T	mdiv	O0
+Hash_df	wolfcrypt/src/random.c	394	19	        + ((outSz % OUTPUT_BLOCK_LEN) ? 1 : 0);	%	mdiv	O0
+wc_AesCbcDecrypt	wolfcrypt/src/aes.c	5933	21	        blocks = sz / WC_AES_BLOCK_SIZE;	/	mdiv	O0
+TLSX_WriteRequest	src/tls.c	15414	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+wc_ecc_sign_hash	wolfcrypt/src/ecc.c	6790	11	    err = INIT_MP_INT_SIZE(s, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15732	17	                TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_SUPPORTED_VERSIONS));	T	mdiv	O0
+RsaFunctionCheckIn	wolfcrypt/src/rsa.c	3126	21	    if (ret == 0 && INIT_MP_INT_SIZE(c, mp_bitsused(&key->n)) != MP_OKAY) {	I	mdiv	O0
+ecc_check_order_minus_1	wolfcrypt/src/ecc.c	3857	5	    NEW_MP_INT_SIZE(t, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+RsaFunctionSync	wolfcrypt/src/rsa.c	2715	5	    NEW_MP_INT_SIZE(tmp, mp_bitsused(&key->n), key->heap, DYNAMIC_TYPE_RSA);	N	mdiv	O0
+_sp_div_10	wolfcrypt/src/sp_int.c	6906	21	            tr = tr % 10;	%	mdiv	O0|Oz
+wolfSSL_GetSessionClient	./src/ssl_sess.c	959	47	    row = HashObject(id, (word32)len, &error) % CLIENT_SESSION_ROWS;	%	mdiv	O0
+TLSX_WriteRequest	src/tls.c	15406	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_SIGNATURE_ALGORITHMS));	T	mdiv	O0
+wolfSSL_SetMaxDhKey_Sz	src/ssl.c	3082	57	    if (ssl == NULL || keySz_bits > 16000 || keySz_bits % 8 != 0)	%	mdiv	O0
+wc_ecc_sign_hash	wolfcrypt/src/ecc.c	6776	5	    NEW_MP_INT_SIZE(s, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+RsaFunctionPrivate	wolfcrypt/src/rsa.c	2538	5	    NEW_MP_INT_SIZE(rndi, mp_bitsused(&key->n), key->heap, DYNAMIC_TYPE_RSA);	N	mdiv	O0
+Hash_gen	wolfcrypt/src/random.c	562	18	    len = (outSz / OUTPUT_BLOCK_LEN) + ((outSz % OUTPUT_BLOCK_LEN) ? 1 : 0);	/	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15716	21	                    TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+sp_div_primes	wolfcrypt/src/sp_int.c	19248	19	            if (d % sp_primes[i] == 0) {	%	mdiv	O0|Oz
+wc_DhAgree_Sync	wolfcrypt/src/dh.c	2203	65	                                ((int)*agreeSz + DIGIT_BIT - 1) / DIGIT_BIT,	/	mdiv	O0|Oz
+TLSX_WriteRequest	src/tls.c	15410	13	            TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_SUPPORTED_VERSIONS));	T	mdiv	O0
+sp_radix_size	wolfcrypt/src/sp_int.c	18788	46	            int cnt = (sp_count_bits(a) + 3) / 4;	/	mdiv	O0|Oz
+wolfSSL_CTX_SetMinRsaKey_Sz	src/ssl.c	2979	34	    ctx->cm->minRsaKeySz = keySz / 8;	/	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	520	33	            B[i] = Ai[(word32)i % u];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+_sp_exptmod_mont_ex	wolfcrypt/src/sp_int.c	13231	5	    DECL_SP_INT_ARRAY(t, m->used * 2 + 1, 4);	D	mdiv	O0
+ecc_sign_hash_sw	wolfcrypt/src/ecc.c	6930	5	    NEW_MP_INT_SIZE(b, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	9007	14	       err = INIT_MP_INT_SIZE(w, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+TLSX_GetRequestSize	src/tls.c	15210	9	        TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_SIGNATURE_ALGORITHMS));	T	mdiv	O0
+wolfSSL_SetMinRsaKey_Sz	src/ssl.c	2999	38	    ssl->options.minRsaKeySz = keySz / 8;	/	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	8938	57	           hashlen = (orderBits + WOLFSSL_BIT_SIZE - 1) / WOLFSSL_BIT_SIZE;	/	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15566	21	                    TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+TLSX_Parse	src/tls.c	16083	17	            if (IS_OFF(seenType, TLSX_ToSemaphore(type))) {	I	mdiv	O0
+sp_exch	wolfcrypt/src/sp_int.c	5458	9	        DECL_SP_INT(t, a->used);	D	mdiv	O0
+TLSX_GetSize	src/tls.c	13809	14	        if (!IS_OFF(semaphore, TLSX_ToSemaphore((word16)extension->type)))	I	mdiv	O0
+AddSessionToClientCache	./src/ssl_sess.c	1617	36	                    idLen, &error) % CLIENT_SESSION_ROWS;	%	mdiv	O0
+EncodedDottedForm	wolfcrypt/src/asn.c	41715	37	                out[0] = (word16)(t / 40);	/	mdiv	O0
+SanityCheckCipherText	src/internal.c	20587	44	            if ((encryptSz - MacSize(ssl)) % ssl->specs.block_size) {	%	mdiv	O0
+_ecc_projective_add_point	wolfcrypt/src/ecc.c	2027	13	      err = INIT_MP_INT_SIZE(t2, mp_bitsused(modulus));	I	mdiv	O0
+_sp_submod	wolfcrypt/src/sp_int.c	7906	5	    DECL_SP_INT(t1, used);	D	mdiv	O0
+wolfSSL_CTX_SetMinEccKey_Sz	src/ssl.c	2908	15	    if (keySz % 8 == 0) {	%	mdiv	O0
+_ecc_projective_add_point	wolfcrypt/src/ecc.c	1967	4	   DECL_MP_INT_SIZE_DYN(t1, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+wolfSSL_SetMinDhKey_Sz	src/ssl.c	3046	57	    if (ssl == NULL || keySz_bits > 16000 || keySz_bits % 8 != 0)	%	mdiv	O0
+GHASH	wolfcrypt/src/aes.c	7470	23	        partial = cSz % WC_AES_BLOCK_SIZE;	%	mdiv	O0
+ecc_sign_hash_sw	wolfcrypt/src/ecc.c	6928	5	    DECL_MP_INT_SIZE_DYN(b, ECC_KEY_MAX_BITS_NONULLCHECK(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+TLSX_SNI_GetFromBuffer	src/tls.c	2547	23	            if (len16 % 3) /* cipher_spec_length must be multiple of 3 */	%	mdiv	O0|Oz
+DoTls13ClientHello	src/tls13.c	6935	33	    if ((ssl->clSuites->suiteSz % 2) != 0) {	%	mdiv	O0
+wc_ecc_verify_hash	wolfcrypt/src/ecc.c	8579	11	    err = INIT_MP_INT_SIZE(s, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+sp_radix_size	wolfcrypt/src/sp_int.c	18818	13	            DECL_SP_INT(t, a->used);	D	mdiv	O0
+AES_GCM_decrypt_C	wolfcrypt/src/aes.c	9115	24	    word32 blocks = sz / WC_AES_BLOCK_SIZE;	/	mdiv	O0
+ecc_point_to_mont	wolfcrypt/src/ecc.c	3551	4	   DECL_MP_INT_SIZE_DYN(mu, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+MaskMac	src/internal.c	20969	46	        r = (macSz - (scanStart - macStart)) % WC_SHA384_DIGEST_SIZE;	%	mdiv	O0
+wc_HKDF_Expand_ex	wolfcrypt/src/hmac.c	1535	35	        if (out == NULL || ((outSz/hashSz) + ((outSz % hashSz) != 0)) > 255) {	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14310	22	            c = bits % SP_WORD_SIZE;	%	mdiv	O0
+RsaFunctionCheckIn	wolfcrypt/src/rsa.c	3118	5	    DECL_MP_INT_SIZE_DYN(c, mp_bitsused(&key->n), RSA_MAX_SIZE);	D	mdiv	O0
+_sp_prime_trials	wolfcrypt/src/sp_int.c	19274	5	    DECL_SP_INT(n1, a->used + 1);	D	mdiv	O0
+_sp_prime_random_trials	wolfcrypt/src/sp_int.c	19398	5	    DECL_SP_INT_ARRAY(d, a->used * 2 + 1, 2);	D	mdiv	O0
+sp_read_unsigned_bin	wolfcrypt/src/sp_int.c	18070	59	        a->used = (sp_size_t)((inSz + SP_WORD_SIZEOF - 1) / SP_WORD_SIZEOF);	/	mdiv	O0
+ByteReverseWords	./wolfcrypt/src/misc.c	191	33	        word32 count = byteCount/(word32)sizeof(word32);	/	mdiv	O0
+TLSX_Write	src/tls.c	14005	14	        if (!IS_OFF(semaphore, TLSX_ToSemaphore((word16)extension->type)))	I	mdiv	O0
+ecc_map_ex	wolfcrypt/src/ecc.c	2752	7	      NEW_MP_INT_SIZE(t2, mp_bitsused(modulus), NULL, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+GeneratePrivateDh	wolfcrypt/src/dh.c	1268	79	                sz = min(sz, 2 * DiscreteLogWorkFactor(sz * WOLFSSL_BIT_SIZE) /	/	mdiv	O0
+wc_ecc_verify_hash	wolfcrypt/src/ecc.c	8518	5	    DECL_MP_INT_SIZE_DYN(r, ECC_KEY_MAX_BITS(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+wc_ecc_sign_hash	wolfcrypt/src/ecc.c	6771	5	    NEW_MP_INT_SIZE(r, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+TLSX_PointFormat_ValidateResponse	src/tls.c	4982	5	    TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_EC_POINT_FORMATS));	T	mdiv	O0
+sp_mont_norm	wolfcrypt/src/sp_int.c	18004	21	        norm->dp[0] %= m->dp[0];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ecc_point_to_mont	wolfcrypt/src/ecc.c	3555	4	   NEW_MP_INT_SIZE(mu, mp_bitsused(modulus), heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+TLSX_WriteRequest	src/tls.c	15460	9	        TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_SIGNATURE_ALGORITHMS));	T	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	8891	4	   DECL_MP_INT_SIZE_DYN(w, ECC_KEY_MAX_BITS_NONULLCHECK(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+wc_ecc_verify_hash	wolfcrypt/src/ecc.c	8519	5	    DECL_MP_INT_SIZE_DYN(s, ECC_KEY_MAX_BITS(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+ecc_mont_norm_points	wolfcrypt/src/ecc.c	8142	5	    NEW_MP_INT_SIZE(mu, mp_bitsused(modulus), heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+AES_GCM_decrypt_C	wolfcrypt/src/aes.c	9116	25	    word32 partial = sz % WC_AES_BLOCK_SIZE;	%	mdiv	O0
+wc_ecc_verify_hash	wolfcrypt/src/ecc.c	8573	11	    err = INIT_MP_INT_SIZE(r, ECC_KEY_MAX_BITS_NONULLCHECK(key));	I	mdiv	O0
+SanityCheckCipherText	src/internal.c	20595	23	        if (encryptSz % ssl->specs.block_size) {	%	mdiv	O0
+_ecc_projective_add_point	wolfcrypt/src/ecc.c	1968	4	   DECL_MP_INT_SIZE_DYN(t2, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+wc_PRF_TLSv1	wolfcrypt/src/kdf.c	227	37	    word32      half = (secLen + 1) / 2;	/	mdiv	O0
+_ecc_projective_dbl_point	wolfcrypt/src/ecc.c	2367	4	   DECL_MP_INT_SIZE_DYN(t1, mp_bitsused(modulus), MAX_ECC_BITS_USE);	D	mdiv	O0
+_sp_sqr	wolfcrypt/src/sp_int.c	15022	19	            i = k / 2;	/	mdiv	O0
+RsaFunctionPrivate	wolfcrypt/src/rsa.c	2547	10	    if ((INIT_MP_INT_SIZE(rnd, mp_bitsused(&key->n)) != MP_OKAY) ||	I	mdiv	O0
+wc_PRF	wolfcrypt/src/kdf.c	133	22	    times   = resLen / len;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+wc_ecc_verify_hash	wolfcrypt/src/ecc.c	8565	5	    NEW_MP_INT_SIZE(s, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap,	N	mdiv	O0
+TLSX_Parse	src/tls.c	16084	17	                TURN_ON(seenType, TLSX_ToSemaphore(type));	T	mdiv	O0
+wolfSSL_SetMinEccKey_Sz	src/ssl.c	2941	15	    if (keySz % 8 == 0) {	%	mdiv	O0
+wolfSSL_CTX_SetMinDhKey_Sz	src/ssl.c	3039	34	    ctx->minDhKeySz = keySz_bits / 8;	/	mdiv	O0
+wolfSSL_CTX_SetMinEccKey_Sz	src/ssl.c	2912	29	        keySzBytes = (keySz / 8) + 1;	/	mdiv	O0
+BuildMessage	src/internal.c	23682	71	                                                      args->digestSz) % blockSz;	%	mdiv	O0
+sp_todecimal	wolfcrypt/src/sp_int.c	18699	42	                for (j = 0; j <= (i - 1) / 2; j++) {	/	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15756	17	                TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_SUPPORTED_VERSIONS));	T	mdiv	O0
+wolfSSL_SetMinEccKey_Sz	src/ssl.c	2945	29	        keySzBytes = (keySz / 8) + 1;	/	mdiv	O0
+TLSX_GetResponseSize	src/tls.c	15589	17	                TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+ByteReverseWords64	./wolfcrypt/src/misc.c	362	29	    word32 count = byteCount/(word32)sizeof(word64), i;	/	mdiv	O0
+wc_AesCbcDecrypt	wolfcrypt/src/aes.c	5934	16	        if (sz % WC_AES_BLOCK_SIZE) {	%	mdiv	O0
+_sp_exptmod_base_2	wolfcrypt/src/sp_int.c	13819	38	        c -= (digits * SP_WORD_SIZE) % EXP2_WINSIZE;	%	mdiv	O0|Oz
+TLSX_GetResponseSize	src/tls.c	15556	25	                        TURN_OFF(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+wolfSSL_SetMaxDhKey_Sz	src/ssl.c	3093	42	    ssl->options.maxDhKeySz = keySz_bits / 8;	/	mdiv	O0
+_sp_prime_trials	wolfcrypt/src/sp_int.c	19276	5	    DECL_SP_INT(b, a->used * 2 + 1);	D	mdiv	O0
+_sp_invmod	wolfcrypt/src/sp_int.c	12534	5	    DECL_SP_INT(c, 2 * m->used + 1);	D	mdiv	O0
+BuildMessage	src/internal.c	23687	61	                    args->pad = (args->sz - args->headerSz) % blockSz;	%	mdiv	O0
+ecc_verify_hash	wolfcrypt/src/ecc.c	8893	4	   DECL_MP_INT_SIZE_DYN(e_lcl, ECC_KEY_MAX_BITS_NONULLCHECK(key), MAX_ECC_BITS_USE);	D	mdiv	O0
+TLSX_WriteResponse	src/tls.c	15761	17	                TURN_ON(semaphore, TLSX_ToSemaphore(TLSX_KEY_SHARE));	T	mdiv	O0
+_sp_prime_random_trials	wolfcrypt/src/sp_int.c	19397	5	    DECL_SP_INT_ARRAY(ds, a->used + 1, 2);	D	mdiv	O0
+wc_PRF	wolfcrypt/src/kdf.c	134	22	    lastLen = resLen % len;	%	mdiv	O0
+wc_HKDF_Expand_ex	wolfcrypt/src/hmac.c	1535	54	        if (out == NULL || ((outSz/hashSz) + ((outSz % hashSz) != 0)) > 255) {	%	mdiv	O0
+wc_ecc_sign_hash_ex	wolfcrypt/src/ecc.c	7334	4	   NEW_MP_INT_SIZE(e_lcl, ECC_KEY_MAX_BITS_NONULLCHECK(key), key->heap, DYNAMIC_TYPE_ECC);	N	mdiv	O0
+_sp_div_small	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O0|Os|Oz
+_sp_div_10	wolfcrypt/src/sp_int.c	6934	16	            tr %= 10;	%	mdiv	O0
+sp_div_d	wolfcrypt/src/sp_int.c	7022	22	            tt += tr / d;	/	mdiv	O1|O2|O3|Ofast
+wc_DhCheckKeyPair	wolfcrypt/src/dh.c	1876	41	                      NULL, NULL, NULL) != MP_OKAY) {	!	cjump	O1|O2|O3|Ofast|Os|Oz
+sp_div_d	wolfcrypt/src/sp_int.c	6995	21	            tr = tr % d;	%	mdiv	O1|O2|O3|Ofast
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	471	14	    pLen = v * (((word32)passLen + v - 1) / v);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	467	14	    sLen = v * (((word32)saltLen + v - 1) / v);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+ProcessReplyEx	src/internal.c	20595	23	        if (encryptSz % ssl->specs.block_size) {	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+sp_prime_is_prime_ex	wolfcrypt/src/sp_int.c	19248	19	            if (d % sp_primes[i] == 0) {	%	mdiv	O1|O2|O3|Ofast|Os
+sp_mod_d	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O1|O2|O3|Ofast|Os
+ProcessReplyEx	src/internal.c	20587	44	            if ((encryptSz - MacSize(ssl)) % ssl->specs.block_size) {	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+_sp_mont_red	wolfcrypt/src/sp_int.c	17418	22	            a->dp[i] &=	&	mmem	O1|O2|O3|Ofast
+sp_mod_d	wolfcrypt/src/sp_int.c	6995	21	            tr = tr % d;	%	mdiv	O1|O2|O3|Ofast|Os
+sp_prime_is_prime	wolfcrypt/src/sp_int.c	19248	19	            if (d % sp_primes[i] == 0) {	%	mdiv	O1|O2|O3|Ofast|Os
+wc_Sha3Update	wolfcrypt/src/sha3.c	733	18	    blocks = len / (p * 8U);	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+sp_div_d	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O1|O2|O3|Ofast
+PollAndReSeed	wolfcrypt/src/random.c	777	45	                            (int)scratchSz) == 0) {	=	cjump	O2|O3|Ofast|Os
+_sp_invmod	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O2|O3|Ofast
+_InitRng	wolfcrypt/src/random.c	777	45	                            (int)scratchSz) == 0) {	=	cjump	O2|O3|Ofast
+sp_div_2	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O2|O3|Ofast
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O2|O3|Ofast
+SetASN_Num	wolfcrypt/src/asn.c	866	20	        out[idx++] = (byte)(n >> j);	=	cjump	Os
+GetASN_Items	wolfcrypt/src/asn.c	1512	19	        endIdx[i] = length;	=	cjump	Os
+wc_Asn1_PrintAll	wolfcrypt/src/asn.c	41715	37	                out[0] = (word16)(t / 40);	/	mdiv	Oz
+sp_exptmod_nct	wolfcrypt/src/sp_int.c	14310	22	            c = bits % SP_WORD_SIZE;	%	mdiv	Oz

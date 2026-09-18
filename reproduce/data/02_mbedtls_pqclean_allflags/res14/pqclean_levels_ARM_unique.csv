@@ -1,0 +1,2 @@
+function	file	line	col	source	char	type	optimization
+gf_reduce	gf.c	53	17	            mod <<= dist;	<	mmem	O0

@@ -1,0 +1,2 @@
+function	file	line	col	source	char	type	optimization
+recode_wnaf	crypto/ec/curve448/curve448.c	558	48	    unsigned int table_size = C448_SCALAR_BITS / (table_bits + 1) + 3;	/	mdiv	O3-fgnuc-version=0|O3-fms-compatibility

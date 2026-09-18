@@ -1,0 +1,16 @@
+function	file	line	col	source	char	type	optimization
+gf_reduce	gf.c	53	17	            mod <<= dist;	<	mmem	O0
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O1|O2|Os|Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O1|O2|Os|Oz
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O1|O2|Os|Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O3
+PQCLEAN_FALCON1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_FALCON512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	250	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	250	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz
+solve_NTRU_intermediate	keygen.c	3212	34	        sch = (uint32_t)(scale_k / 31);	/	mdiv	Oz
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	Oz
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	Oz
+PQCLEAN_FALCONPADDED1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_FALCONPADDED512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz

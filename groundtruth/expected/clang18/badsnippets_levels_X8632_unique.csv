@@ -1,0 +1,28 @@
+function	file	line	col	source	char	type	optimization
+base_mul	godbolt-base_mul-x8664.c	49	19	        tmp1 = (a >> i) & 0x0f;	>	cjump	O0|O1|O2|O3|Ofast|Os
+base_mul	godbolt-base_mul-x8664.c	56	16	        l ^= g << i;	<	cjump	O0|O1|O2|O3|Ofast|Os
+base_mul	godbolt-base_mul-x8664.c	57	16	        h ^= g >> (64 - i);	>	cjump	O0|O1|O2|O3|Ofast|Os
+br_i62_modpow_opt	bearssl-modpow_opt-x86i386.c	26	18	    size_t k = 16/len;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v4	binsec-ct_select_u32_v4-x8664.c	6	16	  return (x&b) | (y&~b);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i62_modpow_opt	bearssl-modpow_opt-x86i386.c	35	27	            t2[v] |= mask & base[v];	&	cjump	O1|O2|O3|Ofast|Os|Oz
+sort2_multiplex	binsec-sort2_multiplex-x8664.c	5	17	  out2[1] = (~c & in2[1]) | (c & in2[0]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+sp_clamp_ct	wolfssl-sp_clamp_ct-x8664.c	47	17	        mask &= (sp_size_t)(0 - (a->dp[i] == 0));	(	cjump	O1
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	godbolt-vect_set_random_fixed_weight-x8664.c	63	32	            val |= (bit_tab[j] & mask64);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i62_modpow_opt	bearssl-modpow_opt-x8664.c	26	31	        x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	cjump	O1|O2|Os|Oz
+_Z13is_whitespaceh	botan-hex_decode-riscv64.cpp	8	15	    return (b ^ (mask & (a ^ b)));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+cmovznz4	hacl-cmovznz4-riscv64.c	16	24	  uint64_t r1 = (y[1U] & mask) | (x[1U] & ~mask);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+gen_e	godbolt-crypto_uint32_signed_negative_mask-x8664.c	101	28	            e[i] |= val[j] & mask;	&	cjump	O1|O2|O3|Ofast|Os|Oz
+cmovznz4	hacl-cmovznz4-riscv64.c	18	24	  uint64_t r3 = (y[3U] & mask) | (x[3U] & ~mask);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+base_mul	godbolt-base_mul-x8664.c	40	20	        g ^= (u[i] & (uint64_t)(0 - (1 - ((uint64_t)(tmp2 | (0 - tmp2)) >> 63))));	&	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v3	binsec-ct_select_u32_v3-x8664.c	6	18	  return (x*bit) | (y*b);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i31_muladd_small	bearssl-br_i31_muladd_small-x86i386.c	20	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+cmovznz4	hacl-cmovznz4-riscv64.c	15	24	  uint64_t r0 = (y[0U] & mask) | (x[0U] & ~mask);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+sort2_multiplex	binsec-sort2_multiplex-x8664.c	4	17	  out2[0] = (~c & in2[0]) | (c & in2[1]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+check_scalar	bearssl-check_scalar-riscv64.c	67	31	        c |= -(int32_t)EQ0(c) & CMP(k[u], P256_N[u]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v1	binsec-ct_select_u32_v1-x8664.c	14	16	  return (x&m) | (y&~m);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+base_mul	godbolt-base_mul-x8664.c	53	24	            g ^= (u[j] & (uint64_t)(0 - (1 - ((uint64_t)(tmp2 | (0 - tmp2)) >> 63))));  // TIME LEAK	&	cjump	O1|O2|O3|Ofast|Os|Oz
+check_scalar	bearssl-check_scalar-riscv64.c	49	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+cmovznz4	hacl-cmovznz4-riscv64.c	17	24	  uint64_t r2 = (y[2U] & mask) | (x[2U] & ~mask);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v2	binsec-ct_select_u32_v2-x8664.c	6	16	  return (x&m) | (y&~m);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+Base64_Char2Val	wolfssl-Base64_Char2Val-x8664.c	52	7	    v |= (byte)(base64Decode[(c & 0x0f) | 0x40] & (~mask));	|	cjump	O1|O2|O3|Ofast|Os|Oz
+sp_clamp_ct	wolfssl-sp_clamp_ct-x8664.c	47	14	        mask &= (sp_size_t)(0 - (a->dp[i] == 0));	&	cjump	O2|O3|Ofast|Os|Oz

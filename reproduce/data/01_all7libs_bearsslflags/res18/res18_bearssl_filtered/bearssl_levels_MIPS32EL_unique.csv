@@ -1,0 +1,33 @@
+function	file	line	col	source	char	type	optimization
+print_blob	tools/ta.c	80	9	  if (u % 12 == 0) {	%	mdiv	O0
+print_blob	tools/chain.c	44	9	  if (u % 12 == 0) {	%	mdiv	O0
+print_ec	tools/verify.c	130	10	   if (u % 12 == 0) {	%	mdiv	O0
+br_x509_minimal_run	src/x509/x509_minimal.c	1019	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+print_int_C	tools/skey.c	65	9	  if (u % 12 == 0) {	%	mdiv	O0
+print_rsa	tools/verify.c	95	10	   if (u % 12 == 0) {	%	mdiv	O0
+parse_size	tools/names.c	813	27	  if (z < (size_t)d || (z / (size_t)radix) != acc	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_pem_encode	src/codec/pemenc.c	82	46	 dlen = (banner_len << 1) + 30 + (((len + 2) / 3) << 2)	/	mdiv	O0|Oz
+br_x509_decoder_run	src/x509/x509_decoder.c	520	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_x509_minimal_run	src/x509/x509_minimal.c	978	2	 T0_PUSHi(a % b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_pem_encode	src/codec/pemenc.c	80	22	  lines = (len + 56) / 57;	/	mdiv	O0
+print_rsa	tools/verify.c	82	10	   if (u % 12 == 0) {	%	mdiv	O0
+br_x509_decoder_run	src/x509/x509_decoder.c	479	2	 T0_PUSHi(a % b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_pem_encode	src/codec/pemenc.c	78	22	  lines = (len + 47) / 48;	/	mdiv	O0
+br_x509_minimal_run	src/x509/x509_minimal.c	1222	22	   vd = (uint32_t)(x / 86400) + 719528;	/	mdiv	O0
+br_x509_minimal_run	src/x509/x509_minimal.c	1223	22	   vs = (uint32_t)(x % 86400);	%	mdiv	O0|Oz
+br_i31_modpow_opt	src/int/i31_modpow2.c	141	20	     t2[v] |= mask & base[v];	&	cjump	O3|Ofast
+p256_mulgen	src/ec/ec_p256_m31.c	1281	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O3|Ofast
+br_i15_modpow_opt	src/int/i15_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O3|Ofast
+p256_mulgen	src/ec/ec_p256_m15.c	1932	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O3|Ofast
+do_chain	tools/chain.c	40	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz
+print_int_C	tools/skey.c	61	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	123	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i31_public	src/rsa/rsa_i31_pub.c	61	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+do_verify	tools/verify.c	78	23	  for (u = 0; u < pk->nlen; u ++) {	n	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	129	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i15_public	src/rsa/rsa_i15_pub.c	62	2	 while (z > 0) {	w	mdiv	Oz
+do_verify	tools/verify.c	91	23	  for (u = 0; u < pk->elen; u ++) {	e	mdiv	Oz
+print_blob	tools/ta.c	76	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz
+do_verify	tools/verify.c	126	23	  for (u = 0; u < pk->qlen; u ++) {	q	mdiv	Oz

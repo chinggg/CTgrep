@@ -1,0 +1,29 @@
+function	file	line	col	source	char	type	optimization
+crypto_kem_keypair_derand_3	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+crypto_kem_keypair_derand_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+crypto_kem_keypair_derand_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+indcpa_enc_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+mont_reduc	mpih-pow.c	87	14	      s1_size--;	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+polyvec_basemul_acc_montgomery_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+nist_generate_key	ecc.c	557	16	        test = mpi_set_opaque (NULL, rndbuf, len*8);	m	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+polyvec_basemul_acc_montgomery_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+crypto_kem_keypair_derand_2	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+_gcry_mlkem_decap	kyber.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+crypto_kem_keypair_derand_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+_gcry_mlkem_decap	kyber.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+indcpa_enc_3	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+indcpa_enc_4	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+indcpa_enc_2	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+indcpa_enc_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+indcpa_enc_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+crypto_kem_keypair_derand_4	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+polyvec_basemul_acc_montgomery_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+transform	gostr3411-94.c	289	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_mul_1	mpih-mul1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_add_n	mpih-add1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_submul_1	mpih-mul3.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_powm_lli	mpih-pow.c	265	7	      do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_sub_n	mpih-sub1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_addmul_1	mpih-mul2.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+transform	stribog.c	1270	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_powm_lli	mpih-pow.c	87	14	      s1_size--;	-	cjump	O3-ftrapv|Ofast-ftrapv

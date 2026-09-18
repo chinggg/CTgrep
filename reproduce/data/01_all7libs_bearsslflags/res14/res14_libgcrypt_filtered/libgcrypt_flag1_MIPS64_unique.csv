@@ -1,0 +1,100 @@
+function	file	line	col	source	char	type	optimization
+_gcry_mlkem_decap	kyber.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+mont_reduc	mpih-pow.c	87	14	      s1_size--;	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+crypto_kem_keypair_derand_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_ntt_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_basemul_acc_montgomery_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_ntt_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_ntt_4	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+crypto_kem_keypair_derand_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+indcpa_enc_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+crypto_kem_keypair_derand_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_ntt_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_ntt_3	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+indcpa_enc_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+nist_generate_key	ecc.c	557	16	        test = mpi_set_opaque (NULL, rndbuf, len*8);	m	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+polyvec_basemul_acc_montgomery_4	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_basemul_acc_montgomery_2	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+indcpa_enc_3	./kyber-kdep.c	761	22	  t  = ((int32_t)v*a + (1<<25)) >> 26;	+	cjump	O1-ftrapv
+polyvec_ntt_2	./kyber-kdep.c	743	10	  t = (a - (int32_t)t*KYBER_Q) >> 16;	-	cjump	O1-ftrapv
+_gcry_kdf_scrypt	scrypt.c	277	22	  if (r128 && nbytes / r128 != N)	/	mdiv	O1--instcombine-max-iterations=0|O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0|Ofast--instcombine-max-iterations=0|Os--instcombine-max-iterations=0|Oz--instcombine-max-iterations=0
+_gcry_calloc	global.c	1140	18	  if (m && bytes / m != n)	/	mdiv	O1--instcombine-max-iterations=0|O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0|Ofast--instcombine-max-iterations=0|Os--instcombine-max-iterations=0|Oz--instcombine-max-iterations=0
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O1--enable-coldcc-stress-test|O1--inline-call-penalty=100|O1--inline-call-penalty=50|O1--inline-threshold=100|O1--inline-threshold=50|O1--instcombine-max-iterations=0|O1-fapple-kext|O1-ffreestanding|O1-finline-hint-functions|O1-finstrument-functions|O1-fno-builtin|O1-fno-inline|O1-fno-inline-functions|O2--enable-coldcc-stress-test|O2--inline-call-penalty=100|O2--inline-call-penalty=50|O2--inline-threshold=100|O2--inline-threshold=50|O2--instcombine-max-iterations=0|O2-fapple-kext|O2-ffreestanding|O2-finline-hint-functions|O2-finstrument-functions|O2-fno-builtin|O2-fno-inline|O2-fno-inline-functions|O3--enable-coldcc-stress-test|O3--inline-call-penalty=100|O3--inline-threshold=100|O3--inline-threshold=50|O3-fapple-kext|O3-ffreestanding|O3-finline-hint-functions|O3-finstrument-functions|O3-fno-builtin|O3-fno-inline|O3-fno-inline-functions|Ofast--enable-coldcc-stress-test|Ofast--inline-call-penalty=100|Ofast--inline-threshold=100|Ofast--inline-threshold=50|Ofast-fapple-kext|Ofast-ffreestanding|Ofast-finline-hint-functions|Ofast-finstrument-functions|Ofast-fno-builtin|Ofast-fno-inline|Ofast-fno-inline-functions
+_gcry_xcalloc	global.c	1263	19	  if (m && nbytes / m != n)	/	mdiv	O1--instcombine-max-iterations=0|O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0|Ofast--instcombine-max-iterations=0|Os--instcombine-max-iterations=0|Oz--instcombine-max-iterations=0
+_gcry_kdf_scrypt	scrypt.c	273	22	  if (r128 && nbytes / r128 != p)	/	mdiv	O1--instcombine-max-iterations=0
+_gcry_xcalloc_secure	global.c	1281	19	  if (m && nbytes / m != n)	/	mdiv	O1--instcombine-max-iterations=0|O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0|Ofast--instcombine-max-iterations=0|Os--instcombine-max-iterations=0|Oz--instcombine-max-iterations=0
+_gcry_calloc_secure	global.c	1160	18	  if (m && bytes / m != n)	/	mdiv	O1--instcombine-max-iterations=0|O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0|Ofast--instcombine-max-iterations=0|Os--instcombine-max-iterations=0|Oz--instcombine-max-iterations=0
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	2060	8	  diff |= (s0[i][j] ^ s1[i][j]);	|	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	729	12	 vec ret = -b;	-	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+_gcry_mpi_set_buffer	mpicoder.c	448	13	      a->d[i++] = alimb;	+	cjump	O2--force-vector-interleave=100|O2--force-vector-interleave=50|O2--force-vector-width=100|O2--force-vector-width=50|O3--force-vector-interleave=100|O3--force-vector-interleave=50|O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-interleave=100|Ofast--force-vector-interleave=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+serpent_setkey_internal	serpent.c	722	45	    key_prepared[i] = buf_get_le32 (key + i * 4);	*	cjump	O2--force-vector-width=100|O2--force-vector-width=50|O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50|Os--force-vector-width=100|Os--force-vector-width=50
+fill_block	kdf.c	555	19	  return (w >> c) | (w << (64 - c));	|	cjump	O2--force-vector-interleave=100|O2--force-vector-interleave=50|O2--force-vector-width=100|O2--force-vector-width=50|O3--force-vector-interleave=100|O3--force-vector-interleave=50|O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-interleave=100|Ofast--force-vector-interleave=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+fill_block	kdf.c	550	16	  return x + y + 2 * (x & m) * (y & m);	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50|O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+pk_gen	mceliece6688128f.c	3289	18	   pi[ row + j ] ^= d;	^	mmem	O2--unroll-force-peel-count=50|O3--unroll-force-peel-count=50|Ofast--unroll-force-peel-count=50|Os--unroll-force-peel-count=50
+_gcry_mpih_addmul_1	mpih-mul2.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_powm_lli	mpih-pow.c	265	7	      do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_add_n	mpih-add1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+transform	stribog.c	1270	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_submul_1	mpih-mul3.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_sub_n	mpih-sub1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+_gcry_mpih_mul_1	mpih-mul1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime|Ofast--unroll-runtime
+poly_ntt	./kyber-common.c	295	21	        r[j] = r[j] + t;	+	cjump	O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+transpose_64x64	mceliece6688128f.c	1116	38	   y = ((out[j] & masks[d][1]) >> s) | (out[j+s] & masks[d][1]);	|	cjump	O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+Short_random	sntrup761.c	97	4	   while (i + p <= n - q)	w	mdiv	O3--force-vector-interleave=100|O3--force-vector-interleave=50|O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-interleave=100|Ofast--force-vector-interleave=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+poly_ntt	./kyber-common.c	294	27	        r[j + len] = r[j] - t;	-	cjump	O3--force-vector-width=100|O3--force-vector-width=50|Ofast--force-vector-width=100|Ofast--force-vector-width=50
+_gcry_mpih_powm_lli	mpih-pow.c	87	14	      s1_size--;	-	cjump	O3-ftrapv|Ofast-ftrapv
+benes	mceliece6688128f.c	1458	6	  r[i*2+0] = r_int_v[0][i];	*	cjump	Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1295	11	 out[5] = (in >> 0x28) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+fft	mceliece6688128f.c	2513	4	   out[ reversal[j] ][i] = buf[j];	o	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_hmac256_new	hmac256.c	359	19	          ipad[i] ^= 0x36;	^	cjump	Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1296	11	 out[6] = (in >> 0x30) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	197	8	  *r = x;	x	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1861	12	    q[j] = (A[2*j]&0xffff)>>1;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1861	16	    q[j] = (A[2*j]&0xffff)>>1;	*	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_keypair	mceliece6688128f.c	1237	12	 dest[0] = a & 0xFF;	a	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+benes	mceliece6688128f.c	1397	25	  r_int_v[1][i] = r[i*2 + 1];	+	cjump	Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1293	11	 out[3] = (in >> 0x18) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	540	20	 r[i] = F3_freeze (r[i] + sign * v[i]);	r	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+crypto_kem_keypair_derand_4	./kyber-kdep.c	675	38	    r->coeffs[i] = montgomery_reduce((int32_t)r->coeffs[i]*f);	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	538	20	 g[i] = F3_freeze (g[i] + sign * f[i]);	g	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_enc	mceliece6688128f.c	2223	23	   mask = i ^ (ind[j] >> 6);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1814	35	        int32 cpx = (B[x]&~0xffff)|(A[x]&0xffff);	|	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+Hide	sntrup761.c	221	6	  ur -= ur2;	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+fft_tr	mceliece6688128f.c	2674	24	   (&buf[0][0])[ k ] = in[ reversal[k] ][i];	i	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	549	29	    out[i] = sign * v[p - 1 - i];	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	620	13	    g[p - 1 - i] = in[i];	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_keypair	mceliece6688128f.c	1238	12	 dest[1] = a >> 8;	a	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_dec	sntrup761.c	221	6	  ur -= ur2;	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+crypto_kem_keypair_derand_3	./kyber-kdep.c	675	38	    r->coeffs[i] = montgomery_reduce((int32_t)r->coeffs[i]*f);	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_ct_not_memequal	const-time.c	52	13	      ab |= a[i] - b[i];	a	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1297	11	 out[7] = (in >> 0x38) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	2041	10	  w0 += (error[i/64] >> (i%64)) & 1;	e	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1862	8	    q[j+n/2] = (A[2*j+1]&0xffff)>>1;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+poly_invntt_tomont	./kyber-common.c	273	28	  return montgomery_reduce((int32_t)a*b);	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_hmac256_new	hmac256.c	360	23	          hd->opad[i] ^= 0x5c;	^	cjump	Os--force-vector-width=50
+benes	mceliece6688128f.c	1396	22	  r_int_v[0][i] = r[i*2 + 0];	*	cjump	Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1292	11	 out[2] = (in >> 0x10) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1786	36	        int32 ppcx = (A[x]&0xffc00)|(B[x]&0x3ff);	|	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_ct_memequal	const-time.c	52	13	      ab |= a[i] - b[i];	a	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_dec	sntrup761.c	197	8	  *r = x;	x	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+benes	mceliece6688128f.c	1459	8	  r[i*2+1] = r_int_v[1][i];	+	cjump	Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1814	35	        int32 cpx = (B[x]&~0xffff)|(A[x]&0xffff);	|	mmem	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1294	11	 out[4] = (in >> 0x20) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1786	36	        int32 ppcx = (A[x]&0xffc00)|(B[x]&0x3ff);	|	mmem	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	511	13	    g[p - 1 - i] = in[i];	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_kdf_compute	kdf.c	401	14	    dst[i] = _gcry_bswap64 (dst[i]);	_	cjump	Os--force-vector-interleave=50|Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	221	6	  ur -= ur2;	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	650	23	 r[i] = Fq_freeze (f0 * r[i] - g0 * v[i]);	*	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+crypto_kem_keypair_derand_2	./kyber-kdep.c	675	38	    r->coeffs[i] = montgomery_reduce((int32_t)r->coeffs[i]*f);	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1291	11	 out[1] = (in >> 0x08) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1290	11	 out[0] = (in >> 0x00) & 0xFF;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+cbrecursion	mceliece6688128f.c	1862	22	    q[j+n/2] = (A[2*j+1]&0xffff)>>1;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_sntrup761_keypair	sntrup761.c	659	51	    out[i] = Fq_freeze (scale * (int32_t) v[p - 1 - i]);	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+_gcry_kdf_final	kdf.c	401	14	    dst[i] = _gcry_bswap64 (dst[i]);	_	cjump	Os--force-vector-interleave=50|Os--force-vector-width=100|Os--force-vector-width=50
+mul_inv	idea.c	89	8	 y = y % x;	%	mdiv	Os-ftrapv|Oz-ftrapv
+_gcry_blowfish_cfb_dec	blowfish.c	833	3	  for ( ;nblocks >= 3; nblocks -= 3 )	f	mdiv	Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50
+_gcry_cast5_cfb_dec	cast5.c	968	3	  for ( ;nblocks >= 3; nblocks -= 3 )	f	mdiv	Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50
+_gcry_cast5_ctr_enc	cast5.c	811	3	  for ( ;nblocks >= 3; nblocks -= 3)	f	mdiv	Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50
+_gcry_blowfish_cbc_dec	blowfish.c	756	3	  for ( ;nblocks >= 3; nblocks -= 3)	f	mdiv	Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50
+_gcry_cast5_cbc_dec	cast5.c	892	3	  for ( ;nblocks >= 3; nblocks -= 3)	f	mdiv	Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50
+_gcry_blowfish_ctr_enc	blowfish.c	675	3	  for ( ;nblocks >= 3; nblocks -= 3)	f	mdiv	Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50

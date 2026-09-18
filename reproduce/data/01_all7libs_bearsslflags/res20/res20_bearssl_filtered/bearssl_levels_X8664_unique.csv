@@ -1,0 +1,49 @@
+function	file	line	col	source	char	type	optimization
+br_x509_decoder_run	src/x509/x509_decoder.c	520	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+print_rsa	tools/verify.c	82	10	   if (u % 12 == 0) {	%	mdiv	O0
+print_rsa	tools/verify.c	95	10	   if (u % 12 == 0) {	%	mdiv	O0
+parse_size	tools/names.c	813	27	  if (z < (size_t)d || (z / (size_t)radix) != acc	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_x509_minimal_run	src/x509/x509_minimal.c	1019	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+print_ec	tools/verify.c	130	10	   if (u % 12 == 0) {	%	mdiv	O0
+br_x509_minimal_run	src/x509/x509_minimal.c	1223	22	   vs = (uint32_t)(x % 86400);	%	mdiv	O0|Oz
+br_pem_encode	src/codec/pemenc.c	78	22	  lines = (len + 47) / 48;	/	mdiv	O0
+br_x509_decoder_run	src/x509/x509_decoder.c	479	2	 T0_PUSHi(a % b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_pem_encode	src/codec/pemenc.c	80	22	  lines = (len + 56) / 57;	/	mdiv	O0
+br_x509_minimal_run	src/x509/x509_minimal.c	1222	22	   vd = (uint32_t)(x / 86400) + 719528;	/	mdiv	O0
+br_x509_minimal_run	src/x509/x509_minimal.c	978	2	 T0_PUSHi(a % b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+print_blob	tools/chain.c	44	9	  if (u % 12 == 0) {	%	mdiv	O0
+print_int_C	tools/skey.c	65	9	  if (u % 12 == 0) {	%	mdiv	O0
+br_pem_encode	src/codec/pemenc.c	82	46	 dlen = (banner_len << 1) + 30 + (((len + 2) / 3) << 2)	/	mdiv	O0|Oz
+print_blob	tools/ta.c	80	9	  if (u % 12 == 0) {	%	mdiv	O0
+p256_mulgen	src/ec/ec_p256_m15.c	1932	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O1|O2|Os|Oz
+br_i15_decode_mod	src/int/i15_decmod.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1
+br_i31_modpow_opt	src/int/i31_modpow2.c	141	20	     t2[v] |= mask & base[v];	&	cjump	O1|O2|Os|Oz
+p256_mulgen	src/ec/ec_p256_m31.c	1281	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O1|Os|Oz
+br_poly1305_ctmul32_run	src/symcipher/poly1305_ctmul32.c	266	10	  acc[i] &= ~(-ctl);	&	cjump	O1|Os
+api_mul	src/ec/ec_p256_m64.c	1642	26	   c |= -(int32_t)EQ0(c) & CMP(k[u], P256_N[u]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i32_decode_mod	src/int/i32_decmod.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i62_modpow_opt	src/int/i62_modpow2.c	424	20	     t2[v] |= mask & base[v];	&	cjump	O1|O2|Os|Oz
+br_i15_modpow_opt	src/int/i15_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O1|O2|Os|Oz
+br_i62_modpow_opt	src/int/i62_modpow2.c	438	26	   x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	mmem	O1|O2|Os|Oz
+api_mul	src/ec/ec_p256_m62.c	1626	26	   c |= -(int32_t)EQ0(c) & CMP(k[u], P256_N[u]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i32_bit_length	src/int/i32_bitlen.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O2|O3|Ofast
+br_i15_bit_length	src/int/i15_bitlen.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O2|O3|Ofast
+br_i15_muladd_small	src/int/i15_muladd.c	44	15	  x -= (-ctl) & d;	&	cjump	O2
+br_i31_bit_length	src/int/i31_bitlen.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O2|O3|Ofast
+br_asn1_encode_uint	src/x509/asn1enc.c	70	12	   *buf ++ = len >> (j << 3);	=	cjump	Os
+br_asn1_encode_length	src/x509/asn1enc.c	70	12	   *buf ++ = len >> (j << 3);	=	cjump	Os
+do_verify	tools/verify.c	78	23	  for (u = 0; u < pk->nlen; u ++) {	n	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+print_blob	tools/ta.c	76	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz
+br_rsa_i31_public	src/rsa/rsa_i31_pub.c	61	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i62_private	src/rsa/rsa_i62_priv.c	125	2	 while (u > 0) {	w	mdiv	Oz
+do_verify	tools/verify.c	91	23	  for (u = 0; u < pk->elen; u ++) {	e	mdiv	Oz
+br_rsa_i15_public	src/rsa/rsa_i15_pub.c	62	2	 while (z > 0) {	w	mdiv	Oz
+do_verify	tools/verify.c	126	23	  for (u = 0; u < pk->qlen; u ++) {	q	mdiv	Oz
+print_int_C	tools/skey.c	61	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz
+br_rsa_i62_public	src/rsa/rsa_i62_pub.c	63	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i62_private	src/rsa/rsa_i62_priv.c	69	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	129	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	123	2	 while (u > 0) {	w	mdiv	Oz
+do_chain	tools/chain.c	40	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz

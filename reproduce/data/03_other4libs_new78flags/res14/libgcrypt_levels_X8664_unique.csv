@@ -1,0 +1,222 @@
+function	file	line	col	source	char	type	optimization
+check_ecdsa	t-ecdsa.c	587	20	  else if ((ntests % 256))	%	mdiv	O0
+controlbitsfrompermutation	mceliece6688128f.c	1909	29	    memset(out,0,(((2*w-1)*n/2)+7)/8);	/	mdiv	O0
+Decode	sntrup761.c	300	7	 M2[i / 2] = M[i];	/	mdiv	O0
+scrypt_ro_mix	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	mdiv	O0
+Decode	sntrup761.c	283	13	       M2[i / 2] = (((m + 255) >> 8) + 255) >> 8;	/	mdiv	O0
+sha3_update	./jitterentropy-sha3.c	282	32	 size_t partial = ctx->msg_len % ctx->r;	%	mdiv	O0
+bench_ecc_mult_init	bench-slope.c	2529	33	    num_measurement_repetitions / obj->max_bufsize;	/	mdiv	O0
+bench_ecc_init	bench-slope.c	2641	34	     num_measurement_repetitions / obj->max_bufsize;	/	mdiv	O0|O1|Oz
+mul_inv	idea.c	77	20	    y =  0x10001UL % x;	%	mdiv	O0|Os|Oz
+check_mlkem_kat	t-mlkem.c	389	24	          if (!(ntests % 256))	%	mdiv	O0
+Decode	sntrup761.c	314	16	 *out++ = R2[i / 2];	/	mdiv	O0
+Encode	sntrup761.c	362	9	   R2[i / 2] = R[i];	/	mdiv	O0
+nonce_thread	t-lock.c	152	19	      if (i && !(i%100))	%	mdiv	O0
+_gcry_rsa_pkcs1_encode_for_enc	rsa-common.c	135	17	          k += k/128 + 3; /* Better get some more. */	/	mdiv	O0
+aria_set_encrypt_key	aria.c	797	16	   ((y[(q + 2) % 4]) << (32 - r));	%	mdiv	O0
+check_dsa	t-dsa.c	515	24	          if (!(ntests % 256))	%	mdiv	O0
+Encode	sntrup761.c	358	9	   M2[i / 2] = m;	/	mdiv	O0
+prepare_datasexp_to_be_signed	pubkey.c	502	22	          data_size[i/2] = (int)len;	/	mdiv	O0
+aria_set_encrypt_key	aria.c	787	10	   ((y[q % 4]) >> r) ^	%	mdiv	O0
+mpih_invm_pow2	mpi-inv.c	157	11	      xp[i/BITS_PER_MPI_LIMB] |= ((mpi_limb_t)b0<<(i%BITS_PER_MPI_LIMB));	/	mdiv	O0
+Encode	sntrup761.c	363	9	   M2[i / 2] = M[i];	/	mdiv	O0
+do_fillM	cipher-gcm.c	278	24	  for (i = 4; i > 0; i /= 2)	/	mdiv	O0
+Decode	sntrup761.c	301	36	      Decode (R2, S, M2, (len + 1) / 2);	/	mdiv	O0
+mpi_read_from_buffer	mpicoder.c	72	5	  i %= BYTES_PER_MPI_LIMB;	%	mdiv	O0
+x963_kdf_final	kdf.c	1962	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+argon2_compute_segment	kdf.c	736	35	        ref_lane = (rand64 >> 32) % a->lanes;	%	mdiv	O0|O1|O2|O3|Os|Oz
+weight_check	mceliece6688128f.c	2041	17	  w0 += (error[i/64] >> (i%64)) & 1;	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1865	30	  cbrecursion(out,pos,step*2,q,w-1,n/2,temp);	q	mdiv	O0
+prepare_datasexp_to_be_signed	pubkey.c	505	38	          argv[i+1] = (void *)&data[i/2];	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1824	19	  for (j = 0;j < n/2;++j) {	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1860	19	  for (j = 0;j < n/2;++j) {	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1866	35	  cbrecursion(out,pos+step,step*2,q+n/2,w-1,n/2,temp);	q	mdiv	O0
+check_ecdsa	t-ecdsa.c	563	24	          if (!(ntests % 256))	%	mdiv	O0
+_gcry_kdf_scrypt	scrypt.c	273	22	  if (r128 && nbytes / r128 != p)	/	mdiv	O0
+mpi_fromstr	mpicoder.c	187	5	  i %= BYTES_PER_MPI_LIMB;	%	mdiv	O0
+_gcry_mpih_powm_lli	mpih-pow.c	255	17	          j = i / BITS_PER_MPI_LIMB;	/	mdiv	O0
+do_setkey	seed.c	295	13	      if (i % 2 == 0)	%	mdiv	O0
+Decode	sntrup761.c	295	18	       bottomr[i / 2] = 0;	/	mdiv	O0
+weight_check	mceliece6688128f.c	2041	27	  w0 += (error[i/64] >> (i%64)) & 1;	%	mdiv	O0
+_gcry_mpi_copy	mpiutil.c	359	40	            p = _gcry_is_secure(a->d)? xmalloc_secure ((a->sign+7)/8)	x	mdiv	O0
+Decode	sntrup761.c	307	31	   r += bottomt[i / 2] * R2[i / 2];	/	mdiv	O0
+do_bf_setkey	blowfish.c	990	29	             ((u32)key[(j+3)%keylen]);	%	mdiv	O0
+Encode	sntrup761.c	365	38	      Encode (out, R2, M2, (len + 1) / 2);	/	mdiv	O0
+drbg_ctr_df	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	mdiv	O0
+controlbitsfrompermutation	mceliece6688128f.c	1909	35	    memset(out,0,(((2*w-1)*n/2)+7)/8);	/	mdiv	O0
+check_ed448	t-ed448.c	416	24	          if (!(ntests % 256))	%	mdiv	O0
+do_ghash_buf	cipher-gcm.c	778	24	      nblocks = buflen / blocksize;	/	mdiv	O0
+drbg_generate_long	random-drbg.c	1521	31	      slice = ((buflen - len) / drbg_max_request_bytes ());	/	mdiv	O0
+_gcry_generate_fips186_3_prime	primegen.c	1729	33	  value_n = (pbits + qbits - 1) / qbits - 1;	/	mdiv	O0|O1|O2|O3|Os|Oz
+Decode	sntrup761.c	307	19	   r += bottomt[i / 2] * R2[i / 2];	/	mdiv	O0
+check_ocb_cipher_checksum	basic.c	9317	23	      int bit2set = i / 16;	/	mdiv	O0
+get_rand	t-lock.c	261	57	  return (unsigned int)(1+(int)((double)(high+1)*rand ()/(RAND_MAX+1.0))) - 1;	/	mdiv	O0
+pthread_jobs_launch_job	t-kdf.c	1302	61	      ctx->oldest_thread_idx = (ctx->oldest_thread_idx + 1) % MAX_THREADS;	%	mdiv	O0|Oz
+prime_generate_internal	primegen.c	366	38	      fbits = (pbits - req_qbits -1) / n;	/	mdiv	O0|O1|O2|O3|Os|Oz
+check_rsa_pss	t-rsa-pss.c	437	20	  else if ((ntests % 256))	%	mdiv	O0
+Decode	sntrup761.c	294	18	       bottomt[i / 2] = 1;	/	mdiv	O0
+prepare_datasexp_to_be_signed	pubkey.c	504	41	          argv[i] = (void *)&data_size[i/2];	/	mdiv	O0
+argon2_init	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	mdiv	O0
+check_cv25519	t-cv25519.c	620	20	  else if ((ntests % 256))	%	mdiv	O0
+balloon_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1861	5	    q[j] = (A[2*j]&0xffff)>>1;	q	mdiv	O0
+Encode	sntrup761.c	357	9	   R2[i / 2] = r;	/	mdiv	O0
+check_mlkem_kat	t-mlkem.c	419	20	  else if ((ntests % 256))	%	mdiv	O0
+balloon_compute_mix	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	mdiv	O0
+Decode	sntrup761.c	304	27	   uint32_t r = bottomr[i / 2];	/	mdiv	O0
+Decode	sntrup761.c	287	18	       bottomt[i / 2] = 256;	/	mdiv	O0
+cshake_input_s	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	mdiv	O0|Os|Oz
+Decode	sntrup761.c	288	18	       bottomr[i / 2] = S[0];	/	mdiv	O0
+base64_decode	fipsdrv.c	417	21	      idx = (idx+1) % 4;	%	mdiv	O0|Oz
+main	fipsdrv.c	2638	29	              if (!(++count % 1000))	%	mdiv	O0|Oz
+check_ocb_cipher_checksum	basic.c	9319	28	      int bitpos = bit2set % 8;	%	mdiv	O0
+cbrecursion	mceliece6688128f.c	1862	10	    q[j+n/2] = (A[2*j+1]&0xffff)>>1;	/	mdiv	O0
+mov_columns	mceliece6688128f.c	3254	17	 block_idx = row/64;	/	mdiv	O0
+do_ecb_crypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	O0
+check_ocb_cipher_checksum	basic.c	9318	29	      int byteidx = bit2set / 8;	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1866	38	  cbrecursion(out,pos+step,step*2,q+n/2,w-1,n/2,temp);	/	mdiv	O0
+mul_inv	idea.c	88	8	 q = y / x;	/	mdiv	O0
+_gcry_kdf_pkdf2	kdf.c	164	19	  l = ((dklen - 1)/ hlen) + 1;	/	mdiv	O0|O1|O2|O3|Os|Oz
+check_mlkem_kat	t-mlkem.c	401	24	          if (!(ntests % 256))	%	mdiv	O0
+aria_set_encrypt_key	aria.c	788	16	   ((y[(q + 3) % 4]) << (32 - r));	%	mdiv	O0
+ec_mulm_448	ec.c	595	47	  memcpy (wp + LIMB_SIZE_HALF_448, b1, (wsize / 2) * BYTES_PER_MPI_LIMB);	/	mdiv	O0
+mul_inv	idea.c	83	8	 q = x / y;	/	mdiv	O0
+check_rsa_pss	t-rsa-pss.c	418	24	          if (!(ntests % 256))	%	mdiv	O0
+ec_mulm_448	ec.c	571	35	  _gcry_mpih_rshift (b1, n + wsize/2, LIMB_SIZE_HALF_448, 32);	/	mdiv	O0
+onestep_kdf_mac_final	kdf.c	1630	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+gen_e	mceliece6688128f.c	2236	7	  e[ j/8 ] = (e_int[i] >> j) & 0xFF;	/	mdiv	O0
+main	bench-slope.c	3388	27	                  cpu_ghz /= 1000; /* Mhz => Ghz */	/	mdiv	O0|O1|O2|O3|Os|Oz
+aria_set_encrypt_key	aria.c	794	16	   ((y[(q + 1) % 4]) << (32 - r));	%	mdiv	O0
+Decode	sntrup761.c	280	18	       bottomt[i / 2] = 256 * 256;	/	mdiv	O0
+_gcry_dsa_modify_k	dsa-common.c	49	41	  ksize = (qbits+1+BITS_PER_MPI_LIMB-1) / BITS_PER_MPI_LIMB;	/	mdiv	O0|Oz
+argon2_compute_segment	kdf.c	720	24	      if ((curr_offset % a->lane_length) == 1)	%	mdiv	O0|O1|O2|O3|Os|Oz
+check_ed25519	t-ed25519.c	404	20	  else if ((ntests % 256))	%	mdiv	O0
+_gcry_generate_fips186_2_prime	primegen.c	1491	25	  value_n = (pbits - 1) / qbits;	/	mdiv	O0
+aria_set_encrypt_key	aria.c	796	16	   ((y[(q + 3) % 4]) >> r) ^	%	mdiv	O0
+_gcry_calloc_secure	global.c	1160	18	  if (m && bytes / m != n)	/	mdiv	O0
+hkdf_final	kdf.c	1819	29	  for (i = 0; i < h->outlen / h->blklen; i++)	/	mdiv	O0
+_gcry_mpih_powm_lli	mpih-pow.c	256	21	          shift = i % BITS_PER_MPI_LIMB;	%	mdiv	O0|Oz
+do_vsexp_sscan	sexp.c	1301	27	       datalen = hexcount / 2;	/	mdiv	O0|Oz
+aria_set_encrypt_key	aria.c	791	10	   ((y[q % 4]) << (32 - r));	%	mdiv	O0
+jent_measure_jitter	./jitterentropy-noise.c	342	50	 current_delta = jent_delta(ec->prev_time, time) /	/	mdiv	O0
+check_dsa	t-dsa.c	539	20	  else if ((ntests % 256))	%	mdiv	O0
+_gcry_mpi_alloc_like	mpiutil.c	436	21	 int n = (a->sign+7)/8;	/	mdiv	O0|Oz
+jent_gcd64	./jitterentropy-gcd.c	47	9	  r = a % b;	%	mdiv	O0
+_gcry_xcalloc_secure	global.c	1281	19	  if (m && nbytes / m != n)	/	mdiv	O0
+keccak_write	keccak.c	1138	45	      count = ((size_t) count + nlanes * 8) % bsize;	%	mdiv	O0|O1|O2|O3|Os|Oz
+uint32_divmod_uint14	sntrup761.c	159	5	  v /= m;	/	mdiv	O0|Oz
+ec_mulm_448	ec.c	572	43	  _gcry_mpih_rshift (a3, n + wsize + wsize/2, LIMB_SIZE_HALF_448, 32);	/	mdiv	O0
+_gcry_xcalloc	global.c	1263	19	  if (m && nbytes / m != n)	/	mdiv	O0
+bench_ecc_mult_init	bench-slope.c	2541	34	     num_measurement_repetitions / obj->max_bufsize;	/	mdiv	O0|O1|Oz
+sha3_final	./jitterentropy-sha3.c	325	32	 size_t partial = ctx->msg_len % ctx->r;	%	mdiv	O0
+do_ecb_crypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O0|Os|Oz
+cbrecursion	mceliece6688128f.c	1840	25	  pos += (2*w-3)*step*(n/2);	/	mdiv	O0
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1858	25	  pos -= (2*w-2)*step*(n/2);	/	mdiv	O0
+_gcry_mpi_copy	mpiutil.c	362	45	                memcpy( p, a->d, (a->sign+7)/8 );	/	mdiv	O0|Oz
+aria_set_encrypt_key	aria.c	790	16	   ((y[(q + 1) % 4]) >> r) ^	%	mdiv	O0
+_gcry_mpi_copy	mpiutil.c	360	40	                                     : xmalloc ((a->sign+7)/8);	x	mdiv	O0
+syndrome	mceliece6688128f.c	2273	23	  s[ i/8 ] ^= (b << (i%8));	%	mdiv	O0
+prime_generate_internal	primegen.c	361	42	      fbits = (pbits - 2 * req_qbits -1) / n;	/	mdiv	O0|O1|O2|O3|Os|Oz
+check_x448	t-x448.c	563	20	  else if ((ntests % 256))	%	mdiv	O0
+get_num_measurements	bench-slope.c	334	32	  unsigned int num = buf_range / obj->step_size + 1;	/	mdiv	O0|O1|O2|O3|Os|Oz
+do_bf_setkey	blowfish.c	992	17	      j = (j+4) % keylen;	%	mdiv	O0
+cbrecursion	mceliece6688128f.c	1842	19	  for (k = 0;k < n/2;++k) {	/	mdiv	O0
+aria_set_encrypt_key	aria.c	793	16	   ((y[(q + 2) % 4]) >> r) ^	%	mdiv	O0
+_gcry_cipher_ocb_set_nonce	cipher-ocb.c	188	41	  ktop[0] = ((c->u_mode.ocb.taglen * 8) % 128) << 1;	%	mdiv	O0
+mul_inv	idea.c	76	20	    t1 = 0x10001UL / x;	/	mdiv	O0
+do_bf_setkey	blowfish.c	989	29	             ((u32)key[(j+2)%keylen] << 8) |	%	mdiv	O0
+do_bench_obj_measurement	bench-slope.c	394	14	  return res / 2;	/	mdiv	O0
+mpih_invm_pow2	mpi-inv.c	157	53	      xp[i/BITS_PER_MPI_LIMB] |= ((mpi_limb_t)b0<<(i%BITS_PER_MPI_LIMB));	%	mdiv	O0
+_gcry_kdf_scrypt	scrypt.c	277	22	  if (r128 && nbytes / r128 != N)	/	mdiv	O0
+check_rsa_15	t-rsa-15.c	390	20	  else if ((ntests % 256))	%	mdiv	O0
+index_alpha	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	mdiv	O0
+Decode	sntrup761.c	296	13	       M2[i / 2] = m;	/	mdiv	O0
+_gcry_calloc	global.c	1140	18	  if (m && bytes / m != n)	/	mdiv	O0
+check_ed448	t-ed448.c	435	20	  else if ((ntests % 256))	%	mdiv	O0
+weight_check	mceliece6688128f.c	2044	22	  w1 += (e[i/8] >> (i%8)) & 1;	%	mdiv	O0
+prime_generate_internal	primegen.c	346	35	  for (n = 1; (pbits - qbits - 1) / n  >= qbits; n++)	/	mdiv	O0|O1|O2|O3|Os|Oz
+argon2_compute_segment	kdf.c	710	20	  if ((curr_offset % a->lane_length))	%	mdiv	O0|O1|O2|O3|Os|Oz
+mul_inv	idea.c	89	8	 y = y % x;	%	mdiv	O0|Os|Oz
+check_mlkem_kat	t-mlkem.c	377	24	          if (!(ntests % 256))	%	mdiv	O0
+prime_generate_internal	primegen.c	341	19	    qbits = pbits / 3;	/	mdiv	O0
+wait_all_jobs_completion	t-kdf.c	1333	42	      idx = (ctx->oldest_thread_idx + i) % MAX_THREADS;	%	mdiv	O0|Oz
+do_bf_setkey	blowfish.c	988	29	             ((u32)key[(j+1)%keylen] << 16) |	%	mdiv	O0
+save_pool_prime	primegen.c	176	21	          if (i >= n/3*2)	/	mdiv	O0
+mul_inv	idea.c	84	8	 x = x % y;	%	mdiv	O0|Os|Oz
+check_rsa_15	t-rsa-15.c	373	24	          if (!(ntests % 256))	%	mdiv	O0
+cbrecursion	mceliece6688128f.c	1862	5	    q[j+n/2] = (A[2*j+1]&0xffff)>>1;	q	mdiv	O0
+do_polyval_buf	cipher-gcm-siv.c	156	24	      nblocks = buflen / blocksize;	/	mdiv	O0
+weight_check	mceliece6688128f.c	2044	13	  w1 += (e[i/8] >> (i%8)) & 1;	/	mdiv	O0
+Decode	sntrup761.c	290	13	       M2[i / 2] = (m + 255) >> 8;	/	mdiv	O0
+cbrecursion	mceliece6688128f.c	1865	37	  cbrecursion(out,pos,step*2,q,w-1,n/2,temp);	/	mdiv	O0
+_gcry_mpih_powm_lli	mpih-pow.c	229	53	      _gcry_mpih_sqr_n_basecase (temp0, precomp+n*(i/2+1), n);	/	mdiv	O0
+is_weak_key	des.c	1034	31	      middle = (left + right) / 2;	/	mdiv	O0|Oz
+safe_div	bench-slope.c	268	14	    return x / y;	/	mdiv	O0
+syndrome	mceliece6688128f.c	2273	7	  s[ i/8 ] ^= (b << (i%8));	/	mdiv	O0
+check_ed25519	t-ed25519.c	388	24	          if (!(ntests % 256))	%	mdiv	O0
+Decode	sntrup761.c	281	18	       bottomr[i / 2] = S[0] + 256 * S[1];	/	mdiv	O0
+pthread_jobs_launch_job	t-kdf.c	1319	53	  ctx->next_thread_idx = (ctx->next_thread_idx + 1) % MAX_THREADS;	%	mdiv	O0|Oz
+bench_ecc_init	bench-slope.c	2629	33	    num_measurement_repetitions / obj->max_bufsize;	/	mdiv	O0
+do_mpi_cmp	mpi-cmp.c	80	45	      return memcmp (u->d, v->d, (u->sign+7)/8);	/	mdiv	O0|Oz
+cbrecursion	mceliece6688128f.c	1866	46	  cbrecursion(out,pos+step,step*2,q+n/2,w-1,n/2,temp);	/	mdiv	O0
+blake2_write	blake2.c	197	39	   nblks = inlen / blkbytes - !(inlen % blkbytes);	%	mdiv	O0|Os|Oz
+onestep_kdf_final	kdf.c	1502	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+prepare_datasexp_to_be_signed	pubkey.c	498	55	          rc = _gcry_pk_get_single_data (&ctx, &data[i/2], &len);	/	mdiv	O0
+bf_setkey	blowfish.c	992	17	      j = (j+4) % keylen;	%	mdiv	O1|O2|O3|Os|Oz
+argon2_compute_segment	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	mdiv	O1|O2|O3|Os|Oz
+main	t-ecdsa.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_kdf_scrypt	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	mdiv	O1|O2|O3|Os|Oz
+balloon_compute	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	mdiv	O1|O2|O3|Os|Oz
+main	t-secmem.c	88	5	    xgcry_control ((PRIV_CTL_DUMP_SECMEM_STATS, 0 , 0));	x	cjump	O1|O2|O3|Os|Oz
+main	t-cv25519.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+main	fipsdrv.c	932	3	  xgcry_control ((PRIV_CTL_DEINIT_EXTRNG_TEST, context));	x	cjump	O1|O2|O3|Os|Oz
+main	t-mlkem.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_mceliece6688128f_enc	mceliece6688128f.c	2228	23	   e_int[i] |= val[j] & mask;	&	cjump	O1|O2|O3|Os|Oz
+main	t-x448.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1502	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+main	random.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1
+main	t-rsa-15.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_cshake_customize	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	mdiv	O1|O2|O3
+main	t-kdf.c	94	52	              ((((double) (stopped_at - started_at)/(double)divisor)	/	mdiv	O1|O2|O3|Os|Oz
+invert_key	idea.c	84	8	 x = x % y;	%	mdiv	O1|O2|O3
+bench_print_result	bench-slope.c	268	14	    return x / y;	/	mdiv	O1|O2|O3|Os|Oz
+main	t-rsa-pss.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+cshake_hash_buffers	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	mdiv	O1|O2|O3
+main	t-dsa.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+main	t-fips-service-ind.c	334	26	      buffer[length++] = xtoi_2 (s);	x	cjump	O1|O2|O3|Os|Oz
+bf_setkey	blowfish.c	990	29	             ((u32)key[(j+3)%keylen]);	%	mdiv	O1|O2|O3|Os|Oz
+bf_setkey	blowfish.c	989	29	             ((u32)key[(j+2)%keylen] << 8) |	%	mdiv	O1|O2|O3|Os|Oz
+do_ecb_decrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O1
+main	random.c	95	17	                /CLOCKS_PER_SEC)*10000000));	/	mdiv	O1
+_gcry_kdf_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1630	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+main	t-kem.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+main	t-secmem.c	84	9	        xgcry_control ((GCRYCTL_DUMP_SECMEM_STATS, 0 , 0));	x	cjump	O1|O2|O3|Os|Oz
+do_ecb_encrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O1
+invert_key	idea.c	77	20	    y =  0x10001UL % x;	%	mdiv	O1|O2|O3
+_gcry_kdf_final	kdf.c	1962	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+main	t-secmem.c	90	5	    xgcry_control ((GCRYCTL_DUMP_SECMEM_STATS, 0 , 0));	x	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1819	29	  for (i = 0; i < h->outlen / h->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+drbg_ctr_update	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	mdiv	O1|O2|O3|Os|Oz
+_gcry_kdf_open	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	mdiv	O1|O2|O3|Os|Oz
+bf_setkey	blowfish.c	988	29	             ((u32)key[(j+1)%keylen] << 16) |	%	mdiv	O1|O2|O3|Os|Oz
+Decode	sntrup761.c	159	5	  v /= m;	/	mdiv	O1|O2|O3|Os
+invert_key	idea.c	89	8	 y = y % x;	%	mdiv	O1|O2|O3
+get_auto_ghz	bench-slope.c	268	14	    return x / y;	/	mdiv	O1|O2|O3|Os|Oz
+main	t-ed25519.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+main	t-ed448.c	98	51	              (((double) (stopped_at - started_at)/CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+main	random.c	94	52	              ((((double) (stopped_at - started_at)/(double)divisor)	/	mdiv	O1|O2|O3|Os
+main	t-kdf.c	95	17	                /CLOCKS_PER_SEC)*10000000));	/	mdiv	O1|O2|O3|Os|Oz
+do_ecb_encrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	O2|O3
+argon2_compute_segment	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	cjump	O2|O3
+_gcry_sntrup761_dec	sntrup761.c	798	12	    r[i] = ev[i] & ~mask;	e	cjump	O2|O3
+balloon_compute	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	cjump	O2|O3
+do_ecb_decrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	O2|O3
+_gcry_kdf_scrypt	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	cjump	O2|O3
+_gcry_sntrup761_dec	sntrup761.c	796	12	    r[i] = ((ev[i] ^ 1) & ~mask) ^ 1;	(	cjump	O2|O3
+drbg_ctr_update	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	cjump	O2|O3
+keccak_write	keccak.c	1138	45	      count = ((size_t) count + nlanes * 8) % bsize;	%	cjump	O2|O3
+nonce_thread	t-lock.c	149	17	  for (i = 0; i < N_NONCE_ITERATIONS; i++)	<	mdiv	Oz
+main	t-secmem.c	80	15	  for (i=0; i < DIM(a); i++)	<	mdiv	Oz
+prime_generate_internal	primegen.c	340	7	  if (!qbits)	!	mdiv	Oz

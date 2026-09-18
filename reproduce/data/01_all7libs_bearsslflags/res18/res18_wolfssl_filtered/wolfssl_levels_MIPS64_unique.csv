@@ -1,0 +1,54 @@
+function	file	line	col	source	char	type	optimization
+_sp_div_small	wolfcrypt/src/sp_int.c	6995	21	            tr = tr % d;	%	mdiv	O0|O1|O2|Os|Oz
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	471	43	    pLen = v * (((word32)passLen + v - 1) / v);	/	mdiv	O0
+sp_mont_norm	wolfcrypt/src/sp_int.c	18004	21	        norm->dp[0] %= m->dp[0];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+_sp_div_small	wolfcrypt/src/sp_int.c	7024	16	            tr %= d;	%	mdiv	O0|O1|O2|Os|Oz
+BuildMessage	src/internal.c	23682	71	                                                      args->digestSz) % blockSz;	%	mdiv	O0
+wc_HKDF_Expand_ex	wolfcrypt/src/hmac.c	1535	54	        if (out == NULL || ((outSz/hashSz) + ((outSz % hashSz) != 0)) > 255) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+_sp_div_small	wolfcrypt/src/sp_int.c	7022	22	            tt += tr / d;	/	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	520	33	            B[i] = Ai[(word32)i % u];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	496	23	        S[i] = salt[i % (word32)saltLen];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+_sp_div_small	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O0|O1|O2|Os|Oz
+wc_PRF	wolfcrypt/src/kdf.c	133	22	    times   = resLen / len;	/	mdiv	O0
+SanityCheckCipherText	src/internal.c	20587	44	            if ((encryptSz - MacSize(ssl)) % ssl->specs.block_size) {	%	mdiv	O0
+BuildMessage	src/internal.c	23687	61	                    args->pad = (args->sz - args->headerSz) % blockSz;	%	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	467	43	    sLen = v * (((word32)saltLen + v - 1) / v);	/	mdiv	O0
+sp_div_primes	wolfcrypt/src/sp_int.c	19248	19	            if (d % sp_primes[i] == 0) {	%	mdiv	O0|Oz
+SanityCheckCipherText	src/internal.c	20595	23	        if (encryptSz % ssl->specs.block_size) {	%	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	498	25	        P[i] = passwd[i % (word32)passLen];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+wc_PRF	wolfcrypt/src/kdf.c	134	22	    lastLen = resLen % len;	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	467	14	    sLen = v * (((word32)saltLen + v - 1) / v);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+sp_mod_d	wolfcrypt/src/sp_int.c	6995	21	            tr = tr % d;	%	mdiv	O1|O2|O3|Ofast
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	471	14	    pLen = v * (((word32)passLen + v - 1) / v);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+sp_prime_is_prime_ex	wolfcrypt/src/sp_int.c	19248	19	            if (d % sp_primes[i] == 0) {	%	mdiv	O1|O2|O3|Ofast|Os
+sp_prime_is_prime	wolfcrypt/src/sp_int.c	19248	19	            if (d % sp_primes[i] == 0) {	%	mdiv	O1|O2|O3|Ofast|Os
+sp_mod_d	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O1|O2|O3|Ofast
+ProcessReplyEx	src/internal.c	20595	23	        if (encryptSz % ssl->specs.block_size) {	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+ProcessReplyEx	src/internal.c	20587	44	            if ((encryptSz - MacSize(ssl)) % ssl->specs.block_size) {	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+_sp_mont_red	wolfcrypt/src/sp_int.c	17418	22	            a->dp[i] &=	&	mmem	O1|O2|O3|Ofast|Os|Oz
+wc_AesGcmDecrypt	wolfcrypt/src/aes.c	9241	31	    ret = (ret & ~res) | (res & WC_NO_ERR_TRACE(AES_GCM_AUTH_E));	&	cjump	O2|O3|Ofast|Os
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7396	35	            w         += m->dp[i] & mask;	&	cjump	O3|Ofast
+sp_div_d	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O3|Ofast
+sp_div_d	wolfcrypt/src/sp_int.c	6995	21	            tr = tr % d;	%	mdiv	O3|Ofast
+sp_addmod_ct	wolfcrypt/src/sp_int.c	8164	26	            w         -= m->dp[i] & mask;	m	cjump	O3|Ofast
+sp_div_d	wolfcrypt/src/sp_int.c	7024	16	            tr %= d;	%	mdiv	O3|Ofast
+wolfSSL_GetSessionClient	./src/ssl_sess.c	959	47	    row = HashObject(id, (word32)len, &error) % CLIENT_SESSION_ROWS;	%	mdiv	Oz
+TimingPadVerify	src/internal.c	20965	46	        r = (macSz - (scanStart - macStart)) % WC_SHA_DIGEST_SIZE;	%	mdiv	Oz
+_sp_div_10	wolfcrypt/src/sp_int.c	6906	21	            tr = tr % 10;	%	mdiv	Oz
+AddCA	src/ssl.c	5404	35	    return MakeWordFromHash(hash) % CA_TABLE_SIZE;	%	mdiv	Oz
+GetCA	src/ssl.c	5404	35	    return MakeWordFromHash(hash) % CA_TABLE_SIZE;	%	mdiv	Oz
+_sp_div_10	wolfcrypt/src/sp_int.c	6934	16	            tr %= 10;	%	mdiv	Oz
+AddSigner	src/ssl.c	5404	35	    return MakeWordFromHash(hash) % CA_TABLE_SIZE;	%	mdiv	Oz
+AddSessionToCache	./src/ssl_sess.c	1869	5	    for (i = 0; i < SESSIONS_PER_ROW && i < sessRow->totalCount; i++) {	f	mdiv	Oz
+AddSessionToCache	./src/ssl_sess.c	1932	9	    if (!overwrite)	!	mdiv	Oz
+TlsSessionCacheGetAndLock	./src/ssl_sess.c	1093	42	    row = HashObject(id, ID_LEN, &error) % SESSION_ROWS;	%	mdiv	Oz
+_sp_exptmod_base_2	wolfcrypt/src/sp_int.c	13819	38	        c -= (digits * SP_WORD_SIZE) % EXP2_WINSIZE;	%	mdiv	Oz
+AddSessionToCache	./src/ssl_sess.c	2007	55	            sessRow->nextIdx = (sessRow->nextIdx + 1) % SESSIONS_PER_ROW;	%	mdiv	Oz
+AddSessionToClientCache	./src/ssl_sess.c	1656	48	                ClientCache[clientRow].nextIdx %= CLIENT_SESSIONS_PER_ROW;	%	mdiv	Oz
+TimingPadVerify	src/internal.c	20969	46	        r = (macSz - (scanStart - macStart)) % WC_SHA384_DIGEST_SIZE;	%	mdiv	Oz
+TimingPadVerify	src/internal.c	20994	45	            good |= expMac[i] ^ mac[(i + r) % WC_SHA384_DIGEST_SIZE];	%	mdiv	Oz
+DecodeObjectId	wolfcrypt/src/asn.c	6563	37	                out[1] = (word16)(t % 40);	%	mdiv	Oz
+TimingPadVerify	src/internal.c	20988	45	            good |= expMac[i] ^ mac[(i + r) % WC_SHA_DIGEST_SIZE];	%	mdiv	Oz
+wc_Asn1_PrintAll	wolfcrypt/src/asn.c	41716	37	                out[1] = (word16)(t % 40);	%	mdiv	Oz
+AlreadySigner	src/ssl.c	5404	35	    return MakeWordFromHash(hash) % CA_TABLE_SIZE;	%	mdiv	Oz
+AddSessionToCache	./src/ssl_sess.c	1843	46	    row = (int)(HashObject(id, ID_LEN, &ret) % SESSION_ROWS);	%	mdiv	Oz

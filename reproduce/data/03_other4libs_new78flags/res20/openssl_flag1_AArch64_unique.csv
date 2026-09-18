@@ -1,0 +1,42 @@
+function	file	line	col	source	char	type	optimization
+ossl_cms_RecipientInfo_pwri_crypt	crypto/cms/cms_pwri.c	271	10	    olen *= blocklen;	*	mdiv	O1--cold-callsite-rel-freq=0
+recode_wnaf	crypto/ec/curve448/curve448.c	558	48	    unsigned int table_size = C448_SCALAR_BITS / (table_bits + 1) + 3;	/	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O1-fgnuc-version=0|O1-fms-compatibility|O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50|O2-fgnuc-version=0|O2-fms-compatibility|O3-fgnuc-version=0|O3-fms-compatibility
+ossl_curve448_scalar_halve	crypto/ec/curve448/scalar.c	238	56	        out->limb[i] = out->limb[i] >> 1 | out->limb[i + 1] << (WBITS - 1);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+ossl_cmac_init	crypto/cmac/cmac.c	48	42	        k1[i] = (c << 1) | ((cnext = l[i + 1]) >> 7);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+encrypt_cpa	crypto/ml_kem/ml_kem.c	1030	15	        b = *r++;	+	cjump	O1-ftree-vectorize|O1-fvectorize|O3--unroll-max-iteration-count-to-analyze=0|O3--unroll-max-percent-threshold-boost=0|O3--unroll-max-percent-threshold-boost=50
+BN_rshift	crypto/bn/bn_shift.c	205	17	        m = f[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+BN_nist_mod_521	crypto/bn/bn_nist.c	1204	32	                  (tmp = t_d[i + 1]) << BN_NIST_521_LSHIFT) & BN_MASK2;	+	cjump	O1-ftree-vectorize|O1-fvectorize
+bn_rshift_fixed_top	crypto/bn/bn_shift.c	205	17	        m = f[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+cbd_2	crypto/ml_kem/ml_kem.c	1030	15	        b = *r++;	+	cjump	O1-ftree-vectorize|O1-fvectorize|O3--unroll-max-iteration-count-to-analyze=0|O3--unroll-max-percent-threshold-boost=0|O3--unroll-max-percent-threshold-boost=50|Oz-ftree-vectorize|Oz-fvectorize
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	410	9	        for (k = 0; k < 32 * r; k++)	f	mdiv	O1-ftree-vectorize|O1-fvectorize
+BN_GF2m_mod_inv	crypto/bn/bn_gf2m.c	658	32	                    u1 = udp[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+X509_NAME_oneline	crypto/x509/x509_obj.c	96	36	                    gs_doit[j & 3] = 1;	=	cjump	O2--alias-set-saturation-threshold=0|O2--disable-licm-promotion|O2--licm-mssa-max-acc-promotion=0|O3--alias-set-saturation-threshold=0|O3--disable-licm-promotion|O3--licm-mssa-max-acc-promotion=0
+scryptROMix	providers/implementations/kdfs/scrypt.c	408	33	        j = X[16 * (2 * r - 1)] % N;	%	mdiv	O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	90	23	        *p++ = salt[i % saltlen];	%	mdiv	O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	408	33	        j = X[16 * (2 * r - 1)] % N;	%	mdiv	O2--vectorize-memory-check-threshold=0|O2--vplan-build-stress-test|O2-fno-tree-vectorize|O2-fno-vectorize|O3--vectorize-memory-check-threshold=0|O3--vplan-build-stress-test|O3-fno-tree-vectorize|O3-fno-vectorize
+BN_sub	crypto/bn/bn_add.c	114	15	        carry &= (t2 == 0);	&	cjump	O3--disable-early-ifcvt|O3--early-ifcvt-limit=0
+BN_uadd	crypto/bn/bn_add.c	114	15	        carry &= (t2 == 0);	&	cjump	O3--disable-early-ifcvt|O3--early-ifcvt-limit=0
+BN_add	crypto/bn/bn_add.c	114	15	        carry &= (t2 == 0);	&	cjump	O3--disable-early-ifcvt|O3--early-ifcvt-limit=0
+ossl_a2ulabel	crypto/punycode.c	182	11	        i %= (written_out + 1);	%	mdiv	O3--hot-callsite-rel-freq=0
+bn_set_all_zero	crypto/bn/bn_intern.c	152	17	        a->d[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0
+BN_set_bit	crypto/bn/bn_lib.c	805	21	            a->d[k] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0
+tls1_process_sigalgs	ssl/t1_lib.c	3602	19	        pvalid[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0
+BN_MONT_CTX_set	crypto/bn/bn_mont.c	399	23	        mont->RR.d[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0
+BN_GF2m_mod_mul_arr	crypto/bn/bn_gf2m.c	435	17	        s->d[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0
+TXT_DB_read	crypto/txt_db/txt_db.c	49	22	        ret->qual[i] = NULL;	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+ossl_ml_common_pkcs8_fmt_order	providers/implementations/encode_decode/ml_common_codecs.c	51	21	        ret[i].pref = 0;	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+ssl_create_cipher_list	ssl/ssl_ciph.c	701	33	                co_list[i].next = &co_list[i + 1];	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+speed_main	apps/speed.c	3856	57	                sm2_results[testnum][1] = (double)count / d;	/	mdiv	Oz--alias-set-saturation-threshold=0|Oz--disable-licm-promotion|Oz--inline-max-stacksize=100|Oz--ir-outliner|Oz--licm-mssa-max-acc-promotion=0|Oz--misched=ilpmin|Oz-finline-max-stacksize=100|Oz-fshort-enums
+speed_main	apps/speed.c	3445	53	            dsa_results[testnum][1] = (double)count / d;	/	mdiv	Oz--alias-set-saturation-threshold=0|Oz--disable-licm-promotion|Oz--inline-max-stacksize=100|Oz--ir-outliner|Oz--licm-mssa-max-acc-promotion=0|Oz--misched=ilpmin|Oz-finline-max-stacksize=100|Oz-fshort-enums
+do_i2b	crypto/pem/pvkfmt.c	664	17	            || (BN_num_bytes(p) > hnbyte)	B	mdiv	Oz--enable-misched=false
+rsa_ossl_private_decrypt	crypto/rsa/rsa_ossl.c	551	11	    num = BN_num_bytes(rsa->n);	B	mdiv	Oz--enable-misched=false|Oz--misched=ilpmin
+rsa_ossl_private_encrypt	crypto/rsa/rsa_ossl.c	325	11	    num = BN_num_bytes(rsa->n);	B	mdiv	Oz--enable-misched=false|Oz--misched=ilpmin
+rsa_ossl_public_decrypt	crypto/rsa/rsa_ossl.c	741	11	    num = BN_num_bytes(rsa->n);	B	mdiv	Oz--enable-misched=false|Oz--misched=ilpmin
+rsa_ossl_public_encrypt	crypto/rsa/rsa_ossl.c	130	11	    num = BN_num_bytes(rsa->n);	B	mdiv	Oz--enable-misched=false|Oz--misched=ilpmin
+speed_main	apps/speed.c	4562	24	                   1.0 / eddsa_results[k][0], 1.0 / eddsa_results[k][1],	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner
+speed_main	apps/speed.c	4522	24	                   1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner
+speed_main	apps/speed.c	4584	24	                   1.0 / sm2_results[k][0], 1.0 / sm2_results[k][1],	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner
+speed_main	apps/speed.c	4537	44	                   ecdh_results[k][0], 1.0 / ecdh_results[k][0]);	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner
+sh_setbit	crypto/mem_sec.c	388	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	Oz--ir-outliner
+sh_clearbit	crypto/mem_sec.c	376	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	Oz--ir-outliner
+i2d_SSL_SESSION	ssl/ssl_asn1.c	172	27	    as.timeout = (int64_t)ossl_time2seconds(in->timeout);	o	mdiv	Oz--slp-max-reg-size=100

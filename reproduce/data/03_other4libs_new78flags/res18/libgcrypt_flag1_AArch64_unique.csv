@@ -1,0 +1,40 @@
+function	file	line	col	source	char	type	optimization
+do_vsexp_sscan	sexp.c	1431	16	       *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=0|O2--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=0|O3--hot-callsite-rel-freq=0
+do_vsexp_sscan	sexp.c	1634	16	       *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=0|O2--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=0|O3--hot-callsite-rel-freq=0
+_gcry_sexp_canon_len	sexp.c	2151	20	          *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	O1--enable-misched=false|O1--misched=ilpmin|O1-fjmc|O2--enable-misched=false|O2--hoist-common-insts|O2--misched=ilpmin|O2-fjmc|O3--enable-misched=false|O3--hoist-common-insts|O3--misched=ilpmin|O3--tail-merge-size=100|O3--tail-merge-size=50
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+do_vsexp_sscan	sexp.c	1262	13	    *erroff = p - buffer;	=	cjump	O1-fjmc
+_gcry_mpi_set_buffer	mpicoder.c	448	13	      a->d[i++] = alimb;	+	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_sntrup761_dec	sntrup761.c	1039	35	    differentbits |= (*c++) ^ (*c2++);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+do_vsexp_sscan	sexp.c	1659	16	       *erroff = p - buffer;	=	cjump	O2--cold-callsite-rel-freq=0
+do_vsexp_sscan	sexp.c	1178	15	      *erroff = 0;	=	cjump	O2--cold-callsite-rel-freq=0|O2--disable-phi-elim-edge-splitting|O3--cold-callsite-rel-freq=0|O3--disable-phi-elim-edge-splitting|O3--hot-callsite-rel-freq=0|Os--disable-phi-elim-edge-splitting
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1688	13	   dd[0][i] = dd[1][i] = vec_setbits((d >> i) & 1);	=	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_aria_ctr32le_enc	aria.c	180	10	  out->a = le_bswap64(val);	=	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|O3--vectorize-num-stores-pred=100|O3--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1689	13	   bb[0][i] = bb[1][i] = vec_setbits((b >> i) & 1);	=	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_sntrup761_keypair	sntrup761.c	193	13	  x += mask & (uint32_t) m;	&	cjump	O3--alias-set-saturation-threshold=0|O3--enable-split-backedge-in-load-pre|O3--force-streaming-compatible-sve|O3--vplan-build-stress-test|O3-fno-tree-vectorize|O3-fno-vectorize
+Hide	sntrup761.c	224	6	  ur += mask & m;	+	cjump	O3--alias-set-saturation-threshold=0|O3--force-streaming-compatible-sve|O3-fno-tree-vectorize|O3-fno-vectorize
+_gcry_sntrup761_dec	sntrup761.c	224	6	  ur += mask & m;	+	cjump	O3--alias-set-saturation-threshold=0|O3--force-streaming-compatible-sve|O3-fno-tree-vectorize|O3-fno-vectorize
+_gcry_sntrup761_dec	sntrup761.c	193	13	  x += mask & (uint32_t) m;	&	cjump	O3--alias-set-saturation-threshold=0|O3--force-streaming-compatible-sve|O3-fno-tree-vectorize|O3-fno-vectorize
+_gcry_sntrup761_keypair	sntrup761.c	224	6	  ur += mask & m;	+	cjump	O3--alias-set-saturation-threshold=0|O3--enable-split-backedge-in-load-pre|O3--force-streaming-compatible-sve|O3--vplan-build-stress-test|O3-fno-tree-vectorize|O3-fno-vectorize
+_gcry_rngdrbg_randomize	random-drbg.c	1348	20	      entropylen = drbg_sec_strength (drbg->core->flags);	d	cjump	O3--hot-callsite-rel-freq=0
+Short_random	sntrup761.c	97	4	   while (i + p <= n - q)	w	mdiv	O3--replexitval=unusedindvarinloop
+_gcry_sexp_canon_len	sexp.c	2182	23	              *erroff = count;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2183	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2220	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2199	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2219	23	              *erroff = count;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2198	23	              *erroff = count;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_mpi_print	mpicoder.c	831	17	      *nwritten = n+2;	=	cjump	Os--enable-misched=false|Os--misched=ilpmin
+do_ecb_decrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+do_ecb_encrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+_gcry_camellia_ctr_enc	camellia-glue.c	174	10	  out->a = be_bswap64(val);	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_camellia_ctr32le_enc	camellia-glue.c	180	10	  out->a = le_bswap64(val);	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_sm4_ctr32le_enc	sm4.c	180	10	  out->a = le_bswap64(val);	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_cipher_ocb_authenticate	cipher-ocb.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+_gcry_sm4_ocb_auth	sm4.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+twocompl	mpicoder.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+_gcry_aria_ocb_crypt	aria.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+_gcry_aria_ocb_auth	aria.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+_gcry_aes_ocb_auth	rijndael.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+_gcry_sm4_ocb_crypt	sm4.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100
+ocb_crypt	cipher-ocb.c	111	30	  return (int)mod37[(-x & x) % 37];	%	mdiv	Oz--cold-callsite-rel-freq=100

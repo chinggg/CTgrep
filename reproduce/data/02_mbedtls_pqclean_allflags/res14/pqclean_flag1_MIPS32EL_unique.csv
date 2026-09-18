@@ -1,0 +1,238 @@
+function	file	line	col	source	char	type	optimization
+PQCLEAN_HQC128_CLEAN_vect_resize	vector.c	185	20	        if (size_o % 64) {	%	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_vect_resize	vector.c	195	26	        memcpy(o, v, 8 * CEIL_DIVIDE(size_v, 64));	C	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_vect_resize	vector.c	185	20	        if (size_o % 64) {	%	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_vect_resize	vector.c	195	26	        memcpy(o, v, 8 * CEIL_DIVIDE(size_v, 64));	C	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_seedexpander	shake_prng.c	42	37	    const size_t remainder = outlen % bsize;	%	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHAKE192SSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_fft	fft.c	298	29	    fft_rec(v, f1, f_coeffs / 2, PARAM_M - 1, PARAM_FFT - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_fft	fft.c	298	29	    fft_rec(v, f1, f_coeffs / 2, PARAM_M - 1, PARAM_FFT - 1, deltas);	/	mdiv	O0--global-isel
+karatsuba	gf2x.c	138	25	    size_l = (size + 1) / 2;	/	mdiv	O0--global-isel
+fft_rec	fft.c	233	33	        fft_rec(v, f1, f_coeffs / 2, m - 1, m_f - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_store8_arr	parsing.c	50	58	        out8[index_out] = (in64[index_in] >> ((index_out % 8) * 8)) & 0xFF;	%	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_vect_resize	vector.c	195	26	        memcpy(o, v, 8 * CEIL_DIVIDE(size_v, 64));	C	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_fft	fft.c	297	35	    fft_rec(u, f0, (f_coeffs + 1) / 2, PARAM_M - 1, PARAM_FFT - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHA2192SSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_store8_arr	parsing.c	52	23	        if (index_out % 8 == 0) {	%	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHA2128SSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_vect_resize	vector.c	186	32	            val = 64 - (size_o % 64);	%	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHAKE128SSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHAKE128FSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHA2192FSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_fft	fft.c	298	29	    fft_rec(v, f1, f_coeffs / 2, PARAM_M - 1, PARAM_FFT - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_fft	fft.c	297	35	    fft_rec(u, f0, (f_coeffs + 1) / 2, PARAM_M - 1, PARAM_FFT - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHAKE256SSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_store8_arr	parsing.c	50	58	        out8[index_out] = (in64[index_in] >> ((index_out % 8) * 8)) & 0xFF;	%	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHA2128FSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHAKE256FSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_vect_resize	vector.c	185	20	        if (size_o % 64) {	%	mdiv	O0--global-isel
+fft_rec	fft.c	221	35	    fft_rec(u, f0, (f_coeffs + 1) / 2, m - 1, m_f - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_store8_arr	parsing.c	50	58	        out8[index_out] = (in64[index_in] >> ((index_out % 8) * 8)) & 0xFF;	%	mdiv	O0--global-isel
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHAKE192FSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHA2256SSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+compute_error_values	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_seedexpander	shake_prng.c	42	37	    const size_t remainder = outlen % bsize;	%	mdiv	O0--global-isel
+PQCLEAN_HQC256_CLEAN_vect_resize	vector.c	186	32	            val = 64 - (size_o % 64);	%	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_seedexpander	shake_prng.c	42	37	    const size_t remainder = outlen % bsize;	%	mdiv	O0--global-isel
+gf_reduce	gf.c	40	20	    size_t steps = CEIL_DIVIDE(deg_x - (PARAM_M - 1), PARAM_GF_POLY_M2);	C	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_fft	fft.c	297	35	    fft_rec(u, f0, (f_coeffs + 1) / 2, PARAM_M - 1, PARAM_FFT - 1, deltas);	/	mdiv	O0--global-isel
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0--global-isel
+PQCLEAN_SPHINCSSHA2256FSIMPLE_CLEAN_treehashx1	utilsx1.c	89	53	            set_tree_index(tree_addr, (internal_idx / 2) + internal_idx_offset );	/	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_vect_resize	vector.c	186	32	            val = 64 - (size_o % 64);	%	mdiv	O0--global-isel
+PQCLEAN_HQC128_CLEAN_store8_arr	parsing.c	52	23	        if (index_out % 8 == 0) {	%	mdiv	O0--global-isel
+karatsuba	gf2x.c	137	19	    size_h = size / 2;	/	mdiv	O0--global-isel
+PQCLEAN_HQC192_CLEAN_store8_arr	parsing.c	52	23	        if (index_out % 8 == 0) {	%	mdiv	O0--global-isel
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	132	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O2-fprofile-generate
+modp_mkgm2	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+mq_div_12289	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+solve_NTRU_intermediate	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+poly_sub_scaled_ntt	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+zint_rebuild_CRT	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O2-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	132	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	132	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+modp_mkgm2	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+zint_rebuild_CRT	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O2-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O2-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_add	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON1024_CLEAN_fpr_add	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_fpr_add	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv
+solve_NTRU_intermediate	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON512_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+solve_NTRU	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv
+solve_NTRU_intermediate	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_add	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv
+solve_NTRU	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+solve_NTRU_intermediate	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+solve_NTRU	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--disable-lftr|O2--disable-sched-critical-path|O2--disable-sched-height|O2--enable-misched|O2--max-sched-reorder=-1|O2--max-sched-reorder=0|O2--max-sched-reorder=100|O2--max-sched-reorder=50|O2--pre-RA-sched=list-burr|O2--pre-RA-sched=list-hybrid|O2--pre-RA-sched=source|O2--regalloc=basic|O2--regalloc=fast|O2--sched-avg-ipc=100|O2--sched-avg-ipc=50|O2--terminal-rule|O2-fcs-profile-generate|O2-fprofile-arcs|O2-fprofile-instr-generate|Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--disable-lsr|O2--disable-machine-cse|O2--disable-sched-critical-path|O2--disable-sched-height|O2--disable-sched-live-uses=false|O2--enable-misched|O2--enable-order-file-instrumentation|O2--max-sched-reorder=-1|O2--max-sched-reorder=0|O2--max-sched-reorder=100|O2--max-sched-reorder=50|O2--memssa-check-limit=0|O2--pre-RA-sched=list-burr|O2--pre-RA-sched=list-hybrid|O2--pre-RA-sched=source|O2--regalloc=basic|O2--regalloc=fast|O2--regalloc=pbqp|O2--scalar-evolution-huge-expr-threshold=0|O2-fcs-profile-generate|O2-fno-omit-frame-pointer|O2-forder-file-instrumentation|Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_prng_init	rng.c	55	30	        w = (uint32_t)tmp[(i << 2) + 0]	<	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	3454	27	                v < hn; v ++, x += llen, y += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_prng_init	rng.c	58	39	            | ((uint32_t)tmp[(i << 2) + 3] << 24);	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_prng_init	rng.c	57	39	            | ((uint32_t)tmp[(i << 2) + 2] << 16)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	3367	19	                v ++, xs += dlen, ys += dlen, xd += llen, yd += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_prng_init	rng.c	57	39	            | ((uint32_t)tmp[(i << 2) + 2] << 16)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	3454	27	                v < hn; v ++, x += llen, y += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_prng_init	rng.c	58	39	            | ((uint32_t)tmp[(i << 2) + 3] << 24);	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_prng_init	rng.c	55	30	        w = (uint32_t)tmp[(i << 2) + 0]	<	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	3499	27	                v < hn; v ++, x += (llen << 1), y += (llen << 1)) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	3524	30	                    v < n; v ++, x += slen, y += slen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	3367	19	                v ++, xs += dlen, ys += dlen, xd += llen, yd += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	3524	30	                    v < n; v ++, x += slen, y += slen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	3367	19	                v ++, xs += dlen, ys += dlen, xd += llen, yd += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_prng_init	rng.c	58	39	            | ((uint32_t)tmp[(i << 2) + 3] << 24);	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_prng_init	rng.c	55	30	        w = (uint32_t)tmp[(i << 2) + 0]	<	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	3454	27	                v < hn; v ++, x += llen, y += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	3499	27	                v < hn; v ++, x += (llen << 1), y += (llen << 1)) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	3524	30	                    v < n; v ++, x += slen, y += slen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	3524	30	                    v < n; v ++, x += slen, y += slen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_prng_init	rng.c	56	39	            | ((uint32_t)tmp[(i << 2) + 1] << 8)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_prng_init	rng.c	57	39	            | ((uint32_t)tmp[(i << 2) + 2] << 16)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_prng_init	rng.c	57	39	            | ((uint32_t)tmp[(i << 2) + 2] << 16)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_prng_init	rng.c	58	39	            | ((uint32_t)tmp[(i << 2) + 3] << 24);	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_prng_init	rng.c	55	30	        w = (uint32_t)tmp[(i << 2) + 0]	<	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_prng_init	rng.c	56	39	            | ((uint32_t)tmp[(i << 2) + 1] << 8)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	3499	27	                v < hn; v ++, x += (llen << 1), y += (llen << 1)) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	3499	27	                v < hn; v ++, x += (llen << 1), y += (llen << 1)) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_prng_init	rng.c	56	39	            | ((uint32_t)tmp[(i << 2) + 1] << 8)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_prng_init	rng.c	56	39	            | ((uint32_t)tmp[(i << 2) + 1] << 8)	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	3454	27	                v < hn; v ++, x += llen, y += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	3367	19	                v ++, xs += dlen, ys += dlen, xd += llen, yd += llen) {	+	cjump	O2--force-vector-width=100|O2--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--mips-mixed-16-32|Os--force-vector-width=100|Os--force-vector-width=50
+compute_error_values	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--unroll-count=100|O2--unroll-count=50|Os--unroll-count=100|Os--unroll-count=50|Oz--unroll-count=100|Oz--unroll-count=50
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O2-fcs-profile-generate
+make_fg_step	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+karatsuba	gf2x.c	52	20	        g ^= (u[i] & (uint64_t)(0 - (1 - ((uint64_t)(tmp2 | (0 - tmp2)) >> 63))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_HQC128_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O3--disable-licm-promotion|O3--licm-mssa-max-acc-promotion=0|O3-fprofile-generate
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O3--disable-licm-promotion|O3--licm-mssa-max-acc-promotion=0
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O3--disable-licm-promotion|O3--licm-mssa-max-acc-promotion=0
+solve_NTRU	keygen.c	3367	19	                v ++, xs += dlen, ys += dlen, xd += llen, yd += llen) {	+	cjump	O3--force-vector-width=100|O3--force-vector-width=50
+solve_NTRU	keygen.c	3454	27	                v < hn; v ++, x += llen, y += llen) {	+	cjump	O3--force-vector-width=100|O3--force-vector-width=50
+solve_NTRU	keygen.c	3499	27	                v < hn; v ++, x += (llen << 1), y += (llen << 1)) {	+	cjump	O3--force-vector-width=100|O3--force-vector-width=50
+solve_NTRU	keygen.c	3524	30	                    v < n; v ++, x += slen, y += slen) {	+	cjump	O3--force-vector-width=100|O3--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O3-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O3-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	644	24	    return (int32_t)(x - (p & (((x - ((p + 1) >> 1)) >> 31) - 1)));	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+fft_rec	fft.c	189	21	                w[x + k] = w[k] ^ tmp[j];	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+radix	fft.c	139	18	        R[n + i] ^= Q[i];	^	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_sign_dyn	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_reed_muller_decode	reed_muller.c	76	42	            p2[i] = p1[2 * i] + p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_mul	gf2x.c	174	17	        r = a[i + VEC_N_SIZE_64 - 1] >> (PARAM_N & 0x3F);	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	45	7	    r -= n;	-	mmem	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	52	10	    q = ((uint64_t) a * m_val[i]) >> 32;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	79	40	        support[i] |= rand_bytes[4 * i + 1] << 8;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	78	35	        support[i] = rand_bytes[4 * i];	*	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	80	50	        support[i] |= (uint32_t)rand_bytes[4 * i + 2] << 16;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	80	50	        support[i] |= (uint32_t)rand_bytes[4 * i + 2] << 16;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	644	24	    return (int32_t)(x - (p & (((x - ((p + 1) >> 1)) >> 31) - 1)));	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_reed_muller_decode	reed_muller.c	76	31	            p2[i] = p1[2 * i] + p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_reed_muller_decode	reed_muller.c	105	28	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	+	cjump	Os--force-vector-width=50
+radix	fft.c	138	25	        Q[i] ^= f[2 * n + i];	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	52	10	    q = ((uint64_t) a * m_val[i]) >> 32;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_reed_muller_decode	reed_muller.c	77	18	            p2[i + 64] = p1[2 * i] - p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_sign_dyn	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	45	7	    r -= n;	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+mq_iNTT	vrfy.c	555	28	                a[j + t] = (uint16_t)	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_muller_decode	reed_muller.c	77	18	            p2[i + 64] = p1[2 * i] - p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	79	40	        support[i] |= rand_bytes[4 * i + 1] << 8;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_muller_decode	reed_muller.c	76	31	            p2[i] = p1[2 * i] + p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_muller_decode	reed_muller.c	76	26	            p2[i] = p1[2 * i] + p1[2 * i + 1];	*	cjump	Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	81	50	        support[i] |= (uint32_t)rand_bytes[4 * i + 3] << 24;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	644	24	    return (int32_t)(x - (p & (((x - ((p + 1) >> 1)) >> 31) - 1)));	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+mq_iNTT	vrfy.c	409	17	    z = (z + w) >> 16;	>	mmem	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	79	40	        support[i] |= rand_bytes[4 * i + 1] << 8;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_muller_decode	reed_muller.c	105	28	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	45	7	    r -= n;	-	mmem	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_muller_decode	reed_muller.c	76	42	            p2[i] = p1[2 * i] + p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	45	7	    r -= n;	-	mmem	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_sign_dyn	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_reed_muller_decode	reed_muller.c	76	26	            p2[i] = p1[2 * i] + p1[2 * i + 1];	*	cjump	Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	106	52	            tmp = 1 ^ ((uint32_t)(tmp | (0 - tmp)) >> 31);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCON1024_CLEAN_sign_tree	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	81	50	        support[i] |= (uint32_t)rand_bytes[4 * i + 3] << 24;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_muller_decode	reed_muller.c	76	26	            p2[i] = p1[2 * i] + p1[2 * i + 1];	*	cjump	Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	81	50	        support[i] |= (uint32_t)rand_bytes[4 * i + 3] << 24;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_muller_decode	reed_muller.c	105	28	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	+	mmem	Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	45	7	    r -= n;	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_mul	gf2x.c	174	17	        r = a[i + VEC_N_SIZE_64 - 1] >> (PARAM_N & 0x3F);	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+radix	fft.c	138	14	        Q[i] ^= f[2 * n + i];	^	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_muller_decode	reed_muller.c	76	42	            p2[i] = p1[2 * i] + p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	45	7	    r -= n;	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_dyn	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_muller_decode	reed_muller.c	105	28	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	+	mmem	Os--force-vector-width=50
+mq_iNTT	vrfy.c	409	17	    z = (z + w) >> 16;	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	106	52	            tmp = 1 ^ ((uint32_t)(tmp | (0 - tmp)) >> 31);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_mul	gf2x.c	174	17	        r = a[i + VEC_N_SIZE_64 - 1] >> (PARAM_N & 0x3F);	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCON512_CLEAN_sign_tree	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	106	52	            tmp = 1 ^ ((uint32_t)(tmp | (0 - tmp)) >> 31);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_tree	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC128_CLEAN_reed_muller_decode	reed_muller.c	105	28	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	+	mmem	Os--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	644	24	    return (int32_t)(x - (p & (((x - ((p + 1) >> 1)) >> 31) - 1)));	-	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	78	35	        support[i] = rand_bytes[4 * i];	*	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_muller_decode	reed_muller.c	76	31	            p2[i] = p1[2 * i] + p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_reed_muller_decode	reed_muller.c	77	18	            p2[i + 64] = p1[2 * i] - p1[2 * i + 1];	+	cjump	Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	78	35	        support[i] = rand_bytes[4 * i];	*	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	80	50	        support[i] |= (uint32_t)rand_bytes[4 * i + 2] << 16;	+	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	52	10	    q = ((uint64_t) a * m_val[i]) >> 32;	(	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_FALCONPADDED512_CLEAN_sign_tree	sign.c	310	22	    s = (uint32_t)(x >> 63);	>	cjump	Os--force-vector-width=100|Os--force-vector-width=50
+PQCLEAN_HQC256_CLEAN_reed_muller_decode	reed_muller.c	105	28	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	+	cjump	Os--force-vector-width=50
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	Os-ftrapv
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC256_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC256_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	mdiv	Oz--disable-lsr
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	mdiv	Oz--disable-lsr
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	251	106	            tmp2 = PQCLEAN_HQC256_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC256_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	+	mdiv	Oz--jump-threading-across-loop-headers
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	251	106	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	+	mdiv	Oz--jump-threading-across-loop-headers
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	250	28	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	k	mdiv	Oz-fpseudo-probe-for-profiling
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	250	28	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	k	mdiv	Oz-fpseudo-probe-for-profiling

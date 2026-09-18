@@ -1,0 +1,21 @@
+function	file	line	col	source	char	type	optimization
+_sodium_argon2_ctx	crypto_pwhash/argon2/argon2.c	52	36	    segment_length = memory_blocks / (context->lanes * ARGON2_SYNC_POINTS);	/	mdiv	O0|O1|O2|O3|Os|Oz
+allocate_memory	crypto_pwhash/argon2/argon2-core.c	87	36	    if (m_cost == 0 || memory_size / m_cost != sizeof(block)) {	/	mdiv	O0
+pickparams	crypto_pwhash/scryptsalsa208sha256/pwhash_scryptsalsa208sha256.c	31	25	        maxN = opslimit / (*r * 4);	/	mdiv	O0|O3|Os|Oz
+pickparams	crypto_pwhash/scryptsalsa208sha256/pwhash_scryptsalsa208sha256.c	38	25	        maxN = memlimit / ((size_t) *r * 128);	/	mdiv	O0
+_sodium_escrypt_kdf_nosse	crypto_pwhash/scryptsalsa208sha256/nosse/pwhash_scryptsalsa208sha256_nosse.c	273	29	        (N > SIZE_MAX / 128 / r)) {	/	mdiv	O0|O1|O2|O3|Os|Oz
+pickparams	crypto_pwhash/scryptsalsa208sha256/pwhash_scryptsalsa208sha256.c	50	32	        *p = (uint32_t)(maxrp) / *r;	/	mdiv	O0|O3|Os|Oz
+sodium_allocarray	sodium/utils.c	654	58	    if (count > (size_t) 0U && size >= (size_t) SIZE_MAX / count) {	/	mdiv	O0|O1|O2|O3|Os|Oz
+_sodium_escrypt_kdf_nosse	crypto_pwhash/scryptsalsa208sha256/nosse/pwhash_scryptsalsa208sha256_nosse.c	269	29	    if ((r > SIZE_MAX / 128 / p) ||	/	mdiv	O0|O1|O2|O3|Os|Oz
+crypto_auth_hmacsha512256_verify	crypto_auth/hmacsha512256/auth_hmacsha512256.c	91	41	    return crypto_verify_32(h, correct) | (-(h == correct)) |	|	cjump	O1|O2|O3|Os|Oz
+crypto_auth_hmacsha512_verify	crypto_auth/hmacsha512/auth_hmacsha512.c	116	41	    return crypto_verify_64(h, correct) | (-(h == correct)) |	|	cjump	O1|O2|O3|Os|Oz
+_sodium_argon2_fill_segment_ref	crypto_pwhash/argon2/argon2-fill-block-ref.c	206	60	    absolute_position = start_position + relative_position - instance->lane_length;	-	cjump	O1
+crypto_auth_hmacsha256_verify	crypto_auth/hmacsha256/auth_hmacsha256.c	116	41	    return crypto_verify_32(h, correct) | (-(h == correct)) |	|	cjump	O1|O2|O3|Os|Oz
+_sodium_ge25519_from_hash	crypto_core/ed25519/ref10/ed25519_ref10.c	2731	34	    fe_f[0] += (h[31] >> 7) * 19 + (h[63] >> 7) * 722;	+	cjump	O1|O2|O3|Os|Oz
+randombytes_internal_random	randombytes/internal/randombytes_internal_random.c	60	6	     __glibc_objsize0 (__dest));	_	cjump	O1|O2|O3|Os|Oz
+_sodium_argon2_fill_segment_ref	crypto_pwhash/argon2/argon2-fill-block-ref.c	200	26	        start_position = (position->slice == ARGON2_SYNC_POINTS - 1)	(	cjump	O2|O3|Os|Oz
+_sodium_escrypt_gensalt_r	crypto_pwhash/scryptsalsa208sha256/crypto_scrypt-common.c	209	22	    size_t saltlen = BYTES2CHARS(srclen);	B	mdiv	Oz
+sodium_bin2base64	sodium/codecs.c	193	23	    nibbles = bin_len / 3;	/	mdiv	Oz
+_sodium_argon2_fill_segment_ref	crypto_pwhash/argon2/argon2-fill-block-ref.c	178	57	    curr_offset = position.lane * instance->lane_length +	+	cjump	Oz
+u32_to_string	crypto_pwhash/argon2/argon2-encoding.c	222	11	        x /= (uint32_t) 10U;	/	mdiv	Oz
+sodium_base64_encoded_len	sodium/codecs.c	176	12	    return sodium_base64_ENCODED_LEN(bin_len, variant);	s	mdiv	Oz

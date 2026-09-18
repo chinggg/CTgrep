@@ -1,0 +1,61 @@
+function	file	line	col	source	char	type	optimization
+_sp_div_small	wolfcrypt/src/sp_int.c	7022	22	            tt += tr / d;	/	mdiv	O0|O1|Os|Oz
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	471	43	    pLen = v * (((word32)passLen + v - 1) / v);	/	mdiv	O0
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	467	43	    sLen = v * (((word32)saltLen + v - 1) / v);	/	mdiv	O0
+DoProcessReplyEx	src/internal.c	22869	40	                                       ssl->options.side == WOLFSSL_CLIENT_END ?	s	cjump	O0
+_sp_div_small	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O0|O1|Os|Oz
+wc_PRF	wolfcrypt/src/kdf.c	133	22	    times   = resLen / len;	/	mdiv	O0|O1|O2|O3|Os|Oz
+wc_HKDF_Expand_ex	wolfcrypt/src/hmac.c	1535	35	        if (out == NULL || ((outSz/hashSz) + ((outSz % hashSz) != 0)) > 255) {	/	mdiv	O0|O1|O2|O3|Os|Oz
+SendFinished	src/internal.c	24124	38	    ret = BuildFinished(ssl, hashes, ssl->options.side == WOLFSSL_CLIENT_END ?	s	cjump	O0|O1|O2|O3|Os|Oz
+wolfSSL_GetSessionClient	./src/ssl_sess.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+wc_Sha256Update	wolfcrypt/src/sha256.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+wolfSSL_get_shared_ciphers	src/ssl.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+ProcessReplyEx	src/internal.c	22869	40	                                       ssl->options.side == WOLFSSL_CLIENT_END ?	s	cjump	O1|O2|O3|Os|Oz
+wc_ValidateDate	wolfcrypt/src/asn.c	16619	29	        timeDiff = diffSign * (diffHH*60 + diffMM) * 60 ;	*	cjump	O1|O2|O3|Os|Oz
+DoCertificateVerify	src/internal.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os
+wc_RsaUnPad_ex	wolfcrypt/src/rsa.c	739	65	    return (((word32)b & (word32)(~(signed int)(signed char)m)) |	|	cjump	O1|O2|O3|Os|Oz
+wc_Chacha_SetKey	wolfcrypt/src/chacha.c	203	18	    ctx->X[ 2] = constants[2];	c	cjump	O1|O2|O3|Os|Oz
+wc_Chacha_SetKey	wolfcrypt/src/chacha.c	202	18	    ctx->X[ 1] = constants[1];	c	cjump	O1|O2|O3|Os|Oz
+sp_mod_d	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O1|O2|O3
+_InitRng	wolfcrypt/src/random.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3
+Hmac_UpdateFinal_CT	src/tls.c	726	44	    return (byte)((b & ((byte)~(word32)m)) | (a & m));	|	cjump	O1|O2|O3|Os
+Sha512Update	wolfcrypt/src/sha512.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+wc_RsaUnPad_ex	wolfcrypt/src/rsa.c	1869	17	        invalid |= (byte)~pastSep;	|	cjump	O1|O2|O3|Os|Oz
+wc_PBKDF2_ex	wolfcrypt/src/pwdbased.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+TlsSessionCacheGetAndLock	./src/ssl_sess.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+wc_Chacha_Process	wolfcrypt/src/chacha.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+BuildMessage	src/internal.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+DoClientKeyExchange	src/internal.c	41776	63	                        args->lastErr = (ret & (~lenErrMask)) |	|	cjump	O1|O2|Os
+wc_PBKDF1_ex	wolfcrypt/src/pwdbased.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+SetImplicit	wolfcrypt/src/asn.c	17346	34	            ASN_CONSTRUCTED : 0) | ASN_CONTEXT_SPECIFIC | number);	|	cjump	O1|O2|O3|Os|Oz
+wc_Md5Update	wolfcrypt/src/md5.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+SendTls13Certificate	src/tls13.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3
+wc_HKDF_Expand_ex	wolfcrypt/src/hmac.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+SendCertificate	src/internal.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+DoTls13HandShakeMsg	src/tls13.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+wc_ShaUpdate	wolfcrypt/src/sha.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+wc_DhGenerateKeyPair	wolfcrypt/src/dh.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+DoServerKeyExchange	src/internal.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os
+wc_PKCS12_PBKDF_ex	wolfcrypt/src/pwdbased.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+ProcessReplyEx	src/internal.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	O1|O2|O3|Os|Oz
+sp_div_d	wolfcrypt/src/sp_int.c	6971	35	    sp_int_digit m = SP_DIGIT_MAX / d;	/	mdiv	O2|O3
+wc_AesGcmDecrypt	wolfcrypt/src/aes.c	9241	31	    ret = (ret & ~res) | (res & WC_NO_ERR_TRACE(AES_GCM_AUTH_E));	&	cjump	O2|O3|Os
+sp_div_d	wolfcrypt/src/sp_int.c	7022	22	            tt += tr / d;	/	mdiv	O2|O3
+sp_addmod_ct	wolfcrypt/src/sp_int.c	8164	26	            w         -= m->dp[i] & mask;	m	cjump	O3
+DoClientKeyExchange	src/internal.c	41987	32	                        mask = (byte)(((unsigned int)ret >> ((sizeof(ret) * 8) - 1)) - 1);	(	cjump	O3
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7396	35	            w         += m->dp[i] & mask;	&	cjump	O3
+DecodeCertInternal	wolfcrypt/src/asn.c	23440	13	        i = (dataASN[X509CERTASN_IDX_TBS_VALIDITY_NOTB_UTC].tag != 0)	(	cjump	Os|Oz
+DecodeCertInternal	wolfcrypt/src/asn.c	23452	13	        i = (dataASN[X509CERTASN_IDX_TBS_VALIDITY_NOTA_UTC].tag != 0)	(	cjump	Os|Oz
+AddCertExt	src/tls13.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	Os|Oz
+AddSessionToCache	./src/ssl_sess.c	1932	9	    if (!overwrite)	!	mdiv	Oz
+wc_ecc_get_curve_id_from_params	wolfcrypt/src/ecc.c	4455	31	    curveSz = (fieldSize + 1) / 8;    /* round up */	/	mdiv	Oz
+sp_unsigned_bin_size	wolfcrypt/src/sp_int.c	18035	38	        cnt = (sp_count_bits(a) + 7) / 8;	/	mdiv	Oz
+wc_Asn1_PrintAll	wolfcrypt/src/asn.c	41715	37	                out[0] = (word16)(t / 40);	/	mdiv	Oz
+DoHandShakeMsgType	src/internal.c	773	32	        return (a & ~gte_mask) | (b & gte_mask);	|	cjump	Oz
+sp_radix_size	wolfcrypt/src/sp_int.c	18788	46	            int cnt = (sp_count_bits(a) + 3) / 4;	/	mdiv	Oz
+wc_ecc_sig_size	wolfcrypt/src/ecc.c	11931	33	        keySz = (orderBits + 7) / 8;	/	mdiv	Oz
+DoHandShakeMsgType	src/internal.c	41776	63	                        args->lastErr = (ret & (~lenErrMask)) |	|	cjump	Oz
+DecodeObjectId	wolfcrypt/src/asn.c	6562	37	                out[0] = (word16)(t / 40);	/	mdiv	Oz
+AddSessionToCache	./src/ssl_sess.c	1869	5	    for (i = 0; i < SESSIONS_PER_ROW && i < sessRow->totalCount; i++) {	f	mdiv	Oz
+_sp_div_10	wolfcrypt/src/sp_int.c	6932	22	            tt += tr / 10;	/	mdiv	Oz
+wc_DhAgree_Sync	wolfcrypt/src/dh.c	2203	65	                                ((int)*agreeSz + DIGIT_BIT - 1) / DIGIT_BIT,	/	mdiv	Oz

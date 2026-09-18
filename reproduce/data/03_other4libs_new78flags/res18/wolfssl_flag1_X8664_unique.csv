@@ -1,0 +1,8 @@
+function	file	line	col	source	char	type	optimization
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7396	35	            w         += m->dp[i] & mask;	&	cjump	O1--enable-andcmp-sinking=false|O2--enable-andcmp-sinking=false|Os--enable-andcmp-sinking=false|Oz--enable-andcmp-sinking=false
+sp_div_2	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+wc_EncryptPKCS8Key_ex	wolfcrypt/src/asn.c	17241	27	                output[i] = (byte)(length >> ((j - 1) * WOLFSSL_BIT_SIZE));	=	cjump	O1-ftree-vectorize|O1-fvectorize
+GetASN_Items	wolfcrypt/src/asn.c	1512	19	        endIdx[i] = length;	=	cjump	O1-ftree-vectorize|O1-fvectorize|Os--unroll-max-iteration-count-to-analyze=0|Os--unroll-max-percent-threshold-boost=0|Os--unroll-max-percent-threshold-boost=50
+_sp_invmod	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+sp_clear	wolfcrypt/src/sp_int.c	5273	22	            a->dp[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0

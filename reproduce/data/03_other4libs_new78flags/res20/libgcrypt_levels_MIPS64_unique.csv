@@ -1,0 +1,125 @@
+function	file	line	col	source	char	type	optimization
+hkdf_final	kdf.c	1819	29	  for (i = 0; i < h->outlen / h->blklen; i++)	/	mdiv	O0
+mul_inv	idea.c	83	8	 q = x / y;	/	mdiv	O0|Os|Oz
+_gcry_xcalloc	global.c	1263	19	  if (m && nbytes / m != n)	/	mdiv	O0
+_gcry_generate_fips186_2_prime	primegen.c	1491	25	  value_n = (pbits - 1) / qbits;	/	mdiv	O0
+_gcry_kdf_scrypt	scrypt.c	277	22	  if (r128 && nbytes / r128 != N)	/	mdiv	O0
+balloon_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	mdiv	O0
+do_ecb_crypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	O0
+mul_inv	idea.c	77	20	    y =  0x10001UL % x;	%	mdiv	O0|Os|Oz
+do_polyval_buf	cipher-gcm-siv.c	156	24	      nblocks = buflen / blocksize;	/	mdiv	O0
+prime_generate_internal	primegen.c	366	38	      fbits = (pbits - req_qbits -1) / n;	/	mdiv	O0|O1|O2|O3|Os|Oz
+prime_generate_internal	primegen.c	361	42	      fbits = (pbits - 2 * req_qbits -1) / n;	/	mdiv	O0|O1|O2|O3|Os|Oz
+do_bf_setkey	blowfish.c	988	29	             ((u32)key[(j+1)%keylen] << 16) |	%	mdiv	O0
+onestep_kdf_final	kdf.c	1502	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+argon2_compute_segment	kdf.c	720	24	      if ((curr_offset % a->lane_length) == 1)	%	mdiv	O0|O1|O2|O3|Os|Oz
+balloon_compute_mix	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	mdiv	O0
+do_ghash_buf	cipher-gcm.c	778	24	      nblocks = buflen / blocksize;	/	mdiv	O0
+do_bf_setkey	blowfish.c	990	29	             ((u32)key[(j+3)%keylen]);	%	mdiv	O0
+mul_inv	idea.c	88	8	 q = y / x;	/	mdiv	O0
+_gcry_kdf_pkdf2	kdf.c	164	19	  l = ((dklen - 1)/ hlen) + 1;	/	mdiv	O0|O1|O2|O3|Os|Oz
+argon2_compute_segment	kdf.c	710	20	  if ((curr_offset % a->lane_length))	%	mdiv	O0|O1|O2|O3|Os|Oz
+blake2_write	blake2.c	197	39	   nblks = inlen / blkbytes - !(inlen % blkbytes);	%	mdiv	O0|Os|Oz
+_gcry_generate_fips186_3_prime	primegen.c	1729	33	  value_n = (pbits + qbits - 1) / qbits - 1;	/	mdiv	O0|O1|O2|O3|Os|Oz
+onestep_kdf_mac_final	kdf.c	1630	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+argon2_init	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	mdiv	O0
+_gcry_kdf_scrypt	scrypt.c	273	22	  if (r128 && nbytes / r128 != p)	/	mdiv	O0
+do_bf_setkey	blowfish.c	989	29	             ((u32)key[(j+2)%keylen] << 8) |	%	mdiv	O0
+drbg_ctr_df	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	mdiv	O0
+_gcry_xcalloc_secure	global.c	1281	19	  if (m && nbytes / m != n)	/	mdiv	O0
+do_bf_setkey	blowfish.c	992	17	      j = (j+4) % keylen;	%	mdiv	O0
+drbg_generate_long	random-drbg.c	1521	31	      slice = ((buflen - len) / drbg_max_request_bytes ());	/	mdiv	O0
+argon2_compute_segment	kdf.c	736	35	        ref_lane = (rand64 >> 32) % a->lanes;	%	mdiv	O0|O1|O2|O3|Os|Oz
+x963_kdf_final	kdf.c	1962	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+sha3_final	./jitterentropy-sha3.c	325	32	 size_t partial = ctx->msg_len % ctx->r;	%	mdiv	O0
+cshake_input_s	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	mdiv	O0|Os|Oz
+index_alpha	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	mdiv	O0
+_gcry_calloc	global.c	1140	18	  if (m && bytes / m != n)	/	mdiv	O0
+prime_generate_internal	primegen.c	346	35	  for (n = 1; (pbits - qbits - 1) / n  >= qbits; n++)	/	mdiv	O0|O1|O2|O3|Os|Oz
+mul_inv	idea.c	76	20	    t1 = 0x10001UL / x;	/	mdiv	O0
+sha3_update	./jitterentropy-sha3.c	282	32	 size_t partial = ctx->msg_len % ctx->r;	%	mdiv	O0
+jent_gcd64	./jitterentropy-gcd.c	47	9	  r = a % b;	%	mdiv	O0
+jent_measure_jitter	./jitterentropy-noise.c	342	50	 current_delta = jent_delta(ec->prev_time, time) /	/	mdiv	O0
+do_ecb_crypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O0|Os|Oz
+scrypt_ro_mix	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	mdiv	O0
+keccak_write	keccak.c	1138	45	      count = ((size_t) count + nlanes * 8) % bsize;	%	mdiv	O0|O1|O2|O3|Os|Oz
+uint32_divmod_uint14	sntrup761.c	159	5	  v /= m;	/	mdiv	O0|Oz
+mul_inv	idea.c	84	8	 x = x % y;	%	mdiv	O0
+_gcry_calloc_secure	global.c	1160	18	  if (m && bytes / m != n)	/	mdiv	O0
+mul_inv	idea.c	89	8	 y = y % x;	%	mdiv	O0|Os|Oz
+_gcry_sntrup761_dec	sntrup761.c	1060	14	    r_enc[i] ^= mask & (r_enc[i] ^ rho[i]);	^	mmem	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1630	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_mpi_print	mpicoder.c	780	17	      *nwritten = n;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2151	20	          *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	O1|O2|Os
+drbg_ctr_update	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	mdiv	O1|O2|O3|Os|Oz
+invert_key	idea.c	89	8	 y = y % x;	%	mdiv	O1
+do_vsexp_sscan	sexp.c	1717	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1178	15	      *erroff = 0;	=	cjump	O1|Oz
+_gcry_mpi_print	mpicoder.c	733	13	  *nwritten = 0;	=	cjump	O1|O2|O3|Os|Oz
+balloon_compute	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	mdiv	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2198	23	              *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+Decode	sntrup761.c	159	5	  v /= m;	/	mdiv	O1|O2|O3|Os
+bf_setkey	blowfish.c	990	29	             ((u32)key[(j+3)%keylen]);	%	mdiv	O1|O2|O3|Os|Oz
+cshake_hash_buffers	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	mdiv	O1|O2|O3
+_gcry_kdf_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	mdiv	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1262	13	    *erroff = p - buffer;	=	cjump	O1|O2|O3
+_gcry_mpi_print	mpicoder.c	831	17	      *nwritten = n+2;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2219	23	              *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2182	23	              *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2244	20	          *errcode = GPG_ERR_SEXP_BAD_CHARACTER;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2183	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O1|O2|O3|Os|Oz
+invert_key	idea.c	77	20	    y =  0x10001UL % x;	%	mdiv	O1|O2|O3
+_gcry_kdf_final	kdf.c	1502	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2238	20	          *errcode = GPG_ERR_SEXP_UNEXPECTED_PUNC;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1218	17	        *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2137	11	  *erroff = 0;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_open	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2229	23	              *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+bf_setkey	blowfish.c	992	17	      j = (j+4) % keylen;	%	mdiv	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1694	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1819	29	  for (i = 0; i < h->outlen / h->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+argon2_compute_segment	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	mdiv	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1733	12	   *erroff = p - buffer;	=	cjump	O1|O2|O3|Os
+_gcry_sexp_canon_len	sexp.c	2210	24	              *errcode = GPG_ERR_SEXP_NESTED_DH;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1325	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_scrypt	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	mdiv	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2230	24	              *errcode = GPG_ERR_SEXP_ZERO_PREFIX;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1962	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_mpi_print	mpicoder.c	879	17	      *nwritten = 4+n;	=	cjump	O1|O2|O3|Os|Oz
+bf_setkey	blowfish.c	988	29	             ((u32)key[(j+1)%keylen] << 16) |	%	mdiv	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1645	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2237	19	          *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+do_ecb_decrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O1|O2|O3
+do_vsexp_sscan	sexp.c	1659	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2173	23	              *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2136	12	  *errcode = GPG_ERR_NO_ERROR;	=	cjump	O1|O2|O3|Os|Oz
+bf_setkey	blowfish.c	989	29	             ((u32)key[(j+2)%keylen] << 8) |	%	mdiv	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2142	16	      *errcode = GPG_ERR_SEXP_NOT_CANONICAL;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2199	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O1|O2|O3|Os|Oz
+invert_key	idea.c	84	8	 x = x % y;	%	mdiv	O1
+_gcry_sexp_canon_len	sexp.c	2243	19	          *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1231	17	        *erroff = p - buffer;	=	cjump	O1|O2|O3
+do_vsexp_sscan	sexp.c	1397	13	    *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1705	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1749	12	   *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2174	24	              *errcode = GPG_ERR_SEXP_INV_LEN_SPEC;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1552	27	                  *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1740	12	   *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1667	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_cshake_customize	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	mdiv	O1|O2|O3
+do_vsexp_sscan	sexp.c	1296	13	    *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_mpi_print	mpicoder.c	803	17	      *nwritten = n;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2220	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_canon_len	sexp.c	2209	23	              *erroff = count;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1431	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Os|Oz
+do_vsexp_sscan	sexp.c	1634	16	       *erroff = p - buffer;	=	cjump	O1|O2|O3|Oz
+do_ecb_encrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O1|O2|O3
+_gcry_sexp_canon_len	sexp.c	2150	19	          *erroff = count;	=	cjump	O1|O2|Os
+_gcry_mpih_divmod_1	mpih-div.c	528	6	     udiv_qrnnd( quot_ptr[i], r, r, n0, divisor_limb );	u	mdiv	O2|O3|Os
+invert_key	idea.c	83	8	 q = x / y;	/	mdiv	O2|O3
+invert_key	idea.c	88	8	 q = y / x;	/	mdiv	O2|O3
+_gcry_sexp_canon_len	sexp.c	2192	23	              *erroff = count;	=	cjump	O3|Oz
+_gcry_sexp_canon_len	sexp.c	2193	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_PAREN;	=	cjump	O3|Oz
+_gcry_sexp_canon_len	sexp.c	2161	27	                  *erroff = count;	=	cjump	Oz
+prime_generate_internal	primegen.c	340	7	  if (!qbits)	!	mdiv	Oz
+_gcry_sexp_canon_len	sexp.c	2162	28	                  *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	Oz

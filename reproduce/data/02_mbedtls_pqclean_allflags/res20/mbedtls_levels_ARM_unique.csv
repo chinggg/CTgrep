@@ -1,0 +1,2 @@
+function	file	line	col	source	char	type	optimization
+mbedtls_aes_crypt_xts	../tf-psa-crypto/drivers/builtin/src/aes.c	235	23	        r[i] = a[i] ^ b[i];	b	mmem	O2|O3

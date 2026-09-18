@@ -1,0 +1,15 @@
+function	file	line	col	source	char	type	optimization
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14325	23	                    n <<= c;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14409	27	                        n <<= winBits;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14394	27	                        n <<= winBits;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14315	15	            n <<= SP_WORD_SIZE - c;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14331	23	                    n <<= winBits;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_nct	wolfcrypt/src/sp_int.c	14403	27	                        n <<= c;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_base_2	wolfcrypt/src/sp_int.c	13865	15	            n <<= c;	<	mmem	O0-fforce-enable-int128
+_sp_exptmod_base_2	wolfcrypt/src/sp_int.c	13823	15	            n <<= SP_WORD_SIZE - c;	<	mmem	O0-fforce-enable-int128
+DataToDerBuffer	./src/ssl_load.c	936	13	        ret += (int)i;	+	cjump	O1--enable-mem-prof|O1-fmemory-profile|O1-fprofile-generate|O1-ftrapv|O2--enable-mem-prof|O2-fmemory-profile|O2-fprofile-generate|O2-ftrapv|O3--enable-mem-prof|O3-fmemory-profile|O3-fprofile-generate|O3-ftrapv|Ofast--enable-mem-prof|Ofast-fmemory-profile|Ofast-fprofile-generate|Ofast-ftrapv|Os--enable-mem-prof|Os-fmemory-profile|Os-fprofile-generate|Os-ftrapv|Oz--enable-mem-prof|Oz-fmemory-profile|Oz-fprofile-generate|Oz-ftrapv
+DecodeCertInternal	wolfcrypt/src/asn.c	20639	33	            cert->pathLengthSet = (dataASN[BASICCONSASN_IDX_PLEN].length > 0);	=	mmem	O1--disable-peephole|O2--disable-peephole|O3--disable-peephole|Ofast--disable-peephole|Oz--disable-peephole
+DoServerKeyExchange	src/internal.c	32964	55	                            ssl->options.peerAuthGood =	=	mmem	O1--disable-peephole|O2--disable-peephole|O3--disable-peephole|Ofast--disable-peephole|Os--disable-peephole
+DecodeCertInternal	wolfcrypt/src/asn.c	23612	30	            cert->selfSigned = (XMEMCMP(cert->issuerHash, cert->subjectHash,	=	mmem	O1--disable-peephole|O2--disable-peephole|O3--disable-peephole|Ofast--disable-peephole|Os--disable-peephole|Oz--disable-peephole
+TLSX_GetResponseSize	src/tls.c	15675	14	    *pLength += length;	+	mmem	O2--jump-threading-threshold=0|O2-finline-hint-functions|O2-fno-delete-null-pointer-checks|O2-fno-inline|O2-fno-inline-functions|O3--jump-threading-threshold=0|O3-finline-hint-functions|O3-fno-delete-null-pointer-checks|O3-fno-inline|O3-fno-inline-functions|Ofast--jump-threading-threshold=0|Ofast-finline-hint-functions|Ofast-fno-delete-null-pointer-checks|Ofast-fno-inline|Ofast-fno-inline-functions|Os--jump-threading-threshold=0|Os-finline-hint-functions|Os-finstrument-functions|Os-fno-delete-null-pointer-checks|Os-fno-inline|Os-fno-inline-functions
+DoHandShakeMsgType	src/internal.c	32964	55	                            ssl->options.peerAuthGood =	=	mmem	Oz--disable-peephole

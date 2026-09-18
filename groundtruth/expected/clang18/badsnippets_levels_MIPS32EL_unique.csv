@@ -1,0 +1,10 @@
+function	file	line	col	source	char	type	optimization
+br_i62_modpow_opt	bearssl-modpow_opt-x86i386.c	26	18	    size_t k = 16/len;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+sort2_multiplex	binsec-sort2_multiplex-x8664.c	4	17	  out2[0] = (~c & in2[0]) | (c & in2[1]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+sort2_multiplex	binsec-sort2_multiplex-x8664.c	5	17	  out2[1] = (~c & in2[1]) | (c & in2[0]);	&	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v1	binsec-ct_select_u32_v1-x8664.c	14	16	  return (x&m) | (y&~m);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v4	binsec-ct_select_u32_v4-x8664.c	6	16	  return (x&b) | (y&~b);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v3	binsec-ct_select_u32_v3-x8664.c	6	18	  return (x*bit) | (y*b);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+ct_select_u32_v2	binsec-ct_select_u32_v2-x8664.c	6	16	  return (x&m) | (y&~m);	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i62_modpow_opt	bearssl-modpow_opt-x8664.c	26	31	        x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	mmem	O1|O2|Os|Oz
+br_i62_modpow_opt	bearssl-modpow_opt-x86i386.c	35	27	            t2[v] |= mask & base[v];	&	cjump	O3|Ofast

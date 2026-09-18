@@ -1,0 +1,2538 @@
+From 68785a6b4871b139bcf04011c9a2f2b85137cfea Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Fri, 28 Feb 2025 00:57:50 +0100
+Subject: [PATCH 01/20] myutils: dump source as JSONL for MachineFunctionPass
+
+(cherry picked from commit b572a50e6e9db8324f7138fc8952cdc0a365c4ac)
+---
+ .../llvm/CodeGen/MachineFunctionPass.h        | 17 ++++
+ llvm/lib/CodeGen/MachineFunctionPass.cpp      | 90 +++++++++++++++++++
+ 2 files changed, 107 insertions(+)
+
+diff --git a/llvm/include/llvm/CodeGen/MachineFunctionPass.h b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+index caaf22c2139e31..92707ba3df5f2b 100644
+--- a/llvm/include/llvm/CodeGen/MachineFunctionPass.h
++++ b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+@@ -77,4 +77,21 @@ class MachineFunctionPass : public FunctionPass {
+ 
+ } // End llvm namespace
+ 
++using namespace llvm;
++
++namespace myutils {
++// Definition of utils used by custom multi-arch MachineFunctionPasses
++
++template <typename T>
++std::string join(const SmallVectorImpl<T> &vec, const std::string &sep = ", ");
++
++// get source line from debugloc as string by reading file and specific line
++std::string getLineSrc(const DebugLoc &DL);
++
++unsigned getLineNumber(const DebugLoc &DL);
++
++bool isNameTrivial(const StringRef &Name);
++
++} // namespace myutils
++
+ #endif
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 62ac3e32d24d9d..eed79b76e7b1ad 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -24,14 +24,104 @@
+ #include "llvm/CodeGen/MachineModuleInfo.h"
+ #include "llvm/CodeGen/MachineOptimizationRemarkEmitter.h"
+ #include "llvm/CodeGen/Passes.h"
++#include "llvm/IR/DebugInfoMetadata.h"
+ #include "llvm/IR/Dominators.h"
+ #include "llvm/IR/Function.h"
+ #include "llvm/IR/Module.h"
+ #include "llvm/IR/PrintPasses.h"
++#include "llvm/Support/raw_ostream.h"
++
++// needed by myutils functions
++#include <string>
++#include <fstream>
++#include <sstream>
++#include <iomanip>
+ 
+ using namespace llvm;
+ using namespace ore;
+ 
++namespace myutils {
++// Implementation of utils used by custom mutli-arch MachineFunctionPasses
++
++template <typename T>
++std::string join(const SmallVectorImpl<T> &vec, const std::string &sep) {
++  std::ostringstream sss;
++  for (size_t i = 0; i < vec.size(); ++i) {
++    std::string str;
++    raw_string_ostream ss(str);
++    if constexpr (std::is_pointer<T>::value) {
++      ss << *vec[i];
++    } else {
++      ss << vec[i];
++    }
++    str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
++    if constexpr (std::is_integral<T>::value) {
++      sss << str;
++    } else {  // wrap each element with ""
++      sss << std::quoted(str);
++    }
++    if (i != vec.size() - 1) {
++      sss << sep;
++    }
++  }
++  return sss.str();
++}
++
++// Explicit template instantiation to avoid undefined reference linker errors
++// see https://isocpp.org/wiki/faq/templates#separate-template-fn-defn-from-decl
++template
++std::string join(const SmallVectorImpl<std::string> &vec, const std::string &sep);
++
++template
++std::string join(const SmallVectorImpl<const Instruction*> &vec, const std::string &sep);
++
++template
++std::string join(const SmallVectorImpl<const MachineInstr*> &vec, const std::string &sep);
++
++template
++std::string join(const SmallVectorImpl<unsigned> &vec, const std::string &sep);
++
++std::string getLineSrc(const DebugLoc &DL) {
++  if (!DL) {
++    return "[getDebugLoc returns null]";
++  }
++  StringRef FileName = DL->getScope()->getFilename();
++  unsigned Line = DL.getLine();
++  std::string SourceLine;
++  std::error_code EC;
++  std::ifstream File(FileName.str());
++  for (unsigned i = 0; i < Line; ++i) {
++    std::getline(File, SourceLine);
++  }
++  // escape \t in SourceLine with 4 spaces
++  std::replace(SourceLine.begin(), SourceLine.end(), '\t', ' ');
++  // trim \n and \r from SourceLine
++  SourceLine.erase(std::remove(SourceLine.begin(), SourceLine.end(), '\n'), SourceLine.end());
++  SourceLine.erase(std::remove(SourceLine.begin(), SourceLine.end(), '\r'), SourceLine.end());
++  return SourceLine;
++}
++
++unsigned getLineNumber(const DebugLoc &DL) {
++  if (DL) {
++    return DL.getLine();
++  }
++  return 0;
++}
++
++bool isNameTrivial(const StringRef &Name) {
++  const std::string TrivialKeywords[] = {".h", "include/", "third_party", "third-party", "fuzz", "test", "helper"};
++  for (const auto &Keyword : TrivialKeywords) {
++    if (Name.lower().find(Keyword) != std::string::npos) {
++      return true;
++    }
++  }
++  return false;
++}
++
++} // namespace myutils
++
++using namespace myutils;
++
+ Pass *MachineFunctionPass::createPrinterPass(raw_ostream &O,
+                                              const std::string &Banner) const {
+   return createMachineFunctionPrinterPass(O, Banner);
+
+From c79f42f75831ab7fae9829eaed99392adf689767 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Mon, 3 Mar 2025 18:25:41 +0100
+Subject: [PATCH 02/20] feat: MachineFunctionPass MFCountInstr for all targets
+
+just use isConditionalBranch() to get cjump insts
+
+(cherry picked from commit eb62832b5c4931970ca300ba093e4a3fdb0af156)
+---
+ llvm/include/llvm/CodeGen/Passes.h            |   3 +
+ llvm/include/llvm/InitializePasses.h          |   1 +
+ llvm/lib/CodeGen/CMakeLists.txt               |   1 +
+ .../lib/CodeGen/MachineFunctionCountInstr.cpp | 144 ++++++++++++++++++
+ llvm/lib/CodeGen/TargetPassConfig.cpp         |   2 +
+ 5 files changed, 151 insertions(+)
+ create mode 100644 llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+
+diff --git a/llvm/include/llvm/CodeGen/Passes.h b/llvm/include/llvm/CodeGen/Passes.h
+index b5d2a7e6bf035b..7ac3526d1b3bdb 100644
+--- a/llvm/include/llvm/CodeGen/Passes.h
++++ b/llvm/include/llvm/CodeGen/Passes.h
+@@ -105,6 +105,9 @@ namespace llvm {
+   /// handling of complex number arithmetic
+   FunctionPass *createComplexDeinterleavingPass(const TargetMachine *TM);
+ 
++  /// This pass dumps cjump instructions for MachineFunction of any target.
++  MachineFunctionPass *createMFCountInstructionsPass();
++
+   /// AtomicExpandID -- Lowers atomic operations in terms of either cmpxchg
+   /// load-linked/store-conditional loops.
+   extern char &AtomicExpandID;
+diff --git a/llvm/include/llvm/InitializePasses.h b/llvm/include/llvm/InitializePasses.h
+index 8111afcc1fb20f..1e13f03c31f333 100644
+--- a/llvm/include/llvm/InitializePasses.h
++++ b/llvm/include/llvm/InitializePasses.h
+@@ -323,6 +323,7 @@ void initializeWasmEHPreparePass(PassRegistry &);
+ void initializeWinEHPreparePass(PassRegistry &);
+ void initializeWriteBitcodePassPass(PassRegistry &);
+ void initializeXRayInstrumentationPass(PassRegistry &);
++void initializeMFCountInstructionsPass(PassRegistry &);
+ 
+ } // end namespace llvm
+ 
+diff --git a/llvm/lib/CodeGen/CMakeLists.txt b/llvm/lib/CodeGen/CMakeLists.txt
+index 88f863d8204d09..5076d8c4669d70 100644
+--- a/llvm/lib/CodeGen/CMakeLists.txt
++++ b/llvm/lib/CodeGen/CMakeLists.txt
+@@ -122,6 +122,7 @@ add_llvm_component_library(LLVMCodeGen
+   MachineDominators.cpp
+   MachineFrameInfo.cpp
+   MachineFunction.cpp
++  MachineFunctionCountInstr.cpp
+   MachineFunctionPass.cpp
+   MachineFunctionPrinterPass.cpp
+   MachineFunctionSplitter.cpp
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+new file mode 100644
+index 00000000000000..4d1073ce247d8c
+--- /dev/null
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -0,0 +1,144 @@
++#include "llvm/CodeGen/MachineFunction.h"
++#include "llvm/CodeGen/MachineFunctionPass.h"
++#include "llvm/CodeGen/Passes.h"
++#include "llvm/CodeGen/SlotIndexes.h"
++#include "llvm/InitializePasses.h"
++#include "llvm/IR/Instruction.h"
++#include "llvm/IR/Instructions.h"
++#include "llvm/IR/DebugInfoMetadata.h"
++#include "llvm/Support/raw_ostream.h"
++#include "llvm/Support/CommandLine.h"
++#include <llvm/Support/FileSystem.h>
++
++using namespace llvm;
++
++#define DEBUG_TYPE "mf-count-instr"
++
++static cl::opt<bool>
++  EnableCountInstructions("enable-mf-count-instr",
++            cl::desc("Enable MachineFunction count instr."),
++            cl::init(false), cl::Hidden);
++
++namespace {
++/// MachineFunctionCountInstr - This is a architecture-independent
++/// pass to dump cjump instructions of a MachineFunction.
++///
++class MFCountInstructions : public MachineFunctionPass {
++public:
++  MFCountInstructions() : MachineFunctionPass(ID) {}
++
++  StringRef getPassName() const override { return "MFCountInstr"; }
++  bool runOnMachineFunction(MachineFunction &MF) override;
++  void getAnalysisUsage(AnalysisUsage &AU) const override;
++
++  /// Pass identification, replacement for typeid.
++  static char ID;
++};
++} // end anonymous namespace
++
++using namespace myutils;
++
++char MFCountInstructions::ID = 0;
++
++// Run on each MachineFunction
++bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
++  if (skipFunction(MF.getFunction()))
++    return false;
++  if (!EnableCountInstructions)
++    return false;
++  if (isNameTrivial(MF.getName()))
++    return false;
++
++  // Get the source file name
++  auto *SP = MF.getFunction().getSubprogram();
++  if (!SP) return false;  // no debug info available if not compiled with -g
++  auto FileName = SP->getFilename();
++  if (isNameTrivial(FileName))
++    return false;
++
++  // Instruction counters and line numbers
++  SmallVector<const Instruction*, 16> SelectInsts;
++  SmallVector<const MachineInstr*, 16> CjumpInsts;
++  SmallVector<std::string, 16> SelectSrcs;
++  SmallVector<std::string, 16> CjumpSrcs;
++  SmallVector<unsigned, 16> SelectLines;
++  SmallVector<unsigned, 16> CjumpLines;
++
++  // Iterate through the LLVM IR instructions to count SelectInst
++  const Function &F = MF.getFunction();
++  for (const BasicBlock &BB : F) {
++    for (const Instruction &I : BB) {
++      if (!I.getDebugLoc()) continue;
++      if (isa<SelectInst>(&I)) {
++        SelectInsts.push_back(&I);
++        SelectLines.push_back(getLineNumber(I.getDebugLoc()));
++        SelectSrcs.push_back(getLineSrc(I.getDebugLoc()));
++      }
++    }
++  }
++
++  // Iterate through all MachineBasicBlocks
++  for (const MachineBasicBlock &MBB : MF) {
++    // Iterate through all instructions in the block
++    for (const MachineInstr &MI : MBB) {
++      if (!MI.getDebugLoc()) continue;
++      // Check if the instruction is a conditional jump (e.g., X86 jcc)
++      if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
++        CjumpInsts.push_back(&MI);
++        CjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
++        CjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++      }
++    }
++  }
++
++  // Print JSON like output
++  errs() << "{"
++        << "\"function\": \"" << MF.getName() << "\", "
++        << "\"file\": \"" << FileName << "\", "
++        << "\"context\": \"" << getPassName() << "\", "
++        << "\"select_count\": " << SelectInsts.size() << ", "
++        << "\"select_lines\": [" << join(SelectLines) << "], "
++        << "\"select_insts\": [" << join(SelectInsts) << "], "
++        << "\"select_srcs\": [" << join(SelectSrcs) << "], "
++        << "\"cjump_count\": " << CjumpInsts.size() << ", "
++        << "\"cjump_lines\": [" <<join(CjumpLines) << "], "
++        << "\"cjump_insts\": [" << join(CjumpInsts) << "], "
++        << "\"cjump_srcs\": [" << join(CjumpSrcs) << "]"
++        << "}\n";
++
++  // get DUMP_DIR from env, otherwise use $PWD/dump/
++  const char *dump_dir = getenv("DUMP_DIR");
++  if (!dump_dir) {
++    dump_dir = "./dumps/";
++  }
++  // create dump_dir if it does not exist
++  sys::fs::create_directories(dump_dir);
++
++  // dump F and MF to dump_dir/filename.txt
++  // create unique file name = FunctionName-FileName.dump, FileName should not contain '/'
++  std::string DumpFileStr = std::string(dump_dir) + MF.getName().str() + "-" + FileName.rsplit('/').second.str() + ".dump";
++  std::error_code EC;
++  raw_fd_ostream DumpFile(DumpFileStr, EC);
++  if (!EC) {
++    DumpFile << "=== Dump Function: " << F.getName() << "\n";
++    F.print(DumpFile);
++    DumpFile << "=== Dump MachineFunction: " << MF.getName() << "\n";
++    MF.print(DumpFile);
++  } else {
++    errs() << "Error opening file: " << DumpFileStr << " " << EC.message() << "\n";
++  }
++
++  return false;
++}
++
++// Required analysis information
++void MFCountInstructions::getAnalysisUsage(AnalysisUsage &AU) const {
++  MachineFunctionPass::getAnalysisUsage(AU);
++}
++
++INITIALIZE_PASS(MFCountInstructions, DEBUG_TYPE,
++                "Count Conditional Move Instructions", false, false)
++
++MachineFunctionPass *llvm::createMFCountInstructionsPass() {
++  return new MFCountInstructions();
++}
+diff --git a/llvm/lib/CodeGen/TargetPassConfig.cpp b/llvm/lib/CodeGen/TargetPassConfig.cpp
+index cf407b5073035e..e3635bc109dd9e 100644
+--- a/llvm/lib/CodeGen/TargetPassConfig.cpp
++++ b/llvm/lib/CodeGen/TargetPassConfig.cpp
+@@ -1282,6 +1282,8 @@ void TargetPassConfig::addMachinePasses() {
+   // Add passes that directly emit MI after all other MI passes.
+   addPreEmitPass2();
+ 
++  PM->add(createMFCountInstructionsPass());
++
+   AddingMachinePasses = false;
+ }
+ 
+
+From 54dc667ca3a8ed64ce25cfaa3a0bc1ee023a2ae7 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Tue, 22 Apr 2025 17:20:53 +0200
+Subject: [PATCH 03/20] feat(MFCountInstr): flush JSON output to avoid
+ interleaving
+
+(cherry picked from commit 6a408012fe9c5b87e5908ca6adbc3cdbbd602d25)
+---
+ .../lib/CodeGen/MachineFunctionCountInstr.cpp | 36 +++++++++++--------
+ 1 file changed, 22 insertions(+), 14 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index 4d1073ce247d8c..d74be2c2ed80e7 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -91,20 +91,28 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+     }
+   }
+ 
+-  // Print JSON like output
+-  errs() << "{"
+-        << "\"function\": \"" << MF.getName() << "\", "
+-        << "\"file\": \"" << FileName << "\", "
+-        << "\"context\": \"" << getPassName() << "\", "
+-        << "\"select_count\": " << SelectInsts.size() << ", "
+-        << "\"select_lines\": [" << join(SelectLines) << "], "
+-        << "\"select_insts\": [" << join(SelectInsts) << "], "
+-        << "\"select_srcs\": [" << join(SelectSrcs) << "], "
+-        << "\"cjump_count\": " << CjumpInsts.size() << ", "
+-        << "\"cjump_lines\": [" <<join(CjumpLines) << "], "
+-        << "\"cjump_insts\": [" << join(CjumpInsts) << "], "
+-        << "\"cjump_srcs\": [" << join(CjumpSrcs) << "]"
+-        << "}\n";
++  // Build the complete JSON string in memory before outputting
++  std::string JsonOutput;
++  raw_string_ostream JsonStream(JsonOutput);
++  JsonStream << "{"
++           << "\"function\": \"" << MF.getName() << "\", "
++           << "\"file\": \"" << FileName << "\", "
++           << "\"context\": \"" << getPassName() << "\", "
++           << "\"select_count\": " << SelectInsts.size() << ", "
++           << "\"select_lines\": [" << join(SelectLines) << "], "
++           << "\"select_insts\": [" << join(SelectInsts) << "], "
++           << "\"select_srcs\": [" << join(SelectSrcs) << "], "
++           << "\"cjump_count\": " << CjumpInsts.size() << ", "
++           << "\"cjump_lines\": [" << join(CjumpLines) << "], "
++           << "\"cjump_insts\": [" << join(CjumpInsts) << "], "
++           << "\"cjump_srcs\": [" << join(CjumpSrcs) << "]"
++           << "}\n";
++  
++  // Flush the stream to ensure all content is in the string
++  JsonStream.flush();
++  
++  // Output the complete JSON string - no lock needed as each write to errs() is atomic
++  errs() << JsonOutput;
+ 
+   // get DUMP_DIR from env, otherwise use $PWD/dump/
+   const char *dump_dir = getenv("DUMP_DIR");
+
+From 8fe6d67acb33851b2462c4349de0f3bfdbcf6144 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Tue, 22 Apr 2025 17:47:08 +0200
+Subject: [PATCH 04/20] feat(MFCountInstr): add option mf-count-instr-dump-dir
+ for IR/MIR
+
+env DUMP_DIR is deprecated
+dump IR and MIR only if option is specified
+
+(cherry picked from commit 8e1c74d142ba44c2de60e6cbc185b66e640db82d)
+---
+ .../lib/CodeGen/MachineFunctionCountInstr.cpp | 44 ++++++++++---------
+ 1 file changed, 24 insertions(+), 20 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index d74be2c2ed80e7..6a6d3947604b43 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -19,6 +19,12 @@ static cl::opt<bool>
+             cl::desc("Enable MachineFunction count instr."),
+             cl::init(false), cl::Hidden);
+ 
++static cl::opt<std::string>
++  DumpDirectory("mf-count-instr-dump-dir",
++            cl::desc("Directory to dump IR and MIR files only if specified."),
++            cl::value_desc("directory"),
++            cl::init(""), cl::Hidden);
++
+ namespace {
+ /// MachineFunctionCountInstr - This is a architecture-independent
+ /// pass to dump cjump instructions of a MachineFunction.
+@@ -114,26 +120,24 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+   // Output the complete JSON string - no lock needed as each write to errs() is atomic
+   errs() << JsonOutput;
+ 
+-  // get DUMP_DIR from env, otherwise use $PWD/dump/
+-  const char *dump_dir = getenv("DUMP_DIR");
+-  if (!dump_dir) {
+-    dump_dir = "./dumps/";
+-  }
+-  // create dump_dir if it does not exist
+-  sys::fs::create_directories(dump_dir);
+-
+-  // dump F and MF to dump_dir/filename.txt
+-  // create unique file name = FunctionName-FileName.dump, FileName should not contain '/'
+-  std::string DumpFileStr = std::string(dump_dir) + MF.getName().str() + "-" + FileName.rsplit('/').second.str() + ".dump";
+-  std::error_code EC;
+-  raw_fd_ostream DumpFile(DumpFileStr, EC);
+-  if (!EC) {
+-    DumpFile << "=== Dump Function: " << F.getName() << "\n";
+-    F.print(DumpFile);
+-    DumpFile << "=== Dump MachineFunction: " << MF.getName() << "\n";
+-    MF.print(DumpFile);
+-  } else {
+-    errs() << "Error opening file: " << DumpFileStr << " " << EC.message() << "\n";
++  // Only dump function and machine function if a dump directory is specified
++  if (!DumpDirectory.empty()) {
++    // Create dump directory if it doesn't exist
++    sys::fs::create_directories(DumpDirectory);
++
++    // Create unique file name = FunctionName-FileName.dump, FileName should not contain '/'
++    std::string DumpFileStr = DumpDirectory + "/" + MF.getName().str() + "-" + 
++                             FileName.rsplit('/').second.str() + ".dump";
++    std::error_code EC;
++    raw_fd_ostream DumpFile(DumpFileStr, EC);
++    if (!EC) {
++      DumpFile << "=== Dump Function: " << F.getName() << "\n";
++      F.print(DumpFile);
++      DumpFile << "=== Dump MachineFunction: " << MF.getName() << "\n";
++      MF.print(DumpFile);
++    } else {
++      errs() << "Error opening file: " << DumpFileStr << " " << EC.message() << "\n";
++    }
+   }
+ 
+   return false;
+
+From a4a61a861b266f9d7bd287b5010c31d8d58f9ab1 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Wed, 30 Apr 2025 21:28:50 +0200
+Subject: [PATCH 05/20] feat(MFCountInstr): support function filter with
+ -filter-print-funcs
+
+(cherry picked from commit 59811cefa954356e37c704cab556ad5e69c29dfd)
+---
+ llvm/lib/CodeGen/MachineFunctionCountInstr.cpp | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index 6a6d3947604b43..0e695af61f5712 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -6,6 +6,7 @@
+ #include "llvm/IR/Instruction.h"
+ #include "llvm/IR/Instructions.h"
+ #include "llvm/IR/DebugInfoMetadata.h"
++#include "llvm/IR/PrintPasses.h"
+ #include "llvm/Support/raw_ostream.h"
+ #include "llvm/Support/CommandLine.h"
+ #include <llvm/Support/FileSystem.h>
+@@ -50,6 +51,8 @@ char MFCountInstructions::ID = 0;
+ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+   if (skipFunction(MF.getFunction()))
+     return false;
++  if (!isFunctionInPrintList(MF.getName()))
++    return false;
+   if (!EnableCountInstructions)
+     return false;
+   if (isNameTrivial(MF.getName()))
+
+From fe19e5d8c564575fcc22f47b7c80ed8169b4ebd7 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Thu, 2 Jan 2025 15:49:25 +0100
+Subject: [PATCH 06/20] feat(-mfpass-dump): dump added/removed cjump after each
+ runOnMachineFunctionPass
+
+(cherry picked from commit 79258609f6aa14550dbb4afbfa821d0fc2b841c0)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 128 +++++++++++++++++++++++
+ 1 file changed, 128 insertions(+)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index eed79b76e7b1ad..05d11cacd60c04 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -122,6 +122,128 @@ bool isNameTrivial(const StringRef &Name) {
+ 
+ using namespace myutils;
+ 
++static cl::opt<bool>
++    EnableMFPassDump("mfpass-dump",
++                        cl::desc("Enable dumping instructions before/after each Machine Function Pass."),
++                        cl::init(false), cl::Hidden);
++
++// This will collect conditional jump information and store it for later comparison
++static SmallVector<const MachineInstr*, 16> BeforeCjumpInsts;
++static SmallVector<std::string, 16> BeforeCjumpSrcs;
++static SmallVector<unsigned, 16> BeforeCjumpLines;
++static std::string BeforeFunction;
++static std::string BeforeFileName;
++static std::string BeforeContext;
++
++bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
++  if (Context.ends_with("CountInstr")) return false;
++
++  auto *SP = MF.getFunction().getSubprogram();
++  if (!SP) return false;  // no debug info available if not compiled with -g
++  auto FileName = SP->getFilename();
++
++  if (IsBefore) {
++    // Clear previous state and collect current state
++    BeforeFunction = MF.getName().str();
++    BeforeFileName = FileName.str();
++    BeforeContext = Context.str();
++    BeforeCjumpInsts.clear();
++    BeforeCjumpSrcs.clear();
++    BeforeCjumpLines.clear();
++
++    // Collect all conditional jumps
++    for (const MachineBasicBlock &MBB : MF) {
++      for (const MachineInstr &MI : MBB) {
++        if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
++          BeforeCjumpInsts.push_back(&MI);
++          BeforeCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
++          BeforeCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++        }
++      }
++    }
++    return true;
++  }
++
++  // After pass execution - collect current state
++  SmallVector<const MachineInstr*, 16> AfterCjumpInsts;
++  SmallVector<std::string, 16> AfterCjumpSrcs;
++  SmallVector<unsigned, 16> AfterCjumpLines;
++
++  for (const MachineBasicBlock &MBB : MF) {
++    for (const MachineInstr &MI : MBB) {
++      if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
++        AfterCjumpInsts.push_back(&MI);
++        AfterCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
++        AfterCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++      }
++    }
++  }
++
++  // Find added and removed jumps based on line numbers
++  // (using line numbers as a proxy for identifying the same jump)
++  SmallVector<unsigned, 16> AddedLines;
++  SmallVector<const MachineInstr*, 16> AddedInsts;
++  SmallVector<std::string, 16> AddedSrcs;
++
++  SmallVector<unsigned, 16> RemovedLines;
++  SmallVector<const MachineInstr*, 16> RemovedInsts;
++  SmallVector<std::string, 16> RemovedSrcs;
++
++  // Find added jumps
++  for (size_t i = 0; i < AfterCjumpLines.size(); ++i) {
++    if (std::find(BeforeCjumpLines.begin(), BeforeCjumpLines.end(), 
++                 AfterCjumpLines[i]) == BeforeCjumpLines.end()) {
++      AddedLines.push_back(AfterCjumpLines[i]);
++      AddedInsts.push_back(AfterCjumpInsts[i]);
++      AddedSrcs.push_back(AfterCjumpSrcs[i]);
++    }
++  }
++
++  // Find removed jumps
++  for (size_t i = 0; i < BeforeCjumpLines.size(); ++i) {
++    if (std::find(AfterCjumpLines.begin(), AfterCjumpLines.end(), 
++                 BeforeCjumpLines[i]) == BeforeCjumpLines.end()) {
++      RemovedLines.push_back(BeforeCjumpLines[i]);
++      RemovedInsts.push_back(BeforeCjumpInsts[i]);
++      RemovedSrcs.push_back(BeforeCjumpSrcs[i]);
++    }
++  }
++
++  // Only print if there were changes
++  if (!AddedLines.empty() || !RemovedLines.empty()) {
++    // Build the complete JSON string in memory before outputting
++    std::string JsonOutput;
++    raw_string_ostream JsonStream(JsonOutput);
++    
++    JsonStream << "{"
++              << "\"function\": \"" << BeforeFunction << "\", "
++              << "\"file\": \"" << BeforeFileName << "\", "
++              << "\"context\": \"" << BeforeContext << "\", "
++              << "\"cjump_count_before\": " << BeforeCjumpInsts.size() << ", "
++              << "\"cjump_count_after\": " << AfterCjumpInsts.size() << ", "
++              << "\"removed_cjump_count\": " << RemovedLines.size() << ", "
++              << "\"removed_cjump_lines\": [" << join(RemovedLines) << "], "
++              << "\"removed_cjump_insts\": [" << join(RemovedInsts) << "], "
++              << "\"removed_cjump_srcs\": [" << join(RemovedSrcs) << "], "
++              << "\"added_cjump_count\": " << AddedLines.size() << ", "
++              << "\"added_cjump_lines\": [" << join(AddedLines) << "], "
++              << "\"added_cjump_insts\": [" << join(AddedInsts) << "], "
++              << "\"added_cjump_srcs\": [" << join(AddedSrcs) << "]"
++              << "}\n";
++    
++    // Flush the stream to ensure all content is in the string
++    JsonStream.flush();
++    
++    // Output the complete JSON string - no lock needed as each write to errs() is atomic
++    errs() << JsonOutput;
++    
++    return true;
++  }
++  
++  // No changes to cjumps
++  return false;
++}
++
+ Pass *MachineFunctionPass::createPrinterPass(raw_ostream &O,
+                                              const std::string &Banner) const {
+   return createMachineFunctionPrinterPass(O, Banner);
+@@ -181,7 +303,13 @@ bool MachineFunctionPass::runOnFunction(Function &F) {
+ 
+   MFProps.reset(ClearedProperties);
+ 
++  if (EnableMFPassDump) {
++    dumpCjumppInsts(MF, getPassName(), true);
++  }
+   bool RV = runOnMachineFunction(MF);
++  if (EnableMFPassDump) {
++    dumpCjumppInsts(MF, getPassName(), false);
++  }
+ 
+   if (ShouldEmitSizeRemarks) {
+     // We wanted size remarks. Check if there was a change to the number of
+
+From d0fcf6b15e599e547f39cb73e0ca0f73775de73f Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Wed, 30 Apr 2025 15:50:33 +0200
+Subject: [PATCH 07/20] feat(-mfpass-dump): support function filter with
+ -filter-print-funcs
+
+(cherry picked from commit aae7d3e2dbb4361d179caadc48eb2db49890307d)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 8 ++++++--
+ 1 file changed, 6 insertions(+), 2 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 05d11cacd60c04..5cfebbb20485ac 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -124,8 +124,8 @@ using namespace myutils;
+ 
+ static cl::opt<bool>
+     EnableMFPassDump("mfpass-dump",
+-                        cl::desc("Enable dumping instructions before/after each Machine Function Pass."),
+-                        cl::init(false), cl::Hidden);
++                      cl::desc("Dump MachineFunctionPbss changed cjump instructions, can use -filter-print-funcs to filter functions."),
++                      cl::init(false), cl::Hidden);
+ 
+ // This will collect conditional jump information and store it for later comparison
+ static SmallVector<const MachineInstr*, 16> BeforeCjumpInsts;
+@@ -138,6 +138,10 @@ static std::string BeforeContext;
+ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+   if (Context.ends_with("CountInstr")) return false;
+ 
++  // Skip if function is not in print list
++  if (!isFunctionInPrintList(MF.getName()))
++    return false;
++
+   auto *SP = MF.getFunction().getSubprogram();
+   if (!SP) return false;  // no debug info available if not compiled with -g
+   auto FileName = SP->getFilename();
+
+From 3d02787468e6ab467c08e2ffd1fc15b3c36447f5 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Thu, 1 May 2025 21:28:52 +0200
+Subject: [PATCH 08/20] feat(MFCountInstr): also get column/char for cjump
+
+(cherry picked from commit c53ae7a3cd3b310b338008c4913997c1e6b7ef91)
+---
+ .../include/llvm/CodeGen/MachineFunctionPass.h |  2 ++
+ llvm/lib/CodeGen/MachineFunctionCountInstr.cpp | 18 +++++++++++++++---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp       |  7 +++++++
+ 3 files changed, 24 insertions(+), 3 deletions(-)
+
+diff --git a/llvm/include/llvm/CodeGen/MachineFunctionPass.h b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+index 92707ba3df5f2b..f31a5547c9c013 100644
+--- a/llvm/include/llvm/CodeGen/MachineFunctionPass.h
++++ b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+@@ -90,6 +90,8 @@ std::string getLineSrc(const DebugLoc &DL);
+ 
+ unsigned getLineNumber(const DebugLoc &DL);
+ 
++unsigned getLineCol(const DebugLoc &DL);
++
+ bool isNameTrivial(const StringRef &Name);
+ 
+ } // namespace myutils
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index 0e695af61f5712..3a372ead4d86d7 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -72,6 +72,8 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+   SmallVector<std::string, 16> CjumpSrcs;
+   SmallVector<unsigned, 16> SelectLines;
+   SmallVector<unsigned, 16> CjumpLines;
++  SmallVector<unsigned, 16> CjumpCols;
++  SmallVector<std::string, 16> CjumpChars;
+ 
+   // Iterate through the LLVM IR instructions to count SelectInst
+   const Function &F = MF.getFunction();
+@@ -94,8 +96,16 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+       // Check if the instruction is a conditional jump (e.g., X86 jcc)
+       if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+         CjumpInsts.push_back(&MI);
+-        CjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+-        CjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++        const auto DL = MI.getDebugLoc();
++        CjumpLines.push_back(getLineNumber(DL));
++        std::string LineSrc = getLineSrc(DL);
++        CjumpSrcs.push_back(LineSrc);
++        unsigned Col = getLineCol(DL);
++        CjumpCols.push_back(Col);
++        if (Col > 0 && Col <= LineSrc.size())
++          CjumpChars.push_back(std::string{LineSrc[Col - 1]});  // Column is 1-based, convert char to string
++        else
++          CjumpChars.push_back(std::string(""));  // Invalid column, use empty character
+       }
+     }
+   }
+@@ -113,8 +123,10 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+            << "\"select_srcs\": [" << join(SelectSrcs) << "], "
+            << "\"cjump_count\": " << CjumpInsts.size() << ", "
+            << "\"cjump_lines\": [" << join(CjumpLines) << "], "
++           << "\"cjump_cols\": [" << join(CjumpCols) << "], "
+            << "\"cjump_insts\": [" << join(CjumpInsts) << "], "
+-           << "\"cjump_srcs\": [" << join(CjumpSrcs) << "]"
++           << "\"cjump_srcs\": [" << join(CjumpSrcs) << "], "
++           << "\"cjump_chars\": [" << join(CjumpChars) << "]"
+            << "}\n";
+   
+   // Flush the stream to ensure all content is in the string
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 5cfebbb20485ac..1694e1279e9d3b 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -108,6 +108,13 @@ unsigned getLineNumber(const DebugLoc &DL) {
+   return 0;
+ }
+ 
++unsigned getLineCol(const DebugLoc &DL) {
++  if (DL) {
++    return DL.getCol();
++  }
++  return 0;
++}
++
+ bool isNameTrivial(const StringRef &Name) {
+   const std::string TrivialKeywords[] = {".h", "include/", "third_party", "third-party", "fuzz", "test", "helper"};
+   for (const auto &Keyword : TrivialKeywords) {
+
+From fb33c81cb6ee488e1db1e75e2d26c97e1aca99d7 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Sat, 10 May 2025 11:23:46 +0200
+Subject: [PATCH 09/20] myutils: cache file lines to optimize getLineSrc
+
+no need to read file everytime
+
+(cherry picked from commit 32122334dc0f01e29c224e015788bf4068133e2e)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 31 +++++++++++++++++++-----
+ 1 file changed, 25 insertions(+), 6 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 1694e1279e9d3b..70047845f71a94 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -43,6 +43,24 @@ using namespace ore;
+ namespace myutils {
+ // Implementation of utils used by custom mutli-arch MachineFunctionPasses
+ 
++// This is a cache for file lines to avoid reading the same file multiple times
++static StringMap<SmallVector<std::string>> FileCache;
++
++static SmallVector<std::string>& getFileLines(StringRef FileName) {
++  auto it = FileCache.find(FileName);
++  if (it != FileCache.end()) {
++    return it->second;
++  }
++
++  std::string Line;
++  std::ifstream File(FileName.str());
++  SmallVector<std::string>& Lines = FileCache[FileName];
++  while (std::getline(File, Line)) {
++    Lines.push_back(Line);
++  }
++  return Lines;
++}
++
+ template <typename T>
+ std::string join(const SmallVectorImpl<T> &vec, const std::string &sep) {
+   std::ostringstream sss;
+@@ -87,13 +105,14 @@ std::string getLineSrc(const DebugLoc &DL) {
+   }
+   StringRef FileName = DL->getScope()->getFilename();
+   unsigned Line = DL.getLine();
+-  std::string SourceLine;
+-  std::error_code EC;
+-  std::ifstream File(FileName.str());
+-  for (unsigned i = 0; i < Line; ++i) {
+-    std::getline(File, SourceLine);
++  
++  const auto& Lines = getFileLines(FileName);
++  if (Line == 0 || Line > Lines.size()) {
++    return "";
+   }
+-  // escape \t in SourceLine with 4 spaces
++  
++  // Normalize the line only when it's actually needed
++  std::string SourceLine = Lines[Line - 1];
+   std::replace(SourceLine.begin(), SourceLine.end(), '\t', ' ');
+   // trim \n and \r from SourceLine
+   SourceLine.erase(std::remove(SourceLine.begin(), SourceLine.end(), '\n'), SourceLine.end());
+
+From 7e31c1839537e9661e59ea9fd968ba0c65f19aab Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Sat, 10 May 2025 16:27:59 +0200
+Subject: [PATCH 10/20] feat(-mfpass-dump):also get column/char for
+ added/removed cjump
+
+(cherry picked from commit f8e5d1f8c52413dee8acb899f15fced28538f9d2)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 30 +++++++++++++++++++++---
+ 1 file changed, 27 insertions(+), 3 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 70047845f71a94..59329d0533a891 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -214,18 +214,30 @@ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore
+   SmallVector<unsigned, 16> AddedLines;
+   SmallVector<const MachineInstr*, 16> AddedInsts;
+   SmallVector<std::string, 16> AddedSrcs;
++  SmallVector<unsigned, 16> AddedCols;
++  SmallVector<std::string, 16> AddedChars;
+ 
+   SmallVector<unsigned, 16> RemovedLines;
+   SmallVector<const MachineInstr*, 16> RemovedInsts;
+   SmallVector<std::string, 16> RemovedSrcs;
++  SmallVector<unsigned, 16> RemovedCols;
++  SmallVector<std::string, 16> RemovedChars;
+ 
+   // Find added jumps
+   for (size_t i = 0; i < AfterCjumpLines.size(); ++i) {
+     if (std::find(BeforeCjumpLines.begin(), BeforeCjumpLines.end(), 
+                  AfterCjumpLines[i]) == BeforeCjumpLines.end()) {
++      const auto DL = AfterCjumpInsts[i]->getDebugLoc();
+       AddedLines.push_back(AfterCjumpLines[i]);
+       AddedInsts.push_back(AfterCjumpInsts[i]);
+-      AddedSrcs.push_back(AfterCjumpSrcs[i]);
++      std::string LineSrc = AfterCjumpSrcs[i];
++      AddedSrcs.push_back(LineSrc);
++      unsigned Col = getLineCol(DL);
++      AddedCols.push_back(Col);
++      if (Col > 0 && Col <= LineSrc.size())
++        AddedChars.push_back(std::string{LineSrc[Col - 1]});
++      else
++        AddedChars.push_back(std::string(""));
+     }
+   }
+ 
+@@ -233,9 +245,17 @@ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore
+   for (size_t i = 0; i < BeforeCjumpLines.size(); ++i) {
+     if (std::find(AfterCjumpLines.begin(), AfterCjumpLines.end(), 
+                  BeforeCjumpLines[i]) == BeforeCjumpLines.end()) {
++      const auto DL = BeforeCjumpInsts[i]->getDebugLoc();
+       RemovedLines.push_back(BeforeCjumpLines[i]);
+       RemovedInsts.push_back(BeforeCjumpInsts[i]);
+-      RemovedSrcs.push_back(BeforeCjumpSrcs[i]);
++      std::string LineSrc = BeforeCjumpSrcs[i];
++      RemovedSrcs.push_back(LineSrc);
++      unsigned Col = getLineCol(DL);
++      RemovedCols.push_back(Col);
++      if (Col > 0 && Col <= LineSrc.size())
++        RemovedChars.push_back(std::string{LineSrc[Col - 1]});
++      else
++        RemovedChars.push_back(std::string(""));
+     }
+   }
+ 
+@@ -253,12 +273,16 @@ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore
+               << "\"cjump_count_after\": " << AfterCjumpInsts.size() << ", "
+               << "\"removed_cjump_count\": " << RemovedLines.size() << ", "
+               << "\"removed_cjump_lines\": [" << join(RemovedLines) << "], "
++              << "\"removed_cjump_cols\": [" << join(RemovedCols) << "], "
+               << "\"removed_cjump_insts\": [" << join(RemovedInsts) << "], "
+               << "\"removed_cjump_srcs\": [" << join(RemovedSrcs) << "], "
++              << "\"removed_cjump_chars\": [" << join(RemovedChars) << "], "
+               << "\"added_cjump_count\": " << AddedLines.size() << ", "
+               << "\"added_cjump_lines\": [" << join(AddedLines) << "], "
++              << "\"added_cjump_cols\": [" << join(AddedCols) << "], "
+               << "\"added_cjump_insts\": [" << join(AddedInsts) << "], "
+-              << "\"added_cjump_srcs\": [" << join(AddedSrcs) << "]"
++              << "\"added_cjump_srcs\": [" << join(AddedSrcs) << "], "
++              << "\"added_cjump_chars\": [" << join(AddedChars) << "]"
+               << "}\n";
+     
+     // Flush the stream to ensure all content is in the string
+
+From f7175a9fcb4a00a648023d5eaeff51888a2229cb Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Mon, 12 May 2025 13:51:15 +0200
+Subject: [PATCH 11/20] fix(-mfpass-dump): adapt StringRef deprecated API
+ endswith for LLVM version <= 15
+
+(cherry picked from commit 4bb7b95b908ac10fe68c0d034fef6060a1ce5846)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 59329d0533a891..3a8650d8d79d8d 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -162,7 +162,11 @@ static std::string BeforeFileName;
+ static std::string BeforeContext;
+ 
+ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
++#if LLVM_VERSION_MAJOR <= 15
++  if (Context.endswith("CountInstr")) return false;
++#else
+   if (Context.ends_with("CountInstr")) return false;
++#endif
+ 
+   // Skip if function is not in print list
+   if (!isFunctionInPrintList(MF.getName()))
+
+From 576ceff6b50231074f23e481300b40ab5a4b5f80 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Mon, 26 May 2025 21:11:00 +0200
+Subject: [PATCH 12/20] myutils: add getCharSrc function to read char from
+ DebugLoc
+
+wrapper using getLineSrc and getLineCol
+
+(cherry picked from commit fb17863819b1b59f0f9ea36cd7c2bed9108396e0)
+---
+ llvm/include/llvm/CodeGen/MachineFunctionPass.h |  3 +++
+ llvm/lib/CodeGen/MachineFunctionCountInstr.cpp  |  5 +----
+ llvm/lib/CodeGen/MachineFunctionPass.cpp        | 12 ++++++++++++
+ 3 files changed, 16 insertions(+), 4 deletions(-)
+
+diff --git a/llvm/include/llvm/CodeGen/MachineFunctionPass.h b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+index f31a5547c9c013..28d1a93b91b3ba 100644
+--- a/llvm/include/llvm/CodeGen/MachineFunctionPass.h
++++ b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+@@ -92,6 +92,9 @@ unsigned getLineNumber(const DebugLoc &DL);
+ 
+ unsigned getLineCol(const DebugLoc &DL);
+ 
++// get character from debugloc as string, uses getLineSrc and getLineCol
++std::string getCharSrc(const DebugLoc &DL);
++
+ bool isNameTrivial(const StringRef &Name);
+ 
+ } // namespace myutils
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index 3a372ead4d86d7..9e070bc63b5a2a 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -102,10 +102,7 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+         CjumpSrcs.push_back(LineSrc);
+         unsigned Col = getLineCol(DL);
+         CjumpCols.push_back(Col);
+-        if (Col > 0 && Col <= LineSrc.size())
+-          CjumpChars.push_back(std::string{LineSrc[Col - 1]});  // Column is 1-based, convert char to string
+-        else
+-          CjumpChars.push_back(std::string(""));  // Invalid column, use empty character
++        CjumpChars.push_back(getCharSrc(DL));  // Get character from debug location
+       }
+     }
+   }
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 3a8650d8d79d8d..3d0603e44532d2 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -134,6 +134,18 @@ unsigned getLineCol(const DebugLoc &DL) {
+   return 0;
+ }
+ 
++std::string getCharSrc(const DebugLoc &DL) {
++  if (!DL) {
++    return "[getDebugLoc returns null]";
++  }
++  std::string LineSrc = getLineSrc(DL);
++  unsigned Col = getLineCol(DL);
++  if (Col > 0 && Col <= LineSrc.size()) {
++    return std::string{LineSrc[Col - 1]};  // Column is 1-based, convert char to string
++  }
++  return std::string("");  // Invalid column, use empty character
++}
++
+ bool isNameTrivial(const StringRef &Name) {
+   const std::string TrivialKeywords[] = {".h", "include/", "third_party", "third-party", "fuzz", "test", "helper"};
+   for (const auto &Keyword : TrivialKeywords) {
+
+From e9f1042e33682cc785619f30c5ec42308694d2b2 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Wed, 4 Jun 2025 18:13:22 +0200
+Subject: [PATCH 13/20] feat!(MFCountInstr): division and memory operation in
+ Machine IR
+
+new fields in JSON output, can have very long memory-related instructions
+
+now only show fields from MIR, not branch in IR
+
+remove useless flush, output interleaving under parallel build should be prevented by make --output-sync
+
+(cherry picked from commit 428fbecceb79165dea7890901667a086c8f655d8)
+---
+ .../llvm/CodeGen/MachineFunctionPass.h        |   2 +
+ .../lib/CodeGen/MachineFunctionCountInstr.cpp | 129 ++++++++++++++----
+ llvm/lib/CodeGen/MachineFunctionPass.cpp      |  33 +++++
+ 3 files changed, 140 insertions(+), 24 deletions(-)
+
+diff --git a/llvm/include/llvm/CodeGen/MachineFunctionPass.h b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+index 28d1a93b91b3ba..549cfa7d6863a1 100644
+--- a/llvm/include/llvm/CodeGen/MachineFunctionPass.h
++++ b/llvm/include/llvm/CodeGen/MachineFunctionPass.h
+@@ -97,6 +97,8 @@ std::string getCharSrc(const DebugLoc &DL);
+ 
+ bool isNameTrivial(const StringRef &Name);
+ 
++bool isDivisionMachineInstruction(const MachineInstr &MI);
++
+ } // namespace myutils
+ 
+ #endif
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index 9e070bc63b5a2a..eedf8f3877d089 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -27,6 +27,7 @@ static cl::opt<std::string>
+             cl::init(""), cl::Hidden);
+ 
+ namespace {
++
+ /// MachineFunctionCountInstr - This is a architecture-independent
+ /// pass to dump cjump instructions of a MachineFunction.
+ ///
+@@ -66,25 +67,72 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+     return false;
+ 
+   // Instruction counters and line numbers
+-  SmallVector<const Instruction*, 16> SelectInsts;
+-  SmallVector<const MachineInstr*, 16> CjumpInsts;
+-  SmallVector<std::string, 16> SelectSrcs;
++  // SmallVector<const Instruction*, 16> CondInsts;  // IR conditional branches
++  SmallVector<const MachineInstr*, 16> CjumpInsts;  // MIR conditional branches
++  // SmallVector<const Instruction*, 16> DivInsts;  // IR division instructions
++  SmallVector<const MachineInstr*, 16> MDivInsts;  // MIR division instructions
++  // SmallVector<const Instruction*, 16> MemInsts;  // IR memory operations
++  SmallVector<const MachineInstr*, 16> MMemInsts;  // MIR memory operations
++  // SmallVector<std::string, 16> CondSrcs;
+   SmallVector<std::string, 16> CjumpSrcs;
+-  SmallVector<unsigned, 16> SelectLines;
++  // SmallVector<std::string, 16> DivSrcs;
++  SmallVector<std::string, 16> MDivSrcs;
++  // SmallVector<std::string, 16> MemSrcs;
++  SmallVector<std::string, 16> MMemSrcs;
++  // SmallVector<unsigned, 16> CondLines;
+   SmallVector<unsigned, 16> CjumpLines;
+   SmallVector<unsigned, 16> CjumpCols;
++  // SmallVector<unsigned, 16> DivLines;
++  SmallVector<unsigned, 16> MDivLines;
++  SmallVector<unsigned, 16> MDivCols;
++  // SmallVector<unsigned, 16> MemLines;
++  SmallVector<unsigned, 16> MMemLines;
++  SmallVector<unsigned, 16> MMemCols;
++  // SmallVector<std::string, 16> CondChars;
+   SmallVector<std::string, 16> CjumpChars;
++  // SmallVector<std::string, 16> DivChars;
++  SmallVector<std::string, 16> MDivChars;
++  // SmallVector<std::string, 16> MemChars;
++  SmallVector<std::string, 16> MMemChars;
++
++  // Add vectors for memory operations
+ 
+-  // Iterate through the LLVM IR instructions to count SelectInst
++  // Iterate through the LLVM IR to count branch, divisions, and memory operations
+   const Function &F = MF.getFunction();
+   for (const BasicBlock &BB : F) {
+     for (const Instruction &I : BB) {
+       if (!I.getDebugLoc()) continue;
+-      if (isa<SelectInst>(&I)) {
+-        SelectInsts.push_back(&I);
+-        SelectLines.push_back(getLineNumber(I.getDebugLoc()));
+-        SelectSrcs.push_back(getLineSrc(I.getDebugLoc()));
+-      }
++      // if (isa<SelectInst>(I)) {
++      // if (isa<BranchInst>(I) && cast<BranchInst>(I).isConditional()) {
++      //   CondInsts.push_back(&I);
++      //   CondLines.push_back(getLineNumber(I.getDebugLoc()));
++      //   CondSrcs.push_back(getLineSrc(I.getDebugLoc()));
++      //   CondChars.push_back(getCharSrc(I.getDebugLoc()));
++      //   continue;
++      // }
++      // IR division instructions (sdiv, udiv, fdiv), but not needed
++      // if (auto *BinOp = dyn_cast<BinaryOperator>(&I)) {
++      //   switch (BinOp->getOpcode()) {
++      //   case Instruction::SDiv:
++      //   case Instruction::UDiv:
++      //   case Instruction::FDiv:
++      //   case Instruction::URem:
++      //   case Instruction::SRem:
++      //   case Instruction::FRem:
++      //     DivInsts.push_back(&I);
++      //     DivLines.push_back(getLineNumber(I.getDebugLoc()));
++      //     DivSrcs.push_back(getLineSrc(I.getDebugLoc()));
++      //     DivChars.push_back(getCharSrc(I.getDebugLoc()));
++      //   }
++      // }
++      // Detect memory operations in IR
++      // if (isa<LoadInst>(I) || isa<StoreInst>(I)) {
++      // || isa<AtomicRMWInst>(&I) || isa<AtomicCmpXchgInst>(&I) || isa<GetElementPtrInst>(&I)) {
++      //   MemInsts.push_back(&I);
++      //   MemLines.push_back(getLineNumber(I.getDebugLoc()));
++      //   MemSrcs.push_back(getLineSrc(I.getDebugLoc()));
++      //   MemChars.push_back(getCharSrc(I.getDebugLoc()));
++      // }
+     }
+   }
+ 
+@@ -98,11 +146,27 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+         CjumpInsts.push_back(&MI);
+         const auto DL = MI.getDebugLoc();
+         CjumpLines.push_back(getLineNumber(DL));
+-        std::string LineSrc = getLineSrc(DL);
+-        CjumpSrcs.push_back(LineSrc);
+-        unsigned Col = getLineCol(DL);
+-        CjumpCols.push_back(Col);
+-        CjumpChars.push_back(getCharSrc(DL));  // Get character from debug location
++        CjumpSrcs.push_back(getLineSrc(DL));
++        CjumpCols.push_back(getLineCol(DL));
++        CjumpChars.push_back(getCharSrc(DL));
++      }
++      // Detect division instructions in Machine IR
++      if (isDivisionMachineInstruction(MI)) {
++        MDivInsts.push_back(&MI);
++        const auto DL = MI.getDebugLoc();
++        MDivLines.push_back(getLineNumber(DL));
++        MDivSrcs.push_back(getLineSrc(DL));
++        MDivCols.push_back(getLineCol(DL));
++        MDivChars.push_back(getCharSrc(DL));
++      }
++      // Detect memory operations in Machine IR
++      if (MI.mayLoadOrStore()) {
++        MMemInsts.push_back(&MI);
++        const auto DL = MI.getDebugLoc();
++        MMemLines.push_back(getLineNumber(DL));
++        MMemSrcs.push_back(getLineSrc(DL));
++        MMemCols.push_back(getLineCol(DL));
++        MMemChars.push_back(getCharSrc(DL));
+       }
+     }
+   }
+@@ -114,22 +178,39 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+            << "\"function\": \"" << MF.getName() << "\", "
+            << "\"file\": \"" << FileName << "\", "
+            << "\"context\": \"" << getPassName() << "\", "
+-           << "\"select_count\": " << SelectInsts.size() << ", "
+-           << "\"select_lines\": [" << join(SelectLines) << "], "
+-           << "\"select_insts\": [" << join(SelectInsts) << "], "
+-           << "\"select_srcs\": [" << join(SelectSrcs) << "], "
++          // NOTE: will be printed in IRCountInstr instead
++          //  << "\"cond_count\": " << CondInsts.size() << ", "
++          //  << "\"cond_lines\": [" << join(CondLines) << "], "
++          //  << "\"cond_insts\": [" << join(CondInsts) << "], "
++          //  << "\"cond_srcs\": [" << join(CondSrcs) << "], "
++          //  << "\"cond_chars\": [" << join(CondChars) << "], "
+            << "\"cjump_count\": " << CjumpInsts.size() << ", "
+            << "\"cjump_lines\": [" << join(CjumpLines) << "], "
+            << "\"cjump_cols\": [" << join(CjumpCols) << "], "
+            << "\"cjump_insts\": [" << join(CjumpInsts) << "], "
+            << "\"cjump_srcs\": [" << join(CjumpSrcs) << "], "
+-           << "\"cjump_chars\": [" << join(CjumpChars) << "]"
++           << "\"cjump_chars\": [" << join(CjumpChars) << "], "
++           << "\"mdiv_count\": " << MDivInsts.size() << ", "
++           << "\"mdiv_lines\": [" << join(MDivLines) << "], "
++           << "\"mdiv_cols\": [" << join(MDivCols) << "], "
++           << "\"mdiv_insts\": [" << join(MDivInsts) << "], "
++           << "\"mdiv_srcs\": [" << join(MDivSrcs) << "], "
++           << "\"mdiv_chars\": [" << join(MDivChars) << "], "
++          //  << "\"mem_count\": " << MemInsts.size() << ", "
++          //  << "\"mem_lines\": [" << join(MemLines) << "], "
++          //  << "\"mem_insts\": [" << join(MemInsts) << "], "
++          //  << "\"mem_srcs\": [" << join(MemSrcs) << "], "
++          //  << "\"mem_chars\": [" << join(MemChars) << "], "
++           << "\"mmem_count\": " << MMemInsts.size() << ", "
++           << "\"mmem_lines\": [" << join(MMemLines) << "], "
++           << "\"mmem_cols\": [" << join(MMemCols) << "], "
++           << "\"mmem_insts\": [" << join(MMemInsts) << "], "
++           << "\"mmem_srcs\": [" << join(MMemSrcs) << "], "
++           << "\"mmem_chars\": [" << join(MMemChars) << "]"
+            << "}\n";
+   
+-  // Flush the stream to ensure all content is in the string
+-  JsonStream.flush();
+-  
+-  // Output the complete JSON string - no lock needed as each write to errs() is atomic
++  // Output JSON to stderr, which is unbuffered by default so no need to flush
++  // Inter-Process output interleaving is prevented on build-system level (eg. make --output-sync)
+   errs() << JsonOutput;
+ 
+   // Only dump function and machine function if a dump directory is specified
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 3d0603e44532d2..c6961e585426c0 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -24,6 +24,8 @@
+ #include "llvm/CodeGen/MachineModuleInfo.h"
+ #include "llvm/CodeGen/MachineOptimizationRemarkEmitter.h"
+ #include "llvm/CodeGen/Passes.h"
++#include "llvm/CodeGen/TargetInstrInfo.h"
++#include "llvm/CodeGen/TargetOpcodes.h"
+ #include "llvm/IR/DebugInfoMetadata.h"
+ #include "llvm/IR/Dominators.h"
+ #include "llvm/IR/Function.h"
+@@ -156,6 +158,37 @@ bool isNameTrivial(const StringRef &Name) {
+   return false;
+ }
+ 
++/// Helper function to check if a machine instruction is a division
++bool isDivisionMachineInstruction(const MachineInstr &MI) {
++  unsigned Opcode = MI.getOpcode();
++  
++  // Check for generic division opcodes defined in TargetOpcodes.def
++  switch (Opcode) {
++  case TargetOpcode::G_SDIV:     // Generic signed division
++  case TargetOpcode::G_UDIV:     // Generic unsigned division
++  case TargetOpcode::G_FDIV:     // Generic floating-point division
++  case TargetOpcode::G_SREM:     // Generic signed remainder
++  case TargetOpcode::G_UREM:     // Generic unsigned remainder
++  case TargetOpcode::G_FREM:     // Generic floating-point remainder
++  case TargetOpcode::G_SDIVREM:  // Generic signed divrem
++  case TargetOpcode::G_UDIVREM:  // Generic unsigned divrem
++  case TargetOpcode::G_SDIVFIX:  // Generic signed fixed point division
++  case TargetOpcode::G_UDIVFIX:  // Generic unsigned fixed point division
++  case TargetOpcode::G_SDIVFIXSAT: // Generic signed saturating fixed point division
++  case TargetOpcode::G_UDIVFIXSAT: // Generic unsigned saturating fixed point division
++    return true;
++  default:
++    // For target-specific division instructions, we can still fall back to name checking
++    // but only for opcodes that are not generic
++    if (isTargetSpecificOpcode(Opcode)) {
++      const TargetInstrInfo *TII = MI.getParent()->getParent()->getSubtarget().getInstrInfo();
++      StringRef OpcodeName = TII->getName(Opcode);
++      return OpcodeName.contains_insensitive("div");
++    }
++    return false;
++  }
++}
++
+ } // namespace myutils
+ 
+ using namespace myutils;
+
+From 5b336ca3f68398c97e538168e5bddee63ee8bfc2 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Tue, 17 Jun 2025 12:59:43 +0200
+Subject: [PATCH 14/20] feat(-mfpass-dump): also get added/removed mdiv and
+ mmem in addition to cjump
+
+(cherry picked from commit 83ecddaa340b296812cde4c47c5956f835efa4b2)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 307 +++++++++++++++++------
+ 1 file changed, 228 insertions(+), 79 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index c6961e585426c0..1e7456d175f85b 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -189,6 +189,65 @@ bool isDivisionMachineInstruction(const MachineInstr &MI) {
+   }
+ }
+ 
++// Helper function to find differences between before and after instruction sets
++template<typename T>
++void findInstructionDifferences(const SmallVectorImpl<T>& beforeInsts,
++                                const SmallVectorImpl<unsigned>& beforeLines,
++                                const SmallVectorImpl<unsigned>& beforeCols,
++                                const SmallVectorImpl<std::string>& beforeSrcs,
++                                const SmallVectorImpl<T>& afterInsts,
++                                const SmallVectorImpl<unsigned>& afterLines,
++                                const SmallVectorImpl<unsigned>& afterCols,
++                                const SmallVectorImpl<std::string>& afterSrcs,
++                                SmallVectorImpl<unsigned>& addedLines,
++                                SmallVectorImpl<T>& addedInsts,
++                                SmallVectorImpl<std::string>& addedSrcs,
++                                SmallVectorImpl<unsigned>& addedCols,
++                                SmallVectorImpl<std::string>& addedChars,
++                                SmallVectorImpl<unsigned>& removedLines,
++                                SmallVectorImpl<T>& removedInsts,
++                                SmallVectorImpl<std::string>& removedSrcs,
++                                SmallVectorImpl<unsigned>& removedCols,
++                                SmallVectorImpl<std::string>& removedChars) {
++  // Find added instructions - use line+col combination for precise matching
++  for (size_t i = 0; i < afterLines.size(); ++i) {
++    bool found = false;
++    for (size_t j = 0; j < beforeLines.size(); ++j) {
++      if (afterLines[i] == beforeLines[j] && afterCols[i] == beforeCols[j]) {
++        found = true;
++        break;
++      }
++    }
++    if (!found) {
++      const auto DL = afterInsts[i]->getDebugLoc();
++      addedLines.push_back(afterLines[i]);
++      addedInsts.push_back(afterInsts[i]);
++      addedSrcs.push_back(afterSrcs[i]);
++      addedCols.push_back(afterCols[i]);
++      addedChars.push_back(getCharSrc(DL));
++    }
++  }
++
++  // Find removed instructions - use line+col combination for precise matching
++  for (size_t i = 0; i < beforeLines.size(); ++i) {
++    bool found = false;
++    for (size_t j = 0; j < afterLines.size(); ++j) {
++      if (beforeLines[i] == afterLines[j] && beforeCols[i] == afterCols[j]) {
++        found = true;
++        break;
++      }
++    }
++    if (!found) {
++      const auto DL = beforeInsts[i]->getDebugLoc();
++      removedLines.push_back(beforeLines[i]);
++      removedInsts.push_back(beforeInsts[i]);
++      removedSrcs.push_back(beforeSrcs[i]);
++      removedCols.push_back(beforeCols[i]);
++      removedChars.push_back(getCharSrc(DL));
++    }
++  }
++}
++
+ } // namespace myutils
+ 
+ using namespace myutils;
+@@ -202,11 +261,20 @@ static cl::opt<bool>
+ static SmallVector<const MachineInstr*, 16> BeforeCjumpInsts;
+ static SmallVector<std::string, 16> BeforeCjumpSrcs;
+ static SmallVector<unsigned, 16> BeforeCjumpLines;
++static SmallVector<unsigned, 16> BeforeCjumpCols;
++static SmallVector<const MachineInstr*, 16> BeforeMDivInsts;
++static SmallVector<std::string, 16> BeforeMDivSrcs;
++static SmallVector<unsigned, 16> BeforeMDivLines;
++static SmallVector<unsigned, 16> BeforeMDivCols;
++static SmallVector<const MachineInstr*, 16> BeforeMMemInsts;
++static SmallVector<std::string, 16> BeforeMMemSrcs;
++static SmallVector<unsigned, 16> BeforeMMemLines;
++static SmallVector<unsigned, 16> BeforeMMemCols;
+ static std::string BeforeFunction;
+ static std::string BeforeFileName;
+ static std::string BeforeContext;
+ 
+-bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
++bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+ #if LLVM_VERSION_MAJOR <= 15
+   if (Context.endswith("CountInstr")) return false;
+ #else
+@@ -229,14 +297,38 @@ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore
+     BeforeCjumpInsts.clear();
+     BeforeCjumpSrcs.clear();
+     BeforeCjumpLines.clear();
+-
+-    // Collect all conditional jumps
++    BeforeCjumpCols.clear();
++    BeforeMDivInsts.clear();
++    BeforeMDivSrcs.clear();
++    BeforeMDivLines.clear();
++    BeforeMDivCols.clear();
++    BeforeMMemInsts.clear();
++    BeforeMMemSrcs.clear();
++    BeforeMMemLines.clear();
++    BeforeMMemCols.clear();
++
++    // Collect all conditional jumps, divisions, and memory operations
+     for (const MachineBasicBlock &MBB : MF) {
+       for (const MachineInstr &MI : MBB) {
+         if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+           BeforeCjumpInsts.push_back(&MI);
+-          BeforeCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++          BeforeCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
++          BeforeCjumpCols.push_back(getLineCol(MI.getDebugLoc()));
++        }
++        // Check for division instructions
++        if (isDivisionMachineInstruction(MI)) {
++          BeforeMDivInsts.push_back(&MI);
++          BeforeMDivSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++          BeforeMDivLines.push_back(getLineNumber(MI.getDebugLoc()));
++          BeforeMDivCols.push_back(getLineCol(MI.getDebugLoc()));
++        }
++        // Check for memory operations
++        if (MI.mayLoadOrStore() && !MI.isReturn() && !MI.isCall() && !MI.hasImplicitDef()) {
++          BeforeMMemInsts.push_back(&MI);
++          BeforeMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++          BeforeMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
++          BeforeMMemCols.push_back(getLineCol(MI.getDebugLoc()));
+         }
+       }
+     }
+@@ -247,95 +339,152 @@ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore
+   SmallVector<const MachineInstr*, 16> AfterCjumpInsts;
+   SmallVector<std::string, 16> AfterCjumpSrcs;
+   SmallVector<unsigned, 16> AfterCjumpLines;
++  SmallVector<unsigned, 16> AfterCjumpCols;
++  SmallVector<const MachineInstr*, 16> AfterMDivInsts;
++  SmallVector<std::string, 16> AfterMDivSrcs;
++  SmallVector<unsigned, 16> AfterMDivLines;
++  SmallVector<unsigned, 16> AfterMDivCols;
++  SmallVector<const MachineInstr*, 16> AfterMMemInsts;
++  SmallVector<std::string, 16> AfterMMemSrcs;
++  SmallVector<unsigned, 16> AfterMMemLines;
++  SmallVector<unsigned, 16> AfterMMemCols;
+ 
+   for (const MachineBasicBlock &MBB : MF) {
+     for (const MachineInstr &MI : MBB) {
+       if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+         AfterCjumpInsts.push_back(&MI);
+-        AfterCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++        AfterCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
++        AfterCjumpCols.push_back(getLineCol(MI.getDebugLoc()));
++      }
++      if (isDivisionMachineInstruction(MI)) {
++        AfterMDivInsts.push_back(&MI);
++        AfterMDivSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++        AfterMDivLines.push_back(getLineNumber(MI.getDebugLoc()));
++        AfterMDivCols.push_back(getLineCol(MI.getDebugLoc()));
++      }
++      if (MI.mayLoadOrStore()) {
++        AfterMMemInsts.push_back(&MI);
++        AfterMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
++        AfterMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
++        AfterMMemCols.push_back(getLineCol(MI.getDebugLoc()));
+       }
+     }
+   }
+ 
+-  // Find added and removed jumps based on line numbers
+-  // (using line numbers as a proxy for identifying the same jump)
+-  SmallVector<unsigned, 16> AddedLines;
+-  SmallVector<const MachineInstr*, 16> AddedInsts;
+-  SmallVector<std::string, 16> AddedSrcs;
+-  SmallVector<unsigned, 16> AddedCols;
+-  SmallVector<std::string, 16> AddedChars;
+-
+-  SmallVector<unsigned, 16> RemovedLines;
+-  SmallVector<const MachineInstr*, 16> RemovedInsts;
+-  SmallVector<std::string, 16> RemovedSrcs;
+-  SmallVector<unsigned, 16> RemovedCols;
+-  SmallVector<std::string, 16> RemovedChars;
+-
+-  // Find added jumps
+-  for (size_t i = 0; i < AfterCjumpLines.size(); ++i) {
+-    if (std::find(BeforeCjumpLines.begin(), BeforeCjumpLines.end(), 
+-                 AfterCjumpLines[i]) == BeforeCjumpLines.end()) {
+-      const auto DL = AfterCjumpInsts[i]->getDebugLoc();
+-      AddedLines.push_back(AfterCjumpLines[i]);
+-      AddedInsts.push_back(AfterCjumpInsts[i]);
+-      std::string LineSrc = AfterCjumpSrcs[i];
+-      AddedSrcs.push_back(LineSrc);
+-      unsigned Col = getLineCol(DL);
+-      AddedCols.push_back(Col);
+-      if (Col > 0 && Col <= LineSrc.size())
+-        AddedChars.push_back(std::string{LineSrc[Col - 1]});
+-      else
+-        AddedChars.push_back(std::string(""));
+-    }
+-  }
+-
+-  // Find removed jumps
+-  for (size_t i = 0; i < BeforeCjumpLines.size(); ++i) {
+-    if (std::find(AfterCjumpLines.begin(), AfterCjumpLines.end(), 
+-                 BeforeCjumpLines[i]) == BeforeCjumpLines.end()) {
+-      const auto DL = BeforeCjumpInsts[i]->getDebugLoc();
+-      RemovedLines.push_back(BeforeCjumpLines[i]);
+-      RemovedInsts.push_back(BeforeCjumpInsts[i]);
+-      std::string LineSrc = BeforeCjumpSrcs[i];
+-      RemovedSrcs.push_back(LineSrc);
+-      unsigned Col = getLineCol(DL);
+-      RemovedCols.push_back(Col);
+-      if (Col > 0 && Col <= LineSrc.size())
+-        RemovedChars.push_back(std::string{LineSrc[Col - 1]});
+-      else
+-        RemovedChars.push_back(std::string(""));
+-    }
+-  }
++  // Find added and removed instructions using helper function
++  SmallVector<const MachineInstr*, 16> AddedCjumpInsts, RemovedCjumpInsts;
++  SmallVector<unsigned, 16> AddedCjumpLines, RemovedCjumpLines;
++  SmallVector<unsigned, 16> AddedCjumpCols, RemovedCjumpCols;
++  SmallVector<std::string, 16> AddedCjumpSrcs, RemovedCjumpSrcs;
++  SmallVector<std::string, 16> AddedCjumpChars, RemovedCjumpChars;
++
++  SmallVector<const MachineInstr*, 16> AddedMDivInsts, RemovedMDivInsts;
++  SmallVector<unsigned, 16> AddedMDivLines, RemovedMDivLines;
++  SmallVector<unsigned, 16> AddedMDivCols, RemovedMDivCols;
++  SmallVector<std::string, 16> AddedMDivSrcs, RemovedMDivSrcs;
++  SmallVector<std::string, 16> AddedMDivChars, RemovedMDivChars;
++
++  SmallVector<const MachineInstr*, 16> AddedMMemInsts, RemovedMMemInsts;
++  SmallVector<unsigned, 16> AddedMMemLines, RemovedMMemLines;
++  SmallVector<unsigned, 16> AddedMMemCols, RemovedMMemCols;
++  SmallVector<std::string, 16> AddedMMemSrcs, RemovedMMemSrcs;
++  SmallVector<std::string, 16> AddedMMemChars, RemovedMMemChars;
++
++  // Find added/removed conditional jumps
++  findInstructionDifferences(BeforeCjumpInsts, BeforeCjumpLines, BeforeCjumpCols, BeforeCjumpSrcs,
++                            AfterCjumpInsts, AfterCjumpLines, AfterCjumpCols, AfterCjumpSrcs,
++                            AddedCjumpLines, AddedCjumpInsts, AddedCjumpSrcs, AddedCjumpCols, AddedCjumpChars,
++                            RemovedCjumpLines, RemovedCjumpInsts, RemovedCjumpSrcs, RemovedCjumpCols, RemovedCjumpChars);
++
++  // Find added/removed divisions
++  findInstructionDifferences(BeforeMDivInsts, BeforeMDivLines, BeforeMDivCols, BeforeMDivSrcs,
++                            AfterMDivInsts, AfterMDivLines, AfterMDivCols, AfterMDivSrcs,
++                            AddedMDivLines, AddedMDivInsts, AddedMDivSrcs, AddedMDivCols, AddedMDivChars,
++                            RemovedMDivLines, RemovedMDivInsts, RemovedMDivSrcs, RemovedMDivCols, RemovedMDivChars);
++
++  // Find added/removed memory operations
++  findInstructionDifferences(BeforeMMemInsts, BeforeMMemLines, BeforeMMemCols, BeforeMMemSrcs,
++                            AfterMMemInsts, AfterMMemLines, AfterMMemCols, AfterMMemSrcs,
++                            AddedMMemLines, AddedMMemInsts, AddedMMemSrcs, AddedMMemCols, AddedMMemChars,
++                            RemovedMMemLines, RemovedMMemInsts, RemovedMMemSrcs, RemovedMMemCols, RemovedMMemChars);
+ 
+   // Only print if there were changes
+-  if (!AddedLines.empty() || !RemovedLines.empty()) {
++  if (!AddedCjumpLines.empty() || !RemovedCjumpLines.empty() || 
++      !AddedMDivLines.empty() || !RemovedMDivLines.empty() ||
++      !AddedMMemLines.empty() || !RemovedMMemLines.empty()) {
+     // Build the complete JSON string in memory before outputting
+     std::string JsonOutput;
+     raw_string_ostream JsonStream(JsonOutput);
+     
+     JsonStream << "{"
+-              << "\"function\": \"" << BeforeFunction << "\", "
+-              << "\"file\": \"" << BeforeFileName << "\", "
+-              << "\"context\": \"" << BeforeContext << "\", "
+-              << "\"cjump_count_before\": " << BeforeCjumpInsts.size() << ", "
+-              << "\"cjump_count_after\": " << AfterCjumpInsts.size() << ", "
+-              << "\"removed_cjump_count\": " << RemovedLines.size() << ", "
+-              << "\"removed_cjump_lines\": [" << join(RemovedLines) << "], "
+-              << "\"removed_cjump_cols\": [" << join(RemovedCols) << "], "
+-              << "\"removed_cjump_insts\": [" << join(RemovedInsts) << "], "
+-              << "\"removed_cjump_srcs\": [" << join(RemovedSrcs) << "], "
+-              << "\"removed_cjump_chars\": [" << join(RemovedChars) << "], "
+-              << "\"added_cjump_count\": " << AddedLines.size() << ", "
+-              << "\"added_cjump_lines\": [" << join(AddedLines) << "], "
+-              << "\"added_cjump_cols\": [" << join(AddedCols) << "], "
+-              << "\"added_cjump_insts\": [" << join(AddedInsts) << "], "
+-              << "\"added_cjump_srcs\": [" << join(AddedSrcs) << "], "
+-              << "\"added_cjump_chars\": [" << join(AddedChars) << "]"
+-              << "}\n";
+-    
+-    // Flush the stream to ensure all content is in the string
+-    JsonStream.flush();
++      << "\"function\": \"" << BeforeFunction << "\","
++      << "\"file\": \"" << BeforeFileName << "\","
++      << "\"context\": \"" << BeforeContext << "\","
++      // Conditional jump stats 
++      << "\"cjump_count_before\": " << BeforeCjumpInsts.size() << ","
++      << "\"cjump_count_after\": " << AfterCjumpInsts.size() << ","
++      << "\"removed_cjump_count\": " << RemovedCjumpLines.size() << ","
++      << "\"added_cjump_count\": " << AddedCjumpLines.size();
++    // Removed conditional jumps
++    if (!RemovedCjumpLines.empty()) {
++      JsonStream << ",\"removed_cjump_lines\": [" << join(RemovedCjumpLines, ",") << "]"
++      << ",\"removed_cjump_cols\": [" << join(RemovedCjumpCols, ",") << "]"
++      << ",\"removed_cjump_insts\": [" << join(RemovedCjumpInsts, ",") << "]"
++      << ",\"removed_cjump_srcs\": [" << join(RemovedCjumpSrcs, ",") << "]"
++      << ",\"removed_cjump_chars\": [" << join(RemovedCjumpChars, ",") << "]";
++    }
++    // Added conditional jumps  
++    if (!AddedCjumpLines.empty()) {
++      JsonStream << ",\"added_cjump_lines\": [" << join(AddedCjumpLines, ",") << "]"
++      << ",\"added_cjump_cols\": [" << join(AddedCjumpCols, ",") << "]"
++      << ",\"added_cjump_insts\": [" << join(AddedCjumpInsts, ",") << "]"
++      << ",\"added_cjump_srcs\": [" << join(AddedCjumpSrcs, ",") << "]"
++      << ",\"added_cjump_chars\": [" << join(AddedCjumpChars, ",") << "]";
++    }
++    // Division instruction stats
++    JsonStream << ",\"mdiv_count_before\": " << BeforeMDivInsts.size() << ","
++      << "\"mdiv_count_after\": " << AfterMDivInsts.size() << ","
++      << "\"removed_mdiv_count\": " << RemovedMDivLines.size() << ","
++      << "\"added_mdiv_count\": " << AddedMDivLines.size();
++    // Removed division instructions
++    if (!RemovedMDivLines.empty()) {
++      JsonStream << ",\"removed_mdiv_lines\": [" << join(RemovedMDivLines, ",") << "]"
++      << ",\"removed_mdiv_cols\": [" << join(RemovedMDivCols, ",") << "]"
++      << ",\"removed_mdiv_insts\": [" << join(RemovedMDivInsts, ",") << "]"
++      << ",\"removed_mdiv_srcs\": [" << join(RemovedMDivSrcs, ",") << "]"
++      << ",\"removed_mdiv_chars\": [" << join(RemovedMDivChars, ",") << "]";
++    }
++    // Added division instructions 
++    if (!AddedMDivLines.empty()) {
++      JsonStream << ",\"added_mdiv_lines\": [" << join(AddedMDivLines, ",") << "]"
++      << ",\"added_mdiv_cols\": [" << join(AddedMDivCols, ",") << "]"
++      << ",\"added_mdiv_insts\": [" << join(AddedMDivInsts, ",") << "]"
++      << ",\"added_mdiv_srcs\": [" << join(AddedMDivSrcs, ",") << "]"
++      << ",\"added_mdiv_chars\": [" << join(AddedMDivChars, ",") << "]";
++    }
++    // Memory operation stats
++    JsonStream << ",\"mmem_count_before\": " << BeforeMMemInsts.size() << ","
++      << "\"mmem_count_after\": " << AfterMMemInsts.size() << ","
++      << "\"removed_mmem_count\": " << RemovedMMemLines.size() << ","
++      << "\"added_mmem_count\": " << AddedMMemLines.size();
++    // Removed memory operations
++    if (!RemovedMMemLines.empty()) {
++      JsonStream << ",\"removed_mmem_lines\": [" << join(RemovedMMemLines, ",") << "]"
++      << ",\"removed_mmem_cols\": [" << join(RemovedMMemCols, ",") << "]"
++      << ",\"removed_mmem_insts\": [" << join(RemovedMMemInsts, ",") << "]"
++      << ",\"removed_mmem_srcs\": [" << join(RemovedMMemSrcs, ",") << "]"
++      << ",\"removed_mmem_chars\": [" << join(RemovedMMemChars, ",") << "]";
++    }
++    // Added memory operations
++    if (!AddedMMemLines.empty()) {
++      JsonStream << ",\"added_mmem_lines\": [" << join(AddedMMemLines, ",") << "]"
++      << ",\"added_mmem_cols\": [" << join(AddedMMemCols, ",") << "]"
++      << ",\"added_mmem_insts\": [" << join(AddedMMemInsts, ",") << "]"
++      << ",\"added_mmem_srcs\": [" << join(AddedMMemSrcs, ",") << "]"
++      << ",\"added_mmem_chars\": [" << join(AddedMMemChars, ",") << "]";
++    }
++    JsonStream << "}\n";
+     
+     // Output the complete JSON string - no lock needed as each write to errs() is atomic
+     errs() << JsonOutput;
+@@ -343,7 +492,7 @@ bool dumpCjumppInsts(const MachineFunction &MF, StringRef Context, bool IsBefore
+     return true;
+   }
+   
+-  // No changes to cjumps
++  // No changes to cjumps, divisions, or memory operations
+   return false;
+ }
+ 
+@@ -407,11 +556,11 @@ bool MachineFunctionPass::runOnFunction(Function &F) {
+   MFProps.reset(ClearedProperties);
+ 
+   if (EnableMFPassDump) {
+-    dumpCjumppInsts(MF, getPassName(), true);
++    dumpInsts(MF, getPassName(), true);
+   }
+   bool RV = runOnMachineFunction(MF);
+   if (EnableMFPassDump) {
+-    dumpCjumppInsts(MF, getPassName(), false);
++    dumpInsts(MF, getPassName(), false);
+   }
+ 
+   if (ShouldEmitSizeRemarks) {
+
+From 156a23b3df874c2d1c60d15acfa9114d39854bdd Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Wed, 18 Jun 2025 19:49:33 +0200
+Subject: [PATCH 15/20] fix(-mfpass-dump): store insts and chars as string
+ beforehand to avoid invalid pointer access
+
+(cherry picked from commit 28260731b6b7463df696e1a9300273076a54535b)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 75 ++++++++++++++++--------
+ 1 file changed, 49 insertions(+), 26 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 1e7456d175f85b..224cdc9deb9dc4 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -63,6 +63,14 @@ static SmallVector<std::string>& getFileLines(StringRef FileName) {
+   return Lines;
+ }
+ 
++// Helper function to convert MachineInstr to string  
++std::string getInstStr(const MachineInstr &MI) {
++  std::string instStr;
++  raw_string_ostream ss(instStr);
++  ss << MI;
++  return instStr;
++}
++
+ template <typename T>
+ std::string join(const SmallVectorImpl<T> &vec, const std::string &sep) {
+   std::ostringstream sss;
+@@ -105,7 +113,7 @@ std::string getLineSrc(const DebugLoc &DL) {
+   if (!DL) {
+     return "[getDebugLoc returns null]";
+   }
+-  StringRef FileName = DL->getScope()->getFilename();
++  StringRef FileName = DL->getFilename();
+   unsigned Line = DL.getLine();
+   
+   const auto& Lines = getFileLines(FileName);
+@@ -195,10 +203,12 @@ void findInstructionDifferences(const SmallVectorImpl<T>& beforeInsts,
+                                 const SmallVectorImpl<unsigned>& beforeLines,
+                                 const SmallVectorImpl<unsigned>& beforeCols,
+                                 const SmallVectorImpl<std::string>& beforeSrcs,
++                                const SmallVectorImpl<std::string>& beforeChars,
+                                 const SmallVectorImpl<T>& afterInsts,
+                                 const SmallVectorImpl<unsigned>& afterLines,
+                                 const SmallVectorImpl<unsigned>& afterCols,
+                                 const SmallVectorImpl<std::string>& afterSrcs,
++                                const SmallVectorImpl<std::string>& afterChars,
+                                 SmallVectorImpl<unsigned>& addedLines,
+                                 SmallVectorImpl<T>& addedInsts,
+                                 SmallVectorImpl<std::string>& addedSrcs,
+@@ -219,12 +229,11 @@ void findInstructionDifferences(const SmallVectorImpl<T>& beforeInsts,
+       }
+     }
+     if (!found) {
+-      const auto DL = afterInsts[i]->getDebugLoc();
+       addedLines.push_back(afterLines[i]);
+       addedInsts.push_back(afterInsts[i]);
+       addedSrcs.push_back(afterSrcs[i]);
+       addedCols.push_back(afterCols[i]);
+-      addedChars.push_back(getCharSrc(DL));
++      addedChars.push_back(afterChars[i]);
+     }
+   }
+ 
+@@ -238,12 +247,11 @@ void findInstructionDifferences(const SmallVectorImpl<T>& beforeInsts,
+       }
+     }
+     if (!found) {
+-      const auto DL = beforeInsts[i]->getDebugLoc();
+       removedLines.push_back(beforeLines[i]);
+       removedInsts.push_back(beforeInsts[i]);
+       removedSrcs.push_back(beforeSrcs[i]);
+       removedCols.push_back(beforeCols[i]);
+-      removedChars.push_back(getCharSrc(DL));
++      removedChars.push_back(beforeChars[i]);
+     }
+   }
+ }
+@@ -258,18 +266,21 @@ static cl::opt<bool>
+                       cl::init(false), cl::Hidden);
+ 
+ // This will collect conditional jump information and store it for later comparison
+-static SmallVector<const MachineInstr*, 16> BeforeCjumpInsts;
++static SmallVector<std::string, 16> BeforeCjumpInsts;
+ static SmallVector<std::string, 16> BeforeCjumpSrcs;
+ static SmallVector<unsigned, 16> BeforeCjumpLines;
+ static SmallVector<unsigned, 16> BeforeCjumpCols;
+-static SmallVector<const MachineInstr*, 16> BeforeMDivInsts;
++static SmallVector<std::string, 16> BeforeCjumpChars;
++static SmallVector<std::string, 16> BeforeMDivInsts;
+ static SmallVector<std::string, 16> BeforeMDivSrcs;
+ static SmallVector<unsigned, 16> BeforeMDivLines;
+ static SmallVector<unsigned, 16> BeforeMDivCols;
+-static SmallVector<const MachineInstr*, 16> BeforeMMemInsts;
++static SmallVector<std::string, 16> BeforeMDivChars;
++static SmallVector<std::string, 16> BeforeMMemInsts;
+ static SmallVector<std::string, 16> BeforeMMemSrcs;
+ static SmallVector<unsigned, 16> BeforeMMemLines;
+ static SmallVector<unsigned, 16> BeforeMMemCols;
++static SmallVector<std::string, 16> BeforeMMemChars;
+ static std::string BeforeFunction;
+ static std::string BeforeFileName;
+ static std::string BeforeContext;
+@@ -298,37 +309,43 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+     BeforeCjumpSrcs.clear();
+     BeforeCjumpLines.clear();
+     BeforeCjumpCols.clear();
++    BeforeCjumpChars.clear();
+     BeforeMDivInsts.clear();
+     BeforeMDivSrcs.clear();
+     BeforeMDivLines.clear();
+     BeforeMDivCols.clear();
++    BeforeMDivChars.clear();
+     BeforeMMemInsts.clear();
+     BeforeMMemSrcs.clear();
+     BeforeMMemLines.clear();
+     BeforeMMemCols.clear();
++    BeforeMMemChars.clear();
+ 
+     // Collect all conditional jumps, divisions, and memory operations
+     for (const MachineBasicBlock &MBB : MF) {
+       for (const MachineInstr &MI : MBB) {
+         if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+-          BeforeCjumpInsts.push_back(&MI);
++          BeforeCjumpInsts.push_back(getInstStr(MI));
+           BeforeCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+           BeforeCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeCjumpCols.push_back(getLineCol(MI.getDebugLoc()));
++          BeforeCjumpChars.push_back(getCharSrc(MI.getDebugLoc()));
+         }
+         // Check for division instructions
+         if (isDivisionMachineInstruction(MI)) {
+-          BeforeMDivInsts.push_back(&MI);
++          BeforeMDivInsts.push_back(getInstStr(MI));
+           BeforeMDivSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+           BeforeMDivLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeMDivCols.push_back(getLineCol(MI.getDebugLoc()));
++          BeforeMDivChars.push_back(getCharSrc(MI.getDebugLoc()));
+         }
+         // Check for memory operations
+         if (MI.mayLoadOrStore() && !MI.isReturn() && !MI.isCall() && !MI.hasImplicitDef()) {
+-          BeforeMMemInsts.push_back(&MI);
++          BeforeMMemInsts.push_back(getInstStr(MI));
+           BeforeMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+           BeforeMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeMMemCols.push_back(getLineCol(MI.getDebugLoc()));
++          BeforeMMemChars.push_back(getCharSrc(MI.getDebugLoc()));
+         }
+       }
+     }
+@@ -336,76 +353,82 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+   }
+ 
+   // After pass execution - collect current state
+-  SmallVector<const MachineInstr*, 16> AfterCjumpInsts;
++  SmallVector<std::string, 16> AfterCjumpInsts;
+   SmallVector<std::string, 16> AfterCjumpSrcs;
+   SmallVector<unsigned, 16> AfterCjumpLines;
+   SmallVector<unsigned, 16> AfterCjumpCols;
+-  SmallVector<const MachineInstr*, 16> AfterMDivInsts;
++  SmallVector<std::string, 16> AfterCjumpChars;
++  SmallVector<std::string, 16> AfterMDivInsts;
+   SmallVector<std::string, 16> AfterMDivSrcs;
+   SmallVector<unsigned, 16> AfterMDivLines;
+   SmallVector<unsigned, 16> AfterMDivCols;
+-  SmallVector<const MachineInstr*, 16> AfterMMemInsts;
++  SmallVector<std::string, 16> AfterMDivChars;
++  SmallVector<std::string, 16> AfterMMemInsts;
+   SmallVector<std::string, 16> AfterMMemSrcs;
+   SmallVector<unsigned, 16> AfterMMemLines;
+   SmallVector<unsigned, 16> AfterMMemCols;
++  SmallVector<std::string, 16> AfterMMemChars;
+ 
+   for (const MachineBasicBlock &MBB : MF) {
+     for (const MachineInstr &MI : MBB) {
+       if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+-        AfterCjumpInsts.push_back(&MI);
++        AfterCjumpInsts.push_back(getInstStr(MI));
+         AfterCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterCjumpCols.push_back(getLineCol(MI.getDebugLoc()));
++        AfterCjumpChars.push_back(getCharSrc(MI.getDebugLoc()));
+       }
+       if (isDivisionMachineInstruction(MI)) {
+-        AfterMDivInsts.push_back(&MI);
++        AfterMDivInsts.push_back(getInstStr(MI));
+         AfterMDivSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterMDivLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterMDivCols.push_back(getLineCol(MI.getDebugLoc()));
++        AfterMDivChars.push_back(getCharSrc(MI.getDebugLoc()));
+       }
+       if (MI.mayLoadOrStore()) {
+-        AfterMMemInsts.push_back(&MI);
++        AfterMMemInsts.push_back(getInstStr(MI));
+         AfterMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterMMemCols.push_back(getLineCol(MI.getDebugLoc()));
++        AfterMMemChars.push_back(getCharSrc(MI.getDebugLoc()));
+       }
+     }
+   }
+ 
+   // Find added and removed instructions using helper function
+-  SmallVector<const MachineInstr*, 16> AddedCjumpInsts, RemovedCjumpInsts;
++  SmallVector<std::string, 16> AddedCjumpInsts, RemovedCjumpInsts;
+   SmallVector<unsigned, 16> AddedCjumpLines, RemovedCjumpLines;
+   SmallVector<unsigned, 16> AddedCjumpCols, RemovedCjumpCols;
+   SmallVector<std::string, 16> AddedCjumpSrcs, RemovedCjumpSrcs;
+   SmallVector<std::string, 16> AddedCjumpChars, RemovedCjumpChars;
+ 
+-  SmallVector<const MachineInstr*, 16> AddedMDivInsts, RemovedMDivInsts;
++  SmallVector<std::string, 16> AddedMDivInsts, RemovedMDivInsts;
+   SmallVector<unsigned, 16> AddedMDivLines, RemovedMDivLines;
+   SmallVector<unsigned, 16> AddedMDivCols, RemovedMDivCols;
+   SmallVector<std::string, 16> AddedMDivSrcs, RemovedMDivSrcs;
+   SmallVector<std::string, 16> AddedMDivChars, RemovedMDivChars;
+ 
+-  SmallVector<const MachineInstr*, 16> AddedMMemInsts, RemovedMMemInsts;
++  SmallVector<std::string, 16> AddedMMemInsts, RemovedMMemInsts;
+   SmallVector<unsigned, 16> AddedMMemLines, RemovedMMemLines;
+   SmallVector<unsigned, 16> AddedMMemCols, RemovedMMemCols;
+   SmallVector<std::string, 16> AddedMMemSrcs, RemovedMMemSrcs;
+   SmallVector<std::string, 16> AddedMMemChars, RemovedMMemChars;
+ 
+   // Find added/removed conditional jumps
+-  findInstructionDifferences(BeforeCjumpInsts, BeforeCjumpLines, BeforeCjumpCols, BeforeCjumpSrcs,
+-                            AfterCjumpInsts, AfterCjumpLines, AfterCjumpCols, AfterCjumpSrcs,
++  findInstructionDifferences(BeforeCjumpInsts, BeforeCjumpLines, BeforeCjumpCols, BeforeCjumpSrcs, BeforeCjumpChars,
++                            AfterCjumpInsts, AfterCjumpLines, AfterCjumpCols, AfterCjumpSrcs, AfterCjumpChars,
+                             AddedCjumpLines, AddedCjumpInsts, AddedCjumpSrcs, AddedCjumpCols, AddedCjumpChars,
+                             RemovedCjumpLines, RemovedCjumpInsts, RemovedCjumpSrcs, RemovedCjumpCols, RemovedCjumpChars);
+ 
+   // Find added/removed divisions
+-  findInstructionDifferences(BeforeMDivInsts, BeforeMDivLines, BeforeMDivCols, BeforeMDivSrcs,
+-                            AfterMDivInsts, AfterMDivLines, AfterMDivCols, AfterMDivSrcs,
++  findInstructionDifferences(BeforeMDivInsts, BeforeMDivLines, BeforeMDivCols, BeforeMDivSrcs, BeforeMDivChars,
++                            AfterMDivInsts, AfterMDivLines, AfterMDivCols, AfterMDivSrcs, AfterMDivChars,
+                             AddedMDivLines, AddedMDivInsts, AddedMDivSrcs, AddedMDivCols, AddedMDivChars,
+                             RemovedMDivLines, RemovedMDivInsts, RemovedMDivSrcs, RemovedMDivCols, RemovedMDivChars);
+ 
+   // Find added/removed memory operations
+-  findInstructionDifferences(BeforeMMemInsts, BeforeMMemLines, BeforeMMemCols, BeforeMMemSrcs,
+-                            AfterMMemInsts, AfterMMemLines, AfterMMemCols, AfterMMemSrcs,
++  findInstructionDifferences(BeforeMMemInsts, BeforeMMemLines, BeforeMMemCols, BeforeMMemSrcs, BeforeMMemChars,
++                            AfterMMemInsts, AfterMMemLines, AfterMMemCols, AfterMMemSrcs, AfterMMemChars,
+                             AddedMMemLines, AddedMMemInsts, AddedMMemSrcs, AddedMMemCols, AddedMMemChars,
+                             RemovedMMemLines, RemovedMMemInsts, RemovedMMemSrcs, RemovedMMemCols, RemovedMMemChars);
+ 
+
+From 0a1be5ffbbd5af643387b8363435fe6d659e8fdc Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Sun, 20 Jul 2025 12:10:43 +0200
+Subject: [PATCH 16/20] fix(-mfpass-dump): build error in clang 14, omit
+ separater arg to when calling join
+
+function std::string join(Range &&R, StringRef Separator) is already defined in StringExtras.h
+
+(cherry picked from commit c63504d4e48f7cf1c1b7ab323687c0e9bad959cd)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 60 ++++++++++++------------
+ 1 file changed, 30 insertions(+), 30 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index 224cdc9deb9dc4..c271ca8a154255 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -451,19 +451,19 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+       << "\"added_cjump_count\": " << AddedCjumpLines.size();
+     // Removed conditional jumps
+     if (!RemovedCjumpLines.empty()) {
+-      JsonStream << ",\"removed_cjump_lines\": [" << join(RemovedCjumpLines, ",") << "]"
+-      << ",\"removed_cjump_cols\": [" << join(RemovedCjumpCols, ",") << "]"
+-      << ",\"removed_cjump_insts\": [" << join(RemovedCjumpInsts, ",") << "]"
+-      << ",\"removed_cjump_srcs\": [" << join(RemovedCjumpSrcs, ",") << "]"
+-      << ",\"removed_cjump_chars\": [" << join(RemovedCjumpChars, ",") << "]";
++      JsonStream << ",\"removed_cjump_lines\": [" << join(RemovedCjumpLines) << "]"
++      << ",\"removed_cjump_cols\": [" << join(RemovedCjumpCols) << "]"
++      << ",\"removed_cjump_insts\": [" << join(RemovedCjumpInsts) << "]"
++      << ",\"removed_cjump_srcs\": [" << join(RemovedCjumpSrcs) << "]"
++      << ",\"removed_cjump_chars\": [" << join(RemovedCjumpChars) << "]";
+     }
+     // Added conditional jumps  
+     if (!AddedCjumpLines.empty()) {
+-      JsonStream << ",\"added_cjump_lines\": [" << join(AddedCjumpLines, ",") << "]"
+-      << ",\"added_cjump_cols\": [" << join(AddedCjumpCols, ",") << "]"
+-      << ",\"added_cjump_insts\": [" << join(AddedCjumpInsts, ",") << "]"
+-      << ",\"added_cjump_srcs\": [" << join(AddedCjumpSrcs, ",") << "]"
+-      << ",\"added_cjump_chars\": [" << join(AddedCjumpChars, ",") << "]";
++      JsonStream << ",\"added_cjump_lines\": [" << join(AddedCjumpLines) << "]"
++      << ",\"added_cjump_cols\": [" << join(AddedCjumpCols) << "]"
++      << ",\"added_cjump_insts\": [" << join(AddedCjumpInsts) << "]"
++      << ",\"added_cjump_srcs\": [" << join(AddedCjumpSrcs) << "]"
++      << ",\"added_cjump_chars\": [" << join(AddedCjumpChars) << "]";
+     }
+     // Division instruction stats
+     JsonStream << ",\"mdiv_count_before\": " << BeforeMDivInsts.size() << ","
+@@ -472,19 +472,19 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+       << "\"added_mdiv_count\": " << AddedMDivLines.size();
+     // Removed division instructions
+     if (!RemovedMDivLines.empty()) {
+-      JsonStream << ",\"removed_mdiv_lines\": [" << join(RemovedMDivLines, ",") << "]"
+-      << ",\"removed_mdiv_cols\": [" << join(RemovedMDivCols, ",") << "]"
+-      << ",\"removed_mdiv_insts\": [" << join(RemovedMDivInsts, ",") << "]"
+-      << ",\"removed_mdiv_srcs\": [" << join(RemovedMDivSrcs, ",") << "]"
+-      << ",\"removed_mdiv_chars\": [" << join(RemovedMDivChars, ",") << "]";
++      JsonStream << ",\"removed_mdiv_lines\": [" << join(RemovedMDivLines) << "]"
++      << ",\"removed_mdiv_cols\": [" << join(RemovedMDivCols) << "]"
++      << ",\"removed_mdiv_insts\": [" << join(RemovedMDivInsts) << "]"
++      << ",\"removed_mdiv_srcs\": [" << join(RemovedMDivSrcs) << "]"
++      << ",\"removed_mdiv_chars\": [" << join(RemovedMDivChars) << "]";
+     }
+     // Added division instructions 
+     if (!AddedMDivLines.empty()) {
+-      JsonStream << ",\"added_mdiv_lines\": [" << join(AddedMDivLines, ",") << "]"
+-      << ",\"added_mdiv_cols\": [" << join(AddedMDivCols, ",") << "]"
+-      << ",\"added_mdiv_insts\": [" << join(AddedMDivInsts, ",") << "]"
+-      << ",\"added_mdiv_srcs\": [" << join(AddedMDivSrcs, ",") << "]"
+-      << ",\"added_mdiv_chars\": [" << join(AddedMDivChars, ",") << "]";
++      JsonStream << ",\"added_mdiv_lines\": [" << join(AddedMDivLines) << "]"
++      << ",\"added_mdiv_cols\": [" << join(AddedMDivCols) << "]"
++      << ",\"added_mdiv_insts\": [" << join(AddedMDivInsts) << "]"
++      << ",\"added_mdiv_srcs\": [" << join(AddedMDivSrcs) << "]"
++      << ",\"added_mdiv_chars\": [" << join(AddedMDivChars) << "]";
+     }
+     // Memory operation stats
+     JsonStream << ",\"mmem_count_before\": " << BeforeMMemInsts.size() << ","
+@@ -493,19 +493,19 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+       << "\"added_mmem_count\": " << AddedMMemLines.size();
+     // Removed memory operations
+     if (!RemovedMMemLines.empty()) {
+-      JsonStream << ",\"removed_mmem_lines\": [" << join(RemovedMMemLines, ",") << "]"
+-      << ",\"removed_mmem_cols\": [" << join(RemovedMMemCols, ",") << "]"
+-      << ",\"removed_mmem_insts\": [" << join(RemovedMMemInsts, ",") << "]"
+-      << ",\"removed_mmem_srcs\": [" << join(RemovedMMemSrcs, ",") << "]"
+-      << ",\"removed_mmem_chars\": [" << join(RemovedMMemChars, ",") << "]";
++      JsonStream << ",\"removed_mmem_lines\": [" << join(RemovedMMemLines) << "]"
++      << ",\"removed_mmem_cols\": [" << join(RemovedMMemCols) << "]"
++      << ",\"removed_mmem_insts\": [" << join(RemovedMMemInsts) << "]"
++      << ",\"removed_mmem_srcs\": [" << join(RemovedMMemSrcs) << "]"
++      << ",\"removed_mmem_chars\": [" << join(RemovedMMemChars) << "]";
+     }
+     // Added memory operations
+     if (!AddedMMemLines.empty()) {
+-      JsonStream << ",\"added_mmem_lines\": [" << join(AddedMMemLines, ",") << "]"
+-      << ",\"added_mmem_cols\": [" << join(AddedMMemCols, ",") << "]"
+-      << ",\"added_mmem_insts\": [" << join(AddedMMemInsts, ",") << "]"
+-      << ",\"added_mmem_srcs\": [" << join(AddedMMemSrcs, ",") << "]"
+-      << ",\"added_mmem_chars\": [" << join(AddedMMemChars, ",") << "]";
++      JsonStream << ",\"added_mmem_lines\": [" << join(AddedMMemLines) << "]"
++      << ",\"added_mmem_cols\": [" << join(AddedMMemCols) << "]"
++      << ",\"added_mmem_insts\": [" << join(AddedMMemInsts) << "]"
++      << ",\"added_mmem_srcs\": [" << join(AddedMMemSrcs) << "]"
++      << ",\"added_mmem_chars\": [" << join(AddedMMemChars) << "]";
+     }
+     JsonStream << "}\n";
+     
+
+From d8c5f1618e16d77e43360d98e22b19d9d24ecdad Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Sun, 20 Jul 2025 17:22:56 +0200
+Subject: [PATCH 17/20] fix(-mfpass-dump): memory instruction exclude
+ Return/Call/ImplicitDef
+
+(cherry picked from commit 37176aae9e2c14d1f7535a603727c932371b64e5)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index c271ca8a154255..a2edfdc36177f0 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -385,7 +385,7 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+         AfterMDivCols.push_back(getLineCol(MI.getDebugLoc()));
+         AfterMDivChars.push_back(getCharSrc(MI.getDebugLoc()));
+       }
+-      if (MI.mayLoadOrStore()) {
++      if (MI.mayLoadOrStore() && !MI.isReturn() && !MI.isCall() && !MI.hasImplicitDef()) {
+         AfterMMemInsts.push_back(getInstStr(MI));
+         AfterMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
+
+From 6495b83f831e952d072996ab46e09236f8bb28d7 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Sun, 20 Jul 2025 17:33:10 +0200
+Subject: [PATCH 18/20] perf(-mfpass-dump): no longer store or track
+ instruction string
+
+(cherry picked from commit 4bc82a7a14ed90d340ffcb68e6162ba1318e1792)
+---
+ llvm/lib/CodeGen/MachineFunctionPass.cpp | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionPass.cpp b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+index a2edfdc36177f0..939ad9c07a1438 100644
+--- a/llvm/lib/CodeGen/MachineFunctionPass.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionPass.cpp
+@@ -230,7 +230,7 @@ void findInstructionDifferences(const SmallVectorImpl<T>& beforeInsts,
+     }
+     if (!found) {
+       addedLines.push_back(afterLines[i]);
+-      addedInsts.push_back(afterInsts[i]);
++      // addedInsts.push_back(afterInsts[i]);
+       addedSrcs.push_back(afterSrcs[i]);
+       addedCols.push_back(afterCols[i]);
+       addedChars.push_back(afterChars[i]);
+@@ -248,7 +248,7 @@ void findInstructionDifferences(const SmallVectorImpl<T>& beforeInsts,
+     }
+     if (!found) {
+       removedLines.push_back(beforeLines[i]);
+-      removedInsts.push_back(beforeInsts[i]);
++      // removedInsts.push_back(beforeInsts[i]);
+       removedSrcs.push_back(beforeSrcs[i]);
+       removedCols.push_back(beforeCols[i]);
+       removedChars.push_back(beforeChars[i]);
+@@ -325,7 +325,7 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+     for (const MachineBasicBlock &MBB : MF) {
+       for (const MachineInstr &MI : MBB) {
+         if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+-          BeforeCjumpInsts.push_back(getInstStr(MI));
++          // BeforeCjumpInsts.push_back(getInstStr(MI));
+           BeforeCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+           BeforeCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeCjumpCols.push_back(getLineCol(MI.getDebugLoc()));
+@@ -333,7 +333,7 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+         }
+         // Check for division instructions
+         if (isDivisionMachineInstruction(MI)) {
+-          BeforeMDivInsts.push_back(getInstStr(MI));
++          // BeforeMDivInsts.push_back(getInstStr(MI));
+           BeforeMDivSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+           BeforeMDivLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeMDivCols.push_back(getLineCol(MI.getDebugLoc()));
+@@ -341,7 +341,7 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+         }
+         // Check for memory operations
+         if (MI.mayLoadOrStore() && !MI.isReturn() && !MI.isCall() && !MI.hasImplicitDef()) {
+-          BeforeMMemInsts.push_back(getInstStr(MI));
++          // BeforeMMemInsts.push_back(getInstStr(MI));
+           BeforeMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+           BeforeMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
+           BeforeMMemCols.push_back(getLineCol(MI.getDebugLoc()));
+@@ -372,21 +372,21 @@ bool dumpInsts(const MachineFunction &MF, StringRef Context, bool IsBefore) {
+   for (const MachineBasicBlock &MBB : MF) {
+     for (const MachineInstr &MI : MBB) {
+       if (MI.getDesc().isBranch() && MI.getDesc().isConditionalBranch()) {
+-        AfterCjumpInsts.push_back(getInstStr(MI));
++        // AfterCjumpInsts.push_back(getInstStr(MI));
+         AfterCjumpSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterCjumpLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterCjumpCols.push_back(getLineCol(MI.getDebugLoc()));
+         AfterCjumpChars.push_back(getCharSrc(MI.getDebugLoc()));
+       }
+       if (isDivisionMachineInstruction(MI)) {
+-        AfterMDivInsts.push_back(getInstStr(MI));
++        // AfterMDivInsts.push_back(getInstStr(MI));
+         AfterMDivSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterMDivLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterMDivCols.push_back(getLineCol(MI.getDebugLoc()));
+         AfterMDivChars.push_back(getCharSrc(MI.getDebugLoc()));
+       }
+       if (MI.mayLoadOrStore() && !MI.isReturn() && !MI.isCall() && !MI.hasImplicitDef()) {
+-        AfterMMemInsts.push_back(getInstStr(MI));
++        // AfterMMemInsts.push_back(getInstStr(MI));
+         AfterMMemSrcs.push_back(getLineSrc(MI.getDebugLoc()));
+         AfterMMemLines.push_back(getLineNumber(MI.getDebugLoc()));
+         AfterMMemCols.push_back(getLineCol(MI.getDebugLoc()));
+
+From bccc95de36b165958916ae209ff8f69478f01771 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Thu, 31 Jul 2025 12:00:53 +0200
+Subject: [PATCH 19/20] feat(MFCountInstr): dump cmov and related memory access
+ instruction
+
+work mostly on X86/AArch64, less accurate on others
+
+(cherry picked from commit 5dd17347fe8d75e5409290e23726bc5e07f6f04b)
+---
+ .../lib/CodeGen/MachineFunctionCountInstr.cpp | 173 +++++++++++++++++-
+ 1 file changed, 166 insertions(+), 7 deletions(-)
+
+diff --git a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+index eedf8f3877d089..e39ded575d8308 100644
+--- a/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
++++ b/llvm/lib/CodeGen/MachineFunctionCountInstr.cpp
+@@ -2,6 +2,9 @@
+ #include "llvm/CodeGen/MachineFunctionPass.h"
+ #include "llvm/CodeGen/Passes.h"
+ #include "llvm/CodeGen/SlotIndexes.h"
++#include "llvm/CodeGen/TargetInstrInfo.h"
++#include "llvm/CodeGen/TargetOpcodes.h"
++#include "llvm/CodeGen/TargetRegisterInfo.h"
+ #include "llvm/InitializePasses.h"
+ #include "llvm/IR/Instruction.h"
+ #include "llvm/IR/Instructions.h"
+@@ -28,6 +31,135 @@ static cl::opt<std::string>
+ 
+ namespace {
+ 
++/// Check if a memory instruction uses the specified register as an addressing register
++/// Returns true if the register is found in the addressing mode
++static bool MemInstUseRegAsAddr(const MachineInstr &MI, Register Reg) {
++  // Get target instruction and register info from the MachineInstr
++  const MachineFunction *MF = MI.getMF();
++  const TargetInstrInfo *TII = MF->getSubtarget().getInstrInfo();
++  const TargetRegisterInfo *TRI = MF->getSubtarget().getRegisterInfo();
++
++  // First try to get AddrMode, currently implemented only on X86/AArch64
++  std::optional<ExtAddrMode> AM = TII->getAddrModeFromMemoryOp(MI, TRI);
++  if (AM) {
++    const Register BaseReg = AM->BaseReg, ScaledReg = AM->ScaledReg;
++    return (BaseReg == Reg || ScaledReg == Reg);
++  } else {  // Fallback to check each operand register
++    for (const MachineOperand &MO : MI.explicit_uses()) {
++      if (MO.isReg() && MO.isUse() && MO.getReg() == Reg) {
++        // NOTE: over-approximate here as we don't know if reg used as address
++        return true;
++      }
++    }
++  }
++  return false;
++}
++
++// A helper function to check if a machine instruction is a conditional move.
++static inline bool isConditionalMove(const MachineInstr &MI) {
++  // NOTE: target-specific header is not included here, have to use generic MIR opcode
++  
++  // Check if the instruction is a copy/move but not an unconditional one
++  if (MI.isCopy())
++    return false; // COPY is an unconditional move
++    
++  // If it's a branch or jump, it's not a conditional move
++  if (MI.getDesc().isBranch() || MI.getDesc().isIndirectBranch())
++    return false;
++    
++  bool NameHintsCmov = false;
++  // Check if the name contains typical conditional move substrings
++  // Support multiple architectures: X86, AArch64, ARM, MIPS
++  if (isTargetSpecificOpcode(MI.getOpcode())) {
++    const TargetInstrInfo *TII = MI.getMF()->getSubtarget().getInstrInfo();
++    const Triple &TT = MI.getMF()->getSubtarget().getTargetTriple();
++    StringRef OpcodeName = TII->getName(MI.getOpcode());
++
++    // X86: cmov instructions
++    if (TT.isX86() && OpcodeName.starts_with_insensitive("cmov")) {
++      NameHintsCmov = true;
++    }
++    // AArch64: csel (conditional select), csinc, csinv, csneg
++    else if (TT.isAArch64() && (OpcodeName.starts_with_insensitive("csel") ||
++             OpcodeName.starts_with_insensitive("csinc") ||
++             OpcodeName.starts_with_insensitive("csinv") ||
++             OpcodeName.starts_with_insensitive("csneg"))) {
++      NameHintsCmov = true;
++    }
++    // MIPS: movn, movz, movf, movt variants (MOVN_*, MOVZ_*, etc.)
++    else if (TT.isMIPS() && (OpcodeName.starts_with_insensitive("movn") ||
++             OpcodeName.starts_with_insensitive("movz") || 
++             OpcodeName.starts_with_insensitive("movf") ||
++             OpcodeName.starts_with_insensitive("movt"))) {
++      NameHintsCmov = true;
++    }
++    // ARM: MOVCC variants (MOVCCr, MOVCCi, MOVCCsi, MOVCCsr)
++    else if (TT.isARM() && OpcodeName.starts_with_insensitive("mov")) {
++      // sometimes opcode already contains "MOVCC"
++      if (OpcodeName.starts_with_insensitive("movcc")) NameHintsCmov = true;
++      else if (OpcodeName.starts_with_insensitive("movr") || OpcodeName.starts_with_insensitive("movs")) {
++        // sometimes opcode is normal "MOVR", check "killed $cpsr" in MI string representation
++        std::string str;
++        raw_string_ostream ss(str);
++        ss << MI;
++        if (str.find("killed $cpsr") != std::string::npos) NameHintsCmov = true;
++      }
++    }
++    // Additional patterns: any instruction with "select" in the name (generic)
++    else if (OpcodeName.contains_insensitive("select")) {
++      NameHintsCmov = true;
++    }
++  }
++  
++  // Return true if it looks like a conditional move
++  return NameHintsCmov;
++}
++
++/// Identifies conditional moves that are used by memory operations
++/// Returns the memory instruction that uses the register defined by the cmov as reg, or nullptr if none found
++/* example pattern
++  CMOV REG1, REG2 
++  MOV xx, [REG1] */
++static const MachineInstr* findMemInstUsingCmov(const MachineInstr &CmovMI, const MachineBasicBlock &MBB) {
++  // Find the register defined by this cmov
++  Register DefReg;
++  for (const MachineOperand &MO : CmovMI.defs()) {
++    if (MO.isReg() && MO.isDef() && MO.getReg()) {
++      DefReg = MO.getReg();
++      break;
++    }
++  }
++  
++  if (!DefReg)
++    return nullptr;
++  
++  // Flag to indicate we've found the cmov instruction
++  bool foundCmov = false;
++  // Check if any memory operation AFTER this cmov uses this register
++  for (const MachineInstr &MI : MBB) {
++    // Skip instructions until we find the cmov
++    if (&MI == &CmovMI) {
++      foundCmov = true;
++      continue; // Skip the cmov itself
++    }
++    // Only check instructions that come after the cmov
++    if (!foundCmov)
++      continue;
++
++    if (!MI.getDebugLoc() || !MI.mayLoadOrStore())
++      continue;
++    // filter FP as mayLoadOrStore can still keep non-memory instructions like bne branch in MIPS
++    if (MI.isReturn() || MI.isCall() || MI.isBranch() || MI.isPseudo() || MI.getFlag(llvm::MachineInstr::FrameDestroy))
++      continue;
++    // Check if this memory instruction uses the cmov-defined register as address
++    if (MemInstUseRegAsAddr(MI, DefReg)) {
++      return &MI; // Found a memory op using this register
++    }
++  }
++  
++  return nullptr;
++}
++
+ /// MachineFunctionCountInstr - This is a architecture-independent
+ /// pass to dump cjump instructions of a MachineFunction.
+ ///
+@@ -73,12 +205,14 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+   SmallVector<const MachineInstr*, 16> MDivInsts;  // MIR division instructions
+   // SmallVector<const Instruction*, 16> MemInsts;  // IR memory operations
+   SmallVector<const MachineInstr*, 16> MMemInsts;  // MIR memory operations
++  SmallVector<const MachineInstr*, 16> CmovInsts;  // MIR conditional moves
+   // SmallVector<std::string, 16> CondSrcs;
+   SmallVector<std::string, 16> CjumpSrcs;
+   // SmallVector<std::string, 16> DivSrcs;
+   SmallVector<std::string, 16> MDivSrcs;
+   // SmallVector<std::string, 16> MemSrcs;
+   SmallVector<std::string, 16> MMemSrcs;
++  SmallVector<std::string, 16> CmovSrcs;
+   // SmallVector<unsigned, 16> CondLines;
+   SmallVector<unsigned, 16> CjumpLines;
+   SmallVector<unsigned, 16> CjumpCols;
+@@ -88,12 +222,15 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+   // SmallVector<unsigned, 16> MemLines;
+   SmallVector<unsigned, 16> MMemLines;
+   SmallVector<unsigned, 16> MMemCols;
++  SmallVector<unsigned, 16> CmovLines;
++  SmallVector<unsigned, 16> CmovCols;
+   // SmallVector<std::string, 16> CondChars;
+   SmallVector<std::string, 16> CjumpChars;
+   // SmallVector<std::string, 16> DivChars;
+   SmallVector<std::string, 16> MDivChars;
+   // SmallVector<std::string, 16> MemChars;
+   SmallVector<std::string, 16> MMemChars;
++  SmallVector<std::string, 16> CmovChars;
+ 
+   // Add vectors for memory operations
+ 
+@@ -159,14 +296,30 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+         MDivCols.push_back(getLineCol(DL));
+         MDivChars.push_back(getCharSrc(DL));
+       }
+-      // Detect memory operations in Machine IR
+-      if (MI.mayLoadOrStore()) {
+-        MMemInsts.push_back(&MI);
++      
++      // Now we first find cmove instructions and only collect memory operations that use cmov-defined registers
++      if (isConditionalMove(MI)) {
++        const MachineInstr *MemMI = findMemInstUsingCmov(MI, *MI.getParent());
++        if (!MemMI)
++          continue; // Skip cmovs not used by memory operations
++        
++        // Store the cmov instruction
++        CmovInsts.push_back(&MI);
+         const auto DL = MI.getDebugLoc();
+-        MMemLines.push_back(getLineNumber(DL));
+-        MMemSrcs.push_back(getLineSrc(DL));
+-        MMemCols.push_back(getLineCol(DL));
+-        MMemChars.push_back(getCharSrc(DL));
++        CmovLines.push_back(getLineNumber(DL));
++        CmovSrcs.push_back(getLineSrc(DL));
++        CmovCols.push_back(getLineCol(DL));
++        CmovChars.push_back(getCharSrc(DL));
++        
++        // Store the memory instruction that uses the cmov-defined register
++        // NOTE: there are some FP where mmem inst use cmov-defined register much later
++        // we can actually check if cmov/mmem insts are in same source line
++        MMemInsts.push_back(MemMI);
++        const auto MemDL = MemMI->getDebugLoc();
++        MMemLines.push_back(getLineNumber(MemDL));
++        MMemSrcs.push_back(getLineSrc(MemDL));
++        MMemCols.push_back(getLineCol(MemDL));
++        MMemChars.push_back(getCharSrc(MemDL));
+       }
+     }
+   }
+@@ -201,6 +354,12 @@ bool MFCountInstructions::runOnMachineFunction(MachineFunction &MF) {
+           //  << "\"mem_insts\": [" << join(MemInsts) << "], "
+           //  << "\"mem_srcs\": [" << join(MemSrcs) << "], "
+           //  << "\"mem_chars\": [" << join(MemChars) << "], "
++           << "\"cmov_count\": " << CmovInsts.size() << ", "
++           << "\"cmov_lines\": [" << join(CmovLines) << "], "
++           << "\"cmov_cols\": [" << join(CmovCols) << "], "
++           << "\"cmov_insts\": [" << join(CmovInsts) << "], "
++           << "\"cmov_srcs\": [" << join(CmovSrcs) << "], "
++           << "\"cmov_chars\": [" << join(CmovChars) << "], "
+            << "\"mmem_count\": " << MMemInsts.size() << ", "
+            << "\"mmem_lines\": [" << join(MMemLines) << "], "
+            << "\"mmem_cols\": [" << join(MMemCols) << "], "
+
+From 5de9b50067d6da86da784e8fccc35d0231f8e1b4 Mon Sep 17 00:00:00 2001
+From: chinggg <24590067+chinggg@users.noreply.github.com>
+Date: Wed, 6 Aug 2025 10:51:53 +0200
+Subject: [PATCH 20/20] feat: load callback from pass plugin to support
+ LegacyPM instrumentation before/after pass
+
+(cherry picked from commit efcd6786ba4777e6658cd1f30c9759f85b3622e7)
+---
+ llvm/lib/IR/LegacyPassManager.cpp | 56 +++++++++++++++++++++++++++++++
+ 1 file changed, 56 insertions(+)
+
+diff --git a/llvm/lib/IR/LegacyPassManager.cpp b/llvm/lib/IR/LegacyPassManager.cpp
+index ce6f6c733f4bcc..c08a15ac564c84 100644
+--- a/llvm/lib/IR/LegacyPassManager.cpp
++++ b/llvm/lib/IR/LegacyPassManager.cpp
+@@ -22,6 +22,7 @@
+ #include "llvm/Support/Chrono.h"
+ #include "llvm/Support/CommandLine.h"
+ #include "llvm/Support/Debug.h"
++#include "llvm/Support/DynamicLibrary.h"
+ #include "llvm/Support/Error.h"
+ #include "llvm/Support/ErrorHandling.h"
+ #include "llvm/Support/TimeProfiler.h"
+@@ -32,6 +33,36 @@
+ using namespace llvm;
+ 
+ extern cl::opt<bool> UseNewDbgInfoFormat;
++
++// Declare external functions that should be provided by legacy pass instrumentation plugins
++extern "C" void LegacyBeforeFunctionPass(const Function* F, StringRef PassName);
++extern "C" void LegacyAfterFunctionPass(const Function* F, StringRef PassName);
++extern "C" void LegacyBeforeModulePass(const Module* M, StringRef PassName);
++extern "C" void LegacyAfterModulePass(const Module* M, StringRef PassName);
++
++// Global function pointers - will be set when plugin is loaded
++static void (*runLegacyBeforeFunctionPass)(const Function*, StringRef) = nullptr;
++static void (*runLegacyAfterFunctionPass)(const Function*, StringRef) = nullptr;
++static void (*runLegacyBeforeModulePass)(const Module*, StringRef) = nullptr;
++static void (*runLegacyAfterModulePass)(const Module*, StringRef) = nullptr;
++
++// Function to initialize the function pointers from loaded plugins
++static void initializeLegacyPassInstrumentationCallbacks() {
++  static bool initialized = false;
++  if (initialized) return;
++  initialized = true;
++  
++  // Try to find the functions using LLVM's dynamic library search
++  runLegacyBeforeFunctionPass = reinterpret_cast<decltype(LegacyBeforeFunctionPass) *>(
++    sys::DynamicLibrary::SearchForAddressOfSymbol("LegacyBeforeFunctionPass"));
++  runLegacyAfterFunctionPass = reinterpret_cast<decltype(LegacyAfterFunctionPass) *>(
++    sys::DynamicLibrary::SearchForAddressOfSymbol("LegacyAfterFunctionPass"));
++  runLegacyBeforeModulePass = reinterpret_cast<decltype(LegacyBeforeModulePass) *>(
++    sys::DynamicLibrary::SearchForAddressOfSymbol("LegacyBeforeModulePass"));
++  runLegacyAfterModulePass = reinterpret_cast<decltype(LegacyAfterModulePass) *>(
++    sys::DynamicLibrary::SearchForAddressOfSymbol("LegacyAfterModulePass"));
++}
++
+ // See PassManagers.h for Pass Manager infrastructure overview.
+ 
+ //===----------------------------------------------------------------------===//
+@@ -1403,7 +1434,21 @@ bool FPPassManager::runOnFunction(Function &F) {
+ #ifdef EXPENSIVE_CHECKS
+       uint64_t RefHash = FP->structuralHash(F);
+ #endif
++      
++      // Legacy pass instrumentation: save state before function pass
++      initializeLegacyPassInstrumentationCallbacks();
++      if (runLegacyBeforeFunctionPass) {
++        errs() << "LegacyPM BeforeFunctionPass: "
++               << FP->getPassName() << "\n";
++        runLegacyBeforeFunctionPass(&F, FP->getPassName());
++      }
++      
+       LocalChanged |= FP->runOnFunction(F);
++      
++      // Legacy pass instrumentation: compare and dump changes after function pass
++      if (runLegacyAfterFunctionPass) {
++        runLegacyAfterFunctionPass(&F, FP->getPassName());
++      }
+ 
+ #if defined(EXPENSIVE_CHECKS) && !defined(NDEBUG)
+       if (!LocalChanged && (RefHash != FP->structuralHash(F))) {
+@@ -1518,8 +1563,19 @@ MPPassManager::runOnModule(Module &M) {
+       uint64_t RefHash = MP->structuralHash(M);
+ #endif
+ 
++      initializeLegacyPassInstrumentationCallbacks();
++      // Legacy pass instrumentation: save state before module pass
++      if (runLegacyBeforeModulePass) {
++        runLegacyBeforeModulePass(&M, MP->getPassName());
++      }
++
+       LocalChanged |= MP->runOnModule(M);
+ 
++      // Legacy pass instrumentation: compare and dump changes after module pass
++      if (runLegacyAfterModulePass) {
++        runLegacyAfterModulePass(&M, MP->getPassName());
++      }
++
+ #ifdef EXPENSIVE_CHECKS
+       assert((LocalChanged || (RefHash == MP->structuralHash(M))) &&
+              "Pass modifies its input and doesn't report it.");

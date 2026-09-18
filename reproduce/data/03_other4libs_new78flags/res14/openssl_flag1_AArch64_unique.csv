@@ -1,0 +1,27 @@
+function	file	line	col	source	char	type	optimization
+ossl_cms_RecipientInfo_pwri_crypt	crypto/cms/cms_pwri.c	271	10	    olen *= blocklen;	*	mdiv	O1--cold-callsite-rel-freq=0
+CRYPTO_cfb128_1_encrypt	crypto/modes/cfb128.c	180	59	            ivec[n] = ovec[n + num] << rem | ovec[n + num + 1] >> (8 - rem);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+BN_nist_mod_521	crypto/bn/bn_nist.c	1204	32	                  (tmp = t_d[i + 1]) << BN_NIST_521_LSHIFT) & BN_MASK2;	+	cjump	O1-ftree-vectorize|O1-fvectorize
+ossl_cmac_init	crypto/cmac/cmac.c	48	42	        k1[i] = (c << 1) | ((cnext = l[i + 1]) >> 7);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+ossl_curve448_scalar_halve	crypto/ec/curve448/scalar.c	238	56	        out->limb[i] = out->limb[i] >> 1 | out->limb[i + 1] << (WBITS - 1);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	410	9	        for (k = 0; k < 32 * r; k++)	f	mdiv	O1-ftree-vectorize|O1-fvectorize
+BN_GF2m_mod_inv	crypto/bn/bn_gf2m.c	658	32	                    u1 = udp[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+bn_rshift_fixed_top	crypto/bn/bn_shift.c	205	17	        m = f[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+BN_rshift	crypto/bn/bn_shift.c	205	17	        m = f[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	89	28	    for (i = 0; i < Slen; i++)	+	mdiv	O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	408	33	        j = X[16 * (2 * r - 1)] % N;	%	mdiv	O2--vplan-build-stress-test|O2-fno-tree-vectorize|O2-fno-vectorize|O3--vplan-build-stress-test|O3-fno-tree-vectorize|O3-fno-vectorize
+recode_wnaf	crypto/ec/curve448/curve448.c	558	48	    unsigned int table_size = C448_SCALAR_BITS / (table_bits + 1) + 3;	/	mdiv	O3-fgnuc-version=0|O3-fms-compatibility
+ssl_create_cipher_list	ssl/ssl_ciph.c	701	46	                co_list[i].next = &co_list[i + 1];	+	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+ssl3_write_bytes	ssl/record/rec_layer_s3.c	441	49	                tmpls[j].buf = &(buf[tot]) + (j * split_send_fragment);	*	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+ssl_create_cipher_list	ssl/ssl_ciph.c	700	46	                co_list[i].prev = &co_list[i - 1];	-	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+speed_main	apps/speed.c	4041	54	            ffdh_results[testnum][0] = (double)count / d;	/	mdiv	Oz--disable-phi-elim-edge-splitting|Oz--ir-outliner|Oz--misched=ilpmin|Oz-fshort-enums
+speed_main	apps/speed.c	4401	54	            sigs_results[testnum][1] = (double)count / d;	/	mdiv	Oz--disable-phi-elim-edge-splitting|Oz-fshort-enums
+speed_main	apps/speed.c	4232	54	            kems_results[testnum][2] = (double)count / d;	/	mdiv	Oz--disable-phi-elim-edge-splitting|Oz--ir-outliner|Oz--machine-sink-split-probability-threshold=0|Oz--misched=ilpmin|Oz-fshort-enums
+speed_main	apps/speed.c	4413	54	            sigs_results[testnum][2] = (double)count / d;	/	mdiv	Oz--disable-phi-elim-edge-splitting|Oz--ir-outliner|Oz--machine-sink-split-probability-threshold=0|Oz--misched=ilpmin|Oz-fshort-enums
+speed_main	apps/speed.c	3610	54	            ecdh_results[testnum][0] = (double)count / d;	/	mdiv	Oz--disable-phi-elim-edge-splitting|Oz--ir-outliner|Oz--misched=ilpmin|Oz-fshort-enums
+speed_main	apps/speed.c	4221	54	            kems_results[testnum][1] = (double)count / d;	/	mdiv	Oz--disable-phi-elim-edge-splitting|Oz-fshort-enums
+do_i2b	crypto/pem/pvkfmt.c	667	17	            || (BN_num_bytes(dmq1) > hnbyte))	B	mdiv	Oz--enable-misched=false
+do_i2b	crypto/pem/pvkfmt.c	665	17	            || (BN_num_bytes(q) > hnbyte)	B	mdiv	Oz--enable-misched=false
+speed_main	apps/speed.c	4584	24	                   1.0 / sm2_results[k][0], 1.0 / sm2_results[k][1],	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner
+speed_main	apps/speed.c	4522	24	                   1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner
+speed_main	apps/speed.c	4562	24	                   1.0 / eddsa_results[k][0], 1.0 / eddsa_results[k][1],	/	mdiv	Oz--hoist-common-insts|Oz--ir-outliner

@@ -1,0 +1,17 @@
+*.so
+__pycache__/
+work/
+results/
+badsnippets/
+bearssl/
+mbedtls/
+pqclean/
+libgcrypt/
+libsodium/
+openssl/
+wolfssl/
+reproduce/figures/*.pdf
+reproduce/reproduce.log
+reproduce/reproduced_results.json
+rootcause_logs/
+rootcause/

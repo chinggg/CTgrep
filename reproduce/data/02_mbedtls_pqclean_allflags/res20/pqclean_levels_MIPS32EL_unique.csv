@@ -1,0 +1,19 @@
+function	file	line	col	source	char	type	optimization
+expand_and_sum	reed_muller.c	105	49	            dest[part * 64 + bit] = ((src[part] >> bit) & 1);	>	mmem	O0
+compute_error_values	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	mdiv	O0
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0|Oz
+solve_NTRU_intermediate	keygen.c	3213	34	        scl = (uint32_t)(scale_k % 31);	%	mdiv	O0|Oz
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0|Oz
+expand_and_sum	reed_muller.c	112	76	                dest[part * 64 + bit] += (uint16_t) ((src[2 * copy + part] >> bit) & 1);	>	mmem	O0
+gf_reduce	gf.c	53	17	            mod <<= dist;	<	mmem	O0
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0|Oz
+solve_NTRU_intermediate	keygen.c	3212	34	        sch = (uint32_t)(scale_k / 31);	/	mdiv	O0
+PQCLEAN_FALCONPADDED512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	250	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	Oz
+PQCLEAN_FALCON1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_FALCON512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_FALCONPADDED1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	250	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	Oz
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	Oz

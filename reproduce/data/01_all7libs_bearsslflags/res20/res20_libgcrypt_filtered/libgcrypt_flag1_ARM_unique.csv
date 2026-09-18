@@ -1,0 +1,126 @@
+function	file	line	col	source	char	type	optimization
+prime_generate_internal	primegen.c	366	38	      fbits = (pbits - req_qbits -1) / n;	/	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+do_bf_setkey	blowfish.c	990	29	             ((u32)key[(j+3)%keylen]);	%	cjump	O0--expand-div-rem-bits=0
+cshake_input_s	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+drbg_ctr_df	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	cjump	O0--expand-div-rem-bits=0
+balloon_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	cjump	O0--expand-div-rem-bits=0
+argon2_compute_segment	kdf.c	736	35	        ref_lane = (rand64 >> 32) % a->lanes;	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50|O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+index_alpha	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+sha3_final	./jitterentropy-sha3.c	325	32	 size_t partial = ctx->msg_len % ctx->r;	%	cjump	O0--expand-div-rem-bits=0
+mul_inv	idea.c	83	8	 q = x / y;	/	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+blake2_write	blake2.c	197	39	   nblks = inlen / blkbytes - !(inlen % blkbytes);	%	cjump	O0--expand-div-rem-bits=0
+mul_inv	idea.c	77	20	    y =  0x10001UL % x;	%	cjump	O0--expand-div-rem-bits=0
+do_polyval_buf	cipher-gcm-siv.c	156	24	      nblocks = buflen / blocksize;	/	cjump	O0--expand-div-rem-bits=0
+mul_inv	idea.c	84	8	 x = x % y;	%	cjump	O0--expand-div-rem-bits=0
+balloon_compute_mix	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+jent_gcd64	./jitterentropy-gcd.c	47	9	  r = a % b;	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+_gcry_mpih_divrem	mpih-div.c	286	7	      udiv_qrnnd (q, r, n1, n0, d1);	u	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50|O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+prime_generate_internal	primegen.c	361	42	      fbits = (pbits - 2 * req_qbits -1) / n;	/	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+prime_generate_internal	primegen.c	341	19	    qbits = pbits / 3;	/	cjump	O0--expand-div-rem-bits=0
+uint32_divmod_uint14	sntrup761.c	159	5	  v /= m;	/	cjump	O0--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+_gcry_generate_fips186_2_prime	primegen.c	1491	25	  value_n = (pbits - 1) / qbits;	/	cjump	O0--expand-div-rem-bits=0
+do_bf_setkey	blowfish.c	989	29	             ((u32)key[(j+2)%keylen] << 8) |	%	cjump	O0--expand-div-rem-bits=0
+argon2_init	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	cjump	O0--expand-div-rem-bits=0
+drbg_generate_long	random-drbg.c	1521	31	      slice = ((buflen - len) / drbg_max_request_bytes ());	/	cjump	O0--expand-div-rem-bits=0
+jent_measure_jitter	./jitterentropy-noise.c	342	50	 current_delta = jent_delta(ec->prev_time, time) /	/	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+do_ghash_buf	cipher-gcm.c	778	24	      nblocks = buflen / blocksize;	/	cjump	O0--expand-div-rem-bits=0
+mul_inv	idea.c	76	20	    t1 = 0x10001UL / x;	/	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+_gcry_mpih_divrem	mpih-div.c	238	3	  udiv_qrnnd (qp[i], n1, n1, 0, d);	u	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50|O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50
+sha3_update	./jitterentropy-sha3.c	282	32	 size_t partial = ctx->msg_len % ctx->r;	%	cjump	O0--expand-div-rem-bits=0
+_gcry_kdf_pkdf2	kdf.c	164	19	  l = ((dklen - 1)/ hlen) + 1;	/	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+keccak_write	keccak.c	1138	45	      count = ((size_t) count + nlanes * 8) % bsize;	%	cjump	O0--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+do_bf_setkey	blowfish.c	988	29	             ((u32)key[(j+1)%keylen] << 16) |	%	cjump	O0--expand-div-rem-bits=0
+scrypt_ro_mix	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+do_ecb_crypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+mul_inv	idea.c	89	8	 y = y % x;	%	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+do_bf_setkey	blowfish.c	992	17	      j = (j+4) % keylen;	%	cjump	O0--expand-div-rem-bits=0
+mul_inv	idea.c	88	8	 q = y / x;	/	cjump	O0--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+_gcry_mpih_mod_1	mpih-div.c	183	6	     udiv_qrnnd (dummy, r, r, n0, divisor_limb);	u	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50|O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+_gcry_generate_fips186_3_prime	primegen.c	1729	33	  value_n = (pbits + qbits - 1) / qbits - 1;	/	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+do_vsexp_sscan	sexp.c	1552	27	                  *erroff = p - buffer;	=	cjump	O1--regalloc=fast|O1--rotation-max-header-size=0|O1-ftrapv|O2--aggressive-machine-cse|O3--aggressive-machine-cse
+nist_generate_key	ecc.c	557	16	        test = mpi_set_opaque (NULL, rndbuf, len*8);	m	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+do_vsexp_sscan	sexp.c	1397	13	    *erroff = p - buffer;	=	cjump	O1--disable-cgp|O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O1-ftrapv
+mont_reduc	mpih-pow.c	87	14	      s1_size--;	-	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+fft_tr	mceliece6688128f.c	2599	13	   in[1][i] ^= (in[1][i] & mask[k][1]) << (1 << k);	^	mmem	O1--disable-lsr|O1--greedy-reverse-local-assignment|O1--lsr-drop-solution|O1--regalloc=fast|O1--rotation-max-header-size=0|O1--scalar-evolution-huge-expr-threshold=0|O1--scalar-evolution-max-arith-depth=0|O1--scev-cheap-expansion-budget=0|O2--greedy-reverse-local-assignment|O2--regalloc=fast|O2--rotation-max-header-size=0|O2--scalar-evolution-huge-expr-threshold=0|O2--unroll-allow-partial|O2--unroll-count=0|O2--unroll-full-max-count=0|O2--unroll-threshold-default=0|O2--unroll-threshold-default=100|O2--unroll-threshold-default=50|O2--unroll-threshold=0|O2--unroll-threshold=100|O2--unroll-threshold=50|O2-fno-unroll-loops|O3--disable-lsr|O3--greedy-reverse-local-assignment|O3--regalloc=fast|O3--rotation-max-header-size=0|O3--scalar-evolution-huge-expr-threshold=0|O3--unroll-allow-partial|O3--unroll-count=0|O3--unroll-full-max-count=0|O3--unroll-threshold-aggressive=0|O3--unroll-threshold-aggressive=100|O3--unroll-threshold-aggressive=50|O3--unroll-threshold=0|O3--unroll-threshold=100|O3--unroll-threshold=50|O3-fno-unroll-loops|Os--disable-lsr|Os--greedy-reverse-local-assignment|Os--regalloc=fast|Os--rotation-max-header-size=0|Os--scalar-evolution-huge-expr-threshold=0
+Decode	sntrup761.c	159	5	  v /= m;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0
+invert_key	idea.c	83	8	 q = x / y;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+bf_setkey	blowfish.c	992	17	      j = (j+4) % keylen;	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+drbg_ctr_update	random-drbg.c	787	42	  padlen = (inputlen + sizeof (L_N) + 1) % (drbg_blocklen (drbg));	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+invert_key	idea.c	88	8	 q = y / x;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+_gcry_kdf_scrypt	scrypt.c	211	45	      j = LE_READ_UINT64 (&X[128 * r - 64]) % N;	%	cjump	O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+bf_setkey	blowfish.c	990	29	             ((u32)key[(j+3)%keylen]);	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+_gcry_kdf_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+_gcry_cshake_customize	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+argon2_compute_segment	kdf.c	672	47	  return (start_position + relative_position) % a->lane_length;	%	cjump	O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+invert_key	idea.c	76	20	    t1 = 0x10001UL / x;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+bf_setkey	blowfish.c	989	29	             ((u32)key[(j+2)%keylen] << 8) |	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+balloon_compute	kdf.c	1287	55	          blocks[n] = t->block + (b->blklen * (rand64 % b->n_blocks));	%	cjump	O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+bf_setkey	blowfish.c	988	29	             ((u32)key[(j+1)%keylen] << 16) |	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+_gcry_kdf_open	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+do_ecb_encrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+do_ecb_decrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+cshake_hash_buffers	keccak.c	1697	42	  padlen = ctx->blocksize - (len_written % ctx->blocksize);	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0
+do_vsexp_sscan	sexp.c	1667	16	       *erroff = p - buffer;	=	cjump	O1--aggressive-machine-cse|O1--disable-cgp|O1--enable-tail-merge=false|O1--inline-call-penalty=-1|O1--inline-instr-cost=-1|O1--tail-merge-threshold=0|O1-fno-inline|O1-fno-inline-functions
+do_vsexp_sscan	sexp.c	1749	12	   *erroff = p - buffer;	=	cjump	O1--aggressive-machine-cse|O1--disable-cgp|O1--enable-tail-merge=false|O1--inline-call-penalty=-1|O1--inline-instr-cost=-1|O1--tail-merge-threshold=0|O1-fno-inline|O1-fno-inline-functions|Oz--fast-isel
+do_vsexp_sscan	sexp.c	1694	16	       *erroff = p - buffer;	=	cjump	O1--aggressive-machine-cse|O1--disable-cgp|O1--enable-tail-merge=false|O1--inline-call-penalty=-1|O1--inline-instr-cost=-1|O1--tail-merge-threshold=0|O1-fno-inline|O1-fno-inline-functions
+do_vsexp_sscan	sexp.c	1717	16	       *erroff = p - buffer;	=	cjump	O1--aggressive-machine-cse|O1--disable-cgp|O1--enable-tail-merge=false|O1--inline-call-penalty=-1|O1--inline-instr-cost=-1|O1--tail-merge-threshold=0|O1-fno-inline|O1-fno-inline-functions|O2--disable-machine-licm|O2--enable-module-inliner|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O2-ffreestanding|O2-fno-builtin|Os--bonus-inst-threshold=100|Os--bonus-inst-threshold=50|Os--disable-machine-licm|Os--disable-machine-sink|Os--jump-is-expensive|Os-ftrapv|Oz--disable-machine-licm
+_gcry_sexp_canon_len	sexp.c	2230	24	              *errcode = GPG_ERR_SEXP_ZERO_PREFIX;	=	cjump	O1--enable-tail-merge=false|O1--fast-isel|O1--rotation-max-header-size=0|O1--simplifycfg-branch-fold-threshold=0|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--fast-isel|O2--jump-threading-across-loop-headers|O2--rotation-max-header-size=0|O2--simplifycfg-branch-fold-threshold=0|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--fast-isel|O3--jump-threading-across-loop-headers|O3--rotation-max-header-size=0|O3--simplifycfg-branch-fold-threshold=0|O3--tail-merge-threshold=0|Os--fast-isel|Os--jump-threading-across-loop-headers|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+fft	mceliece6688128f.c	2378	13	   in[0][i] ^= (in[0][i] & mask[k][1]) >> (1 << k);	^	mmem	O1--rotation-max-header-size=0|Os--rotation-max-header-size=0
+_gcry_sm4_ecb_crypt	sm4.c	483	15	      nburn = crypt_fn (priv, outbuf, inbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|Oz--attributor-enable=module
+_gcry_twofish_ecb_crypt	twofish.c	483	15	      nburn = crypt_fn (priv, outbuf, inbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_twofish_xts_crypt	twofish.c	447	15	      nburn = crypt_fn (priv, outbuf, outbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|O3--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+blake2_write	blake2.c	192	11	   burn = transform_fn (S, tmpbuf, 1); /* Increment counter + Compress */	t	cjump	O1--attributor-enable=module|O2--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_camellia_xts_crypt	camellia-glue.c	447	15	      nburn = crypt_fn (priv, outbuf, outbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|O3--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_serpent_ecb_crypt	serpent.c	483	15	      nburn = crypt_fn (priv, outbuf, inbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_camellia_ecb_crypt	camellia-glue.c	483	15	      nburn = crypt_fn (priv, outbuf, inbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_serpent_xts_crypt	serpent.c	447	15	      nburn = crypt_fn (priv, outbuf, outbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|O3--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_sha3_hash_buffers	keccak.c	1586	3	  spec->init (&hd, 0);	s	cjump	O1--attributor-enable=module|O2--attributor-enable=module|O3--attributor-enable=module|Os--attributor-enable=module|Oz--attributor-enable=module
+_gcry_sm4_xts_crypt	sm4.c	447	15	      nburn = crypt_fn (priv, outbuf, outbuf, curr_blks);	c	cjump	O1--attributor-enable=module|O2--attributor-enable=module|O3--attributor-enable=module|Oz--attributor-enable=module
+fft_tr	mceliece6688128f.c	2601	13	   in[2][i] ^= (in[2][i] & mask[k][1]) << (1 << k);	^	mmem	O1--lsr-preferred-addressing-mode=postindexed|O2--lsr-preferred-addressing-mode=postindexed|O3--lsr-preferred-addressing-mode=postindexed|Os--lsr-preferred-addressing-mode=postindexed
+_gcry_sntrup761_dec	sntrup761.c	1060	14	    r_enc[i] ^= mask & (r_enc[i] ^ rho[i]);	^	mmem	O1--disable-peephole|O1--lsr-preferred-addressing-mode=postindexed|O2--disable-peephole|O2--lsr-preferred-addressing-mode=postindexed|Os--disable-peephole|Os--lsr-preferred-addressing-mode=postindexed|Oz--disable-peephole|Oz--lsr-preferred-addressing-mode=postindexed
+do_vsexp_sscan	sexp.c	1431	16	       *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--inline-call-penalty=-1|O1--tail-merge-threshold=0
+fft_tr	mceliece6688128f.c	2597	13	   in[0][i] ^= (in[0][i] & mask[k][1]) << (1 << k);	^	mmem	O1--disable-lftr|O2--disable-lftr|O3--fast-isel|Os--disable-lftr
+_gcry_sexp_canon_len	sexp.c	2193	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_PAREN;	=	cjump	O1--simplifycfg-branch-fold-threshold=0|O2--simplifycfg-branch-fold-threshold=0|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+do_vsexp_sscan	sexp.c	1733	12	   *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--jump-threading-across-loop-headers|O3--tail-merge-threshold=0
+do_vsexp_sscan	sexp.c	1634	16	       *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--jump-threading-across-loop-headers
+do_vsexp_sscan	sexp.c	1325	16	       *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0
+do_vsexp_sscan	sexp.c	1645	16	       *erroff = p - buffer;	=	cjump	O1--disable-cgp|O1--enable-tail-merge=false|O1--tail-merge-threshold=0|Oz--fast-isel
+do_vsexp_sscan	sexp.c	1262	13	    *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0
+do_vsexp_sscan	sexp.c	1231	17	        *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0
+_gcry_sexp_canon_len	sexp.c	2220	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--tail-merge-threshold=0
+_gcry_sexp_canon_len	sexp.c	2183	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--tail-merge-threshold=0
+do_vsexp_sscan	sexp.c	1296	13	    *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--rotation-max-header-size=0
+do_vsexp_sscan	sexp.c	1705	16	       *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0
+do_vsexp_sscan	sexp.c	1659	16	       *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--jump-threading-across-loop-headers|Oz--fast-isel
+do_vsexp_sscan	sexp.c	1218	17	        *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0
+_gcry_sexp_canon_len	sexp.c	2199	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--tail-merge-threshold=0
+do_vsexp_sscan	sexp.c	1740	12	   *erroff = p - buffer;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--tail-merge-threshold=0
+_gcry_sexp_canon_len	sexp.c	2151	20	          *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	O1--enable-tail-merge=false|O1--tail-merge-threshold=0|O2--enable-tail-merge=false|O2--tail-merge-threshold=0|O3--enable-tail-merge=false|O3--tail-merge-threshold=0
+radix_conversions	mceliece6688128f.c	2378	13	   in[0][i] ^= (in[0][i] & mask[k][1]) >> (1 << k);	^	mmem	O2--enable-module-inliner|O3--enable-module-inliner
+operation_dec	mceliece6688128f.c	2599	13	   in[1][i] ^= (in[1][i] & mask[k][1]) << (1 << k);	^	mmem	O2--inline-call-penalty=-1|O2--inline-instr-cost=-1|O3--inline-call-penalty=-1|O3--inline-instr-cost=-1|Os--inline-call-penalty=-1|Os--inline-instr-cost=-1
+do_vsexp_sscan	sexp.c	1382	23	              *erroff = p - buffer;	=	cjump	O2--fast-isel|Oz--fast-isel
+transform	stribog.c	1270	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+transform	gostr3411-94.c	289	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+_gcry_mpih_sub_n	mpih-sub1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+_gcry_mpih_submul_1	mpih-mul3.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+_gcry_mpih_mul_1	mpih-mul1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+_gcry_mpih_addmul_1	mpih-mul2.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+_gcry_mpih_add_n	mpih-add1.c	51	3	  do	d	cjump	O2--unroll-runtime|O3--unroll-runtime
+fft	mceliece6688128f.c	2380	13	   in[1][i] ^= (in[1][i] & mask[k][1]) >> (1 << k);	^	mmem	O2--rotation-max-header-size=0|O3--rotation-max-header-size=0
+mont_mul	mpih-pow.c	87	14	      s1_size--;	-	cjump	O3-ftrapv
+_gcry_mpih_powm_lli	mpih-pow.c	87	14	      s1_size--;	-	cjump	O3-ftrapv
+_gcry_mpih_powm_lli	mpih-pow.c	265	7	      do	d	cjump	O3--unroll-runtime
+_gcry_sexp_canon_len	sexp.c	2244	20	          *errcode = GPG_ERR_SEXP_BAD_CHARACTER;	=	cjump	Os--fast-isel|Os--jump-threading-across-loop-headers|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+_gcry_sexp_canon_len	sexp.c	2210	24	              *errcode = GPG_ERR_SEXP_NESTED_DH;	=	cjump	Os--fast-isel|Os--jump-threading-across-loop-headers|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+_gcry_sexp_canon_len	sexp.c	2238	20	          *errcode = GPG_ERR_SEXP_UNEXPECTED_PUNC;	=	cjump	Os--fast-isel|Os--jump-threading-across-loop-headers|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+_gcry_sexp_canon_len	sexp.c	2142	16	      *errcode = GPG_ERR_SEXP_NOT_CANONICAL;	=	cjump	Os--fast-isel|Os--jump-threading-across-loop-headers|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+_gcry_sexp_canon_len	sexp.c	2174	24	              *errcode = GPG_ERR_SEXP_INV_LEN_SPEC;	=	cjump	Os--fast-isel|Os--jump-threading-across-loop-headers|Oz--fast-isel|Oz--jump-threading-across-loop-headers
+_gcry_mpi_print	mpicoder.c	803	17	      *nwritten = n;	=	cjump	Os--disable-cgp|Os--fast-isel|Oz--disable-cgp|Oz--enable-tail-merge=false|Oz--fast-isel|Oz--tail-merge-threshold=0
+_gcry_mpi_print	mpicoder.c	780	17	      *nwritten = n;	=	cjump	Os--disable-cgp|Os--fast-isel|Oz--disable-cgp|Oz--enable-tail-merge=false|Oz--fast-isel|Oz--tail-merge-threshold=0
+_gcry_mpi_print	mpicoder.c	879	17	      *nwritten = 4+n;	=	cjump	Os--fast-isel
+_gcry_mpi_print	mpicoder.c	831	17	      *nwritten = n+2;	=	cjump	Os--fast-isel
+do_vsexp_sscan	sexp.c	1178	15	      *erroff = 0;	=	cjump	Oz--disable-machine-licm
+_gcry_aria_ocb_crypt	aria.c	339	15	      nburn = crypt_fn (priv, outbuf, outbuf, curr_blks);	c	cjump	Oz--attributor-enable=module
+_gcry_aria_ecb_crypt	aria.c	483	15	      nburn = crypt_fn (priv, outbuf, inbuf, curr_blks);	c	cjump	Oz--attributor-enable=module
+_gcry_aria_xts_crypt	aria.c	447	15	      nburn = crypt_fn (priv, outbuf, outbuf, curr_blks);	c	cjump	Oz--attributor-enable=module

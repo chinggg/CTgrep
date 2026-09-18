@@ -1,0 +1,16 @@
+.git
+results/
+work/
+badsnippets/
+bearssl/
+mbedtls/
+pqclean/
+libgcrypt/
+libsodium/
+openssl/
+wolfssl/
+**/__pycache__/
+*.so
+reproduce/figures/*.pdf
+reproduce/reproduce.log
+reproduce/reproduced_results.json

@@ -1,0 +1,80 @@
+function	file	line	col	source	char	type	optimization
+br_pem_encode	src/codec/pemenc.c	82	46	 dlen = (banner_len << 1) + 30 + (((len + 2) / 3) << 2)	/	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50|O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Ofast--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+br_x509_minimal_run	src/x509/x509_minimal.c	1223	22	   vs = (uint32_t)(x % 86400);	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+br_pem_encode	src/codec/pemenc.c	78	22	  lines = (len + 47) / 48;	/	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+br_x509_minimal_run	src/x509/x509_minimal.c	1222	22	   vd = (uint32_t)(x / 86400) + 719528;	/	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50|O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Ofast--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+br_pem_encode	src/codec/pemenc.c	80	22	  lines = (len + 56) / 57;	/	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+br_pem_encode	src/codec/pemenc.c	78	22	  lines = (len + 47) / 48;	/	mdiv	O0--global-isel|O0-fglobal-isel
+br_pem_encode	src/codec/pemenc.c	80	22	  lines = (len + 56) / 57;	/	mdiv	O0--global-isel|O0-fglobal-isel
+br_pem_encode	src/codec/pemenc.c	82	46	 dlen = (banner_len << 1) + 30 + (((len + 2) / 3) << 2)	/	mdiv	O0--global-isel|O0-fglobal-isel
+br_x509_minimal_run	src/x509/x509_minimal.c	1222	22	   vd = (uint32_t)(x / 86400) + 719528;	/	mdiv	O0--global-isel|O0-fglobal-isel
+certificate_to_trust_anchor_inner	tools/certs.c	73	31	  ta->pkey.key.ec.curve = pk->key.ec.curve;	k	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+decode_key	tools/keys.c	71	41	  sk->key.rsa.dq = xblobdup(rk->dq, rk->dqlen);	d	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O1-fmemory-profile|O3--disable-cgp|O3--disable-complex-addr-modes|O3-fmemory-profile|Ofast--disable-cgp|Ofast--disable-complex-addr-modes|Ofast-fmemory-profile
+decode_key	tools/keys.c	65	39	  sk->key.rsa.p = xblobdup(rk->p, rk->plen);	p	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+decode_key	tools/keys.c	69	41	  sk->key.rsa.dp = xblobdup(rk->dp, rk->dplen);	d	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+decode_key	tools/keys.c	71	33	  sk->key.rsa.dq = xblobdup(rk->dq, rk->dqlen);	d	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+certificate_to_trust_anchor_inner	tools/certs.c	66	37	  ta->pkey.key.rsa.n = xblobdup(pk->key.rsa.n, pk->key.rsa.nlen);	k	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+decode_key	tools/keys.c	67	39	  sk->key.rsa.q = xblobdup(rk->q, rk->qlen);	q	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+decode_key	tools/keys.c	69	33	  sk->key.rsa.dp = xblobdup(rk->dp, rk->dplen);	d	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+certificate_to_trust_anchor_inner	tools/certs.c	66	60	  ta->pkey.key.rsa.n = xblobdup(pk->key.rsa.n, pk->key.rsa.nlen);	n	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+decode_key	tools/keys.c	82	31	  sk->key.ec.x = xblobdup(ek->x, ek->xlen);	x	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+decode_key	tools/keys.c	67	32	  sk->key.rsa.q = xblobdup(rk->q, rk->qlen);	q	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+decode_key	tools/keys.c	73	33	  sk->key.rsa.iq = xblobdup(rk->iq, rk->iqlen);	i	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O1-fmemory-profile|O3--disable-cgp|O3--disable-complex-addr-modes|O3-fmemory-profile|Ofast--disable-cgp|Ofast--disable-complex-addr-modes|Ofast-fmemory-profile
+certificate_to_trust_anchor_inner	tools/certs.c	68	60	  ta->pkey.key.rsa.e = xblobdup(pk->key.rsa.e, pk->key.rsa.elen);	e	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+certificate_to_trust_anchor_inner	tools/certs.c	74	57	  ta->pkey.key.ec.q = xblobdup(pk->key.ec.q, pk->key.ec.qlen);	q	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+decode_key	tools/keys.c	73	41	  sk->key.rsa.iq = xblobdup(rk->iq, rk->iqlen);	i	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O1-fmemory-profile|O3--disable-cgp|O3--disable-complex-addr-modes|O3-fmemory-profile|Ofast--disable-cgp|Ofast--disable-complex-addr-modes|Ofast-fmemory-profile
+decode_key	tools/keys.c	82	38	  sk->key.ec.x = xblobdup(ek->x, ek->xlen);	x	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+certificate_to_trust_anchor_inner	tools/certs.c	68	45	  ta->pkey.key.rsa.e = xblobdup(pk->key.rsa.e, pk->key.rsa.elen);	e	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+decode_key	tools/keys.c	65	32	  sk->key.rsa.p = xblobdup(rk->p, rk->plen);	p	cjump	O1--disable-cgp|O1--disable-complex-addr-modes|O3--disable-cgp|O3--disable-complex-addr-modes|Ofast--disable-cgp|Ofast--disable-complex-addr-modes
+certificate_to_trust_anchor_inner	tools/certs.c	74	43	  ta->pkey.key.ec.q = xblobdup(pk->key.ec.q, pk->key.ec.qlen);	q	cjump	O1--disable-cgp|O1--disable-complex-addr-modes
+parse_size	tools/names.c	813	27	  if (z < (size_t)d || (z / (size_t)radix) != acc	/	mdiv	O1--disable-machine-sink|O1--jump-is-expensive|O1--simplifycfg-branch-fold-threshold=0|O1-fprofile-arcs|O1-fprofile-instr-generate|O1-fpseudo-probe-for-profiling|O2--disable-machine-sink|O2--jump-is-expensive|O2--simplifycfg-branch-fold-threshold=0|O2--unroll-force-peel-count=100|O2--unroll-force-peel-count=50|O2-fprofile-arcs|O2-fprofile-instr-generate|O2-fpseudo-probe-for-profiling|O3--disable-machine-sink|O3--jump-is-expensive|O3--simplifycfg-branch-fold-threshold=0|O3--unroll-force-peel-count=100|O3--unroll-force-peel-count=50|O3-fprofile-arcs|O3-fprofile-instr-generate|O3-fpseudo-probe-for-profiling|Ofast--disable-machine-sink|Ofast--jump-is-expensive|Ofast--simplifycfg-branch-fold-threshold=0|Ofast--unroll-force-peel-count=100|Ofast--unroll-force-peel-count=50|Ofast-fprofile-arcs|Ofast-fprofile-instr-generate|Ofast-fpseudo-probe-for-profiling|Os--disable-machine-sink|Os--jump-is-expensive|Os--simplifycfg-branch-fold-threshold=0|Os--unroll-force-peel-count=50|Os-fprofile-arcs|Os-fprofile-instr-generate|Os-fpseudo-probe-for-profiling|Oz--disable-machine-sink|Oz--jump-is-expensive|Oz--simplifycfg-branch-fold-threshold=0|Oz-fprofile-arcs|Oz-fprofile-instr-generate|Oz-fpseudo-probe-for-profiling
+br_i15_muladd_small	src/int/i15_muladd.c	44	15	  x -= (-ctl) & d;	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false
+br_i62_modpow_opt	src/int/i62_modpow2.c	424	20	     t2[v] |= mask & base[v];	&	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch|Os-fglobal-isel|Oz-fglobal-isel
+p256_mulgen	src/ec/ec_p256_m31.c	1281	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+br_i31_modpow_opt	src/int/i31_modpow2.c	141	20	     t2[v] |= mask & base[v];	&	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+br_i15_modpow_opt	src/int/i15_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+br_i15_decode_mod	src/int/i15_decmod.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O1-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_rsa_i15_compute_pubexp	src/rsa/rsa_i15_pubexp.c	151	12	 return ep & -EQ(ep, eq);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i15_decode_mod	src/int/i15_decmod.c	837	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i32_sub	src/int/i32_sub.c	47	12	  cc = (cc & EQ(naw, aw)) | GT(naw, aw);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i32_add	src/int/i32_add.c	47	12	  cc = (cc & EQ(naw, aw)) | LT(naw, aw);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_aes_big_keysched_inv	src/symcipher/aes_big_dec.c	105	41	 return x ^ ((unsigned)(-(int)(x >> 8)) & 0x11B);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel
+br_rsa_ssl_decrypt	src/rsa/rsa_ssl_decrypt.c	45	4	 x &= EQ(data[1], 0x02);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_rsa_ssl_decrypt	src/rsa/rsa_ssl_decrypt.c	49	4	 x &= EQ(data[len - 49], 0x00);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_rsa_i31_compute_pubexp	src/rsa/rsa_i31_pubexp.c	151	12	 return ep & -EQ(ep, eq);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i31_decode_mod	src/int/i31_decmod.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O1-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i32_decode_mod	src/int/i32_decmod.c	837	27	 return (int32_t)GT(x, y) | -(int32_t)GT(y, x);	|	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_rsa_ssl_decrypt	src/rsa/rsa_ssl_decrypt.c	47	5	  x &= NEQ(data[u], 0);	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i32_decode_mod	src/int/i32_decmod.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+br_i32_ninv32	src/int/i32_ninv32.c	772	19	 return y ^ (-ctl & (x ^ y));	&	cjump	O1-fglobal-isel|O2-fglobal-isel|O3-fglobal-isel|Ofast-fglobal-isel|Os-fglobal-isel|Oz-fglobal-isel
+cc_do_sign	src/ssl/ssl_ccert_single_ec.c	1166	22	 return ctx->impl[id - 1];	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+br_ssl_engine_switch_cbc_out	src/ssl/ssl_engine.c	1166	22	 return ctx->impl[id - 1];	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+br_ssl_engine_switch_cbc_in	src/ssl/ssl_engine.c	1166	22	 return ctx->impl[id - 1];	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+br_ssl_hs_server_run	src/ssl/ssl_hs_server.c	1166	22	 return ctx->impl[id - 1];	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+p256_mulgen	src/ec/ec_p256_m15.c	1932	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O2--enable-nontrivial-unswitch
+br_i62_modpow_opt	src/int/i62_modpow2.c	438	26	   x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	cjump	O3--bonus-inst-threshold=0|O3--rotation-max-header-size=0|O3--simplifycfg-branch-fold-common-dest-vector-multiplier=0|O3--simplifycfg-branch-fold-threshold=0|O3--unswitch-num-initial-unscaled-candidates=-1|O3--unswitch-num-initial-unscaled-candidates=0|O3--unswitch-threshold=-1|O3--unswitch-threshold=0|O3-fprofile-arcs|O3-fprofile-generate|O3-fprofile-instr-generate|O3-fpseudo-probe-for-profiling|Ofast--bonus-inst-threshold=0|Ofast--rotation-max-header-size=0|Ofast--simplifycfg-branch-fold-common-dest-vector-multiplier=0|Ofast--simplifycfg-branch-fold-threshold=0|Ofast--unswitch-num-initial-unscaled-candidates=-1|Ofast--unswitch-num-initial-unscaled-candidates=0|Ofast--unswitch-threshold=-1|Ofast--unswitch-threshold=0|Ofast-fprofile-arcs|Ofast-fprofile-generate|Ofast-fprofile-instr-generate|Ofast-fpseudo-probe-for-profiling
+divrem16	src/int/i15_muladd.c	44	15	  x -= (-ctl) & d;	&	cjump	O3-fglobal-isel|Ofast-fglobal-isel|Oz-fglobal-isel
+br_i62_modpow_opt	src/int/i62_modpow2.c	438	35	   x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	&	cjump	O3-fno-inline|O3-fno-inline-functions|Ofast-fno-inline|Ofast-fno-inline-functions
+mkprime	src/rsa/rsa_i31_keygen_inner.c	325	13	  m11 -= 44 & -GT(m11, 43);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	292	11	  m5 -= 5 & -GT(m5, 4);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i31_keygen_inner.c	311	12	  m5 -= 20 & -GT(m5, 19);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	305	13	  m11 -= 11 & -GT(m11, 10);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i31_keygen_inner.c	312	12	  m5 -= 10 & -GT(m5, 9);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	291	12	  m5 -= 10 & -GT(m5, 9);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	304	13	  m11 -= 22 & -GT(m11, 21);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i31_keygen_inner.c	326	13	  m11 -= 22 & -GT(m11, 21);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i31_keygen_inner.c	313	11	  m5 -= 5 & -GT(m5, 4);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	303	13	  m11 -= 44 & -GT(m11, 43);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i31_keygen_inner.c	327	13	  m11 -= 11 & -GT(m11, 10);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	271	13	   m11 += w << (5 & -(u & 1));	<	cjump	Os-fglobal-isel|Oz-fglobal-isel
+mkprime	src/rsa/rsa_i15_keygen.c	302	13	  m11 -= 88 & -GT(m11, 87);	&	cjump	Os-fglobal-isel|Oz-fglobal-isel
+print_blob	tools/ta.c	76	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz--disable-machine-sink
+br_rsa_i62_private	src/rsa/rsa_i62_priv.c	69	2	 while (z > 0) {	w	mdiv	Oz--disable-machine-sink|Oz-fprofile-generate
+do_verify	tools/verify.c	126	23	  for (u = 0; u < pk->qlen; u ++) {	q	mdiv	Oz--disable-machine-sink
+print_int_C	tools/skey.c	61	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz--disable-machine-sink
+do_verify	tools/verify.c	91	23	  for (u = 0; u < pk->elen; u ++) {	e	mdiv	Oz--disable-machine-sink
+do_chain	tools/chain.c	40	16	 for (u = 0; u < len; u ++) {	<	mdiv	Oz--disable-machine-sink
+do_verify	tools/verify.c	78	23	  for (u = 0; u < pk->nlen; u ++) {	n	mdiv	Oz--disable-machine-sink
+p256_to_affine	src/ec/ec_p256_m31.c	713	4	   break;	b	cjump	Oz--jump-threading-across-loop-headers
+p256_to_affine	src/ec/ec_p256_m15.c	1308	4	   break;	b	cjump	Oz--jump-threading-across-loop-headers
+double_gf128	src/aead/eax.c	81	12	 cc = 0x87 & -((unsigned)src[0] >> 7);	&	cjump	Oz-fglobal-isel

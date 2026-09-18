@@ -1,0 +1,51 @@
+function	file	line	col	source	char	type	optimization
+do_vsexp_sscan	sexp.c	1431	16	       *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=-1|O1--cold-callsite-rel-freq=0|O1--cold-callsite-rel-freq=100|O1--disable-phi-elim-edge-splitting|O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50
+do_vsexp_sscan	sexp.c	1296	13	    *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=-1|O1--cold-callsite-rel-freq=100|O1--csuses-threshold=-1|O1--csuses-threshold=0|O1--disable-phi-elim-edge-splitting|O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+do_vsexp_sscan	sexp.c	1634	16	       *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=-1|O1--cold-callsite-rel-freq=0|O1--cold-callsite-rel-freq=100|O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O2--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=0|O3--hot-callsite-rel-freq=0
+do_vsexp_sscan	sexp.c	1325	16	       *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=-1|O1--cold-callsite-rel-freq=100|O1--csuses-threshold=-1|O1--csuses-threshold=0|O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O3--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+do_vsexp_sscan	sexp.c	1382	23	              *erroff = p - buffer;	=	cjump	O1--cold-callsite-rel-freq=-1|O1--cold-callsite-rel-freq=0|O1--cold-callsite-rel-freq=100|O1--csuses-threshold=-1|O1--csuses-threshold=0|O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O3--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+controlbitsfrompermutation	mceliece6688128f.c	1889	16	      p[ i+j ] ^= d;	^	cjump	O1--inline-max-stacksize=100|O1-finline-max-stacksize=100
+blake2_write	blake2.c	197	39	   nblks = inlen / blkbytes - !(inlen % blkbytes);	%	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50
+layer	mceliece6688128f.c	1889	16	      p[ i+j ] ^= d;	^	cjump	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50
+_gcry_mceliece6688128f_keypair	mceliece6688128f.c	2801	11	 tmp = t0 * (t1 & 1);	*	cjump	O1--ir-outliner
+_gcry_sexp_canon_len	sexp.c	2161	27	                  *erroff = count;	=	cjump	O1--misched=ilpmin|O2--misched=ilpmin|O3--misched=ilpmin
+_gcry_sexp_canon_len	sexp.c	2162	28	                  *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	O1--misched=ilpmin|O2--misched=ilpmin|O3--misched=ilpmin
+_gcry_sexp_canon_len	sexp.c	2151	20	          *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	O1--misched=ilpmin|O2--misched=ilpmin|O3--misched=ilpmin
+_gcry_sexp_canon_len	sexp.c	2150	19	          *erroff = count;	=	cjump	O1--misched=ilpmin|O2--misched=ilpmin|O3--misched=ilpmin
+gcry_err_make_from_errno	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1-fshort-enums|O2-fshort-enums|O3-fshort-enums|Os-fshort-enums|Oz-fshort-enums
+fft	mceliece6688128f.c	2432	14	   pre[i][j] = -pre[i][j];	=	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_mpi_set_buffer	mpicoder.c	448	13	      a->d[i++] = alimb;	+	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_sntrup761_dec	sntrup761.c	1039	35	    differentbits |= (*c++) ^ (*c2++);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_sntrup761_dec	sntrup761.c	796	12	    r[i] = ((ev[i] ^ 1) & ~mask) ^ 1;	(	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_sntrup761_dec	sntrup761.c	798	12	    r[i] = ev[i] & ~mask;	e	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1715	8	  v[i] = vec_setbits((c0 >> i) & 1);	=	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_mceliece6688128f_enc	mceliece6688128f.c	2228	23	   e_int[i] |= val[j] & mask;	&	cjump	O2--alias-set-saturation-threshold=0|O2--vplan-build-stress-test|O2-fno-tree-vectorize|O3--alias-set-saturation-threshold=0|O3--vplan-build-stress-test|O3-fno-tree-vectorize|O3-fno-vectorize|Os--alias-set-saturation-threshold=0|Os--vplan-build-stress-test|Os-fno-tree-vectorize|Os-fno-vectorize
+do_vsexp_sscan	sexp.c	1178	15	      *erroff = 0;	=	cjump	O2--cold-callsite-rel-freq=0|O2--disable-phi-elim-edge-splitting|O3--cold-callsite-rel-freq=0|O3--disable-phi-elim-edge-splitting|O3--hot-callsite-rel-freq=0|Os--disable-phi-elim-edge-splitting
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	cjump	O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+_gcry_sm4_ctr_enc	sm4.c	174	10	  out->a = be_bswap64(val);	=	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|O3--vectorize-num-stores-pred=100|O3--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_aria_ctr32le_enc	aria.c	180	10	  out->a = le_bswap64(val);	=	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|O3--vectorize-num-stores-pred=100|O3--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_aria_ctr_enc	aria.c	174	10	  out->a = be_bswap64(val);	=	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|O3--vectorize-num-stores-pred=100|O3--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+do_vsexp_sscan	sexp.c	1717	16	       *erroff = p - buffer;	=	cjump	O3--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|O3--machine-sink-split-probability-threshold=0|O3--tail-merge-size=100|O3--tail-merge-size=50|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50|Os--csuses-threshold=-1|Os--hoist-common-insts|Oz--csuses-threshold=-1|Oz--csuses-threshold=0|Oz--hoist-common-insts
+do_vsexp_sscan	sexp.c	1645	16	       *erroff = p - buffer;	=	cjump	O3--cold-callsite-rel-freq=0|O3--hot-callsite-rel-freq=0
+do_vsexp_sscan	sexp.c	1667	16	       *erroff = p - buffer;	=	cjump	O3--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+do_vsexp_sscan	sexp.c	1694	16	       *erroff = p - buffer;	=	cjump	O3--cold-callsite-rel-freq=0|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+do_vsexp_sscan	sexp.c	1749	12	   *erroff = p - buffer;	=	cjump	O3--cold-callsite-rel-freq=0|O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|O3--hot-callsite-rel-freq=0|O3--machine-sink-split-probability-threshold=0|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50|Os--csuses-threshold=-1|Os--hoist-common-insts|Oz--csuses-threshold=-1|Oz--csuses-threshold=0|Oz--hoist-common-insts
+do_vsexp_sscan	sexp.c	1552	27	                  *erroff = p - buffer;	=	cjump	O3--cold-callsite-rel-freq=50|O3--csuses-threshold=-1|O3--csuses-threshold=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+do_vsexp_sscan	sexp.c	1397	13	    *erroff = p - buffer;	=	cjump	O3--csuses-threshold=-1|O3--csuses-threshold=0|Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+_gcry_sexp_canon_len	sexp.c	2182	23	              *erroff = count;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2220	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2183	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2199	24	              *errcode = GPG_ERR_SEXP_UNMATCHED_DH;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2219	23	              *erroff = count;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+_gcry_sexp_canon_len	sexp.c	2198	23	              *erroff = count;	=	cjump	O3--tail-merge-size=100|O3--tail-merge-size=50
+bench_ecc_mult_init	bench-slope.c	2541	34	     num_measurement_repetitions / obj->max_bufsize;	/	mdiv	Os--alias-set-saturation-threshold=0|Os--disable-licm-promotion|Os--licm-mssa-max-acc-promotion=0
+bench_ecc_init	bench-slope.c	2641	34	     num_measurement_repetitions / obj->max_bufsize;	/	mdiv	Os--alias-set-saturation-threshold=0|Os--disable-licm-promotion|Os--licm-mssa-max-acc-promotion=0
+_gcry_mpi_print	mpicoder.c	780	17	      *nwritten = n;	=	cjump	Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+_gcry_mpi_print	mpicoder.c	803	17	      *nwritten = n;	=	cjump	Os--csuses-threshold=-1|Oz--csuses-threshold=-1|Oz--csuses-threshold=0
+do_ecb_encrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+do_ecb_decrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+bm	mceliece6688128f.c	1672	35	  interval[0][i] = interval[1][i] = 0;	=	cjump	Os--inline-max-stacksize=100|Os-finline-max-stacksize=100
+_gcry_sm4_ctr32le_enc	sm4.c	180	10	  out->a = le_bswap64(val);	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_camellia_ctr32le_enc	camellia-glue.c	180	10	  out->a = le_bswap64(val);	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+_gcry_camellia_ctr_enc	camellia-glue.c	174	10	  out->a = be_bswap64(val);	=	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50

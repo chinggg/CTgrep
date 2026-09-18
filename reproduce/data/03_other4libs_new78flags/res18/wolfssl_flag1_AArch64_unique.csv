@@ -1,0 +1,6 @@
+function	file	line	col	source	char	type	optimization
+sp_div_2	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+_sp_invmod	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+sp_to_unsigned_bin_len_ct	wolfcrypt/src/sp_int.c	18272	18	            mask &= (sp_int_digit)0 - (i < (unsigned int)a->used - 1);	&	cjump	O3--disable-early-ifcvt|O3--early-ifcvt-limit=0
+_sp_mont_red	wolfcrypt/src/sp_int.c	17418	22	            a->dp[i] &=	&	mmem	Os--force-streaming-compatible-sve|Os-fno-tree-vectorize|Os-fno-vectorize

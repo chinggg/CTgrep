@@ -1,0 +1,5 @@
+function	file	line	col	source	char	type	optimization
+w64ShiftRight	./wolfcrypt/src/misc.c	1048	9	    a.n >>= shift;	>	mmem	O0
+_sp_mont_red	wolfcrypt/src/sp_int.c	17418	22	            a->dp[i] &=	&	mmem	O1|O2|O3|Ofast|Os|Oz
+sp_addmod_ct	wolfcrypt/src/sp_int.c	8164	26	            w         -= m->dp[i] & mask;	m	cjump	O3|Ofast
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7396	35	            w         += m->dp[i] & mask;	&	cjump	O3|Ofast

@@ -1,0 +1,37 @@
+function	file	line	col	source	char	type	optimization
+mbedtls_ssl_resend_hello_request	ssl_tls.c	6697	52	        uint32_t ratio = ssl->conf->hs_timeout_max / ssl->conf->hs_timeout_min + 1;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ecp_mul_comb	../tf-psa-crypto/drivers/builtin/src/ecp.c	2231	30	    d = (grp->nbits + w - 1) / w;	/	mdiv	O0
+convert_jpake_computation_stage_to_driver_step	../tf-psa-crypto/core/psa_crypto.c	9064	26	        key_share_step = is_x1 ?	i	cjump	O0|Os|Oz
+mbedtls_mpi_mod_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	mdiv	O0
+psa_cipher_setup	../tf-psa-crypto/core/psa_crypto.c	4347	30	    psa_key_usage_t usage = (cipher_operation == MBEDTLS_ENCRYPT ?	c	cjump	O0|O1|O2|O3|Ofast|Os|Oz
+mbedtls_hkdf_expand	../tf-psa-crypto/drivers/builtin/src/hkdf.c	91	17	    n = okm_len / hash_len;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+mbedtls_lmots_calculate_public_key_candidate	../tf-psa-crypto/drivers/builtin/src/lmots.c	490	32	                           sig + MBEDTLS_LMOTS_SIG_SIGNATURE_OFFSET(params->type),	+	cjump	O0
+ecp_precompute_comb	../tf-psa-crypto/drivers/builtin/src/ecp.c	1826	22	        i = 1U << (j / d);	/	mdiv	O0
+ssl_calc_finished_tls_generic	ssl_tls.c	7321	14	    sender = (from == MBEDTLS_SSL_IS_CLIENT)	(	cjump	O0|O1|O2|O3|Ofast|Os|Oz
+mbedtls_psa_cipher_update	../tf-psa-crypto/drivers/builtin/src/psa_crypto_cipher.c	511	13	            / operation->block_length * operation->block_length;	/	mdiv	O0
+mbedtls_int_div_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1319	25	    quotient = dividend / d;	/	mdiv	O0
+ssl_tls13_parse_server_hello	ssl_tls13_client.c	1736	31	    allowed_extensions_mask = is_hrr ?	i	cjump	O0
+convert_jpake_computation_stage_to_driver_step	../tf-psa-crypto/core/psa_crypto.c	9068	26	        key_share_step = (stage->io_mode == PSA_JPAKE_OUTPUT) ?	(	cjump	O0|Os|Oz
+ssl_tls13_write_supported_versions_ext	ssl_tls13_client.c	51	34	    unsigned char versions_len = (ssl->handshake->min_tls_version <=	(	cjump	O0
+mbedtls_mpi_mod_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	mdiv	O0
+mbedtls_cipher_cmac_update	../tf-psa-crypto/drivers/builtin/src/cmac.c	235	33	    n = (ilen + block_size - 1) / block_size;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+psa_pake_input	../tf-psa-crypto/core/psa_crypto.c	9068	26	        key_share_step = (stage->io_mode == PSA_JPAKE_OUTPUT) ?	(	cjump	O1
+psa_pake_input	../tf-psa-crypto/core/psa_crypto.c	9064	26	        key_share_step = is_x1 ?	i	cjump	O1
+mbedtls_mpi_div_mpi	../tf-psa-crypto/drivers/builtin/src/bignum.c	1319	25	    quotient = dividend / d;	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+mbedtls_ssl_tls13_handshake_client_step	ssl_tls13_client.c	1736	31	    allowed_extensions_mask = is_hrr ?	i	cjump	O1|O2|O3|Ofast|Os|Oz
+mbedtls_pk_get_psa_attributes	../tf-psa-crypto/drivers/builtin/src/pk.c	402	43	            psa_set_key_type(attributes, (want_private ?	w	cjump	O1|O2|O3|Ofast|Os|Oz
+psa_pake_output	../tf-psa-crypto/core/psa_crypto.c	9064	26	        key_share_step = is_x1 ?	i	cjump	O1
+mbedtls_ssl_tls13_write_client_hello_exts	ssl_tls13_client.c	51	34	    unsigned char versions_len = (ssl->handshake->min_tls_version <=	(	cjump	O1|O2|O3|Ofast|Os|Oz
+ecp_mul_restartable_internal	../tf-psa-crypto/drivers/builtin/src/ecp.c	1826	22	        i = 1U << (j / d);	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+psa_pake_output	../tf-psa-crypto/core/psa_crypto.c	9068	26	        key_share_step = (stage->io_mode == PSA_JPAKE_OUTPUT) ?	(	cjump	O1
+ecp_mul_restartable_internal	../tf-psa-crypto/drivers/builtin/src/ecp.c	2231	30	    d = (grp->nbits + w - 1) / w;	/	mdiv	O2|O3|Ofast|Os|Oz
+keccak_f1600	../tf-psa-crypto/drivers/builtin/src/sha3.c	119	30	            t = lane[(i + 4) % 5] ^ ROTR64(lane[(i + 1) % 5], 63);	%	cjump	Os|Oz
+mbedtls_base64_encode	../tf-psa-crypto/drivers/builtin/src/base64.c	73	14	    n = slen / 3 + (slen % 3 != 0);	/	mdiv	Oz
+psa_free_key_slot	../tf-psa-crypto/core/psa_crypto_slot_management.c	576	28	    size_t slot_idx = slot - slice;	-	mdiv	Oz
+mbedtls_ms_time	../tf-psa-crypto/drivers/builtin/src/platform_util.c	246	41	    return current_ms*1000 + tv.tv_nsec / 1000000;	/	mdiv	Oz
+mbedtls_net_usleep	net_sockets.c	526	23	    tv.tv_sec  = usec / 1000000;	/	mdiv	Oz
+mbedtls_net_recv_timeout	net_sockets.c	597	26	    tv.tv_sec  = timeout / 1000;	/	mdiv	Oz
+mbedtls_net_poll	net_sockets.c	507	9	    if (FD_ISSET(fd, &read_fds)) {	F	mdiv	Oz
+mbedtls_timing_get_timer	timing.c	98	52	                + (now.tv_usec - t->start.tv_usec) / 1000;	/	mdiv	Oz
+mbedtls_net_recv_timeout	net_sockets.c	595	5	    FD_SET((SOCKET) fd, &read_fds);	F	mdiv	Oz
+mbedtls_net_poll	net_sockets.c	494	26	    tv.tv_sec  = timeout / 1000;	/	mdiv	Oz

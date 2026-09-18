@@ -1,0 +1,199 @@
+function	file	line	col	source	char	type	optimization
+balloon_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	mdiv	O0
+_gcry_xcalloc_secure	global.c	1281	19	  if (m && nbytes / m != n)	/	mdiv	O0
+_gcry_camellia_xts_crypt	camellia-glue.c	1371	39	      nburn = bulk_xts_crypt_128(ctx, encrypt ? camellia_encrypt_blk1_64	e	cjump	O0|O1|O2|O3|Os|Oz
+_gcry_kdf_pkdf2	kdf.c	164	19	  l = ((dklen - 1)/ hlen) + 1;	/	mdiv	O0
+x963_kdf_final	kdf.c	1962	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+argon2_init	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	mdiv	O0
+cmac_tag	cipher-cmac.c	238	14	      return buf_eq_const (tag, ctx->u_iv.iv, taglen) ?	b	cjump	O0|Os|Oz
+do_ecb_crypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O0|Os|Oz
+do_ghash_buf	cipher-gcm.c	778	24	      nblocks = buflen / blocksize;	/	mdiv	O0
+_gcry_camellia_ecb_crypt	camellia-glue.c	1343	39	      nburn = bulk_ecb_crypt_128(ctx, encrypt ? camellia_encrypt_blk1_64	e	cjump	O0|O1|O2|O3|Os|Oz
+ecc_generate	ecc.c	814	28	         "(flags param)" : ((flags & PUBKEY_FLAG_EDDSA))?	(	cjump	O0
+mul_inv	idea.c	83	8	 q = x / y;	/	mdiv	O0|Os|Oz
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O0|Os|Oz
+hkdf_final	kdf.c	1819	29	  for (i = 0; i < h->outlen / h->blklen; i++)	/	mdiv	O0
+mul_inv	idea.c	76	20	    t1 = 0x10001UL / x;	/	mdiv	O0|Os|Oz
+_gcry_pk_util_data_to_mpi	pubkey-util.c	714	20	      int mpifmt = (ctx->flags & PUBKEY_FLAG_RAW_FLAG) ?	(	cjump	O0
+_gcry_kdf_scrypt	scrypt.c	277	22	  if (r128 && nbytes / r128 != N)	/	mdiv	O0
+_gcry_calloc	global.c	1140	18	  if (m && bytes / m != n)	/	mdiv	O0
+prime_generate_internal	primegen.c	366	38	      fbits = (pbits - req_qbits -1) / n;	/	mdiv	O0|O1|O2|O3|Os|Oz
+mul_inv	idea.c	88	8	 q = y / x;	/	mdiv	O0|Os|Oz
+uint32_divmod_uint14	sntrup761.c	159	5	  v /= m;	/	mdiv	O0|Oz
+_gcry_twofish_ecb_crypt	twofish.c	1656	39	      nburn = bulk_ecb_crypt_128(ctx, encrypt ? twofish_encrypt_blk1_16	e	cjump	O0|O1|O2|O3|Os|Oz
+onestep_kdf_final	kdf.c	1502	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+index_alpha	kdf.c	647	64	            reference_area_size = t->slice * a->segment_length +	+	cjump	O0
+_gcry_sm4_xts_crypt	sm4.c	1629	39	      nburn = bulk_xts_crypt_128(ctx, encrypt ? sm4_encrypt_blk1_32	e	cjump	O0|O1|O2|O3|Os|Oz
+prime_generate_internal	primegen.c	361	42	      fbits = (pbits - 2 * req_qbits -1) / n;	/	mdiv	O0|O1|O2|O3|Os|Oz
+_gcry_twofish_xts_crypt	twofish.c	1620	39	      nburn = bulk_xts_crypt_128(ctx, encrypt ? twofish_encrypt_blk1_16	e	cjump	O0|O1|O2|O3|Os|Oz
+jent_measure_jitter	./jitterentropy-noise.c	342	50	 current_delta = jent_delta(ec->prev_time, time) /	/	mdiv	O0
+_gcry_serpent_xts_crypt	serpent.c	1829	39	      nburn = bulk_xts_crypt_128(ctx, encrypt ? serpent_encrypt_blk1_32	e	cjump	O0|O1|O2|O3|Os|Oz
+_gcry_generate_fips186_3_prime	primegen.c	1729	33	  value_n = (pbits + qbits - 1) / qbits - 1;	/	mdiv	O0|O1|O2|O3|Os|Oz
+_gcry_kdf_scrypt	scrypt.c	273	22	  if (r128 && nbytes / r128 != p)	/	mdiv	O0
+drbg_generate_long	random-drbg.c	1521	31	      slice = ((buflen - len) / drbg_max_request_bytes ());	/	mdiv	O0
+print_config	global.c	405	7	      gpgrt_fprintf (fp, "fips-mode:%c::%s:\n",	g	cjump	O0
+_gcry_serpent_ecb_crypt	serpent.c	1859	39	      nburn = bulk_ecb_crypt_128(ctx, encrypt ? serpent_encrypt_blk1_32	e	cjump	O0|O1|O2|O3|Os|Oz
+md_open	md.c	507	47	  n = offsetof (struct gcry_md_handle, buf) + bufsize;	b	cjump	O0
+do_polyval_buf	cipher-gcm-siv.c	156	24	      nblocks = buflen / blocksize;	/	mdiv	O0
+onestep_kdf_mac_final	kdf.c	1630	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O0
+_gcry_sm4_ecb_crypt	sm4.c	1588	39	      nburn = bulk_ecb_crypt_128(ctx, encrypt ? sm4_encrypt_blk1_32	e	cjump	O0|O1|O2|O3|Os|Oz
+prime_generate_internal	primegen.c	346	35	  for (n = 1; (pbits - qbits - 1) / n  >= qbits; n++)	/	mdiv	O0|O1|O2|O3|Os|Oz
+_gcry_xcalloc	global.c	1263	19	  if (m && nbytes / m != n)	/	mdiv	O0
+_gcry_generate_fips186_2_prime	primegen.c	1491	25	  value_n = (pbits - 1) / qbits;	/	mdiv	O0
+elg_decrypt	elgamal.c	962	24	                       (ctx.flags & PUBKEY_FLAG_LEGACYRESULT)	(	cjump	O0|O1|O2|O3|Os|Oz
+_gcry_calloc_secure	global.c	1160	18	  if (m && bytes / m != n)	/	mdiv	O0
+rsa_decrypt	rsa.c	1556	24	                       (ctx.flags & PUBKEY_FLAG_LEGACYRESULT)	(	cjump	O0|O1|O2|O3|Os|Oz
+_gcry_camellia_xts_crypt	camellia-glue.c	436	48	          tweak_next_lo = (tweak_next_lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+gcry_kdf_derive	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_verify	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_md_ctl	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sntrup761_keypair	sntrup761.c	193	5	  x += mask & (uint32_t) m;	+	cjump	O1|O2|O3|Os
+gcry_kdf_open	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mpi_aprint	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mpi_print	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_prime_group_generator	primegen.c	1258	9	        first = 0;	f	cjump	O1
+gcry_kem_decap	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sntrup761_dec	sntrup761.c	224	6	  ur += mask & m;	+	cjump	O1|O2|O3|Os
+_gcry_cipher_ocb_authenticate	cipher-ocb.c	60	15	  r = (r + r) ^ (l_0 & 135);	^	cjump	O1|O2|O3
+_gcry_sntrup761_dec	sntrup761.c	193	5	  x += mask & (uint32_t) m;	+	cjump	O1|O2|O3|Os
+indcpa_enc_2	./kyber-kdep.c	605	14	        t[k] += ((int16_t)t[k] >> 15) & KYBER_Q;	+	cjump	O1|O2|O3|Os|Oz
+gcry_md_hash_buffers	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_decrypt	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_setiv	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mac_algo_info	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_prime_check	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+do_ecb_decrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O1|O2|O3
+gcry_md_info	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_hash_verify	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_kdf_final	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mpi_get_ui	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sntrup761_keypair	sntrup761.c	224	6	  ur += mask & m;	+	cjump	O1|O2|O3|Os
+gcry_sexp_build	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_ctl	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sntrup761_dec	sntrup761.c	798	12	    r[i] = ev[i] & ~mask;	e	cjump	O1|O2|O3|Os
+gcry_pk_genkey	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mac_ctl	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+Rq_mult_small	sntrup761.c	420	40	  return int32_mod_uint14 (x + q12, q) - q12;	-	cjump	O1|O2|O3|Os
+gcry_sexp_sscan	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+crypto_kem_keypair_derand_2	./kyber-kdep.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	O1|O3
+gcry_err_make_from_errno	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_md_extract	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+Hide	sntrup761.c	193	5	  x += mask & (uint32_t) m;	+	cjump	O1|O2|O3|Os
+_gcry_sntrup761_dec	sntrup761.c	796	12	    r[i] = ((ev[i] ^ 1) & ~mask) ^ 1;	(	cjump	O1|O2|O3|Os|Oz
+invert_key	idea.c	88	8	 q = y / x;	/	mdiv	O1|O2|O3
+gcry_cipher_algo_info	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_encrypt	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1502	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+drbg_seed	random-drbg.c	1348	20	      entropylen = drbg_sec_strength (drbg->core->flags);	d	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_decrypt	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+Hide	sntrup761.c	224	6	  ur += mask & m;	+	cjump	O1|O2|O3|Os
+_gcry_rngcsprng_randomize	random-csprng.c	461	9	  level &= 3;	&	cjump	O1|O2|O3|Os|Oz
+gcry_mac_read	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_kem_keypair	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_md_setkey	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_sexp_new	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+md_open	md.c	509	42	       / sizeof (PROPERLY_ALIGNED_TYPE)) * sizeof (PROPERLY_ALIGNED_TYPE);	*	cjump	O1|O2|O3|Os|Oz
+invert_key	idea.c	76	20	    t1 = 0x10001UL / x;	/	mdiv	O1|O2|O3
+gcry_mac_open	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_kdf_compute	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+Decode	sntrup761.c	193	5	  x += mask & (uint32_t) m;	+	cjump	O1|O2|O3|Os
+_gcry_aes_xts_crypt	rijndael.c	1679	44	      tweak_next_lo = (tweak_next_lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+_gcry_twofish_xts_crypt	twofish.c	436	48	          tweak_next_lo = (tweak_next_lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_setup_geniv	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+do_setkey	rijndael.c	908	60	              rcon = ((rcon << 1) ^ (-(rcon >> 7) & 0x1b)) & 0xff;	&	cjump	O1|O2|O3|Os|Oz
+gcry_random_add_bytes	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_sexp_create	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_encrypt	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mac_setiv	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_ecc_mul_point	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_md_hash_buffers_ext	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mac_verify	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+crypto_kem_keypair_derand_2	./kyber-kdep.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	O1|O3
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	1684	26	  mask = mask_nonzero(d) & mask_leq(L*2, N);	&	cjump	O1|O2|O3|Os|Oz
+_gcry_kdf_open	kdf.c	1136	33	  b->n_blocks = (s_cost * 1024) / b->blklen;	/	mdiv	O1|O2|O3|Os|Oz
+gcry_mpi_ec_new	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_aria_xts_crypt	aria.c	436	48	          tweak_next_lo = (tweak_next_lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+_gcry_serpent_xts_crypt	serpent.c	436	48	          tweak_next_lo = (tweak_next_lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+_gcry_cipher_cmac_check_tag	cipher-cmac.c	238	14	      return buf_eq_const (tag, ctx->u_iv.iv, taglen) ?	b	cjump	O1|O2|O3
+gcry_control	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_ctl	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_gettag	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_sign	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_kem_encap	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+do_ecb_encrypt	cipher.c	1102	22	  nblocks = inbuflen / blocksize;	/	mdiv	O1|O2|O3
+gcry_mpi_ec_set_mpi	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_open	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+indcpa_enc_3	./kyber-kdep.c	605	14	        t[k] += ((int16_t)t[k] >> 15) & KYBER_Q;	+	cjump	O1|O2|O3|Os|Oz
+gcry_mpi_ec_set_point	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_cipher_siv_authenticate	cipher-siv.c	42	18	  lo = (lo << 1) ^ (mask & 0x87);	^	cjump	O1|O2|O3|Os
+_gcry_kdf_open	kdf.c	507	34	  segment_length = memory_blocks / (parallelism * 4);	/	mdiv	O1|O2|O3|Os|Oz
+gcry_md_copy	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_kem_genkey	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sm4_xts_crypt	sm4.c	436	48	          tweak_next_lo = (tweak_next_lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+invert_key	idea.c	83	8	 q = x / y;	/	mdiv	O1|O2|O3
+_gcry_mpi_powm	mpi-pow.c	741	27	              base_u_size ^= ((base_u_size ^ rsize)  & (0UL - (j != 0)));	^	cjump	O1|O2|Os|Oz
+gcry_mac_write	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_checktag	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pk_algo_info	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_pubkey_get_sexp	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_setkey	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+Rq_mult_small	sntrup761.c	193	5	  x += mask & (uint32_t) m;	+	cjump	O1|O2|O3|Os
+_gcry_kdf_final	kdf.c	1819	29	  for (i = 0; i < h->outlen / h->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1962	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+_gcry_kdf_final	kdf.c	1630	29	  for (i = 0; i < o->outlen / o->blklen; i++)	/	mdiv	O1|O2|O3|Os|Oz
+gcry_cipher_info	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_pk_util_data_to_mpi	pubkey-util.c	717	18	      *ret_mpi = sexp_nth_mpi (input, 0, mpifmt);	s	cjump	O1|O2|O3|Os|Oz
+gcry_md_algo_info	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sntrup761_keypair	sntrup761.c	631	45	      swap = int16_t_negative_mask (-delta) & int16_t_nonzero_mask (g[0]);	&	cjump	O1|O2|O3|Os|Oz
+indcpa_enc_4	./kyber-kdep.c	574	14	        t[k] += ((int16_t)t[k] >> 15) & KYBER_Q;	+	cjump	O1|O2|O3|Os|Oz
+gcry_error_from_errno	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_cipher_ccm_set_lengths	cipher-ccm.c	189	38	  c->u_iv.iv[0] += (aadlen > 0) * 64 + M_ * 8;	+	cjump	O1|O2|O3|Os|Oz
+crypto_kem_keypair_derand_4	./kyber-kdep.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	O1
+_gcry_sntrup761_keypair	sntrup761.c	420	40	  return int32_mod_uint14 (x + q12, q) - q12;	-	cjump	O1|O2|O3|Os
+_gcry_mpi_powm	mpi-pow.c	734	31	                  base_u_size |= ( precomp_size[k] & (0UL - (k == e0)) );	|	cjump	O1|O2|Os|Oz
+gcry_md_open	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_mac_setkey	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_authenticate	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_prime_group_generator	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_sntrup761_keypair	sntrup761.c	523	45	      swap = int16_t_negative_mask (-delta) & int16_t_nonzero_mask (g[0]);	&	cjump	O1|O2|O3|Os|Oz
+_gcry_sexp_vextract_param	sexp.c	2558	39	                          needed += n + 1;	+	cjump	O1
+crypto_kem_keypair_derand_3	./kyber-kdep.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	O1
+gcry_pk_random_override_new	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+_gcry_cipher_xts_crypt	cipher-xts.c	39	18	  lo = (lo << 1) ^ carry;	^	cjump	O1|O2|O3|Os|Oz
+gcry_mpi_ec_decode_point	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+Decode	sntrup761.c	159	5	  v /= m;	/	mdiv	O1|O2|O3|Os
+gcry_pk_hash_sign	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+crypto_kem_keypair_derand_4	./kyber-kdep.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	O1
+_gcry_mceliece6688128f_enc	mceliece6688128f.c	2228	13	   e_int[i] |= val[j] & mask;	|	cjump	O1|O2|Os|Oz
+gcry_mpi_scan	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+s2v_plaintext	cipher-siv.c	42	18	  lo = (lo << 1) ^ (mask & 0x87);	^	cjump	O1|O2|O3|Os
+_gcry_cipher_ocb_setkey	cipher-ocb.c	60	15	  r = (r + r) ^ (l_0 & 135);	^	cjump	O1|O2|O3|Os|Oz
+gcry_sexp_extract_param	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_prime_generate	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_sexp_canon_len	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+ecc_dhkem_kdf	kem-ecc.c	196	13	  mac_len = _gcry_mac_get_algo_maclen (macalgo);	_	cjump	O1|O2|O3|Os|Oz
+ocb_get_L_big	cipher-ocb.c	60	15	  r = (r + r) ^ (l_0 & 135);	^	cjump	O1|O2|O3|Os|Oz
+gcry_md_enable	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_setctr	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+gcry_sexp_build_array	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+crypto_kem_keypair_derand_3	./kyber-kdep.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	O1
+_gcry_get_config	global.c	405	7	      gpgrt_fprintf (fp, "fips-mode:%c::%s:\n",	g	cjump	O1|O2|O3|Os|Oz
+gcry_cipher_geniv	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1|O2|O3|Os|Oz
+ocb_crypt	cipher-ocb.c	60	15	  r = (r + r) ^ (l_0 & 135);	^	cjump	O1|O2|O3
+cbrecursion	mceliece6688128f.c	434	25	  return crypto_int32_x ^ crypto_int32_z;	^	cjump	O2|O3|Os|Oz
+polyvec_tobytes_2	./kyber-kdep.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	O2
+polyvec_tobytes_4	./kyber-kdep.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	O2|O3
+polyvec_tobytes_3	./kyber-kdep.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	O2|O3
+polyvec_tobytes_3	./kyber-kdep.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	O2|O3
+_gcry_mpi_set_buffer	mpicoder.c	456	41	      memcpy (last + BYTES_PER_MPI_LIMB - n, p - n + 1, n);	-	cjump	O2|O3|Os|Oz
+polyvec_tobytes_4	./kyber-kdep.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	O2|O3
+polyvec_tobytes_2	./kyber-kdep.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	O2
+poly_tobytes	./kyber-common.c	487	8	    t1 += ((int16_t)t1 >> 15) & KYBER_Q;	+	cjump	Os|Oz
+poly_tobytes	./kyber-common.c	485	8	    t0 += ((int16_t)t0 >> 15) & KYBER_Q;	+	cjump	Os|Oz
+Fq_recip	sntrup761.c	193	5	  x += mask & (uint32_t) m;	+	cjump	Os
+Fq_recip	sntrup761.c	224	6	  ur += mask & m;	+	cjump	Os
+xts_gfmul_byA	cipher-xts.c	39	18	  lo = (lo << 1) ^ carry;	^	cjump	Oz
+s2v_double	cipher-siv.c	42	18	  lo = (lo << 1) ^ (mask & 0x87);	^	cjump	Oz
+int32_mod_uint14	sntrup761.c	224	6	  ur += mask & m;	+	cjump	Oz
+gost3411_final	gostr3411-94.c	333	8	  l[0] |= nblocks << 8;	|	cjump	Oz
+_gcry_mceliece6688128f_keypair	mceliece6688128f.c	3289	18	   pi[ row + j ] ^= d;	^	cjump	Oz

@@ -1,0 +1,361 @@
+function	file	line	col	source	char	type	optimization
+multiblock_speed	apps/speed.c	5139	45	        results[D_EVP][j] = ((double)count) / d * mblengths[j];	/	mdiv	O0|O1|O2|O3|Os
+speed_main	apps/speed.c	3697	59	                eddsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+BN_mod_exp_mont_word	crypto/bn/bn_exp.c	1256	21	        if ((next_w / w) != w) { /* overflow */	/	mdiv	O0
+speed_main	apps/speed.c	4041	54	            ffdh_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_ffc_params_FIPS186_4_gen_verify	crypto/ffc/ffc_params_generate.c	679	17	    n = (L - 1) / (mdsize << 3);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	278	13	         1) / md_block_size;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+getrn	crypto/lhash/lhash.c	335	19	        nn = hash % lh->num_alloc_nodes;	%	mdiv	O0|Os|Oz
+kek_unwrap_key	crypto/cms/cms_pwri.c	213	15	    if (inlen % blocklen) {	%	mdiv	O0|O1|O2|O3|Ofast|Os
+RAND_poll	crypto/rand/rand_lib.c	229	56	                         (ossl_rand_pool_entropy(pool) / 8.0)) == 0)	/	mdiv	O0
+speed_main	apps/speed.c	4600	44	                   ffdh_results[k][0], 1.0 / ffdh_results[k][0]);	/	mdiv	O0|O2|O3|Ofast|Os|Oz
+fmtfp	crypto/bio/bio_print.c	630	26	                tmpvalue /= 10;	/	mdiv	O0|O1|O2|O3|Os|Oz
+speed_main	apps/speed.c	4584	24	                   1.0 / sm2_results[k][0], 1.0 / sm2_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+fill_segment	providers/implementations/kdfs/argon2.c	525	34	        ref_lane = ((rnd >> 32)) % ctx->lanes;	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_rand_pool_adin_mix_in	crypto/rand/rand_pool.c	443	28	            pool->buffer[i % pool->len] ^= adin[i];	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+safe_muldiv_uint64_t	ssl/quic/quic_fc.c	16	1	OSSL_SAFE_MATH_UNSIGNED(uint64_t, uint64_t)	O	mdiv	O0
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	77	35	    Slen = v * ((saltlen + v - 1) / v);	/	mdiv	O0
+speed_main	apps/speed.c	3724	59	                eddsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+inverse	crypto/idea/i_skey.c	104	21	            r = (n1 % n2);	%	mdiv	O0
+BIO_dump_indent_cb	crypto/bio/bio_dump.c	44	16	    rows = len / dump_width;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+adapt	crypto/punycode.c	50	27	    delta = delta + delta / numpoints;	/	mdiv	O0
+speed_main	apps/speed.c	3445	53	            dsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4483	24	                   1.0 / rsa_results[k][1], 1.0 / rsa_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4562	51	                   1.0 / eddsa_results[k][0], 1.0 / eddsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_punycode_decode	crypto/punycode.c	173	28	            if (w > maxint / (base - t))	/	mdiv	O0
+BN_mod_exp_mont_word	crypto/bn/bn_exp.c	1276	25	            if ((next_w / a) != w) { /* overflow */	/	mdiv	O0
+calculate_columns	apps/lib/columns.c	25	28	    dc->columns = (80 - 1) / dc->width;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_node_usage_stats_bio	crypto/lhash/lh_stats.c	124	52	               (int)((total % lh->num_nodes) * 100 / lh->num_nodes),	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+sh_getlist	crypto/mem_sec.c	347	51	    size_t bit = (sh.arena_size + ptr - sh.arena) / sh.minsize;	/	mdiv	O0|Os|Oz
+speed_main	apps/speed.c	4482	42	                   rsa_keys[k].bits, 1.0 / rsa_results[k][0],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4522	24	                   1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+kdf_argon2_derive	providers/implementations/kdfs/argon2.c	1098	36	    segment_length = memory_blocks / (ctx->lanes * ARGON2_SYNC_POINTS);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4462	56	                printf(" %11.2fk", results[k][testnum] / 1e3);	/	mdiv	O0|O1|O2|O3|Os|Oz
+bn_div_words	crypto/bn/bn_asm.c	233	19	            q = h / dh;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+check_block_size	apps/speed.c	1542	16	    if (length % blocksize != 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_cipher	ssl/record/methods/ssl3_meth.c	146	25	        if (l == 0 || l % bs != 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4647	50	                   1.0 / sigs_results[k][0], 1.0 / sigs_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_write_bytes	ssl/record/rec_layer_s3.c	449	24	            remain = n % maxpipes;	%	mdiv	O0
+safe_muldiv_u64	ssl/quic/cc_newreno.c	5	1	OSSL_SAFE_MATH_UNSIGNED(u64, uint64_t)	O	mdiv	O0
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	90	23	        *p++ = salt[i % saltlen];	%	mdiv	O0
+scryptROMix	providers/implementations/kdfs/scrypt.c	408	33	        j = X[16 * (2 * r - 1)] % N;	%	mdiv	O0
+speed_main	apps/speed.c	3828	57	                sm2_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_node_usage_stats_bio	crypto/lhash/lh_stats.c	125	68	               (int)(total / n_used), (int)((total % n_used) * 100 / n_used));	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+safe_mod_int	crypto/stack/stack.c	18	1	OSSL_SAFE_MATH_SIGNED(int, int)	O	mdiv	O0
+kbkdf_derive	providers/implementations/kdfs/kbkdf.c	343	31	        if ((uint64_t)(keylen / h) >= counter_max) {	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+scrypt_alg	providers/implementations/kdfs/scrypt.c	460	27	    if (p > SCRYPT_PR_MAX / r) {	/	mdiv	O0
+recode_wnaf	crypto/ec/curve448/curve448.c	558	48	    unsigned int table_size = C448_SCALAR_BITS / (table_bits + 1) + 3;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_punycode_decode	crypto/punycode.c	179	15	        if (i / (written_out + 1) > maxint - n)	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	311	49	    index_b = (mac_end_offset + md_length_size) / md_block_size;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3305	53	            rsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4413	54	            sigs_results[testnum][2] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+safe_muldiv_size_t	ssl/priority_queue.c	17	1	OSSL_SAFE_MATH_UNSIGNED(size_t, size_t)	O	mdiv	O0
+probable_prime_dh	crypto/bn/bn_prime.c	601	38	        if (safe ? (mods[i] + delta) % primes[i] <= 1	%	mdiv	O0
+ssl_print_compressed_certificates	ssl/t1_trce.c	1427	87	        BIO_printf(bio, "Compressed length=%d, Ratio=%f:1\n", (int)clen, (float)uclen / (float)clen);	/	mdiv	O0|O1|O2|O3|Ofast|Os
+speed_main	apps/speed.c	4502	37	                   dsa_bits[k], 1.0 / dsa_results[k][0], 1.0 / dsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_punycode_decode	crypto/punycode.c	182	11	        i %= (written_out + 1);	%	mdiv	O0
+speed_main	apps/speed.c	4401	54	            sigs_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4537	44	                   ecdh_results[k][0], 1.0 / ecdh_results[k][0]);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4232	54	            kems_results[testnum][2] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+pbkdf2_derive	providers/implementations/kdfs/pbkdf2.c	419	17	    if ((keylen / mdlen) >= KDF_PBKDF2_MAX_KEY_LEN_DIGEST_RATIO) {	/	mdiv	O0
+speed_main	apps/speed.c	4542	24	                   1.0 / ecdh_results[k][0], ecdh_results[k][0]);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl_cache_cipherlist	ssl/ssl_lib.c	7069	41	    if (PACKET_remaining(cipher_suites) % n != 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	387	31	            for (i = 1; i < k / md_block_size; i++)	/	mdiv	O0
+print_result	apps/speed.c	4796	44	    results[alg][run_no] = ((double)count) / time_used * lengths[run_no];	/	mdiv	O0|O1|O2|O3|Os|Oz
+probable_prime_dh	crypto/bn/bn_prime.c	602	38	                 : (mods[i] + delta) % primes[i] == 0) {	%	mdiv	O0
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	79	39	        Plen = v * ((passlen + v - 1) / v);	/	mdiv	O0
+rsa_multiprime_keygen	crypto/rsa/rsa_gen.c	321	16	    quo = bits / primes;	/	mdiv	O0|O3|Ofast
+safe_div_int	crypto/stack/stack.c	18	1	OSSL_SAFE_MATH_SIGNED(int, int)	O	mdiv	O0
+speed_main	apps/speed.c	4584	49	                   1.0 / sm2_results[k][0], 1.0 / sm2_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+n_fold	providers/implementations/kdfs/krb5kdf.c	329	35	        tmp = (constant[(rbyte-1) % constant_len] << (8 - rshift)	%	mdiv	O0
+kek_wrap_key	crypto/cms/cms_pwri.c	270	39	    olen = (inlen + 4 + blocklen - 1) / blocklen;	/	mdiv	O0
+rsa_multiprime_keygen	crypto/rsa/rsa_gen.c	322	16	    rmd = bits % primes;	%	mdiv	O0
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	306	30	    index_a = mac_end_offset / md_block_size;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+index_alpha	providers/implementations/kdfs/argon2.c	461	37	    abs_pos = (start_pos + rel_pos) % ctx->lane_length;	%	mdiv	O0
+speed_main	apps/speed.c	4562	24	                   1.0 / eddsa_results[k][0], 1.0 / eddsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+multiblock_speed	apps/speed.c	5162	63	                fprintf(stdout, " %11.2fk", results[D_EVP][j] / 1e3);	/	mdiv	O0|O1|O2|O3|Os
+ossl_ec_wNAF_precompute_mult	crypto/ec/ec_mult.c	876	40	    numblocks = (bits + blocksize - 1) / blocksize; /* max. number of blocks	/	mdiv	O0
+speed_main	apps/speed.c	3275	53	            rsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_mac	ssl/record/methods/ssl3_meth.c	235	16	    npad = (48 / md_size) * md_size;	/	mdiv	O0
+ossl_punycode_decode	crypto/punycode.c	181	19	        n = n + i / (written_out + 1);	/	mdiv	O0
+app_tminterval	apps/lib/apps.c	2909	31	        ret = (now - tmstart) / (double)tck;	/	mdiv	O0
+safe_mod_int	crypto/evp/evp_enc.c	31	1	OSSL_SAFE_MATH_SIGNED(int, int)	O	mdiv	O0
+scrypt_alg	providers/implementations/kdfs/scrypt.c	499	19	    if (N + 2 > i / r) {	/	mdiv	O0
+fill_segment	providers/implementations/kdfs/argon2.c	506	22	    if ((curr_offset % ctx->lane_length) == 0)	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+s_time_main	apps/s_time.c	315	43	         nConn, totalTime, ((double)nConn / totalTime), bytes_read);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+fmtint	crypto/bio/bio_print.c	468	21	            [uvalue % (unsigned)base];	%	mdiv	O0
+expand	crypto/lhash/lhash.c	275	19	        if ((hash % nni) != p) { /* move it */	%	mdiv	O0
+BN_mod_word	crypto/bn/bn_word.c	52	59	        ret = ((ret << BN_BITS4) | (a->d[i] & BN_MASK2l)) % w;	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	380	31	            for (i = 1; i < k / md_block_size - 1; i++)	/	mdiv	O0
+tls13_add_record_padding	ssl/record/methods/tls13_meth.c	384	38	                    remainder = rlen % bp;	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+sh_find_my_buddy	crypto/mem_sec.c	623	44	    bit = (ONE << list) + (ptr - sh.arena) / (sh.arena_size >> list);	/	mdiv	O0|Os|Oz
+ossl_ec_wNAF_mul	crypto/ec/ec_mult.c	481	46	            numblocks = (BN_num_bits(scalar) / blocksize) + 1;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+n_fold	providers/implementations/kdfs/krb5kdf.c	321	27	        rotbits = 13 * (l / constant_len);	/	mdiv	O0
+CMAC_Update	crypto/cmac/cmac.c	213	32	    cipher_blocks = (dlen - 1) / bl;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+safe_div_round_up_int	crypto/evp/evp_enc.c	31	1	OSSL_SAFE_MATH_SIGNED(int, int)	O	mdiv	O0
+ossl_punycode_decode	crypto/punycode.c	164	52	            if ((unsigned int)digit > (maxint - i) / w)	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	92	23	        *p++ = pass[i % passlen];	%	mdiv	O0
+getrn	crypto/lhash/lhash.c	333	15	    nn = hash % lh->pmax;	%	mdiv	O0|Os|Oz
+speed_main	apps/speed.c	3610	54	            ecdh_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4522	51	                   1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+update_qp	crypto/threads_pthread.c	400	39	        (lock->current_alloc_idx + 1) % lock->group_count;	%	mdiv	O0
+n_fold	providers/implementations/kdfs/krb5kdf.c	302	19	        tmp = gcd % remainder;	%	mdiv	O0
+bytepad	providers/implementations/macs/kmac_prov.c	612	33	        *out_len = (sz + w - 1) / w * w;	/	mdiv	O0
+ssl3_cipher	ssl/record/methods/ssl3_meth.c	132	21	        i = bs - (l % bs);	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3415	53	            dsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4625	24	                   1.0 / kems_results[k][0],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+tls1_cipher	ssl/record/methods/tls1_meth.c	309	49	            if (reclen[ctr] == 0 || reclen[ctr] % bs != 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+HKDF_Expand	providers/implementations/kdfs/hkdf.c	631	17	    n = okm_len / dig_len;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3367	53	            rsa_results[testnum][3] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+fill_segment	providers/implementations/kdfs/argon2.c	512	25	        if (curr_offset % ctx->lane_length == 1)	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+CMAC_Update	crypto/cmac/cmac.c	212	39	    max_burst_blocks = LOCAL_BUF_SIZE / bl;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3492	55	            ecdsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+inverse	crypto/idea/i_skey.c	105	26	            q = (n1 - r) / n2;	/	mdiv	O0|Oz
+n_fold	providers/implementations/kdfs/krb5kdf.c	318	15	        b = l % blocksize;	%	mdiv	O0
+sh_clearbit	crypto/mem_sec.c	376	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+sh_init	crypto/mem_sec.c	473	39	    sh.bittable_size = (sh.arena_size / sh.minsize) * 2;	/	mdiv	O0
+speed_main	apps/speed.c	4648	24	                   1.0 / sigs_results[k][2], sigs_results[k][0],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+do_ssl_trace_list	ssl/t1_trce.c	49	16	    if (msglen % vlen)	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+probable_prime	crypto/bn/bn_prime.c	521	38	        if (safe ? (mods[i] + delta) % primes[i] <= 1	%	mdiv	O0
+safe_div_int	crypto/evp/evp_enc.c	31	1	OSSL_SAFE_MATH_SIGNED(int, int)	O	mdiv	O0
+n_fold	providers/implementations/kdfs/krb5kdf.c	307	36	    lcm = blocksize * constant_len / gcd;	/	mdiv	O0
+speed_main	apps/speed.c	4390	54	            sigs_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+bn_mod_exp_mont_fixed_top	crypto/bn/bn_exp.c	1086	30	        window0 = (bits - 1) % window + 1;	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+s_time_main	apps/s_time.c	319	33	         nConn > 0 ? bytes_read / nConn : 0l);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4605	24	                   1.0 / ffdh_results[k][0], ffdh_results[k][0]);	/	mdiv	O0|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3522	55	            ecdsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4502	62	                   dsa_bits[k], 1.0 / dsa_results[k][0], 1.0 / dsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4484	24	                   1.0 / rsa_results[k][3],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_delete	crypto/lhash/lhash.c	167	57	        (lh->down_load >= (lh->num_items * LH_LOAD_MULT / lh->num_nodes)))	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+n_fold	providers/implementations/kdfs/krb5kdf.c	330	33	               | constant[rbyte % constant_len] >> rshift)	%	mdiv	O0
+pkcs12kdf_derive	providers/implementations/kdfs/pkcs12kdf.c	113	25	            B[j] = Ai[j % u];	%	mdiv	O0
+s_time_main	apps/s_time.c	396	43	         nConn, totalTime, ((double)nConn / totalTime), bytes_read);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4647	24	                   1.0 / sigs_results[k][0], 1.0 / sigs_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+adapt	crypto/punycode.c	57	45	    return k + (((base - tmin + 1) * delta) / (delta + skew));	/	mdiv	O0
+safe_muldiv_size_t	crypto/bio/bss_dgram_pair.c	18	1	OSSL_SAFE_MATH_UNSIGNED(size_t, size_t)	O	mdiv	O0
+speed_main	apps/speed.c	3856	57	                sm2_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4626	24	                   1.0 / kems_results[k][1], 1.0 / kems_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+probable_prime	crypto/bn/bn_prime.c	522	38	                 : (mods[i] + delta) % primes[i] == 0) {	%	mdiv	O0
+sh_setbit	crypto/mem_sec.c	388	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_cipher_generic_block_update	providers/implementations/ciphers/ciphercommon.c	608	35	            padnum = blksz - (inl % blksz);	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4626	50	                   1.0 / kems_results[k][1], 1.0 / kems_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+fmtint	crypto/bio/bio_print.c	469	26	        uvalue = (uvalue / (unsigned)base);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4221	54	            kems_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+bytepad	providers/implementations/macs/kmac_prov.c	632	24	    sz = (len + w - 1) / w * w;	/	mdiv	O0
+tls_get_max_records_default	ssl/record/methods/tls_common.c	1533	28	        pipes = ((len - 1) / *preffrag) + 1;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	263	36	                                   / md_block_size) + 1);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_write_bytes	ssl/record/rec_layer_s3.c	448	28	            tmppipelen = n / maxpipes;	/	mdiv	O0
+BN_mod_word	crypto/bn/bn_word.c	51	73	        ret = ((ret << BN_BITS4) | ((a->d[i] >> BN_BITS4) & BN_MASK2l)) % w;	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+BN_mod_exp_mont_word	crypto/bn/bn_exp.c	1213	11	        a %= m->d[0];           /* make sure that 'a' is reduced */	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4483	49	                   1.0 / rsa_results[k][1], 1.0 / rsa_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+s_time_main	apps/s_time.c	400	73	             nConn, (long)time(NULL) - finishtime + maxtime, bytes_read / nConn);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+NAME_CONSTRAINTS_check	crypto/x509/v3_ncons.c	296	65	        || (name_count > 0 && constraint_count > NAME_CHECK_MAX / name_count))	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3335	53	            rsa_results[testnum][2] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_ec_wNAF_mul	crypto/ec/ec_mult.c	596	59	                    numblocks = (tmp_len + blocksize - 1) / blocksize;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+help_main	apps/openssl.c	381	17	        if (i++ % dc.columns == 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_insert	crypto/lhash/lhash.c	124	55	    if ((lh->up_load <= (lh->num_items * LH_LOAD_MULT / lh->num_nodes)) && !expand(lh))	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+list_type	apps/list.c	1232	19	            if (i % dc.columns == 0 && i > 0)	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_bytes_to_cipher_list	ssl/ssl_lib.c	7160	41	    if (PACKET_remaining(cipher_suites) % n != 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl3_write_bytes	ssl/record/rec_layer_s3.c	433	15	        if (n / maxpipes >= split_send_fragment) {	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_cipher_generic_block_update	providers/implementations/ciphers/ciphercommon.c	632	18	        if ((inl % blksz) != 0) {	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_sha3_squeeze	crypto/sha/sha3.c	192	29	        len = bsz * (outlen / bsz);	/	mdiv	O0
+ssl3_cbc_digest_record	ssl/record/methods/ssl3_cbc.c	301	24	    c = mac_end_offset % md_block_size;	%	mdiv	O0
+abs_val	crypto/bio/bio_print.c	538	30	    if (result > 0 && result / 2 == result) /* INF */	/	mdiv	O0
+OPENSSL_LH_node_usage_stats_bio	crypto/lhash/lh_stats.c	125	52	               (int)(total / n_used), (int)((total % n_used) * 100 / n_used));	%	mdiv	O0
+tls1_cipher	ssl/record/methods/tls1_meth.c	292	40	            padnum = bs - (reclen[ctr] % bs);	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_node_usage_stats_bio	crypto/lhash/lh_stats.c	124	29	               (int)((total % lh->num_nodes) * 100 / lh->num_nodes),	%	mdiv	O0
+ssl_cache_cipherlist	ssl/ssl_lib.c	7079	61	        size_t numciphers = PACKET_remaining(cipher_suites) / n;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+DTLS_get_data_mtu	ssl/d1_lib.c	965	21	        mtu -= (mtu % blocksize);	%	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+HKDF_Expand	providers/implementations/kdfs/hkdf.c	632	17	    if (okm_len % dig_len)	%	mdiv	O0
+speed_main	apps/speed.c	4210	54	            kems_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+RSA_generate_multi_prime_key	crypto/rsa/rsa_gen.c	321	16	    quo = bits / primes;	/	mdiv	O1|O2|Os|Oz
+OPENSSL_LH_delete	crypto/lhash/lhash.c	335	19	        nn = hash % lh->num_alloc_nodes;	%	mdiv	O1|O2|O3|Ofast
+ossl_quic_rstream_release_record	ssl/quic/quic_rstream.c	209	38	        size_t idx = r->ctail_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os
+ossl_punycode_decode	crypto/punycode.c	57	45	    return k + (((base - tmin + 1) * delta) / (delta + skew));	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+kek_wrap_key	crypto/cms/cms_pwri.c	271	10	    olen *= blocklen;	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+sh_free	crypto/mem_sec.c	623	44	    bit = (ONE << list) + (ptr - sh.arena) / (sh.arena_size >> list);	/	mdiv	O1|O2|O3|Ofast
+ERR_vset_error	crypto/err/err_blocks.c	44	9	        lib == ERR_LIB_SYS	l	cjump	O1|O2|O3|Ofast|Os|Oz
+ossl_synchronize_rcu	crypto/threads_pthread.c	400	39	        (lock->current_alloc_idx + 1) % lock->group_count;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	408	33	        j = X[16 * (2 * r - 1)] % N;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+ossl_quic_sstream_mark_acked	ssl/quic/quic_sstream.c	209	38	        size_t idx = r->ctail_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+kdf_pkcs12_derive	providers/implementations/kdfs/pkcs12kdf.c	90	23	        *p++ = salt[i % saltlen];	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+ossl_quic_sstream_get_stream_frame	ssl/quic/quic_sstream.c	189	26	    idx = logical_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os
+kdf_pkcs12_derive	providers/implementations/kdfs/pkcs12kdf.c	92	23	        *p++ = pass[i % passlen];	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+write_at_ring_buf_cb	ssl/quic/quic_rstream.c	94	30	        idx = logical_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+krb5kdf_derive	providers/implementations/kdfs/krb5kdf.c	302	19	        tmp = gcd % remainder;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+ossl_quic_rstream_get_record	ssl/quic/quic_rstream.c	155	26	    idx = logical_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os
+kdf_pkcs12_derive	providers/implementations/kdfs/pkcs12kdf.c	113	25	            B[j] = Ai[j % u];	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+krb5kdf_derive	providers/implementations/kdfs/krb5kdf.c	307	36	    lcm = blocksize * constant_len / gcd;	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_insert	crypto/lhash/lhash.c	333	15	    nn = hash % lh->pmax;	%	mdiv	O1|O2|O3|Ofast
+IDEA_set_decrypt_key	crypto/idea/i_skey.c	105	26	            q = (n1 - r) / n2;	/	mdiv	O1|O2|O3|Ofast|Os
+CRYPTO_secure_malloc_init	crypto/mem_sec.c	473	39	    sh.bittable_size = (sh.arena_size / sh.minsize) * 2;	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+krb5kdf_derive	providers/implementations/kdfs/krb5kdf.c	318	15	        b = l % blocksize;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+kmac_setkey	providers/implementations/macs/kmac_prov.c	612	37	        *out_len = (sz + w - 1) / w * w;	*	mdiv	O1|O2|O3|Ofast
+sh_free	crypto/mem_sec.c	347	51	    size_t bit = (sh.arena_size + ptr - sh.arena) / sh.minsize;	/	mdiv	O1|O2|O3|Ofast
+OPENSSL_LH_node_usage_stats_bio	crypto/lhash/lh_stats.c	123	28	               (int)(total / lh->num_nodes),	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+ossl_quic_sstream_append	ssl/quic/quic_sstream.c	131	30	        idx = r->head_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os
+fill_segment	providers/implementations/kdfs/argon2.c	461	37	    abs_pos = (start_pos + rel_pos) % ctx->lane_length;	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+kmac_init	providers/implementations/macs/kmac_prov.c	632	28	    sz = (len + w - 1) / w * w;	*	mdiv	O1|O2|O3|Ofast
+kdf_pkcs12_derive	providers/implementations/kdfs/pkcs12kdf.c	77	14	    Slen = v * ((saltlen + v - 1) / v);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_retrieve	crypto/lhash/lhash.c	333	15	    nn = hash % lh->pmax;	%	mdiv	O1|O2|O3|Ofast
+ssl3_mac	ssl/record/methods/ssl3_meth.c	235	27	    npad = (48 / md_size) * md_size;	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_retrieve	crypto/lhash/lhash.c	335	19	        nn = hash % lh->num_alloc_nodes;	%	mdiv	O1|O2|O3|Ofast
+OPENSSL_LH_node_usage_stats_bio	crypto/lhash/lh_stats.c	125	28	               (int)(total / n_used), (int)((total % n_used) * 100 / n_used));	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+OPENSSL_LH_insert	crypto/lhash/lhash.c	335	19	        nn = hash % lh->num_alloc_nodes;	%	mdiv	O1|O2|O3|Ofast
+kdf_pbkdf2_derive	providers/implementations/kdfs/pbkdf2.c	419	17	    if ((keylen / mdlen) >= KDF_PBKDF2_MAX_KEY_LEN_DIGEST_RATIO) {	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+read_internal	ssl/quic/quic_rstream.c	155	26	    idx = logical_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os
+kmac_setkey	providers/implementations/macs/kmac_prov.c	632	28	    sz = (len + w - 1) / w * w;	*	mdiv	O1|O2|O3|Ofast
+OPENSSL_LH_delete	crypto/lhash/lhash.c	333	15	    nn = hash % lh->pmax;	%	mdiv	O1|O2|O3|Ofast
+krb5kdf_derive	providers/implementations/kdfs/krb5kdf.c	321	27	        rotbits = 13 * (l / constant_len);	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+newreno_flush	ssl/quic/cc_newreno.c	5	1	OSSL_SAFE_MATH_UNSIGNED(u64, uint64_t)	O	mdiv	O1|O2|O3|Ofast|Os|Oz
+krb5kdf_derive	providers/implementations/kdfs/krb5kdf.c	329	35	        tmp = (constant[(rbyte-1) % constant_len] << (8 - rshift)	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+CRYPTO_secure_malloc	crypto/mem_sec.c	623	44	    bit = (ONE << list) + (ptr - sh.arena) / (sh.arena_size >> list);	/	mdiv	O1|O2|O3|Ofast
+OPENSSL_LH_insert	crypto/lhash/lhash.c	275	19	        if ((hash % nni) != p) { /* move it */	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+kmac_init	providers/implementations/macs/kmac_prov.c	612	37	        *out_len = (sz + w - 1) / w * w;	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+krb5kdf_derive	providers/implementations/kdfs/krb5kdf.c	330	33	               | constant[rbyte % constant_len] >> rshift)	%	mdiv	O1|O2|O3|Ofast|Os|Oz
+read_internal	ssl/quic/quic_rstream.c	209	38	        size_t idx = r->ctail_offset % r->alloc;	%	mdiv	O1|O2|O3|Ofast|Os
+sh_actual_size	crypto/mem_sec.c	347	51	    size_t bit = (sh.arena_size + ptr - sh.arena) / sh.minsize;	/	mdiv	O1|O2|O3|Ofast
+ossl_punycode_decode	crypto/punycode.c	50	27	    delta = delta + delta / numpoints;	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	499	19	    if (N + 2 > i / r) {	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+rxfc_on_retire	ssl/quic/quic_fc.c	54	1	OSSL_SAFE_MATH_UNSIGNED(time, uint64_t)	O	mdiv	O1|O2|O3|Ofast|Os|Oz
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	460	27	    if (p > SCRYPT_PR_MAX / r) {	/	mdiv	O1|O2|O3|Ofast|Os|Oz
+kdf_pkcs12_derive	providers/implementations/kdfs/pkcs12kdf.c	79	18	        Plen = v * ((passlen + v - 1) / v);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+ossl_statm_update_rtt	ssl/quic/quic_statm.c	195	12	    return a.t > b.t ? ossl_time_subtract(a, b)	a	cjump	O1|O2|O3|Ofast|Os|Oz
+ossl_sha3_squeeze	crypto/sha/sha3.c	192	19	        len = bsz * (outlen / bsz);	*	mdiv	O1|O2|O3|Ofast|Os|Oz
+BN_nist_mod_384	crypto/bn/bn_nist.c	281	18	        dst[i] = src[i];	s	mmem	O2|O3|Ofast
+BN_nist_mod_256	crypto/bn/bn_nist.c	281	18	        dst[i] = src[i];	s	mmem	O2|O3|Ofast
+IDEA_set_decrypt_key	crypto/idea/i_skey.c	104	21	            r = (n1 % n2);	%	mdiv	O2|O3|Ofast|Os
+BN_nist_mod_192	crypto/bn/bn_nist.c	281	18	        dst[i] = src[i];	s	mmem	O2|O3|Ofast
+OSSL_HTTP_REQ_CTX_nbio	crypto/http/http_client.c	770	31	                rctx->state = i < HTTP_STATUS_CODES_NONFATAL_ERROR	i	cjump	O2|O3|Ofast|Os|Oz
+BN_nist_mod_224	crypto/bn/bn_nist.c	281	18	        dst[i] = src[i];	s	mmem	O2|O3|Ofast
+BN_nist_mod_521	crypto/bn/bn_nist.c	281	18	        dst[i] = src[i];	s	mmem	O2|O3|Ofast
+CRYPTO_secure_malloc	crypto/mem_sec.c	365	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	O3|Ofast
+BN_generate_prime_ex2	crypto/bn/bn_prime.c	522	38	                 : (mods[i] + delta) % primes[i] == 0) {	%	mdiv	O3|Ofast
+BN_generate_prime_ex2	crypto/bn/bn_prime.c	602	38	                 : (mods[i] + delta) % primes[i] == 0) {	%	mdiv	O3|Ofast
+BN_generate_prime_ex2	crypto/bn/bn_prime.c	601	38	        if (safe ? (mods[i] + delta) % primes[i] <= 1	%	mdiv	O3|Ofast
+ossl_quic_sstream_has_pending	ssl/quic/quic_sstream.c	189	26	    idx = logical_offset % r->alloc;	%	mdiv	O3|Ofast
+sh_actual_size	crypto/mem_sec.c	365	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	O3|Ofast
+sh_free	crypto/mem_sec.c	365	45	    bit = (ONE << list) + ((ptr - sh.arena) / (sh.arena_size >> list));	/	mdiv	O3|Ofast
+BN_generate_prime_ex2	crypto/bn/bn_prime.c	521	38	        if (safe ? (mods[i] + delta) % primes[i] <= 1	%	mdiv	O3|Ofast
+print_result	apps/speed.c	4796	56	    results[alg][run_no] = ((double)count) / time_used * lengths[run_no];	*	mdiv	Ofast
+multiblock_speed	apps/speed.c	5139	49	        results[D_EVP][j] = ((double)count) / d * mblengths[j];	*	mdiv	Ofast
+bytepad	providers/implementations/macs/kmac_prov.c	612	37	        *out_len = (sz + w - 1) / w * w;	*	mdiv	Os|Oz
+bytepad	providers/implementations/macs/kmac_prov.c	632	28	    sz = (len + w - 1) / w * w;	*	mdiv	Os|Oz
+ossl_bio_print_labeled_buf	crypto/encode_decode/encoder_lib.c	788	19	    for (i = 0; i < buflen; i++) {	<	mdiv	Oz
+DH_generate_parameters_ex	crypto/dh/dh_gen.c	225	31	                   + 24) / 25 * 25;	*	mdiv	Oz
+OBJ_obj2txt	crypto/objects/obj_dat.c	563	29	                i = (int)(l / 40);	/	mdiv	Oz
+create_ticket_prequel	ssl/statem/statem_srvr.c	3905	34	    uint32_t timeout = (uint32_t)ossl_time2seconds(s->session->timeout);	o	mdiv	Oz
+tls1_check_chain	ssl/t1_lib.c	4027	29	            idx = (int)(cpk - c->pkeys);	-	mdiv	Oz
+fmtfp	crypto/bio/bio_print.c	729	30	            tmpexp = (tmpexp / 10);	/	mdiv	Oz
+fmtfp	crypto/bio/bio_print.c	697	28	        intpart = (intpart / 10);	/	mdiv	Oz
+err_string_data_hash	crypto/err/err.c	174	23	    return (ret ^ ret % 19 * 13);	%	mdiv	Oz
+www_body	apps/s_server.c	3415	43	                        BIO_write(io, ((i % 3) ? " " : "\n"), 1);	%	mdiv	Oz
+SSL_SESSION_get_timeout	ssl/ssl_sess.c	132	25	    return (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+julian_adj	crypto/o_time.c	140	29	    offset_day = offset_sec / SECS_PER_DAY;	/	mdiv	Oz
+do_passwd	apps/passwd.c	675	19	    for (n = 0; n < rounds; n++) {	<	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	193	26	    i = (4000 * (L + 1)) / 1461001;	/	mdiv	Oz
+CT_POLICY_EVAL_CTX_new_ex	crypto/ct/ct_policy.c	48	29	    ctx->epoch_time_in_ms = ossl_time2ms(now);	o	mdiv	Oz
+SCT_print	crypto/ct/ct_prn.c	37	46	                             (int)(timestamp / 86400000),	/	mdiv	Oz
+md5crypt	apps/passwd.c	425	15	        if (i % 7) {	%	mdiv	Oz
+SSL_poll	ssl/rio/poll_immediate.c	428	20	        OSSL_sleep(ossl_time2ms(ossl_time_from_timeval(*timeout)));	o	mdiv	Oz
+BN_bn2dec	crypto/bn/bn_conv.c	63	14	    num = (i / 10 + i / 1000 + 1) + 1;	/	mdiv	Oz
+DES_quad_cksum	crypto/des/qud_cksm.c	69	34	                  & 0xffffffffL) % 0x7fffffffL;	%	mdiv	Oz
+tls_construct_ctos_psk	ssl/statem/extensions_clnt.c	1126	28	        agesec = (uint32_t)ossl_time2seconds(t);	o	mdiv	Oz
+tls_collect_extensions	ssl/statem/extensions.c	659	22	        idx = thisex - raw_extensions;	-	mdiv	Oz
+NETSCAPE_SPKI_print	crypto/asn1/t_spki.c	48	19	    for (i = 0; i < n; i++) {	<	mdiv	Oz
+julian_adj	crypto/o_time.c	182	48	        (367 * (m - 2 - 12 * ((m - 14) / 12))) / 12 -	/	mdiv	Oz
+SSL_SESSION_get_time	ssl/ssl_sess.c	132	25	    return (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+ossl_pqueue_reserve	ssl/priority_queue.c	17	1	OSSL_SAFE_MATH_UNSIGNED(size_t, size_t)	O	mdiv	Oz
+dgram_read	crypto/bio/bss_dgram.c	110	43	    tv.tv_usec = (t.t % OSSL_TIME_SECOND) / OSSL_TIME_US;	/	mdiv	Oz
+fmtfp	crypto/bio/bio_print.c	714	30	        fracpart = (fracpart / 10);	/	mdiv	Oz
+def_time_cb	crypto/ts/ts_rsp_sign.c	110	43	    tv.tv_usec = (t.t % OSSL_TIME_SECOND) / OSSL_TIME_US;	/	mdiv	Oz
+BUF_MEM_grow	crypto/buffer/buffer.c	91	19	    n = (len + 3) / 3 * 4;	/	mdiv	Oz
+SSL_SESSION_print	ssl/ssl_txt.c	132	25	    return (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+ossl_punycode_decode	crypto/punycode.c	53	23	        delta = delta / (base - tmin);	/	mdiv	Oz
+SSL_CTX_set_timeout	ssl/ssl_sess.c	1139	15	    l = (long)ossl_time2seconds(s->session_timeout);	o	mdiv	Oz
+SSL_SESSION_print	ssl/ssl_txt.c	140	35	                       (long long)ossl_time2seconds(x->timeout)) <= 0)	o	mdiv	Oz
+print_array	apps/lib/apps.c	1419	19	    for (i = 0; i < len; i++) {	<	mdiv	Oz
+json_u64	ssl/quic/json_enc.c	551	34	        for (*p = '\0'; v > 0; v /= 10)	/	mdiv	Oz
+ossl_asn1_time_to_tm	crypto/asn1/a_time.c	73	33	    tm->tm_wday = (d + (13 * m) / 5 + y + y / 4 + c / 4 + 5 * c + 6) % 7;	/	mdiv	Oz
+ossl_qlog_event_end	ssl/quic/qlog.c	389	36	        ossl_json_u64(&qlog->json, ossl_time2ms(delta));	o	mdiv	Oz
+ossl_quic_get_event_timeout	ssl/quic/quic_impl.c	108	30	    tv.tv_sec = (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+md5crypt	apps/passwd.c	449	44	             dest++, source = (source + 6) % 17)	%	mdiv	Oz
+i2a_ASN1_STRING	crypto/asn1/f_string.c	29	23	        for (i = 0; i < a->length; i++) {	<	mdiv	Oz
+OSSL_sleep	crypto/sleep.c	62	36	    ts.tv_sec = (long int) (millis / 1000);	/	mdiv	Oz
+dtls1_bio_set_next_timeout	ssl/d1_lib.c	108	30	    tv.tv_sec = (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+ossl_qlog_event_end	ssl/quic/qlog.c	382	36	        ossl_json_u64(&qlog->json, ossl_time2ms(qlog->event_time));	o	mdiv	Oz
+speed_main	apps/speed.c	5139	45	        results[D_EVP][j] = ((double)count) / d * mblengths[j];	/	mdiv	Oz
+tls_choose_sigalg	ssl/t1_lib.c	4685	51	                        int cc_idx = s->cert->key - s->cert->pkeys;	-	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	189	22	    long n = (4 * L) / 146097;	/	mdiv	Oz
+BN_bn2dec	crypto/bn/bn_conv.c	63	23	    num = (i / 10 + i / 1000 + 1) + 1;	/	mdiv	Oz
+tls_choose_sigalg	ssl/t1_lib.c	4658	57	        if (!s->server && !ssl_has_cert(s, s->cert->key - s->cert->pkeys))	-	mdiv	Oz
+rcidm_tick	ssl/quic/quic_rcidm.c	483	9	    if (rcidm->packets_sent >= PACKETS_PER_RCID)	r	mdiv	Oz
+ssl_cert_set_current	ssl/ssl_cert.c	400	31	        idx = (size_t)(c->key - c->pkeys + 1);	-	mdiv	Oz
+add_entry	apps/rehash.c	129	38	    unsigned int ndx = (type + hash) % OSSL_NELEM(hash_table);	%	mdiv	Oz
+ossl_quic_txpim_pkt_append_chunk	ssl/quic/quic_txpim.c	166	79	        new_alloc_chunks = (ex->alloc_chunks == 0) ? 4 : ex->alloc_chunks * 8 / 5;	/	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	195	18	    j = (80 * L) / 2447;	/	mdiv	Oz
+i2d_SSL_SESSION	ssl/ssl_asn1.c	132	25	    return (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	196	25	    *d = L - (2447 * j) / 80;	/	mdiv	Oz
+julian_adj	crypto/o_time.c	181	41	    return (1461 * (y + 4800 + (m - 14) / 12)) / 4 +	/	mdiv	Oz
+SSL_get_handshake_rtt	ssl/ssl_lib.c	5093	12	    *rtt = ossl_time2us(ossl_time_subtract(sc->ts_msg_read, sc->ts_msg_write));	o	mdiv	Oz
+enc_main	apps/enc.c	391	23	    buff = app_malloc(EVP_ENCODE_LENGTH(bsize), "evp buffer");	E	mdiv	Oz
+leap_year	crypto/asn1/a_time.c	39	34	    if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))	%	mdiv	Oz
+dgram_pair_write_inner	crypto/bio/bss_dgram_pair.c	18	1	OSSL_SAFE_MATH_UNSIGNED(size_t, size_t)	O	mdiv	Oz
+fmtfp	crypto/bio/bio_print.c	708	33	            fracpart = fracpart / 10;	/	mdiv	Oz
+SCT_print	crypto/ct/ct_prn.c	38	53	                             (timestamp % 86400000) / 1000);	/	mdiv	Oz
+i2a_ASN1_INTEGER	crypto/asn1/f_int.c	35	23	        for (i = 0; i < a->length; i++) {	<	mdiv	Oz
+print_bignum_var	apps/lib/apps.c	1403	23	        for (i = 0; i < l; i++) {	<	mdiv	Oz
+ossl_quic_reactor_block_until_pred	ssl/quic/quic_reactor.c	346	27	            timeout_ms  = ossl_time2ms(timeout);	o	mdiv	Oz
+SSL_trace	ssl/t1_trce.c	1427	87	        BIO_printf(bio, "Compressed length=%d, Ratio=%f:1\n", (int)clen, (float)uclen / (float)clen);	/	mdiv	Oz
+dgram_read	crypto/bio/bss_dgram.c	108	30	    tv.tv_sec = (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+tls1_get_legacy_sigalg	ssl/t1_lib.c	2495	32	            idx = s->cert->key - s->cert->pkeys;	-	mdiv	Oz
+SSL_SESSION_get_time_ex	ssl/ssl_sess.c	132	25	    return (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+BN_dec2bn	crypto/bn/bn_conv.c	236	20	    j = BN_DEC_NUM - i % BN_DEC_NUM;	-	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	95	28	    tm->tm_min = (time_sec / 60) % 60;	/	mdiv	Oz
+BN_bn2dec	crypto/bn/bn_conv.c	65	23	    bn_data_num = num / BN_DEC_NUM + 1;	/	mdiv	Oz
+ossl_quic_wire_encode_frame_ack	ssl/quic/quic_wire.c	54	1	OSSL_SAFE_MATH_UNSIGNED(time, uint64_t)	O	mdiv	Oz
+a2d_ASN1_OBJECT	crypto/asn1/a_object.c	130	35	            blsize = (blsize + 6) / 7;	/	mdiv	Oz
+ossl_asn1_time_to_tm	crypto/asn1/a_time.c	70	11	    c = y / 100;	/	mdiv	Oz
+ossl_quic_get_event_timeout	ssl/quic/quic_impl.c	110	43	    tv.tv_usec = (t.t % OSSL_TIME_SECOND) / OSSL_TIME_US;	/	mdiv	Oz
+ossl_rio_poll_builder_poll	ssl/rio/poll_builder.c	171	26	            timeout_ms = ossl_time2ms(ossl_time_subtract(deadline,	o	mdiv	Oz
+dtls1_ctrl	ssl/d1_lib.c	110	43	    tv.tv_usec = (t.t % OSSL_TIME_SECOND) / OSSL_TIME_US;	/	mdiv	Oz
+t_tob64	crypto/srp/srp_vfy.c	152	23	    leadz = 3 - (size % 3);	%	mdiv	Oz
+BUF_MEM_grow_clean	crypto/buffer/buffer.c	128	19	    n = (len + 3) / 3 * 4;	/	mdiv	Oz
+ossl_asn1_time_from_tm	crypto/asn1/a_time.c	308	49	                                    ts->tm_year % 100, ts->tm_mon + 1,	%	mdiv	Oz
+ASN1_buf_print	crypto/asn1/t_pkey.c	25	19	    for (i = 0; i < buflen; i++) {	<	mdiv	Oz
+dtls1_bio_set_next_timeout	ssl/d1_lib.c	110	43	    tv.tv_usec = (t.t % OSSL_TIME_SECOND) / OSSL_TIME_US;	/	mdiv	Oz
+md5crypt	apps/passwd.c	421	15	        if (i % 3) {	%	mdiv	Oz
+ossl_punycode_decode	crypto/punycode.c	49	33	    delta = (firsttime) ? delta / damp : delta / 2;	/	mdiv	Oz
+ossl_ffc_params_print	crypto/ffc/ffc_params.c	303	30	        for (i = 0; i < ffc->seedlen; i++) {	s	mdiv	Oz
+i2d_SSL_SESSION	ssl/ssl_asn1.c	172	27	    as.timeout = (int64_t)ossl_time2seconds(in->timeout);	o	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	197	11	    L = j / 11;	/	mdiv	Oz
+ossl_ifc_ffc_compute_security_bits	crypto/rsa/rsa_lib.c	301	31	    r = (r * (uint64_t)scale) / log_e;	/	mdiv	Oz
+leap_year	crypto/asn1/a_time.c	39	14	    if (year % 400 == 0 || (year % 100 != 0 && year % 4 == 0))	%	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	95	34	    tm->tm_min = (time_sec / 60) % 60;	%	mdiv	Oz
+X509_signature_dump	crypto/x509/t_x509.c	271	19	    for (i = 0; i < n; i++) {	<	mdiv	Oz
+dtls1_ctrl	ssl/d1_lib.c	108	30	    tv.tv_sec = (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+DES_quad_cksum	crypto/des/qud_cksm.c	70	70	            z1 = ((t0 * ((t1 + NOISE) & 0xffffffffL)) & 0xffffffffL) %	%	mdiv	Oz
+ossl_cms_RecipientInfo_pwri_crypt	crypto/cms/cms_pwri.c	213	15	    if (inlen % blocklen) {	%	mdiv	Oz
+ossl_asn1_time_to_tm	crypto/asn1/a_time.c	73	53	    tm->tm_wday = (d + (13 * m) / 5 + y + y / 4 + c / 4 + 5 * c + 6) % 7;	/	mdiv	Oz
+NCONF_get_number_e	crypto/conf/conf_lib.c	358	34	        if (res > (LONG_MAX - d) / 10L) {	/	mdiv	Oz
+cmd_Certificate	ssl/ssl_conf.c	460	33	        size_t fileidx = c->key - c->pkeys;	-	mdiv	Oz
+sk_reserve	crypto/stack/stack.c	18	1	OSSL_SAFE_MATH_SIGNED(int, int)	O	mdiv	Oz
+ssl_cert_dup	ssl/ssl_cert.c	114	38	    ret->key = &ret->pkeys[cert->key - cert->pkeys];	-	mdiv	Oz
+print_bin	crypto/ec/eck_prn.c	246	19	    for (i = 0; i < len; i++) {	<	mdiv	Oz
+b64_write	crypto/evp/bio_b64.c	424	24	                n -= n % 3;	%	mdiv	Oz
+ossl_asn1_time_to_tm	crypto/asn1/a_time.c	73	70	    tm->tm_wday = (d + (13 * m) / 5 + y + y / 4 + c / 4 + 5 * c + 6) % 7;	%	mdiv	Oz
+ossl_crypto_condvar_wait_timeout	crypto/thread/arch/thread_posix.c	195	15	            = ossl_time2seconds(deadline);	o	mdiv	Oz
+julian_adj	crypto/o_time.c	183	42	        (3 * ((y + 4900 + (m - 14) / 12) / 100)) / 4 + d - 32075;	/	mdiv	Oz
+def_time_cb	crypto/ts/ts_rsp_sign.c	108	30	    tv.tv_sec = (time_t)(t.t / OSSL_TIME_SECOND);	/	mdiv	Oz
+added_obj_hash	crypto/objects/obj_dat.c	133	23	        for (i = 0; i < a->length; i++)	<	mdiv	Oz
+parse_number	crypto/property/property_parse.c	108	43	        if (v > ((INT64_MAX - (*s - '0')) / 10)) {	/	mdiv	Oz
+ossl_curve448_scalar_decode_long	crypto/ec/curve448/scalar.c	187	28	    i = ser_len - (ser_len % C448_SCALAR_BYTES);	%	mdiv	Oz
+SCT_print	crypto/ct/ct_prn.c	44	71	                 ASN1_STRING_get0_data(gen), (unsigned int)(timestamp % 1000));	%	mdiv	Oz
+ossl_ifc_ffc_compute_security_bits	crypto/rsa/rsa_lib.c	376	20	                   / log_2);	/	mdiv	Oz
+SSL_CTX_get_timeout	ssl/ssl_sess.c	1148	18	    return (long)ossl_time2seconds(s->session_timeout);	o	mdiv	Oz
+OSSL_HTTP_proxy_connect	crypto/http/http_client.c	1406	17	    outl = (len / 3);	/	mdiv	Oz
+ossl_property_list_to_string	crypto/property/property_parse.c	680	38	    for (; tmpval > 9; len++, tmpval /= 10);	/	mdiv	Oz
+SSL_get_default_timeout	ssl/ssl_lib.c	2243	22	    return (long int)ossl_time2seconds(s->method->get_timeout());	o	mdiv	Oz
+ossl_bio_print_labeled_bignum	crypto/encode_decode/encoder_lib.c	757	12	    while (*p != '\0') {	*	mdiv	Oz
+OPENSSL_gmtime_adj	crypto/o_time.c	94	28	    tm->tm_hour = time_sec / 3600;	/	mdiv	Oz
+speed_main	apps/speed.c	5162	63	                fprintf(stdout, " %11.2fk", results[D_EVP][j] / 1e3);	/	mdiv	Oz

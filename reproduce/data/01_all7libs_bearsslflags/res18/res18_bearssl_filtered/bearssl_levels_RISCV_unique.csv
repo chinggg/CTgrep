@@ -1,0 +1,33 @@
+function	file	line	col	source	char	type	optimization
+print_ta	tools/ta.c	124	22	 printf("\t\t%s,\n", (ta->flags & BR_X509_TA_CA)	(	cjump	O0|O3|Ofast
+br_x509_decoder_run	src/x509/x509_decoder.c	520	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+br_x509_minimal_run	src/x509/x509_minimal.c	1019	2	 T0_PUSHi(a / b);	T	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+parse_size	tools/names.c	813	27	  if (z < (size_t)d || (z / (size_t)radix) != acc	/	mdiv	O0
+br_i15_muladd_small	src/int/i15_muladd.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+do_ta	tools/ta.c	124	22	 printf("\t\t%s,\n", (ta->flags & BR_X509_TA_CA)	(	cjump	O1|O2|Os|Oz
+br_pem_decoder_run	src/codec/pemdec.c	454	3	  | ((q + 28) & -LT(q, 26))	|	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i15_decode_mod	src/int/i15_decmod.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i32_muladd_small	src/int/i32_muladd.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_hmac_outCT	src/mac/hmac_ct.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+cbc_decrypt	src/ssl/ssl_rec_cbc.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_i31_decode_mod	src/int/i31_decmod.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_ssl_hs_server_run	src/ssl/ssl_hs_server.c	158	15	 br_ccopy(ctl ^ 1, xcoor, rpms, xcoor_len);	^	cjump	O1|O2|O3|Ofast
+br_i31_muladd_small	src/int/i31_muladd.c	772	11	 return y ^ (-ctl & (x ^ y));	^	cjump	O1|O2|O3|Ofast|Os|Oz
+br_mgf1_xor	src/hash/mgf1.c	39	3	  br_hash_compat_context hc;	b	cjump	O1|O2|O3|Ofast|Os
+br_i62_modpow_opt	src/int/i62_modpow2.c	438	26	   x[u] = (mask1 & x[u]) | (mask2 & t1[u]);	|	cjump	O1|O2|Os|Oz
+br_i15_modpow_opt	src/int/i15_modpow2.c	141	12	     t2[v] |= mask & base[v];	|	cjump	O3|Ofast
+p256_mulgen	src/ec/ec_p256_m15.c	1932	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O3|Ofast
+br_i31_modpow_opt	src/int/i31_modpow2.c	141	20	     t2[v] |= mask & base[v];	&	cjump	O3|Ofast
+br_i62_modpow_opt	src/int/i62_modpow2.c	424	20	     t2[v] |= mask & base[v];	&	cjump	O3|Ofast
+p256_mulgen	src/ec/ec_p256_m31.c	1281	15	   xy[u] |= m & Gwin[k][u];	&	cjump	O3|Ofast
+ecdh_common	src/ssl/ssl_hs_server.c	158	15	 br_ccopy(ctl ^ 1, xcoor, rpms, xcoor_len);	^	cjump	Os|Oz
+br_rsa_i31_public	src/rsa/rsa_i31_pub.c	61	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i15_public	src/rsa/rsa_i15_pub.c	62	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i62_public	src/rsa/rsa_i62_pub.c	63	2	 while (z > 0) {	w	mdiv	Oz
+br_x509_minimal_run	src/x509/x509_minimal.c	1222	22	   vd = (uint32_t)(x / 86400) + 719528;	/	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	67	2	 while (z > 0) {	w	mdiv	Oz
+br_rsa_i62_private	src/rsa/rsa_i62_priv.c	125	2	 while (u > 0) {	w	mdiv	Oz
+br_rsa_i31_private	src/rsa/rsa_i31_priv.c	123	2	 while (u > 0) {	w	mdiv	Oz
+br_pem_encode	src/codec/pemenc.c	82	46	 dlen = (banner_len << 1) + 30 + (((len + 2) / 3) << 2)	/	mdiv	Oz
+br_rsa_i15_private	src/rsa/rsa_i15_priv.c	129	2	 while (u > 0) {	w	mdiv	Oz

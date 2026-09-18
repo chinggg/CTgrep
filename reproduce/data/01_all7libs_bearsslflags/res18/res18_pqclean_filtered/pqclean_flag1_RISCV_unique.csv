@@ -1,0 +1,87 @@
+function	file	line	col	source	char	type	optimization
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+compute_error_values	reed_solomon.c	255	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	cjump	O0--expand-div-rem-bits=0|O0--expand-div-rem-bits=50
+solve_NTRU_intermediate	keygen.c	3213	34	        scl = (uint32_t)(scale_k % 31);	%	cjump	O0--expand-div-rem-bits=0
+solve_NTRU_intermediate	keygen.c	3212	34	        sch = (uint32_t)(scale_k / 31);	/	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON1024_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+solve_NTRU_intermediate	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+solve_NTRU_intermediate	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON512_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	47	14	    return r + (n & mask);	+	cjump	O1--rotation-max-header-size=0|O1-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	47	14	    return r + (n & mask);	+	cjump	O1--rotation-max-header-size=0|O1-ftrapv
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	47	14	    return r + (n & mask);	+	cjump	O1--rotation-max-header-size=0|O1-ftrapv
+solve_NTRU_intermediate	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Ofast-ftrapv|Os-ftrapv
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	255	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	cjump	O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|O3--scalar-evolution-huge-expr-threshold=0|O3--scalar-evolution-max-arith-depth=0|Ofast--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=50|Ofast--scalar-evolution-huge-expr-threshold=0|Ofast--scalar-evolution-max-arith-depth=0|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	255	111	            tmp2 = PQCLEAN_HQC256_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC256_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	cjump	O1--expand-div-rem-bits=0|O1--expand-div-rem-bits=50|O2--expand-div-rem-bits=0|O2--expand-div-rem-bits=50|O3--expand-div-rem-bits=0|O3--expand-div-rem-bits=50|Ofast--expand-div-rem-bits=0|Ofast--expand-div-rem-bits=50|Os--expand-div-rem-bits=0|Os--expand-div-rem-bits=50|Oz--expand-div-rem-bits=0|Oz--expand-div-rem-bits=50
+PQCLEAN_FALCON512_CLEAN_verify_recover	vrfy.c	792	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCON512_CLEAN_verify_recover	vrfy.c	796	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCON1024_CLEAN_verify_recover	vrfy.c	796	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCON1024_CLEAN_verify_recover	vrfy.c	792	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_recover	vrfy.c	792	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCONPADDED512_CLEAN_verify_recover	vrfy.c	792	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCONPADDED512_CLEAN_verify_recover	vrfy.c	796	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_recover	vrfy.c	796	16	        w += Q & -(w >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_recover	vrfy.c	371	12	    d += Q & -(d >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCON512_CLEAN_verify_recover	vrfy.c	371	12	    d += Q & -(d >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCONPADDED512_CLEAN_verify_recover	vrfy.c	371	12	    d += Q & -(d >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_FALCON1024_CLEAN_verify_recover	vrfy.c	371	12	    d += Q & -(d >> 31);	&	cjump	O1--disable-select-optimize=false|O2--disable-select-optimize=false|O3--disable-select-optimize=false|Ofast--disable-select-optimize=false
+PQCLEAN_SPHINCSSHAKE256FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHA2128FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHAKE256SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHAKE192FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHAKE128SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHAKE192SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHAKE128FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHA2256FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHA2256SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHA2128SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHA2192FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+PQCLEAN_SPHINCSSHA2192SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O1--enable-nontrivial-unswitch|O2--enable-nontrivial-unswitch
+cond_sub	vector.c	47	14	    return r + (n & mask);	+	cjump	O1-finstrument-functions|O1-fno-inline|O1-fno-inline-functions
+reduce	vector.c	47	14	    return r + (n & mask);	+	cjump	O1-finstrument-functions
+mq_add	vrfy.c	355	7	    d += Q & -(d >> 31);	+	cjump	O1-finstrument-functions|O2-finstrument-functions|O3-finstrument-functions|Ofast-finstrument-functions|Os-finstrument-functions|Oz-finstrument-functions
+solve_NTRU	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O3-ftrapv|Ofast-ftrapv
+solve_NTRU	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O3-ftrapv|Ofast-ftrapv
+solve_NTRU	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O3-ftrapv|Ofast-ftrapv
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	134	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	cjump	O3--attributor-enable=all|O3--attributor-enable=cgscc|O3--attributor-enable=module|Ofast--attributor-enable=all|Ofast--attributor-enable=cgscc|Ofast--attributor-enable=module
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	134	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	cjump	O3--attributor-enable=all|O3--attributor-enable=cgscc|O3--attributor-enable=module|Ofast--attributor-enable=all|Ofast--attributor-enable=cgscc|Ofast--attributor-enable=module
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	134	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	cjump	O3--attributor-enable=all|O3--attributor-enable=cgscc|O3--attributor-enable=module|Ofast--attributor-enable=all|Ofast--attributor-enable=cgscc|Ofast--attributor-enable=module
+PQCLEAN_FALCONPADDED512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz-fprofile-generate
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	255	106	            tmp2 = PQCLEAN_HQC256_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC256_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	+	mdiv	Oz--jump-threading-across-loop-headers
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	255	106	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	+	mdiv	Oz--jump-threading-across-loop-headers
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	254	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz--disable-machine-sink
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	254	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz--disable-machine-sink
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	362	14	        for (i = 0; i < off; ++i) {	i	mdiv	Oz--scalar-evolution-max-arith-depth=0|Oz--sroa-skip-mem2reg
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	362	14	        for (i = 0; i < off; ++i) {	i	mdiv	Oz--scalar-evolution-max-arith-depth=0|Oz--sroa-skip-mem2reg
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	362	14	        for (i = 0; i < off; ++i) {	i	mdiv	Oz--scalar-evolution-max-arith-depth=0|Oz--sroa-skip-mem2reg

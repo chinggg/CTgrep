@@ -1,0 +1,11 @@
+function	file	line	col	source	char	type	optimization
+scryptROMix	providers/implementations/kdfs/scrypt.c	410	9	        for (k = 0; k < 32 * r; k++)	f	mdiv	O1--cold-callsite-rel-freq=-1|O1--cold-callsite-rel-freq=100|O1--cold-callsite-rel-freq=50|O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50
+dtls1_retransmit_message	ssl/statem/statem_dtls.c	1237	29	    ret = dtls1_do_write(s, frag->msg_header.is_ccs ?	f	cjump	O1--enable-partial-inlining|O2--enable-partial-inlining|O3--enable-partial-inlining
+tls1_set_groups	ssl/t1_lib.c	1118	19	        *dup_list |= idmask;	|	cjump	O1--misched=ilpmin
+verify_ss_cert_trans	crypto/cmp/cmp_genm.c	277	30	                       desc, trusted == NULL ? "using trust store"	t	cjump	O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50
+aes_wrap_cipher_internal	providers/implementations/ciphers/cipher_aes_wrp.c	201	20	            return inlen + 8;	i	cjump	O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50
+new_raw_key_int	crypto/evp/p_lib.c	468	29	                            key_is_priv ? OSSL_PKEY_PARAM_PRIV_KEY	k	cjump	O3--disable-copyprop|O3--hot-callsite-rel-freq=0
+BIO_dump_fp	crypto/bio/bio_dump.c	49	28	                         i * dump_width);	*	cjump	O3--hot-callsite-rel-freq=0
+BIO_dump	crypto/bio/bio_dump.c	49	28	                         i * dump_width);	*	cjump	O3--hot-callsite-rel-freq=0
+BIO_dump_cb	crypto/bio/bio_dump.c	49	28	                         i * dump_width);	*	cjump	O3--hot-callsite-rel-freq=0
+SSL_CTX_get_timeout	ssl/ssl_sess.c	1148	18	    return (long)ossl_time2seconds(s->session_timeout);	o	mdiv	Oz--misched=ilpmin

@@ -1,0 +1,103 @@
+function	file	line	col	source	char	type	optimization
+compute_error_values	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	mdiv	O0
+solve_NTRU_intermediate	keygen.c	3213	34	        scl = (uint32_t)(scale_k % 31);	%	mdiv	O0|Oz
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0|Oz
+solve_NTRU_intermediate	keygen.c	3212	34	        sch = (uint32_t)(scale_k / 31);	/	mdiv	O0
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0|Oz
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	mdiv	O0|Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	cjump	O1|Os|Oz
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	184	21	        z[i] = mask & sigma[i];	&	cjump	O1|O2|Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	cjump	O1|Os|Oz
+PQCLEAN_HQC192_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	cjump	O1|Oz
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	132	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	cjump	O1|O2|O3|Os|Oz
+PQCLEAN_HQC192_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	cjump	O1|Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	cjump	O1|Os|Oz
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	cjump	O1|Oz
+karatsuba	gf2x.c	52	20	        g ^= (u[i] & (uint64_t)(0 - (1 - ((uint64_t)(tmp2 | (0 - tmp2)) >> 63))));	&	cjump	O1|Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	184	21	        z[i] = mask & sigma[i];	&	cjump	O1|O2|Os|Oz
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	108	32	            val |= (bit_tab[j] & mask64);	&	cjump	O1|O2|O3|Os|Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	184	21	        z[i] = mask & sigma[i];	&	cjump	O1|O2|Os|Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	132	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	cjump	O1|O2|O3|Os|Oz
+PQCLEAN_HQC256_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	cjump	O1|Oz
+PQCLEAN_HQC128_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	cjump	O1|Oz
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	cjump	O1|Oz
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	108	32	            val |= (bit_tab[j] & mask64);	&	cjump	O1|O2|O3|Os|Oz
+zint_rebuild_CRT	keygen.c	1287	17	        r |= cc & ((r & 1) - 1);	&	cjump	O1|O2|O3|Os|Oz
+karatsuba	gf2x.c	64	24	            g ^= (u[j] & (uint64_t)(0 - (1 - ((uint64_t)(tmp2 | (0 - tmp2)) >> 63))));	&	cjump	O1|O2|O3|Oz
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	108	32	            val |= (bit_tab[j] & mask64);	&	cjump	O1|O2|O3|Os|Oz
+PQCLEAN_HQC256_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	cjump	O1|Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	cjump	O1|Os|Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	132	68	            X_sigma_p[i] = (mask12 & sigma_copy[i - 1]) ^ (~mask12 & X_sigma_p[i - 1]);	&	cjump	O1|O2|O3|Os|Oz
+PQCLEAN_HQC128_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	cjump	O1|Oz
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	232	42	            beta_j[j] += mask1 & mask2 & gf_exp[i];	g	cjump	O2
+solve_NTRU	keygen.c	3367	19	                v ++, xs += dlen, ys += dlen, xd += llen, yd += llen) {	+	cjump	O2|O3
+solve_NTRU	keygen.c	3454	27	                v < hn; v ++, x += llen, y += llen) {	+	cjump	O2|O3
+solve_NTRU	keygen.c	3524	30	                    v < n; v ++, x += slen, y += slen) {	+	cjump	O2|O3
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	264	48	            error_values[i] += mask1 & mask2 & e_j[j];	e	cjump	O2
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	232	42	            beta_j[j] += mask1 & mask2 & gf_exp[i];	g	cjump	O2|Os
+PQCLEAN_MCELIECE6688128_CLEAN_pk_gen	pk_gen.c	153	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_SPHINCSSHA2256FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE460896_CLEAN_pk_gen	pk_gen.c	153	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE348864F_CLEAN_pk_gen	pk_gen.c	97	30	            buf[j] ^= buf[i] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6960119F_CLEAN_pk_gen	pk_gen.c	270	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_SPHINCSSHA2192SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE6960119_CLEAN_pk_gen	pk_gen.c	113	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_SPHINCSSHA2128SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+zint_rebuild_CRT	keygen.c	1145	12	        aw ^= ((w & 0x7FFFFFFF) ^ aw) & m;	^	cjump	O3
+PQCLEAN_MCELIECE460896F_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_MCELIECE460896F_CLEAN_pk_gen	pk_gen.c	211	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_MCELIECE8192128F_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_SPHINCSSHAKE192SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE460896F_CLEAN_pk_gen	pk_gen.c	259	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE8192128F_CLEAN_pk_gen	pk_gen.c	97	30	            buf[j] ^= buf[i] & mask;	&	cjump	O3
+PQCLEAN_SPHINCSSHAKE192FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE6688128F_CLEAN_pk_gen	pk_gen.c	211	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_SPHINCSSHAKE128FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_SPHINCSSHA2256SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE8192128_CLEAN_pk_gen	pk_gen.c	153	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6688128_CLEAN_pk_gen	pk_gen.c	138	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_SPHINCSSHAKE256FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE6960119F_CLEAN_pk_gen	pk_gen.c	106	30	            buf[j] ^= buf[i] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE8192128_CLEAN_pk_gen	pk_gen.c	111	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_MCELIECE348864F_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_MCELIECE348864_CLEAN_pk_gen	pk_gen.c	138	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE8192128F_CLEAN_pk_gen	pk_gen.c	211	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_MCELIECE6960119F_CLEAN_pk_gen	pk_gen.c	101	30	            buf[i] ^= buf[j] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6688128_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_MCELIECE6688128_CLEAN_pk_gen	pk_gen.c	111	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_MCELIECE6960119_CLEAN_pk_gen	pk_gen.c	155	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE460896_CLEAN_pk_gen	pk_gen.c	111	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_SPHINCSSHAKE256SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE348864F_CLEAN_pk_gen	pk_gen.c	259	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE460896_CLEAN_pk_gen	pk_gen.c	138	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6688128F_CLEAN_pk_gen	pk_gen.c	259	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE460896F_CLEAN_pk_gen	pk_gen.c	97	30	            buf[j] ^= buf[i] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE8192128_CLEAN_pk_gen	pk_gen.c	138	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6688128F_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_MCELIECE348864_CLEAN_pk_gen	pk_gen.c	153	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6960119F_CLEAN_pk_gen	pk_gen.c	285	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6688128F_CLEAN_pk_gen	pk_gen.c	97	30	            buf[j] ^= buf[i] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE460896_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_MCELIECE8192128F_CLEAN_pk_gen	pk_gen.c	244	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE8192128F_CLEAN_pk_gen	pk_gen.c	259	58	                        mat[ k ][ c ] ^= mat[ row ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE348864_CLEAN_pk_gen	pk_gen.c	111	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_MCELIECE348864_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_SPHINCSSHAKE128SSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE348864F_CLEAN_pk_gen	pk_gen.c	211	48	                mat[ i * GFBITS + k ][ j / 8 ] = b;	=	cjump	O3
+PQCLEAN_SPHINCSSHA2192FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE6960119_CLEAN_pk_gen	pk_gen.c	140	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_SPHINCSSHA2128FSIMPLE_CLEAN_wots_gen_leafx1	wotsx1.c	41	47	        uint32_t wots_k = info->wots_steps[i] | wots_k_mask; /* Set wots_k to */	|	cjump	O3
+PQCLEAN_MCELIECE6960119F_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+PQCLEAN_MCELIECE348864F_CLEAN_pk_gen	pk_gen.c	244	54	                    mat[ row ][ c ] ^= mat[ k ][ c ] & mask;	&	cjump	O3
+PQCLEAN_MCELIECE6960119_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+solve_NTRU	keygen.c	1145	12	        aw ^= ((w & 0x7FFFFFFF) ^ aw) & m;	^	cjump	O3
+PQCLEAN_MCELIECE8192128_CLEAN_controlbitsfrompermutation	controlbits.c	194	24	            p[ i + j ] ^= d;	^	cjump	O3
+solve_NTRU_intermediate	keygen.c	3269	23	                Gt[v] = sw;	=	cjump	Os
+solve_NTRU_intermediate	keygen.c	3265	23	                Ft[v] = sw;	=	cjump	Os
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	264	48	            error_values[i] += mask1 & mask2 & e_j[j];	e	cjump	Os
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	250	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz
+PQCLEAN_FALCON1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_FALCONPADDED512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	250	30	        for (size_t k = 1; k < PARAM_DELTA; ++k) {	<	mdiv	Oz
+PQCLEAN_FALCONPADDED1024_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz
+PQCLEAN_FALCON512_CLEAN_hash_to_point_vartime	common.c	59	13	            while (w >= 12289) {	w	mdiv	Oz

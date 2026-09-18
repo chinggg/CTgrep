@@ -1,0 +1,15 @@
+function	file	line	col	source	char	type	optimization
+camellia_init_key	crypto/evp/e_camellia.c	213	27	        dat->stream.cbc = mode == EVP_CIPH_CBC_MODE ?	m	cjump	O1--enable-misched=false|O1--misched=ilpmin|O2--enable-misched=false|O2--misched=ilpmin
+camellia_init_key	crypto/evp/e_camellia.c	209	27	        dat->stream.cbc = mode == EVP_CIPH_CBC_MODE ?	m	cjump	O1--enable-misched=false|O1--misched=ilpmin|O2--enable-misched=false|O2--misched=ilpmin
+recode_wnaf	crypto/ec/curve448/curve448.c	558	48	    unsigned int table_size = C448_SCALAR_BITS / (table_bits + 1) + 3;	/	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O1-fgnuc-version=0|O1-fms-compatibility|O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50|O2-fgnuc-version=0|O2-fms-compatibility|O3-fgnuc-version=0|O3-fms-compatibility
+cipher_hw_camellia_initkey	providers/implementations/ciphers/cipher_camellia_hw.c	35	27	        dat->stream.cbc = mode == EVP_CIPH_CBC_MODE ?	m	cjump	O1--misched=ilpmin|O2--misched=ilpmin
+cipher_hw_camellia_initkey	providers/implementations/ciphers/cipher_camellia_hw.c	39	27	        dat->stream.cbc = mode == EVP_CIPH_CBC_MODE ?	m	cjump	O1--misched=ilpmin|O2--misched=ilpmin
+ossl_cmac_init	crypto/cmac/cmac.c	48	42	        k1[i] = (c << 1) | ((cnext = l[i + 1]) >> 7);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+BN_rshift	crypto/bn/bn_shift.c	205	17	        m = f[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+CRYPTO_cfb128_1_encrypt	crypto/modes/cfb128.c	180	59	            ivec[n] = ovec[n + num] << rem | ovec[n + num + 1] >> (8 - rem);	+	cjump	O1-ftree-vectorize|O1-fvectorize
+kdf_scrypt_derive	providers/implementations/kdfs/scrypt.c	410	9	        for (k = 0; k < 32 * r; k++)	f	mdiv	O1-ftree-vectorize|O1-fvectorize
+bn_rshift_fixed_top	crypto/bn/bn_shift.c	205	17	        m = f[i + 1];	+	cjump	O1-ftree-vectorize|O1-fvectorize
+ossl_quic_rstream_resize_rbuf	ssl/quic/quic_rstream.c	189	26	    idx = logical_offset % r->alloc;	%	cjump	O3--hot-callsite-rel-freq=0
+ssl_create_cipher_list	ssl/ssl_ciph.c	701	46	                co_list[i].next = &co_list[i + 1];	+	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+ssl_create_cipher_list	ssl/ssl_ciph.c	700	46	                co_list[i].prev = &co_list[i - 1];	-	cjump	Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+DES_cfb_encrypt	crypto/des/cfb_enc.c	37	17	        numbits % 8;	%	mdiv	Oz--hoist-common-insts

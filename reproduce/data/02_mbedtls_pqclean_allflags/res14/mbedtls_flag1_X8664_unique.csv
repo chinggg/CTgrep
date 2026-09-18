@@ -1,0 +1,236 @@
+function	file	line	col	source	char	type	optimization
+ssl_ticket_gen_key	ssl_ticket.c	92	11	    ret = PSA_TO_MBEDTLS_ERR(	P	mdiv	O0-fglobal-isel
+rsa_rsassa_pss_sign_no_mode_check	../tf-psa-crypto/drivers/builtin/src/rsa.c	2202	13	    if (msb % 8 == 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_read_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	551	45	            X->p[j / (2 * ciL)] |= d << ((j % (2 * ciL)) << 2);	%	mdiv	O0-fglobal-isel
+mbedtls_debug_print_buf	debug.c	141	15	        if (i % 16 == 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_ecp_gen_privkey_mx	../tf-psa-crypto/drivers/builtin/src/ecp.c	2951	38	    size_t n_random_bytes = high_bit / 8 + 1;	/	mdiv	O0-fglobal-isel
+mbedtls_ecp_fix_negative	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	4993	46	    } while (N->p[i++] == 0 && i <= bits / 8 / sizeof(mbedtls_mpi_uint));	/	mdiv	O0-fglobal-isel
+mbedtls_ccm_update_ad	../tf-psa-crypto/drivers/builtin/src/ccm.c	320	43	            offset = (ctx->processed + 2) % 16; /* account for y[0] and y[1]	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_div_mpi	../tf-psa-crypto/drivers/builtin/src/bignum.c	1436	32	    k = mbedtls_mpi_bitlen(&Y) % biL;	%	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5100	59	    SUB(19);                                              NEXT;   // A8	N	mdiv	O0-fglobal-isel
+mbedtls_sha3_update	../tf-psa-crypto/drivers/builtin/src/sha3.c	322	43	        int align_bytes = 8 - (ctx->index % 8);	%	mdiv	O0-fglobal-isel
+mbedtls_ecp_fix_negative	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	4986	31	    for (i = 0; i <= bits / 8 / sizeof(mbedtls_mpi_uint); i++) {	/	mdiv	O0-fglobal-isel
+mbedtls_des_crypt_cbc	../tf-psa-crypto/drivers/builtin/src/des.c	630	16	    if (length % 8) {	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_read_le	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	208	26	    const size_t limbs = CHARS_TO_LIMBS(input_length);	C	mdiv	O0-fglobal-isel
+mbedtls_rsa_gen_key	../tf-psa-crypto/drivers/builtin/src/rsa.c	1116	57	        if (mbedtls_mpi_bitlen(&ctx->D) <= ((nbits + 1) / 2)) {      // (FIPS 186-4 §B.3.1 criterion 3(a))	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_fill_random	../tf-psa-crypto/drivers/builtin/src/bignum.c	1863	26	    const size_t limbs = CHARS_TO_LIMBS(size);	C	mdiv	O0-fglobal-isel
+mbedtls_aes_crypt_cbc	../tf-psa-crypto/drivers/builtin/src/aes.c	1077	16	    if (length % 16) {	%	mdiv	O0-fglobal-isel
+psa_generate_derived_key_internal	../tf-psa-crypto/core/psa_crypto.c	6464	20	    size_t bytes = PSA_BITS_TO_BYTES(bits);	P	mdiv	O0-fglobal-isel
+mbedtls_camellia_crypt_cbc	../tf-psa-crypto/drivers/builtin/src/camellia.c	529	16	    if (length % 16) {	%	mdiv	O0-fglobal-isel
+mbedtls_debug_print_mpi	debug.c	198	38	        for (n = (int) ((bitlen - 1) / 8); n >= 0; n--) {	/	mdiv	O0-fglobal-isel
+mbedtls_pem_write_buffer	../tf-psa-crypto/drivers/builtin/src/pem.c	507	86	    add_len = strlen(header) + strlen(footer) + (((use_len > 2) ? (use_len - 2) : 0) / 64) + 1;	/	mdiv	O0-fglobal-isel
+mbedtls_des3_crypt_cbc	../tf-psa-crypto/drivers/builtin/src/des.c	726	16	    if (length % 8) {	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_read_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	551	20	            X->p[j / (2 * ciL)] |= d << ((j % (2 * ciL)) << 2);	/	mdiv	O0-fglobal-isel
+ssl_tls13_get_cipher_key_info	ssl_tls13_keys.c	1067	16	    *key_len = PSA_BITS_TO_BYTES(key_bits);	P	mdiv	O0-fglobal-isel
+mbedtls_asn1_write_named_bitstring	../tf-psa-crypto/drivers/builtin/src/asn1write.c	276	27	    byte_len = (bits + 7) / 8;	/	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5073	5	    INIT(384);	I	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5039	53	    SUB(11); SUB(12); SUB(13); SUB(14);             NEXT;         // A0	N	mdiv	O0-fglobal-isel
+ssl_get_reassembly_buffer_size	ssl_msg.c	2935	45	        alloc_len += msg_len / 8 + (msg_len % 8 != 0);   /* Bitmap       */	%	mdiv	O0-fglobal-isel
+exp_mod_calc_first_bit_optionally_safe	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	781	32	        *E_limb_index = E_bits / biL;	/	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5042	53	    SUB(12); SUB(13); SUB(14); SUB(15);             NEXT;         // A1	N	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5106	59	    SUB(21);                                              NEXT;   // A10	N	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5051	56	    SUB(9); SUB(10);                                   NEXT;      // A4	N	mdiv	O0-fglobal-isel
+hmac_drbg_reseed_core	../tf-psa-crypto/drivers/builtin/src/hmac_drbg.c	148	54	            total_entropy_len = ctx->entropy_len * 3 / 2;	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_shift_r	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	336	16	    v0 = count /  biL;	/	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5057	55	    SUB(8); SUB(9);                                   NEXT;       // A6	N	mdiv	O0-fglobal-isel
+ssl_bitmask_set	ssl_msg.c	2866	30	    start_bits = 8 - (offset % 8);	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_read_binary_le	../tf-psa-crypto/drivers/builtin/src/bignum.c	797	26	    const size_t limbs = CHARS_TO_LIMBS(buflen);	C	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5045	55	    SUB(13); SUB(14); SUB(15);                        NEXT;       // A2	N	mdiv	O0-fglobal-isel
+mbedtls_ccm_set_lengths	../tf-psa-crypto/drivers/builtin/src/ccm.c	270	49	    if (tag_len == 2 || tag_len > 16 || tag_len % 2 != 0) {	%	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5054	57	    SUB(10); SUB(11);                                   NEXT;     // A5	N	mdiv	O0-fglobal-isel
+derive_mpi	../tf-psa-crypto/drivers/builtin/src/ecdsa.c	204	38	    size_t n_size = (grp->nbits + 7) / 8;	/	mdiv	O0-fglobal-isel
+mbedtls_ecp_fix_negative	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5006	19	    N->p[bits / 8 / sizeof(mbedtls_mpi_uint)] += msw;	/	mdiv	O0-fglobal-isel
+mbedtls_gcm_update	../tf-psa-crypto/drivers/builtin/src/gcm.c	601	23	    offset = ctx->len % 16;	%	mdiv	O0-fglobal-isel
+main	ssl/ssl_context_info.c	933	51	            size_t ssl_required_len = b64_len * 3 / 4 + 1;	/	mdiv	O0-fglobal-isel
+mbedtls_debug_print_buf	debug.c	157	15	        txt[i % 16] = (buf[i] > 31 && buf[i] < 127) ? buf[i] : '.';	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_set_bit	../tf-psa-crypto/drivers/builtin/src/bignum.c	411	22	    size_t idx = pos % biL;	%	mdiv	O0-fglobal-isel
+mbedtls_rsa_rsassa_pss_verify_ext	../tf-psa-crypto/drivers/builtin/src/rsa.c	2594	13	    if (msb % 8 == 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_montmul_init	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	520	42	    for (unsigned int i = biL; i >= 8; i /= 2) {	/	mdiv	O0-fglobal-isel
+mbedtls_ecp_fix_negative	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	4993	42	    } while (N->p[i++] == 0 && i <= bits / 8 / sizeof(mbedtls_mpi_uint));	/	mdiv	O0-fglobal-isel
+psa_generate_derived_key_internal	../tf-psa-crypto/core/psa_crypto.c	6493	18	        if (bits % 8 != 0) {	%	mdiv	O0-fglobal-isel
+ssl_get_reassembly_buffer_size	ssl_msg.c	2935	30	        alloc_len += msg_len / 8 + (msg_len % 8 != 0);   /* Bitmap       */	/	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5076	59	    SUB(23);                                              NEXT;   // A0	N	mdiv	O0-fglobal-isel
+ecdh_calc_secret_internal	../tf-psa-crypto/drivers/builtin/src/ecdh.c	649	28	    *olen = ctx->grp.pbits / 8 + ((ctx->grp.pbits % 8) != 0);	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_write_be	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	324	36	        p[bytes_to_copy - i - 1] = GET_BYTE(X, i);	G	mdiv	O0-fglobal-isel
+show_ecp_key	pkey/gen_key.c	197	13	            MBEDTLS_MPI_CHK(	M	mdiv	O0-fglobal-isel
+mbedtls_aes_xts_decode_keys	../tf-psa-crypto/drivers/builtin/src/aes.c	755	53	    const unsigned int half_keybytes = half_keybits / 8;	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_read_binary	../tf-psa-crypto/drivers/builtin/src/bignum.c	823	26	    const size_t limbs = CHARS_TO_LIMBS(buflen);	C	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_write_be	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	317	17	            if (GET_BYTE(X, i) != 0) {	G	mdiv	O0-fglobal-isel
+ssl_bitmask_check	ssl_msg.c	2917	23	        if ((mask[len / 8] & (1 << (7 - i))) == 0) {	/	mdiv	O0-fglobal-isel
+mbedtls_debug_print_mpi	debug.c	199	36	            size_t limb_offset = n / sizeof(mbedtls_mpi_uint);	/	mdiv	O0-fglobal-isel
+ccm_calculate_first_block_if_ready	../tf-psa-crypto/drivers/builtin/src/ccm.c	194	38	    ctx->y[0] |= ((ctx->tag_len - 2) / 2) << 3;	/	mdiv	O0-fglobal-isel
+mbedtls_ssl_tls13_populate_transform	ssl_tls13_keys.c	1022	38	                                     PSA_BITS_TO_BYTES(key_bits),	P	mdiv	O0-fglobal-isel
+mbedtls_psa_ffdh_key_agreement	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ffdh.c	706	9	        PSA_BITS_TO_BYTES(attributes->bits), &P, &G);	P	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5036	5	    INIT(256);	I	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5082	57	    SUB(13); SUB(21);                                   NEXT;     // A2	N	mdiv	O0-fglobal-isel
+ecdsa_verify_psa	../tf-psa-crypto/drivers/builtin/src/pk_wrap.c	292	28	    size_t signature_len = PSA_ECDSA_SIGNATURE_SIZE(curve_bits);	P	mdiv	O0-fglobal-isel
+ssl_bitmask_set	ssl_msg.c	2888	20	    end_bits = len % 8;	%	mdiv	O0-fglobal-isel
+mbedtls_psa_ecdsa_verify_hash	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ecp.c	471	19	    curve_bytes = PSA_BITS_TO_BYTES(ecp->grp.pbits);	P	mdiv	O0-fglobal-isel
+ssl_bitmask_set	ssl_msg.c	2890	47	        size_t last_byte_idx = (offset + len) / 8;	/	mdiv	O0-fglobal-isel
+show_ecp_key	pkey/gen_key.c	195	13	            MBEDTLS_MPI_CHK(	M	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5097	59	    SUB(18);                                              NEXT;   // A7	N	mdiv	O0-fglobal-isel
+ssl_bitmask_set	ssl_msg.c	2899	41	    memset(mask + offset / 8, 0xFF, len / 8);	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_fill_random	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	622	26	    const size_t limbs = CHARS_TO_LIMBS(n_bytes);	C	mdiv	O0-fglobal-isel
+mbedtls_aria_crypt_cbc	../tf-psa-crypto/drivers/builtin/src/aria.c	523	16	    if (length % MBEDTLS_ARIA_BLOCKSIZE) {	%	mdiv	O0-fglobal-isel
+psa_raw_key_agreement	../tf-psa-crypto/core/psa_crypto.c	7785	9	        PSA_RAW_KEY_AGREEMENT_OUTPUT_SIZE(slot->attr.type, slot->attr.bits);	P	mdiv	O0-fglobal-isel
+mbedtls_mpi_get_bit	../tf-psa-crypto/drivers/builtin/src/bignum.c	401	37	    return (X->p[pos / biL] >> (pos % biL)) & 0x01;	%	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5094	59	    SUB(17);                                              NEXT;   // A6	N	mdiv	O0-fglobal-isel
+hmac_drbg_reseed_core	../tf-psa-crypto/drivers/builtin/src/hmac_drbg.c	183	37	        seedlen += ctx->entropy_len / 2;	/	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5060	53	    SUB(10); SUB(11); SUB(12); SUB(13);             LAST;         // A7	L	mdiv	O0-fglobal-isel
+mbedtls_rsa_gen_key	../tf-psa-crypto/drivers/builtin/src/rsa.c	1064	31	    if (exponent < 3 || nbits % 2 != 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_read_be	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	231	26	    const size_t limbs = CHARS_TO_LIMBS(input_length);	C	mdiv	O0-fglobal-isel
+mbedtls_ssl_tls13_populate_transform	ssl_tls13_keys.c	1033	38	                                     PSA_BITS_TO_BYTES(key_bits),	P	mdiv	O0-fglobal-isel
+mbedtls_asn1_write_named_bitstring	../tf-psa-crypto/drivers/builtin/src/asn1write.c	301	22	            if (bits % 8 == 0) {	%	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5109	59	    SUB(22);                                              LAST;   // A11	L	mdiv	O0-fglobal-isel
+mbedtls_ssl_get_max_out_record_payload	ssl_tls.c	2987	29	        max_len = ((max_len / MBEDTLS_SSL_CID_TLS1_3_PADDING_GRANULARITY) *	/	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5021	34	    SUB(11); ADD(8); ADD(12);    NEXT;        // A4 += -A11 + A8 + A12	N	mdiv	O0-fglobal-isel
+mbedtls_gcm_update_ad	../tf-psa-crypto/drivers/builtin/src/gcm.c	484	27	    offset = ctx->add_len % 16;	%	mdiv	O0-fglobal-isel
+mbedtls_aes_crypt_xts	../tf-psa-crypto/drivers/builtin/src/aes.c	1171	28	    size_t blocks = length / 16;	/	mdiv	O0-fglobal-isel
+mbedtls_ecp_fix_negative	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5006	15	    N->p[bits / 8 / sizeof(mbedtls_mpi_uint)] += msw;	/	mdiv	O0-fglobal-isel
+mbedtls_ssl_tls13_generate_and_write_xxdh_key_exchange	ssl_tls13_generic.c	1549	20	    if (buf_size < PSA_BITS_TO_BYTES(bits)) {	P	mdiv	O0-fglobal-isel
+mbedtls_ssl_tls13_export_handshake_psk	ssl_tls13_keys.c	1810	16	    *psk_len = PSA_BITS_TO_BYTES(psa_get_key_bits(&key_attributes));	P	mdiv	O0-fglobal-isel
+mbedtls_poly1305_update	../tf-psa-crypto/drivers/builtin/src/poly1305.c	307	29	        nblocks = remaining / POLY1305_BLOCK_SIZE_BYTES;	/	mdiv	O0-fglobal-isel
+mbedtls_ecdsa_der_to_raw	../tf-psa-crypto/drivers/builtin/src/psa_util.c	538	30	    size_t coordinate_size = PSA_BITS_TO_BYTES(bits);	P	mdiv	O0-fglobal-isel
+mbedtls_mpi_set_bit	../tf-psa-crypto/drivers/builtin/src/bignum.c	410	22	    size_t off = pos / biL;	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_shift_l	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	376	16	    v0 = count / (biL);	/	mdiv	O0-fglobal-isel
+mbedtls_psa_ecp_load_representation	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ecp.c	123	28	        if (curve_bytes != PSA_BITS_TO_BYTES(curve_bits)) {	P	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5085	55	    SUB(14); SUB(22); SUB(23);                        NEXT;       // A3	N	mdiv	O0-fglobal-isel
+mbedtls_ecp_write_key_ext	../tf-psa-crypto/drivers/builtin/src/ecp.c	3198	39	    size_t len = (key->grp.nbits + 7) / 8;	/	mdiv	O0-fglobal-isel
+mbedtls_mpi_read_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	544	13	        n = BITS_TO_LIMBS(slen << 2);	B	mdiv	O0-fglobal-isel
+good_nonce_len	../tf-psa-crypto/drivers/builtin/src/ctr_drbg.c	520	34	        return (entropy_len + 1) / 2;	/	mdiv	O0-fglobal-isel
+mbedtls_ecdsa_raw_to_der	../tf-psa-crypto/drivers/builtin/src/psa_util.c	414	35	    const size_t coordinate_len = PSA_BITS_TO_BYTES(bits);	P	mdiv	O0-fglobal-isel
+ecdh_calc_secret_internal	../tf-psa-crypto/drivers/builtin/src/ecdh.c	649	51	    *olen = ctx->grp.pbits / 8 + ((ctx->grp.pbits % 8) != 0);	%	mdiv	O0-fglobal-isel
+ecp_mod_p256	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5048	53	    SUB(15); SUB(8); SUB(9);                        NEXT;         // A3	N	mdiv	O0-fglobal-isel
+mbedtls_cipher_setkey	../tf-psa-crypto/drivers/builtin/src/cipher.c	321	62	        size_t const key_bytelen = ((size_t) key_bitlen + 7) / 8;	/	mdiv	O0-fglobal-isel
+ecp_mpi_load	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	4495	34	    X->n = (unsigned short) (len / sizeof(mbedtls_mpi_uint));	/	mdiv	O0-fglobal-isel
+ssl_bitmask_set	ssl_msg.c	2899	26	    memset(mask + offset / 8, 0xFF, len / 8);	/	mdiv	O0-fglobal-isel
+parse_attribute_value_hex_der_encoded	x509_create.c	215	35	    size_t const der_length = len / 2;	/	mdiv	O0-fglobal-isel
+psa_validate_unstructured_key_bit_size	../tf-psa-crypto/core/psa_crypto.c	655	14	    if (bits % 8 != 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_psa_key_agreement_ecdh	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ecp.c	577	9	    if (PSA_BITS_TO_BYTES(bits) != *shared_secret_length) {	P	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_read_le	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	218	33	            size_t offset = ((i % ciL) << 3);	%	mdiv	O0-fglobal-isel
+mbedtls_debug_print_integer	debug.c	242	15	        if (i % 16 == 0) {	%	mdiv	O0-fglobal-isel
+psa_check_rsa_key_byte_aligned	../tf-psa-crypto/drivers/builtin/src/psa_crypto_rsa.c	51	36	        if (mbedtls_mpi_bitlen(&n) % 8 != 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_debug_print_buf	debug.c	161	29	        for (/* i = i */; i % 16 != 0; i++) {	%	mdiv	O0-fglobal-isel
+mbedtls_asn1_write_bitstring	../tf-psa-crypto/drivers/builtin/src/asn1write.c	316	27	    byte_len = (bits + 7) / 8;	/	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5018	36	    SUB(8); SUB(12);               NEXT;      // A1 += -A8 - A12	N	mdiv	O0-fglobal-isel
+mbedtls_psa_ecdsa_sign_hash	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ecp.c	384	19	    curve_bytes = PSA_BITS_TO_BYTES(ecp->grp.pbits);	P	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_write_le	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	273	17	            if (GET_BYTE(A, i) != 0) {	G	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_write_le	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	280	21	        output[i] = GET_BYTE(A, i);	G	mdiv	O0-fglobal-isel
+mbedtls_gcm_update	../tf-psa-crypto/drivers/builtin/src/gcm.c	597	39	    if (ctx->len == 0 && ctx->add_len % 16 != 0) {	%	mdiv	O0-fglobal-isel
+parse_attribute_value_hex_der_encoded	x509_create.c	211	13	    if (len % 2 != 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_get_bit	../tf-psa-crypto/drivers/builtin/src/bignum.c	401	22	    return (X->p[pos / biL] >> (pos % biL)) & 0x01;	/	mdiv	O0-fglobal-isel
+mbedtls_psa_ffdh_export_public_key	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ffdh.c	590	22	    size_t key_len = PSA_BITS_TO_BYTES(attributes->bits);	P	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5022	34	    SUB(12); ADD(9); ADD(13);    NEXT;        // A5 += -A12 + A9 + A13	N	mdiv	O0-fglobal-isel
+read_next_b64_code	ssl/ssl_context_info.c	418	28	            } else if (len % 4 != 0) {	%	mdiv	O0-fglobal-isel
+ssl_bitmask_check	ssl_msg.c	2910	25	    for (i = 0; i < len / 8; i++) {	/	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5023	37	    SUB(13); ADD(10);               LAST;     // A6 += -A13 + A10	L	mdiv	O0-fglobal-isel
+ssl_bitmask_set	ssl_msg.c	2868	40	        size_t first_byte_idx = offset / 8;	/	mdiv	O0-fglobal-isel
+mbedtls_ccm_update	../tf-psa-crypto/drivers/builtin/src/ccm.c	389	33	        offset = ctx->processed % 16;	%	mdiv	O0-fglobal-isel
+hmac_drbg_reseed_core	../tf-psa-crypto/drivers/builtin/src/hmac_drbg.c	179	52	                                  ctx->entropy_len / 2)) != 0) {	/	mdiv	O0-fglobal-isel
+mbedtls_poly1305_update	../tf-psa-crypto/drivers/builtin/src/poly1305.c	312	19	        remaining %= POLY1305_BLOCK_SIZE_BYTES;	%	mdiv	O0-fglobal-isel
+mbedtls_debug_print_psa_ec	debug.c	281	38	    coord_len = (pk->pub_raw_len - 1)/2;	/	mdiv	O0-fglobal-isel
+ecp_check_pubkey_mx	../tf-psa-crypto/drivers/builtin/src/ecp.c	2866	53	    if (mbedtls_mpi_size(&pt->X) > (grp->nbits + 7) / 8) {	/	mdiv	O0-fglobal-isel
+chachapoly_pad_aad	../tf-psa-crypto/drivers/builtin/src/chachapoly.c	34	59	    uint32_t partial_block_len = (uint32_t) (ctx->aad_len % 16U);	%	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5019	36	    SUB(9); SUB(13);               NEXT;      // A2 += -A9 - A13	N	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5079	57	    SUB(12); SUB(20);                                   NEXT;     // A2	N	mdiv	O0-fglobal-isel
+mbedtls_psa_ecp_load_representation	../tf-psa-crypto/drivers/builtin/src/psa_crypto_ecp.c	112	35	        curve_bytes = data_length / 2;	/	mdiv	O0-fglobal-isel
+psa_validate_key_type_and_size_for_key_generation	../tf-psa-crypto/core/psa_crypto.c	8154	18	        if (bits % 8 != 0) {	%	mdiv	O0-fglobal-isel
+mbedtls_aes_crypt_ctr	../tf-psa-crypto/drivers/builtin/src/aes.c	1449	34	    *nc_off = (*nc_off + length) % 16;	%	mdiv	O0-fglobal-isel
+ssl_bitmask_check	ssl_msg.c	2916	25	    for (i = 0; i < len % 8; i++) {	%	mdiv	O0-fglobal-isel
+mbedtls_ecdsa_sign_det_restartable	../tf-psa-crypto/drivers/builtin/src/ecdsa.c	403	39	    size_t grp_len = (grp->nbits + 7) / 8;	/	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5091	59	    SUB(16);                                              NEXT;   // A5	N	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5020	34	    SUB(10); ADD(7); ADD(11);    NEXT;        // A3 += -A10 + A7 + A11	N	mdiv	O0-fglobal-isel
+mbedtls_aes_xts_decode_keys	../tf-psa-crypto/drivers/builtin/src/aes.c	754	47	    const unsigned int half_keybits = keybits / 2;	/	mdiv	O0-fglobal-isel
+chachapoly_pad_ciphertext	../tf-psa-crypto/drivers/builtin/src/chachapoly.c	55	66	    uint32_t partial_block_len = (uint32_t) (ctx->ciphertext_len % 16U);	%	mdiv	O0-fglobal-isel
+mbedtls_ssl_ticket_rotate	ssl_ticket.c	167	34	                                 PSA_BITS_TO_BYTES(key->key_bits),	P	mdiv	O0-fglobal-isel
+mbedtls_ssl_set_timer	ssl_msg.c	193	46	    ssl->f_set_timer(ssl->p_timer, millisecs / 4, millisecs);	/	mdiv	O0-fglobal-isel
+psa_generate_key_custom	../tf-psa-crypto/core/psa_crypto.c	8294	31	            key_buffer_size = PSA_EXPORT_KEY_OUTPUT_SIZE(	P	mdiv	O0-fglobal-isel
+mbedtls_debug_print_integer	debug.c	230	27	    size_t i, len_bytes = PSA_BITS_TO_BYTES(bitlen), idx = 0;	P	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5103	59	    SUB(20);                                              NEXT;   // A9	N	mdiv	O0-fglobal-isel
+mbedtls_debug_print_mpi	debug.c	200	39	            size_t offset_in_limb = n % sizeof(mbedtls_mpi_uint);	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_core_read_le	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	219	17	            X[i / ciL] |= ((mbedtls_mpi_uint) input[i]) << offset;	/	mdiv	O0-fglobal-isel
+mbedtls_ecp_fix_negative	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	4986	27	    for (i = 0; i <= bits / 8 / sizeof(mbedtls_mpi_uint); i++) {	/	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5015	5	    INIT(224);	I	mdiv	O0-fglobal-isel
+ecp_mod_p224	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5017	36	    SUB(7); SUB(11);               NEXT;      // A0 += -A7 - A11	N	mdiv	O0-fglobal-isel
+exp_mod_calc_first_bit_optionally_safe	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	782	31	        *E_bit_index = E_bits % biL;	%	mdiv	O0-fglobal-isel
+mbedtls_ecjpake_derive_secret	../tf-psa-crypto/drivers/builtin/src/ecjpake.c	780	36	    x_bytes = (ctx->grp.pbits + 7) / 8;	/	mdiv	O0-fglobal-isel
+mbedtls_aes_crypt_xts	../tf-psa-crypto/drivers/builtin/src/aes.c	1172	30	    size_t leftover = length % 16;	%	mdiv	O0-fglobal-isel
+mbedtls_mpi_shift_l	../tf-psa-crypto/drivers/builtin/src/bignum.c	869	9	        MBEDTLS_MPI_CHK(mbedtls_mpi_grow(X, BITS_TO_LIMBS(i)));	M	mdiv	O0-fglobal-isel
+ecp_mod_p384	../tf-psa-crypto/drivers/builtin/src/ecp_curves.c	5088	55	    SUB(15); SUB(23); SUB(23);                        NEXT;       // A4	N	mdiv	O0-fglobal-isel
+mbedtls_int_div_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1319	25	    quotient = dividend / d;	/	mdiv	O0-fgnuc-version=0|O0-fms-compatibility
+mbedtls_net_usleep	net_sockets.c	526	23	    tv.tv_sec  = usec / 1000000;	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_poll	net_sockets.c	495	27	    tv.tv_usec = (timeout % 1000) * 1000;	%	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_recv_timeout	net_sockets.c	595	5	    FD_SET((SOCKET) fd, &read_fds);	F	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_base64_encode	../tf-psa-crypto/drivers/builtin/src/base64.c	73	14	    n = slen / 3 + (slen % 3 != 0);	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel|Oz--fast-isel
+mbedtls_ms_time	../tf-psa-crypto/drivers/builtin/src/platform_util.c	246	41	    return current_ms*1000 + tv.tv_nsec / 1000000;	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_hkdf_expand	../tf-psa-crypto/drivers/builtin/src/hkdf.c	91	17	    n = okm_len / hash_len;	/	mdiv	O1--fast-isel|Os--fast-isel|Oz--fast-isel
+mbedtls_ssl_read_record	ssl_msg.c	4421	41	                    hs_buf->is_complete = (ssl_bitmask_check(bitmask,	=	cjump	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_recv_timeout	net_sockets.c	598	27	    tv.tv_usec = (timeout % 1000) * 1000;	%	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_x509_get_time	x509.c	579	49	            month_days = ((year & 3) || (!(year % 100)	%	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_base64_encode	../tf-psa-crypto/drivers/builtin/src/base64.c	73	26	    n = slen / 3 + (slen % 3 != 0);	%	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_poll	net_sockets.c	487	9	        FD_SET((SOCKET) fd, &write_fds);	F	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_poll	net_sockets.c	494	26	    tv.tv_sec  = timeout / 1000;	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel|Oz--fast-isel
+mbedtls_net_poll	net_sockets.c	507	9	    if (FD_ISSET(fd, &read_fds)) {	F	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_aes_setkey_enc	../tf-psa-crypto/drivers/builtin/src/aes.c	423	30	                 ((uint32_t) MUL(0x0D, x) << 16) ^	M	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_recv_timeout	net_sockets.c	597	26	    tv.tv_sec  = timeout / 1000;	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel|Oz--fast-isel
+keccak_f1600	../tf-psa-crypto/drivers/builtin/src/sha3.c	119	30	            t = lane[(i + 4) % 5] ^ ROTR64(lane[(i + 1) % 5], 63);	%	mdiv	O1--fast-isel|Os--fast-isel|Oz--disable-lsr|Oz--jump-threading-across-loop-headers|Oz--unroll-partial-threshold=100
+psa_free_key_slot	../tf-psa-crypto/core/psa_crypto_slot_management.c	576	28	    size_t slot_idx = slot - slice;	-	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_aes_setkey_enc	../tf-psa-crypto/drivers/builtin/src/aes.c	424	30	                 ((uint32_t) MUL(0x0B, x) << 24);	M	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_timing_get_timer	timing.c	98	52	                + (now.tv_usec - t->start.tv_usec) / 1000;	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_ssl_tls13_write_client_hello_exts	ssl_tls13_client.c	51	34	    unsigned char versions_len = (ssl->handshake->min_tls_version <=	(	cjump	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel|Oz--fast-isel
+ecp_mul_restartable_internal	../tf-psa-crypto/drivers/builtin/src/ecp.c	1826	22	        i = 1U << (j / d);	/	mdiv	O1--fast-isel|Os--fast-isel|Oz--fast-isel
+mbedtls_timing_get_delay	timing.c	98	52	                + (now.tv_usec - t->start.tv_usec) / 1000;	/	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_aes_setkey_enc	../tf-psa-crypto/drivers/builtin/src/aes.c	421	30	        RT0[i] = ((uint32_t) MUL(0x0E, x)) ^	M	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_x509_get_time	x509.c	580	51	                                         && (year % 400)))	%	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+ccm_calculate_first_block_if_ready	../tf-psa-crypto/drivers/builtin/src/ccm.c	193	37	    ctx->y[0] |= (ctx->add_len > 0) << 6;	<	cjump	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel|Oz--fast-isel
+mbedtls_net_usleep	net_sockets.c	529	37	    tv.tv_usec = (suseconds_t) usec % 1000000;	%	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_aes_setkey_enc	../tf-psa-crypto/drivers/builtin/src/aes.c	422	30	                 ((uint32_t) MUL(0x09, x) <<  8) ^	M	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+mbedtls_net_poll	net_sockets.c	481	9	        FD_SET((SOCKET) fd, &read_fds);	F	mdiv	O1--fast-isel|O2--fast-isel|O3--fast-isel|Os--fast-isel
+ssl_tls12_populate_transform	ssl_tls.c	7927	57	                                    - transform->maclen % block_size;	%	mdiv	O1--instcombine-max-iterations=0|O1--max-speculation-depth=0|O1--two-entry-phi-node-folding-threshold=0|O1-fprofile-arcs|O1-fprofile-instr-generate|O2--instcombine-max-iterations=0|O2--max-speculation-depth=0|O2--two-entry-phi-node-folding-threshold=0|O2-fprofile-arcs|O2-fprofile-instr-generate|O3--instcombine-max-iterations=0|O3--max-speculation-depth=0|O3--two-entry-phi-node-folding-threshold=0|O3-fprofile-arcs|O3-fprofile-instr-generate|Os--instcombine-max-iterations=0|Os--max-speculation-depth=0|Os--two-entry-phi-node-folding-threshold=0|Os-fprofile-arcs|Os-fprofile-instr-generate|Oz--instcombine-max-iterations=0|Oz--max-speculation-depth=0|Oz--two-entry-phi-node-folding-threshold=0|Oz-fprofile-arcs|Oz-fprofile-instr-generate
+mbedtls_psa_cipher_update	../tf-psa-crypto/drivers/builtin/src/psa_crypto_cipher.c	511	13	            / operation->block_length * operation->block_length;	/	mdiv	O1--instcombine-max-iterations=0|O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0|Os--instcombine-max-iterations=0|Oz--instcombine-max-iterations=0
+psa_raw_key_agreement	../tf-psa-crypto/core/psa_crypto.c	7817	53	    unlock_status = psa_unregister_read_under_mutex(slot);	s	cjump	O1--simplifycfg-merge-cond-stores-aggressively|O2--simplifycfg-merge-cond-stores-aggressively|O3--simplifycfg-merge-cond-stores-aggressively|Os--simplifycfg-merge-cond-stores-aggressively
+mbedtls_rsa_rsaes_oaep_decrypt	../tf-psa-crypto/drivers/builtin/src/rsa.c	522	40	    return (mbedtls_ct_condition_t) (x & y);	&	cjump	O1-fgnuc-version=0|O1-fms-compatibility|O2-fgnuc-version=0|O2-fms-compatibility|O3-fgnuc-version=0|O3-fms-compatibility|Os-fgnuc-version=0|Os-fms-compatibility
+mbedtls_mpi_div_mpi	../tf-psa-crypto/drivers/builtin/src/bignum.c	1319	25	    quotient = dividend / d;	/	mdiv	O1-fgnuc-version=0|O1-fms-compatibility|O2-fgnuc-version=0|O2-fms-compatibility|O3-fgnuc-version=0|O3-fms-compatibility|Os-fgnuc-version=0|Os-fms-compatibility|Oz-fgnuc-version=0|Oz-fms-compatibility
+mbedtls_mpi_core_exp_mod_optionally_safe	../tf-psa-crypto/drivers/builtin/src/bignum_core.c	267	51	    return (mbedtls_ct_uint_t) ((condition & if1) | (not_cond & if0));	|	cjump	O1-fgnuc-version=0|O1-fms-compatibility|O2-fgnuc-version=0|O2-fms-compatibility|O3-fgnuc-version=0|O3-fms-compatibility|Os-fgnuc-version=0|Os-fms-compatibility
+ssl_compute_padding_length	ssl_msg.c	433	52	    return (granularity - (len + 1) % granularity) % granularity;	%	mdiv	O1-finstrument-functions|O2-finstrument-functions|O3-finstrument-functions|Os-finstrument-functions|Oz-finstrument-functions
+ssl_compute_padding_length	ssl_msg.c	433	37	    return (granularity - (len + 1) % granularity) % granularity;	%	mdiv	O1-finstrument-functions|O2-finstrument-functions|O3-finstrument-functions|Os-finstrument-functions|Oz-finstrument-functions
+mbedtls_ssl_write_finished	ssl_tls.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+mbedtls_ssl_handshake_client_step	ssl_tls12_client.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+mbedtls_ssl_write_certificate	ssl_tls.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+mbedtls_nist_kw_unwrap	../tf-psa-crypto/drivers/builtin/src/nist_kw.c	481	55	                                 (mbedtls_ct_uint_t) (-if0)));	-	cjump	O1-ftrapv
+mbedtls_ssl_handshake_server_step	ssl_tls12_server.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+mbedtls_ssl_write_change_cipher_spec	ssl_msg.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+mbedtls_ssl_parse_change_cipher_spec	ssl_msg.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+mbedtls_ssl_parse_certificate	ssl_tls.c	1332	53	    mbedtls_ssl_handshake_set_state(ssl, ssl->state + 1);	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+ecp_mul_restartable_internal	../tf-psa-crypto/drivers/builtin/src/ecp.c	1829	15	        if (j % d == 0) {	%	mdiv	O2--disable-cgp|O3--disable-cgp
+mbedtls_hkdf_expand	../tf-psa-crypto/drivers/builtin/src/hkdf.c	93	17	    if (okm_len % hash_len != 0) {	%	mdiv	O2--disable-cgp|O3--disable-cgp
+mbedtls_mpi_write_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	mdiv	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_mod_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_mod_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	mdiv	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mpi_check_small_factors	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_write_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	mdiv	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mpi_check_small_factors	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	mdiv	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_mod_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	mdiv	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_write_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	1592	16	        z  = y / b;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mpi_check_small_factors	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_mod_int	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_write_string	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_psa_cipher_update	../tf-psa-crypto/drivers/builtin/src/psa_crypto_cipher.c	511	13	            / operation->block_length * operation->block_length;	/	cjump	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mpi_check_small_factors	../tf-psa-crypto/drivers/builtin/src/bignum.c	1597	16	        z  = y / b;	/	mdiv	O2--instcombine-max-iterations=0|O3--instcombine-max-iterations=0
+mbedtls_mpi_div_mpi	../tf-psa-crypto/drivers/builtin/src/bignum.c	1319	25	    quotient = dividend / d;	/	cjump	O2-fgnuc-version=0|O2-fms-compatibility|O3-fgnuc-version=0|O3-fms-compatibility
+ssl_compute_padding_length	ssl_msg.c	433	52	    return (granularity - (len + 1) % granularity) % granularity;	%	cjump	O2-finstrument-functions|O3-finstrument-functions
+ssl_compute_padding_length	ssl_msg.c	433	37	    return (granularity - (len + 1) % granularity) % granularity;	%	cjump	O2-finstrument-functions|O3-finstrument-functions
+ssl_tls12_populate_transform	ssl_tls.c	7927	57	                                    - transform->maclen % block_size;	%	cjump	O2-fprofile-arcs|O2-fprofile-instr-generate|O3-fprofile-arcs|O3-fprofile-instr-generate
+mbedtls_ssl_read_record	ssl_msg.c	4301	39	                hs_buf->is_fragmented =	=	cjump	Os--fast-isel|Oz--fast-isel
+mbedtls_aria_setkey_dec	../tf-psa-crypto/drivers/builtin/src/aria.c	128	9	    *c  ^= ARIA_P1(tc) ^ ta;        // 0123+1032+4567+7654+ab89+dcfe+fedc OUT	^	cjump	Os--force-target-instruction-cost=100|Os--force-target-instruction-cost=50|Os--force-vector-width=100|Os--force-vector-width=50
+mbedtls_aria_setkey_dec	../tf-psa-crypto/drivers/builtin/src/aria.c	126	9	    *d  ^= ARIA_P1(ta) ^ tc;        // 1032+2301+6745+7654+98ba+ba98+cdef OUT	^	cjump	Os--force-target-instruction-cost=100|Os--force-target-instruction-cost=50|Os--force-vector-width=100|Os--force-vector-width=50
+mbedtls_aria_setkey_dec	../tf-psa-crypto/drivers/builtin/src/aria.c	122	9	    *b  ^= ta ^ tb;                 // 0123+2301+5476+89ab+ba98+efcd+fedc OUT	^	cjump	Os--force-target-instruction-cost=100|Os--force-target-instruction-cost=50|Os--force-vector-width=100|Os--force-vector-width=50
+mbedtls_aria_setkey_dec	../tf-psa-crypto/drivers/builtin/src/aria.c	124	9	    *a  ^= ARIA_P1(tb);             // 3210+4567+6745+89ab+98ba+dcfe+efcd OUT	^	cjump	Os--force-target-instruction-cost=100|Os--force-target-instruction-cost=50|Os--force-vector-width=100|Os--force-vector-width=50
+mbedtls_sha3_update	../tf-psa-crypto/drivers/builtin/src/sha3.c	329	42	            if ((ctx->index = ctx->index % ctx->max_block_size) == 0) {	%	mdiv	Oz--disable-branch-fold|Oz--enable-mem-prof|Oz--enable-tail-merge=false|Oz--jump-threading-across-loop-headers|Oz--keep-loops|Oz--lsr-complexity-limit=100|Oz--lsr-complexity-limit=50|Oz--pre-RA-sched=list-burr|Oz--pre-RA-sched=list-hybrid|Oz--pre-RA-sched=list-ilp|Oz--replexitval=always|Oz--replexitval=noharduse|Oz--scalar-evolution-huge-expr-threshold=0|Oz--scalar-evolution-max-arith-depth=0|Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50|Oz--tail-merge-threshold=0|Oz-fapple-kext|Oz-fcs-profile-generate|Oz-ffreestanding|Oz-fmemory-profile|Oz-fno-builtin|Oz-fprofile-arcs|Oz-fprofile-generate|Oz-fprofile-instr-generate
+mbedtls_sha3_update	../tf-psa-crypto/drivers/builtin/src/sha3.c	339	48	            if ((ctx->index = (ctx->index + 8) % ctx->max_block_size) == 0) {	%	mdiv	Oz--disable-branch-fold|Oz--enable-mem-prof|Oz--enable-tail-merge=false|Oz--jump-threading-across-loop-headers|Oz--keep-loops|Oz--lsr-complexity-limit=100|Oz--lsr-complexity-limit=50|Oz--pre-RA-sched=list-burr|Oz--pre-RA-sched=list-hybrid|Oz--pre-RA-sched=list-ilp|Oz--replexitval=always|Oz--replexitval=noharduse|Oz--scalar-evolution-huge-expr-threshold=0|Oz--scalar-evolution-max-arith-depth=0|Oz--scev-cheap-expansion-budget=100|Oz--scev-cheap-expansion-budget=50|Oz--tail-merge-threshold=0|Oz-fapple-kext|Oz-fcs-profile-generate|Oz-ffreestanding|Oz-fmemory-profile|Oz-fno-builtin|Oz-fprofile-arcs|Oz-fprofile-generate|Oz-fprofile-instr-generate
+keccak_f1600	../tf-psa-crypto/drivers/builtin/src/sha3.c	119	37	            t = lane[(i + 4) % 5] ^ ROTR64(lane[(i + 1) % 5], 63);	R	mdiv	Oz--disable-lsr
+mbedtls_cipher_setkey	../tf-psa-crypto/drivers/builtin/src/cipher.c	328	24	        if (key_bitlen % 8 != 0) {	%	mdiv	Oz--instcombine-max-iterations=0
+mbedtls_x509_get_time	x509.c	579	38	            month_days = ((year & 3) || (!(year % 100)	|	mdiv	Oz--two-entry-phi-node-folding-threshold=100|Oz--two-entry-phi-node-folding-threshold=50
+mbedtls_pkcs5_pbes2_ext	../tf-psa-crypto/drivers/builtin/src/pkcs5.c	195	68	    keylen = (int) mbedtls_cipher_info_get_key_bitlen(cipher_info) / 8;	/	mdiv	Oz-finstrument-functions|Oz-fno-inline|Oz-fno-inline-functions
+mbedtls_pkcs12_pbe_ext	../tf-psa-crypto/drivers/builtin/src/pkcs12.c	175	68	    keylen = (int) mbedtls_cipher_info_get_key_bitlen(cipher_info) / 8;	/	mdiv	Oz-finstrument-functions|Oz-fno-inline|Oz-fno-inline-functions
+_ZL12keccak_f1600P20mbedtls_sha3_context.__uniq.58166642302647513630437998551889005271	../tf-psa-crypto/drivers/builtin/src/sha3.c	118	21	        for (i = 0; i < 5; i++) {	i	mdiv	Oz-fpseudo-probe-for-profiling

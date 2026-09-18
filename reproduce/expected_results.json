@@ -1,0 +1,254 @@
+{
+  "compiler_version_figure": {
+    "optimization_flags": {
+      "all_three": 32,
+      "clang14_and_18_only": 3,
+      "clang14_and_20_only": 12,
+      "clang14_only": 66,
+      "clang18_and_20_only": 95,
+      "clang18_only": 34,
+      "clang20_only": 82
+    },
+    "optimization_levels": {
+      "all_three": 112,
+      "clang14_and_18_only": 9,
+      "clang14_and_20_only": 15,
+      "clang14_only": 128,
+      "clang18_and_20_only": 25,
+      "clang18_only": 3,
+      "clang20_only": 19
+    }
+  },
+  "library_figures": {
+    "clang14": {
+      "bearssl": {
+        "flag_only": 25,
+        "level_triggered": 62,
+        "total": 87
+      },
+      "libgcrypt": {
+        "flag_only": 5,
+        "level_triggered": 30,
+        "total": 35
+      },
+      "libsodium": {
+        "flag_only": 4,
+        "level_triggered": 7,
+        "total": 11
+      },
+      "mbedtls": {
+        "flag_only": 9,
+        "level_triggered": 14,
+        "total": 23
+      },
+      "openssl": {
+        "flag_only": 41,
+        "level_triggered": 61,
+        "total": 102
+      },
+      "pqclean": {
+        "flag_only": 17,
+        "level_triggered": 54,
+        "total": 71
+      },
+      "wolfssl": {
+        "flag_only": 16,
+        "level_triggered": 32,
+        "total": 48
+      }
+    },
+    "clang18": {
+      "bearssl": {
+        "flag_only": 47,
+        "level_triggered": 16,
+        "total": 63
+      },
+      "libgcrypt": {
+        "flag_only": 25,
+        "level_triggered": 14,
+        "total": 39
+      },
+      "libsodium": {
+        "flag_only": 7,
+        "level_triggered": 1,
+        "total": 8
+      },
+      "mbedtls": {
+        "flag_only": 12,
+        "level_triggered": 5,
+        "total": 17
+      },
+      "openssl": {
+        "flag_only": 63,
+        "level_triggered": 26,
+        "total": 89
+      },
+      "pqclean": {
+        "flag_only": 39,
+        "level_triggered": 20,
+        "total": 59
+      },
+      "wolfssl": {
+        "flag_only": 24,
+        "level_triggered": 12,
+        "total": 36
+      }
+    },
+    "clang20": {
+      "bearssl": {
+        "flag_only": 70,
+        "level_triggered": 13,
+        "total": 83
+      },
+      "libgcrypt": {
+        "flag_only": 12,
+        "level_triggered": 15,
+        "total": 27
+      },
+      "libsodium": {
+        "flag_only": 7,
+        "level_triggered": 1,
+        "total": 8
+      },
+      "mbedtls": {
+        "flag_only": 17,
+        "level_triggered": 4,
+        "total": 21
+      },
+      "openssl": {
+        "flag_only": 93,
+        "level_triggered": 34,
+        "total": 127
+      },
+      "pqclean": {
+        "flag_only": 55,
+        "level_triggered": 19,
+        "total": 74
+      },
+      "wolfssl": {
+        "flag_only": 38,
+        "level_triggered": 12,
+        "total": 50
+      }
+    }
+  },
+  "optimization_configuration_figure": {
+    "Clang Flag": 931,
+    "LLVM Flag": 3546,
+    "O0": 12,
+    "O1": 236,
+    "O2": 258,
+    "O3": 269,
+    "Os": 231,
+    "Oz": 227
+  },
+  "platform_figure": {
+    "AArch64": {
+      "flag_only": 117,
+      "level_triggered": 49,
+      "total": 166
+    },
+    "ARM": {
+      "flag_only": 8,
+      "level_triggered": 15,
+      "total": 23
+    },
+    "MIPS32EL": {
+      "flag_only": 29,
+      "level_triggered": 17,
+      "total": 46
+    },
+    "MIPS64": {
+      "flag_only": 31,
+      "level_triggered": 22,
+      "total": 53
+    },
+    "RISCV": {
+      "flag_only": 274,
+      "level_triggered": 249,
+      "total": 523
+    },
+    "X8664": {
+      "flag_only": 232,
+      "level_triggered": 77,
+      "total": 309
+    }
+  },
+  "processed_cases": {
+    "all_versions_merge_arch": 635,
+    "all_versions_per_arch": 1120,
+    "clang14": 377,
+    "clang18": 311,
+    "clang20": 390
+  },
+  "tables": {
+    "table2_secret_dependency": {
+      "bearssl": {
+        "potential": 63,
+        "secret_dependent": 46
+      },
+      "libgcrypt": {
+        "potential": 39,
+        "secret_dependent": 29
+      },
+      "libsodium": {
+        "potential": 8,
+        "secret_dependent": 3
+      },
+      "mbedtls": {
+        "potential": 17,
+        "secret_dependent": 4
+      },
+      "openssl": {
+        "potential": 89,
+        "secret_dependent": 65
+      },
+      "pqclean/Falcon": {
+        "potential": 29,
+        "secret_dependent": 25
+      },
+      "pqclean/HQC": {
+        "potential": 25,
+        "secret_dependent": 25
+      },
+      "pqclean/ML-DSA": {
+        "potential": 2,
+        "secret_dependent": 2
+      },
+      "pqclean/ML-KEM": {
+        "potential": 2,
+        "secret_dependent": 2
+      },
+      "pqclean/SPHINCS+": {
+        "potential": 1,
+        "secret_dependent": 0
+      },
+      "wolfssl": {
+        "potential": 36,
+        "secret_dependent": 24
+      }
+    },
+    "table3_addressed": {
+      "libgcrypt": {
+        "addressed": 24,
+        "secret_dependent": 28
+      },
+      "libsodium": {
+        "addressed": 3,
+        "secret_dependent": 3
+      },
+      "mbedtls": {
+        "addressed": 3,
+        "secret_dependent": 3
+      },
+      "pqclean/ML-DSA": {
+        "addressed": 2,
+        "secret_dependent": 2
+      },
+      "wolfssl": {
+        "addressed": 16,
+        "secret_dependent": 23
+      }
+    }
+  }
+}

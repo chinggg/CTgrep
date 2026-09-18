@@ -1,0 +1,10 @@
+function	file	line	col	source	char	type	optimization
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7396	35	            w         += m->dp[i] & mask;	&	cjump	O1--enable-andcmp-sinking=false|O2--enable-andcmp-sinking=false|Os--enable-andcmp-sinking=false|Oz--enable-andcmp-sinking=false
+_sp_invmod	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+wc_EncryptPKCS8Key_ex	wolfcrypt/src/asn.c	17241	27	                output[i] = (byte)(length >> ((j - 1) * WOLFSSL_BIT_SIZE));	=	cjump	O1-ftree-vectorize|O1-fvectorize
+sp_div_2_mod_ct	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+GetASN_Items	wolfcrypt/src/asn.c	1512	19	        endIdx[i] = length;	=	cjump	O1-ftree-vectorize|O1-fvectorize|Os--unroll-max-iteration-count-to-analyze=0|Os--unroll-max-percent-threshold-boost=0|Os--unroll-max-percent-threshold-boost=50
+sp_div_2	wolfcrypt/src/sp_int.c	7301	46	        r->dp[i] = (a->dp[i] >> 1) | (a->dp[i+1] << (SP_WORD_SIZE - 1));	+	cjump	O1-ftree-vectorize|O1-fvectorize
+Sha3Update	wolfcrypt/src/sha3.c	733	18	    blocks = len / (p * 8U);	/	mdiv	O2--cold-callsite-rel-freq=-1|O2--cold-callsite-rel-freq=100|O2--cold-callsite-rel-freq=50|O3--cold-callsite-rel-freq=-1|O3--cold-callsite-rel-freq=100|O3--cold-callsite-rel-freq=50|Os--cold-callsite-rel-freq=-1|Os--cold-callsite-rel-freq=100|Os--cold-callsite-rel-freq=50
+sp_clear	wolfcrypt/src/sp_int.c	5273	22	            a->dp[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0
+_sp_mont_red	wolfcrypt/src/sp_int.c	17427	22	            a->dp[i] = 0;	=	cjump	Os--licm-mssa-optimization-cap=0

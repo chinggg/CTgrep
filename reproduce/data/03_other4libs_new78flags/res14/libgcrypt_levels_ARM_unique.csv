@@ -1,0 +1,11 @@
+function	file	line	col	source	char	type	optimization
+_gcry_sm4_ocb_auth	sm4.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+ocb_crypt	cipher-ocb.c	99	10	  return __builtin_ctz (x);	_	cjump	O1
+_gcry_aes_ocb_auth	rijndael.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_aria_ocb_auth	aria.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_sm4_ocb_crypt	sm4.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_cipher_ocb_authenticate	cipher-ocb.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_aria_ocb_crypt	aria.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+_gcry_mpi_powm	mpi-pow.c	716	11	          count_trailing_zeros (c0, e0);	c	cjump	O1|O2|O3|Os
+_gcry_aes_ocb_crypt	rijndael.c	99	10	  return __builtin_ctz (x);	_	cjump	O1|O2|O3|Os
+gost3411_final	gostr3411-94.c	333	8	  l[0] |= nblocks << 8;	|	mmem	Oz

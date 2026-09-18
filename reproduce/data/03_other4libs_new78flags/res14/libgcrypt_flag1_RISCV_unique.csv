@@ -1,0 +1,6 @@
+function	file	line	col	source	char	type	optimization
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+_gcry_mceliece6688128f_enc	mceliece6688128f.c	2228	13	   e_int[i] |= val[j] & mask;	|	cjump	O3--disable-phi-elim-edge-splitting|O3--enable-npm-O3-nontrivial-unswitch=false
+_gcry_mpi_powm	mpi-pow.c	741	27	              base_u_size ^= ((base_u_size ^ rsize)  & (0UL - (j != 0)));	^	cjump	O3--enable-npm-O3-nontrivial-unswitch=false
+_gcry_mpi_powm	mpi-pow.c	734	31	                  base_u_size |= ( precomp_size[k] & (0UL - (k == e0)) );	|	cjump	O3--enable-npm-O3-nontrivial-unswitch=false
+prime_generate_internal	primegen.c	1025	15	              array[i] = 1;	a	cjump	Oz--hoist-common-insts

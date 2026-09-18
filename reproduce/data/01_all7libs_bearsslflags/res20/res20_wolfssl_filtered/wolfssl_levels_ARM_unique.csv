@@ -1,0 +1,7 @@
+function	file	line	col	source	char	type	optimization
+DoServerKeyExchange	src/internal.c	32964	55	                            ssl->options.peerAuthGood =	=	mmem	O1|O2|O3|Ofast|Os
+wc_DhCheckKeyPair	wolfcrypt/src/dh.c	1876	41	                      NULL, NULL, NULL) != MP_OKAY) {	!	cjump	O1|O2|O3|Ofast|Os|Oz
+_sp_mont_red	wolfcrypt/src/sp_int.c	17418	22	            a->dp[i] &=	&	mmem	O1|O2|O3|Ofast|Os|Oz
+_InitRng	wolfcrypt/src/random.c	777	45	                            (int)scratchSz) == 0) {	=	cjump	O2|O3|Ofast
+PollAndReSeed	wolfcrypt/src/random.c	777	45	                            (int)scratchSz) == 0) {	=	cjump	O2|O3|Ofast|Os
+DoHandShakeMsgType	src/internal.c	32964	55	                            ssl->options.peerAuthGood =	=	mmem	Oz

@@ -1,0 +1,71 @@
+function	file	line	col	source	char	type	optimization
+speed_main	apps/speed.c	4625	24	                   1.0 / kems_results[k][0],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4041	54	            ffdh_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4600	44	                   ffdh_results[k][0], 1.0 / ffdh_results[k][0]);	/	mdiv	O0|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4482	42	                   rsa_keys[k].bits, 1.0 / rsa_results[k][0],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3415	53	            dsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4605	24	                   1.0 / ffdh_results[k][0], ffdh_results[k][0]);	/	mdiv	O0|O2|O3|Ofast|Os|Oz
+dtls_record_bitmap_update	ssl/record/methods/dtls_meth.c	72	25	            bitmap->map <<= shift, bitmap->map |= 1UL;	<	mmem	O0
+speed_main	apps/speed.c	4584	49	                   1.0 / sm2_results[k][0], 1.0 / sm2_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+fmtfp	crypto/bio/bio_print.c	630	26	                tmpvalue /= 10;	/	mdiv	O0|O1|O2|O3|Os|Oz
+ossl_slh_ht_sign	crypto/slh_dsa/slh_hypertree.c	87	21	            tree_id >>= hm;	>	mmem	O0
+multiblock_speed	apps/speed.c	5162	63	                fprintf(stdout, " %11.2fk", results[D_EVP][j] / 1e3);	/	mdiv	O0|O1|O2|O3|Os
+speed_main	apps/speed.c	4401	54	            sigs_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4483	24	                   1.0 / rsa_results[k][1], 1.0 / rsa_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4522	51	                   1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4502	62	                   dsa_bits[k], 1.0 / dsa_results[k][0], 1.0 / dsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4537	44	                   ecdh_results[k][0], 1.0 / ecdh_results[k][0]);	/	mdiv	O0|O1|O2|O3|Ofast|Os
+speed_main	apps/speed.c	4462	56	                printf(" %11.2fk", results[k][testnum] / 1e3);	/	mdiv	O0|O1|O2|O3|Os|Oz
+speed_main	apps/speed.c	3492	55	            ecdsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+scalar_decode	crypto/ml_kem/ml_kem.c	710	19	            accum >>= todo;	>	mmem	O0
+speed_main	apps/speed.c	3522	55	            ecdsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4232	54	            kems_results[testnum][2] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4626	50	                   1.0 / kems_results[k][1], 1.0 / kems_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4221	54	            kems_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4542	24	                   1.0 / ecdh_results[k][0], ecdh_results[k][0]);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4483	49	                   1.0 / rsa_results[k][1], 1.0 / rsa_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+RAND_poll	crypto/rand/rand_lib.c	229	56	                         (ossl_rand_pool_entropy(pool) / 8.0)) == 0)	/	mdiv	O0
+abs_val	crypto/bio/bio_print.c	538	30	    if (result > 0 && result / 2 == result) /* INF */	/	mdiv	O0
+speed_main	apps/speed.c	4484	24	                   1.0 / rsa_results[k][3],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+print_result	apps/speed.c	4796	44	    results[alg][run_no] = ((double)count) / time_used * lengths[run_no];	/	mdiv	O0|O1|O2|O3|Os|Oz
+speed_main	apps/speed.c	3445	53	            dsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3856	57	                sm2_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ossl_slh_ht_verify	crypto/slh_dsa/slh_hypertree.c	132	17	        tree_id >>= tree_height;	>	mmem	O0
+speed_main	apps/speed.c	4562	51	                   1.0 / eddsa_results[k][0], 1.0 / eddsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4647	50	                   1.0 / sigs_results[k][0], 1.0 / sigs_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3275	53	            rsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3724	59	                eddsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3610	54	            ecdh_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+s_time_main	apps/s_time.c	396	43	         nConn, totalTime, ((double)nConn / totalTime), bytes_read);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3828	57	                sm2_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4502	37	                   dsa_bits[k], 1.0 / dsa_results[k][0], 1.0 / dsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4210	54	            kems_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+app_tminterval	apps/lib/apps.c	2909	31	        ret = (now - tmstart) / (double)tck;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4413	54	            sigs_results[testnum][2] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4390	54	            sigs_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+multiblock_speed	apps/speed.c	5139	45	        results[D_EVP][j] = ((double)count) / d * mblengths[j];	/	mdiv	O0|O1|O2|O3|Os
+speed_main	apps/speed.c	4626	24	                   1.0 / kems_results[k][1], 1.0 / kems_results[k][2],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+scalar_decode	crypto/ml_kem/ml_kem.c	705	19	            accum >>= bits;	>	mmem	O0
+speed_main	apps/speed.c	3335	53	            rsa_results[testnum][2] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4522	24	                   1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4647	24	                   1.0 / sigs_results[k][0], 1.0 / sigs_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+ssl_print_compressed_certificates	ssl/t1_trce.c	1427	87	        BIO_printf(bio, "Compressed length=%d, Ratio=%f:1\n", (int)clen, (float)uclen / (float)clen);	/	mdiv	O0|O1|O2|O3|Ofast|Os
+speed_main	apps/speed.c	4648	24	                   1.0 / sigs_results[k][2], sigs_results[k][0],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4562	24	                   1.0 / eddsa_results[k][0], 1.0 / eddsa_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3367	53	            rsa_results[testnum][3] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3305	53	            rsa_results[testnum][1] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	4584	24	                   1.0 / sm2_results[k][0], 1.0 / sm2_results[k][1],	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+speed_main	apps/speed.c	3697	59	                eddsa_results[testnum][0] = (double)count / d;	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+s_time_main	apps/s_time.c	315	43	         nConn, totalTime, ((double)nConn / totalTime), bytes_read);	/	mdiv	O0|O1|O2|O3|Ofast|Os|Oz
+internal_find	crypto/stack/stack.c	345	15	        *pnum = 0;	=	cjump	O1
+ossl_statm_update_rtt	ssl/quic/quic_statm.c	195	12	    return a.t > b.t ? ossl_time_subtract(a, b)	a	cjump	O1|O2|O3|Ofast|Os|Oz
+internal_find	crypto/stack/stack.c	359	17	                ++*pnum;	+	cjump	O2|Os|Oz
+bn_compute_wNAF	crypto/bn/bn_intern.c	114	23	        r[j++] = sign * digit;	*	cjump	O3|Ofast
+ossl_curve448_scalar_halve	crypto/ec/curve448/scalar.c	233	55	        chain = (chain + a->limb[i]) + (sc_p->limb[i] & mask);	&	cjump	O3|Ofast
+OPENSSL_sk_find_all	crypto/stack/stack.c	359	17	                ++*pnum;	+	cjump	O3|Ofast
+print_result	apps/speed.c	4796	56	    results[alg][run_no] = ((double)count) / time_used * lengths[run_no];	*	mdiv	Ofast
+multiblock_speed	apps/speed.c	5139	49	        results[D_EVP][j] = ((double)count) / d * mblengths[j];	*	mdiv	Ofast
+speed_main	apps/speed.c	5162	63	                fprintf(stdout, " %11.2fk", results[D_EVP][j] / 1e3);	/	mdiv	Oz
+SSL_trace	ssl/t1_trce.c	1427	87	        BIO_printf(bio, "Compressed length=%d, Ratio=%f:1\n", (int)clen, (float)uclen / (float)clen);	/	mdiv	Oz
+ossl_quic_reactor_set_poll_r	ssl/quic/quic_reactor.c	80	9	        = ossl_quic_reactor_can_support_poll_descriptor(rtor, &rtor->poll_r);	=	mmem	Oz
+speed_main	apps/speed.c	5139	45	        results[D_EVP][j] = ((double)count) / d * mblengths[j];	/	mdiv	Oz

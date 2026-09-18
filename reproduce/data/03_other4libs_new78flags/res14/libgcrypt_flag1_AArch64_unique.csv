@@ -1,0 +1,6 @@
+function	file	line	col	source	char	type	optimization
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+_gcry_mpi_set_buffer	mpicoder.c	448	13	      a->d[i++] = alimb;	+	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_mceliece6688128f_dec	mceliece6688128f.c	729	12	 vec ret = -b;	-	cjump	O2--vectorize-num-stores-pred=100|O2--vectorize-num-stores-pred=50|Os--vectorize-num-stores-pred=100|Os--vectorize-num-stores-pred=50
+do_ecb_decrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+do_ecb_encrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining

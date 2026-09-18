@@ -1,0 +1,5 @@
+function	file	line	col	source	char	type	optimization
+wc_DhCheckKeyPair	wolfcrypt/src/dh.c	1876	41	                      NULL, NULL, NULL) != MP_OKAY) {	!	cjump	O1|O2|O3|Os|Oz
+_sp_mont_red	wolfcrypt/src/sp_int.c	17418	22	            a->dp[i] &=	&	mmem	O1|O2|O3|Os|Oz
+PollAndReSeed	wolfcrypt/src/random.c	777	45	                            (int)scratchSz) == 0) {	=	cjump	O2|O3|Os
+_InitRng	wolfcrypt/src/random.c	777	45	                            (int)scratchSz) == 0) {	=	cjump	O2|O3

@@ -1,0 +1,16 @@
+function	file	line	col	source	char	type	optimization
+fft	mceliece6688128f.c	2380	13	   in[1][i] ^= (in[1][i] & mask[k][1]) >> (1 << k);	^	mmem	O1--alias-set-saturation-threshold=0|O1--disable-licm-promotion|O1--licm-mssa-max-acc-promotion=0
+do_vsexp_sscan	sexp.c	1382	23	              *erroff = p - buffer;	=	cjump	O1--disable-phi-elim-edge-splitting|O2--disable-phi-elim-edge-splitting|O3--disable-phi-elim-edge-splitting|Os--disable-phi-elim-edge-splitting|Oz--disable-phi-elim-edge-splitting
+fft_tr	mceliece6688128f.c	2603	13	   in[3][i] ^= (in[3][i] & mask[k][1]) << (1 << k);	^	mmem	O1--grow-region-complexity-budget=0|O2--grow-region-complexity-budget=0|O2--unroll-max-iteration-count-to-analyze=100|O2--unroll-max-iteration-count-to-analyze=50|Os--grow-region-complexity-budget=0
+blake2_write	blake2.c	197	39	   nblks = inlen / blkbytes - !(inlen % blkbytes);	%	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50|O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+gcry_err_make_from_errno	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1-fshort-enums|O2-fshort-enums|O3-fshort-enums|Os-fshort-enums|Oz-fshort-enums
+do_vsexp_sscan	sexp.c	1178	15	      *erroff = 0;	=	cjump	O2--cold-callsite-rel-freq=0|O2--disable-phi-elim-edge-splitting|O3--cold-callsite-rel-freq=0|O3--disable-phi-elim-edge-splitting|O3--hot-callsite-rel-freq=0|Os--disable-phi-elim-edge-splitting
+_gcry_sexp_canon_len	sexp.c	2162	28	                  *errcode = GPG_ERR_SEXP_STRING_TOO_LONG;	=	cjump	O2--hoist-common-insts|O3--hoist-common-insts|Os--hoist-common-insts
+_gcry_sexp_canon_len	sexp.c	2161	27	                  *erroff = count;	=	cjump	O2--hoist-common-insts|O3--hoist-common-insts|Os--hoist-common-insts
+mul_inv	idea.c	89	8	 y = y % x;	%	mdiv	O2--inlinedefault-threshold=50
+do_vsexp_sscan	sexp.c	1634	16	       *erroff = p - buffer;	=	cjump	Os--disable-phi-elim-edge-splitting
+do_ecb_decrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+do_ecb_encrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+fft_tr	mceliece6688128f.c	2601	13	   in[2][i] ^= (in[2][i] & mask[k][1]) << (1 << k);	^	mmem	Oz--inline-max-stacksize=100|Oz-finline-max-stacksize=100
+fft_tr	mceliece6688128f.c	2597	13	   in[0][i] ^= (in[0][i] & mask[k][1]) << (1 << k);	^	mmem	Oz--inline-max-stacksize=100|Oz-finline-max-stacksize=100
+_gcry_mceliece6688128f_keypair	mceliece6688128f.c	3193	30	  out[i*64 + r] |= (in[i][j] >> r) & 1;	>	mmem	Oz--licm-mssa-optimization-cap=0

@@ -1,0 +1,3 @@
+function	file	line	col	source	char	type	optimization
+w64ShiftRight	./wolfcrypt/src/misc.c	1048	9	    a.n >>= shift;	>	mmem	O0
+TLSX_GetResponseSize	src/tls.c	15675	14	    *pLength += length;	+	mmem	Oz

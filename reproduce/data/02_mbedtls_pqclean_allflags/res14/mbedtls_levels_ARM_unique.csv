@@ -1,0 +1,3 @@
+function	file	line	col	source	char	type	optimization
+mbedtls_ssl_dtls_replay_update	ssl_msg.c	3279	28	            ssl->in_window <<= shift;	<	mmem	O0
+mbedtls_ssl_read_record	ssl_msg.c	4301	39	                hs_buf->is_fragmented =	=	cjump	O2|O3

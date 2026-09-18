@@ -1,0 +1,5 @@
+function	file	line	col	source	char	type	optimization
+certificate_to_trust_anchor_inner	tools/certs.c	73	38	  ta->pkey.key.ec.curve = pk->key.ec.curve;	c	mmem	O1
+decode_key	tools/keys.c	82	31	  sk->key.ec.x = xblobdup(ek->x, ek->xlen);	x	mmem	O1
+certificate_to_trust_anchor_inner	tools/certs.c	66	45	  ta->pkey.key.rsa.n = xblobdup(pk->key.rsa.n, pk->key.rsa.nlen);	n	mmem	O1
+decode_key	tools/keys.c	65	32	  sk->key.rsa.p = xblobdup(rk->p, rk->plen);	p	mmem	O1

@@ -1,0 +1,232 @@
+function	file	line	col	source	char	type	optimization
+PQCLEAN_MLDSA65_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_MLDSA44_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_MLDSA87_CLEAN_poly_uniform	poly.c	361	22	        off = buflen % 3;	%	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+solve_NTRU_intermediate	keygen.c	3213	34	        scl = (uint32_t)(scale_k % 31);	%	cjump	O0--expand-div-rem-bits=0
+solve_NTRU_intermediate	keygen.c	3212	34	        sch = (uint32_t)(scale_k / 31);	/	cjump	O0--expand-div-rem-bits=0|O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+compute_error_values	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	cjump	O0--expand-div-rem-bits=0
+gf_reduce	gf.c	53	17	            mod <<= dist;	<	mmem	O0--pre-RA-sched=fast|O0--pre-RA-sched=linearize|O0--pre-RA-sched=list-burr|O0--pre-RA-sched=list-hybrid|O0--pre-RA-sched=list-ilp
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O1--disable-peephole|O1--fast-isel|O2--disable-peephole|O2--fast-isel|O3-fcs-profile-generate|Os--disable-peephole|Os--fast-isel|Oz--disable-peephole|Oz--fast-isel
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O1--disable-peephole|O1--fast-isel|O2--disable-peephole|O2--fast-isel|O3-fcs-profile-generate|Os--disable-peephole|Os--fast-isel|Oz--disable-peephole|Oz--fast-isel
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	232	23	            beta_j[j] += mask1 & mask2 & gf_exp[i];	+	mmem	O1--disable-peephole|O1--fast-isel|O2--disable-peephole|O2--fast-isel|O3-fcs-profile-generate|Os--disable-peephole|Os--fast-isel|Oz--disable-peephole|Oz--fast-isel
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+modp_R2	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fprofile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_verify_raw	vrfy.c	666	26	        w -= (int32_t)(Q & -(((Q >> 1) - (uint32_t)w) >> 31));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_raw	vrfy.c	666	26	        w -= (int32_t)(Q & -(((Q >> 1) - (uint32_t)w) >> 31));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	475	31	    return cc0 ^ ((cc0 ^ cc1) & (int)((x & y) >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_sampler	sign.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+PQCLEAN_MLDSA44_CLEAN_decompose	rounding.c	44	8	    a1 ^= ((43 - a1) >> 31) & a1;	^	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_fpr_add	fpr.c	155	42	         | ((1U - (uint32_t)(-za >> 63)) & (uint32_t)(x >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_verify_raw	vrfy.c	666	26	        w -= (int32_t)(Q & -(((Q >> 1) - (uint32_t)w) >> 31));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_add	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_MLDSA87_CLEAN_use_hint	rounding.c	47	40	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_add	fpr.c	155	42	         | ((1U - (uint32_t)(-za >> 63)) & (uint32_t)(x >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_add	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_fpr_add	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	475	31	    return cc0 ^ ((cc0 ^ cc1) & (int)((x & y) >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_verify_raw	vrfy.c	666	26	        w -= (int32_t)(Q & -(((Q >> 1) - (uint32_t)w) >> 31));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_sampler	sign.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_div	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+mq_div_12289	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_fpr_add	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_div	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_fpr_add	fpr.c	155	42	         | ((1U - (uint32_t)(-za >> 63)) & (uint32_t)(x >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_MLDSA87_CLEAN_decompose	rounding.c	47	40	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_fpr_div	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_sampler	sign.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_sampler	sign.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_sampler	sign.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	475	31	    return cc0 ^ ((cc0 ^ cc1) & (int)((x & y) >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_MLDSA44_CLEAN_use_hint	rounding.c	47	40	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+modp_mkgm2	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_sampler	sign.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+ffSampling_fft	sign.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_add	fpr.c	155	42	         | ((1U - (uint32_t)(-za >> 63)) & (uint32_t)(x >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_fpr_div	fpr.c	182	7	    m &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_MLDSA44_CLEAN_use_hint	rounding.c	44	8	    a1 ^= ((43 - a1) >> 31) & a1;	^	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_sampler	sign.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_sampler	sign.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+PQCLEAN_MLDSA44_CLEAN_decompose	rounding.c	47	40	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	475	31	    return cc0 ^ ((cc0 ^ cc1) & (int)((x & y) >> 63));	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_MLDSA65_CLEAN_use_hint	rounding.c	47	40	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_MLDSA65_CLEAN_decompose	rounding.c	47	40	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	&	mmem	O1-fcs-profile-generate|O1-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_complete_private	vrfy.c	737	17	        w -= (Q & ~ -((w - (Q >> 1)) >> 31));	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_complete_private	vrfy.c	737	17	        w -= (Q & ~ -((w - (Q >> 1)) >> 31));	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_sign_dyn	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_is_invertible	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_verify_raw	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_sign_tree	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_is_invertible	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_to_ntt_monty	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+make_fg_step	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_sign_dyn	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+mq_iNTT	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_muller_encode	reed_muller.c	44	42	    first_word ^= BIT0MASK(message >> 4) & 0xffff0000;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_complete_private	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_verify_raw	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+karatsuba	gf2x.c	52	20	        g ^= (u[i] & (uint64_t)(0 - (1 - ((uint64_t)(tmp2 | (0 - tmp2)) >> 63))));	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_complete_private	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_raw	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_sign_tree	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_tree	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_HQC192_CLEAN_vect_set_random_fixed_weight	vector.c	108	32	            val |= (bit_tab[j] & mask64);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_count_nttzero	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+solve_NTRU_intermediate	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_compute_public	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_is_invertible	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+solve_NTRU_intermediate	keygen.c	475	31	    return cc0 ^ ((cc0 ^ cc1) & (int)((x & y) >> 63));	&	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_to_ntt_monty	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	635	12	    w += p & -(w >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate
+PQCLEAN_HQC128_CLEAN_reed_muller_encode	reed_muller.c	44	42	    first_word ^= BIT0MASK(message >> 4) & 0xffff0000;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_complete_private	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_recover	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	635	12	    w += p & -(w >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_sign_dyn	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_compute_public	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_reed_muller_encode	reed_muller.c	41	42	    first_word ^= BIT0MASK(message >> 1) & 0xcccccccc;	&	mmem	O1-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_poly_split_fft	fft.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_poly_split_fft	fft.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_expm_p63	fpr.c	377	8	    xu &= -(uint64_t)((uint32_t)(cc - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_complete_private	vrfy.c	737	17	        w -= (Q & ~ -((w - (Q >> 1)) >> 31));	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	635	12	    w += p & -(w >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_verify_recover	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_verify_recover	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_complete_private	vrfy.c	737	17	        w -= (Q & ~ -((w - (Q >> 1)) >> 31));	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_count_nttzero	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_reed_muller_encode	reed_muller.c	44	42	    first_word ^= BIT0MASK(message >> 4) & 0xffff0000;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_count_nttzero	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_to_ntt_monty	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_poly_split_fft	fft.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+zint_rebuild_CRT	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_poly_split_fft	fft.c	412	7	    x &= (uint64_t)t - 1;	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_HQC128_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O1-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_muller_encode	reed_muller.c	41	42	    first_word ^= BIT0MASK(message >> 1) & 0xcccccccc;	&	mmem	O1-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_HQC256_CLEAN_reed_muller_encode	reed_muller.c	42	42	    first_word ^= BIT0MASK(message >> 2) & 0xf0f0f0f0;	&	mmem	O1-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_complete_private	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	635	12	    w += p & -(w >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_count_nttzero	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_compute_public	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_reed_muller_encode	reed_muller.c	42	42	    first_word ^= BIT0MASK(message >> 2) & 0xf0f0f0f0;	&	mmem	O1-fcs-profile-generate|O2-fprofile-generate|O3-fprofile-generate|Oz-fcs-profile-generate
+poly_sub_scaled_ntt	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O1-fcs-profile-generate|Os-fcs-profile-generate
+solve_NTRU_intermediate	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_sign_tree	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_HQC192_CLEAN_gf_mul	gf.c	87	20	        g ^= (u[i] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O1-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_dyn	sign.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_HQC128_CLEAN_vect_set_random_fixed_weight	vector.c	108	32	            val |= (bit_tab[j] & mask64);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_verify_recover	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_verify_raw	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_vect_set_random_fixed_weight	vector.c	108	32	            val |= (bit_tab[j] & mask64);	&	mmem	O1-fcs-profile-generate|O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_to_ntt_monty	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_is_invertible	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_compute_public	vrfy.c	355	7	    d += Q & -(d >> 31);	+	mmem	O1-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC256_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC256_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	cjump	O1--expand-div-rem-bits=0|O2--expand-div-rem-bits=0|O3--expand-div-rem-bits=0|Os--expand-div-rem-bits=0|Oz--expand-div-rem-bits=0
+PQCLEAN_FALCONPADDED1024_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+solve_NTRU_intermediate	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sampler	sign.c	331	29	    xi = (xi ^ -(int64_t)t) + (int64_t)t;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv|Oz-ftrapv
+PQCLEAN_FALCON512_CLEAN_sign_dyn	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+solve_NTRU_intermediate	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+solve_NTRU_intermediate	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCONPADDED1024_CLEAN_sign_tree	sign.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+PQCLEAN_FALCON512_CLEAN_fpr_scaled	fpr.c	180	7	    e += 1076;	+	cjump	O1-ftrapv|O2-ftrapv|O3-ftrapv|Os-ftrapv
+do_verify	pqclean.c	237	13	            != PQCLEAN_FALCON1024_CLEAN_CRYPTO_PUBLICKEYBYTES - 1) {	!	cjump	O1--force-specialization|O2--force-specialization|O3--force-specialization
+PQCLEAN_MLDSA65_CLEAN_decompose	rounding.c	47	9	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	-	mmem	O1--disable-peephole|O2--disable-peephole|O3--disable-peephole|Os--disable-peephole|Oz--disable-peephole
+PQCLEAN_MLDSA44_CLEAN_decompose	rounding.c	47	9	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	-	mmem	O1--disable-peephole|O2--disable-peephole|O3--disable-peephole|Os--disable-peephole|Oz--disable-peephole
+PQCLEAN_MLDSA87_CLEAN_decompose	rounding.c	47	9	    *a0 -= (((Q - 1) / 2 - *a0) >> 31) & Q;	-	mmem	O1--disable-peephole|O2--disable-peephole|O3--disable-peephole|Os--disable-peephole|Oz--disable-peephole
+mq_iNTT	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_sampler	sign.c	352	8	    xi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);	^	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_sampler	sign.c	352	8	    xi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);	^	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_to_ntt_monty	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_to_ntt_monty	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_HQC128_CLEAN_reed_muller_encode	reed_muller.c	41	42	    first_word ^= BIT0MASK(message >> 1) & 0xcccccccc;	&	mmem	O2-fprofile-generate|O3-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_to_ntt_monty	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_sampler	sign.c	352	8	    xi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);	^	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_to_ntt_monty	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_sampler	sign.c	352	8	    xi ^= (xi ^ -(int64_t)t) & -(int64_t)((uint32_t)(63 - cc) >> 31);	^	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Os-fcs-profile-generate|Os-fprofile-generate|Oz-fprofile-generate
+PQCLEAN_HQC192_CLEAN_reed_muller_encode	reed_muller.c	43	42	    first_word ^= BIT0MASK(message >> 3) & 0xff00ff00;	&	mmem	O2-fcs-profile-generate|O2-fprofile-generate|O3-fcs-profile-generate|O3-fprofile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_verify_recover	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_verify_recover	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_compute_public	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_compute_public	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_raw	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_complete_private	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_HQC128_CLEAN_reed_muller_encode	reed_muller.c	43	42	    first_word ^= BIT0MASK(message >> 3) & 0xff00ff00;	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_complete_private	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_verify_raw	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_compute_public	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_verify_raw	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_verify_recover	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O2-fcs-profile-generate
+solve_NTRU_intermediate	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O2-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_verify_recover	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_complete_private	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_muller_encode	reed_muller.c	43	42	    first_word ^= BIT0MASK(message >> 3) & 0xff00ff00;	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Oz-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_complete_private	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_FALCON512_CLEAN_compute_public	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+PQCLEAN_FALCON1024_CLEAN_verify_raw	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate|Os-fcs-profile-generate
+PQCLEAN_HQC128_CLEAN_gf_mul	gf.c	98	24	            g ^= (u[j] & (uint32_t)(0 - (1 - ((uint32_t)(tmp2 | (0 - tmp2)) >> 31))));	&	mmem	O2-fcs-profile-generate|O3-fcs-profile-generate
+compute_error_values	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--unroll-count=50|Os--unroll-count=50|Oz--unroll-count=50
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--disable-peephole|O3-fcs-profile-generate
+PQCLEAN_HQC192_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O2--disable-peephole|O3-fcs-profile-generate
+solve_NTRU	keygen.c	635	12	    w += p & -(w >> 31);	&	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	O3-fcs-profile-generate
+PQCLEAN_HQC256_CLEAN_reed_solomon_decode	reed_solomon.c	264	29	            error_values[i] += mask1 & mask2 & e_j[j];	+	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	285	7	    m &= -(uint64_t)((uint32_t)(e - 64) >> 31);	&	mmem	O3-fcs-profile-generate
+PQCLEAN_HQC128_CLEAN_reed_solomon_decode	reed_solomon.c	251	111	            tmp2 = PQCLEAN_HQC128_CLEAN_gf_mul(tmp2, (1 ^ PQCLEAN_HQC128_CLEAN_gf_mul(inverse, beta_j[(i + k) % PARAM_DELTA])));	%	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	475	31	    return cc0 ^ ((cc0 ^ cc1) & (int)((x & y) >> 63));	&	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	683	7	    d += p & -(d >> 31);	+	mmem	O3-fcs-profile-generate
+solve_NTRU	keygen.c	472	21	    cc0 = (int)((sx - sy) >> 63) & 1; /* Neither subtraction overflows when */	-	cjump	O3-ftrapv
+solve_NTRU	keygen.c	473	21	    cc1 = (int)((sy - sx) >> 63) & 1; /* the signs are the same. */	-	cjump	O3-ftrapv
+solve_NTRU	keygen.c	311	39	    return ((int64_t)m ^ -(int64_t)s) + (int64_t)s;	+	cjump	O3-ftrapv
+PQCLEAN_FALCON1024_CLEAN_crypto_sign_open	pqclean.c	237	13	            != PQCLEAN_FALCON1024_CLEAN_CRYPTO_PUBLICKEYBYTES - 1) {	!	cjump	O3--inline-instr-cost=0
+PQCLEAN_FALCON1024_CLEAN_crypto_sign_verify	pqclean.c	237	13	            != PQCLEAN_FALCON1024_CLEAN_CRYPTO_PUBLICKEYBYTES - 1) {	!	cjump	O3--inline-instr-cost=0
+PQCLEAN_FALCON512_CLEAN_crypto_sign_verify	pqclean.c	237	13	            != PQCLEAN_FALCON512_CLEAN_CRYPTO_PUBLICKEYBYTES - 1) {	!	cjump	O3--inline-instr-cost=0
+PQCLEAN_FALCON512_CLEAN_crypto_sign_open	pqclean.c	237	13	            != PQCLEAN_FALCON512_CLEAN_CRYPTO_PUBLICKEYBYTES - 1) {	!	cjump	O3--inline-instr-cost=0
+modp_poly_rec_res	keygen.c	723	7	    d += p & -(d >> 31);	+	mmem	Os-fcs-profile-generate|Oz-fprofile-generate
+PQCLEAN_FALCON1024_CLEAN_keygen	keygen.c	1867	43	    return (int)((1 - ((rc | -rc) >> 31)) & x[0] & y[0]);	&	mmem	Oz-fprofile-generate
+PQCLEAN_FALCON512_CLEAN_keygen	keygen.c	1867	43	    return (int)((1 - ((rc | -rc) >> 31)) & x[0] & y[0]);	&	mmem	Oz-fprofile-generate
+PQCLEAN_FALCONPADDED1024_CLEAN_keygen	keygen.c	1867	43	    return (int)((1 - ((rc | -rc) >> 31)) & x[0] & y[0]);	&	mmem	Oz-fprofile-generate
+PQCLEAN_FALCONPADDED512_CLEAN_keygen	keygen.c	1867	43	    return (int)((1 - ((rc | -rc) >> 31)) & x[0] & y[0]);	&	mmem	Oz-fprofile-generate
+mq_montymul	vrfy.c	417	7	    z += Q & -(z >> 31);	+	mmem	Oz-fcs-profile-generate
+zint_mod_small_unsigned	keygen.c	1199	11	        w += p & -(w >> 31);	+	mmem	Oz-fcs-profile-generate
+PQCLEAN_HQC128_CLEAN_reed_muller_encode	reed_muller.c	42	42	    first_word ^= BIT0MASK(message >> 2) & 0xf0f0f0f0;	&	mmem	Oz-fcs-profile-generate

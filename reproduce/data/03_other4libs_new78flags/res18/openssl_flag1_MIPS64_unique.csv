@@ -1,0 +1,2 @@
+function	file	line	col	source	char	type	optimization
+ossl_a2ulabel	crypto/punycode.c	179	15	        if (i / (written_out + 1) > maxint - n)	/	mdiv	O3--hot-callsite-rel-freq=0

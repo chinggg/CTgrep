@@ -1,0 +1,12 @@
+function	file	line	col	source	char	type	optimization
+blake2_write	blake2.c	197	39	   nblks = inlen / blkbytes - !(inlen % blkbytes);	%	mdiv	O1--inlinedefault-threshold=100|O1--inlinedefault-threshold=50
+gcry_err_make_from_errno	visibility.c	957	10	  return code == GPG_ERR_NO_ERROR ? GPG_ERR_NO_ERROR	c	cjump	O1-fshort-enums|O2-fshort-enums|O3-fshort-enums|Os-fshort-enums|Oz-fshort-enums
+_gcry_sntrup761_dec	sntrup761.c	796	12	    r[i] = ((ev[i] ^ 1) & ~mask) ^ 1;	(	cjump	O1-ftree-vectorize|O1-fvectorize
+_gcry_sntrup761_dec	sntrup761.c	798	12	    r[i] = ev[i] & ~mask;	e	cjump	O1-ftree-vectorize|O1-fvectorize
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	mdiv	O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+blake2_write	blake2.c	197	18	   nblks = inlen / blkbytes - !(inlen % blkbytes);	/	cjump	O2--inlinedefault-threshold=100|O2--inlinedefault-threshold=50
+cbrecursion	mceliece6688128f.c	434	25	  return crypto_int32_x ^ crypto_int32_z;	^	cjump	O2--vplan-build-stress-test|O2-fno-tree-vectorize|O2-fno-vectorize|O3--vplan-build-stress-test|O3-fno-tree-vectorize|O3-fno-vectorize
+bench_ecc_mult_init	bench-slope.c	2541	34	     num_measurement_repetitions / obj->max_bufsize;	/	mdiv	Os--disable-licm-promotion|Os--licm-mssa-max-acc-promotion=0|Os--unroll-max-iteration-count-to-analyze=0|Os--unroll-max-percent-threshold-boost=0|Os--unroll-max-percent-threshold-boost=50
+bench_ecc_init	bench-slope.c	2641	34	     num_measurement_repetitions / obj->max_bufsize;	/	mdiv	Os--disable-licm-promotion|Os--licm-mssa-max-acc-promotion=0|Os--unroll-max-iteration-count-to-analyze=0|Os--unroll-max-percent-threshold-boost=0|Os--unroll-max-percent-threshold-boost=50
+do_ecb_encrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
+do_ecb_decrypt	cipher.c	1099	17	  if ((inbuflen % blocksize))	%	mdiv	Os--enable-partial-inlining
