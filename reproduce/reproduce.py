@@ -30,7 +30,7 @@ LOG_PATH = ROOT / "reproduce.log"
 sys.path.insert(0, str(SCRIPT_DIR))
 
 from data_loading import read_file, read_files_and_create_df  # noqa: E402
-from filtering import process_result  # noqa: E402
+from filtering import filter_rows, process_result  # noqa: E402
 from plotting import (  # noqa: E402
     analyze_architecture,
     analyze_difference_between_versions,
@@ -210,7 +210,8 @@ def generate_figures(
             )
             generated = Path(f"artifact_general_libs_stacked_{version}.pdf")
             generated.replace(Path(f"artifact_general_libs_{version}.pdf"))
-        analyze_flag(union, by_version)
+        filtered_rows = filter_rows(pd.concat(inputs.values(), ignore_index=True))
+        analyze_flag(union, by_version, filtered_rows=filtered_rows)
         analyze_architecture(per_arch)
         analyze_difference_between_versions(union)
     finally:

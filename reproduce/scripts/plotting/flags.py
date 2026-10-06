@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+from filtering import GROUP_KEYS
+
 from ._common import add_bar_value_labels, make_figure, save_figure, style_axes
 
 
@@ -52,15 +54,24 @@ def _classify_flag(flag):
     return None
 
 
-def _print_o0_archs(df):
-    """When O0 shows up, list the architectures responsible — useful for debugging."""
-    archs = []
-    for row in df.itertuples():
-        parts = row.optimization.split("|") if row.optimization else []
-        if 'O0' in parts:
-            archs.extend(row.arch.split("|") if row.arch else [])
+def _print_o0_archs(df, filtered_rows):
+    """Count O0 locations per architecture using records before merging."""
+    # Each input record still links its architecture to its own triggers.
+    def has_o0(optimization):
+        return "O0" in optimization.split("|")
+
+    o0_rows = filtered_rows[filtered_rows["optimization"].map(has_o0)]
+
+    # Keep only locations accepted by the final table. This also retains mmem
+    # when a cjump exists at that location under another configuration or arch.
+    location_columns = GROUP_KEYS["merge_arch"]
+    accepted_locations = df[location_columns].drop_duplicates()
+    o0_rows = o0_rows.merge(accepted_locations, on=location_columns)
+
+    # Repeated experiments and compiler versions count once per location/arch.
+    o0_locations = o0_rows.drop_duplicates(location_columns + ["arch"])
     print("Number of each architecture that has O0:")
-    print(pd.Series(archs).value_counts())
+    print(o0_locations["arch"].value_counts())
 
 
 def _flag_counts(df):
@@ -74,13 +85,19 @@ def _flag_counts(df):
     return flag_counts
 
 
-def analyze_flag(df, per_version=None):
+def analyze_flag(df, per_version=None, *, filtered_rows):
+    """Plot configuration counts and print the architectures triggering O0.
+
+    `df` and `per_version` are merged result tables. `filtered_rows` is the
+    same input after filter_rows(), before merging architectures; it is needed
+    to identify which architecture actually reported O0.
+    """
     source_count = df["source"].value_counts().reset_index()
     source_count.columns = ['Source', 'Count']
     print("Unique sources and their counts:")
     print(source_count)
 
-    _print_o0_archs(df)
+    _print_o0_archs(df, filtered_rows)
 
     flag_counts = _flag_counts(df)
     print("Unique optimization flags after merging:")
