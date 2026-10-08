@@ -35,6 +35,16 @@ Python 3.10. Analyzing platforms other than the host needs the matching
 cross toolchain, on Ubuntu the `crossbuild-essential-*` packages. The
 Dockerfile assembles all of this; `make image` builds it.
 
+For Docker, we recommend Ubuntu/Debian on x86-64; Apple Silicon also runs
+the evaluation. The short checks were measured with 16 GB assigned to Docker,
+a roughly 4 GB image, and under 1 GB of additional functional-test output.
+These are measured figures, not minimum requirements. Limit build concurrency
+with `PARALLEL_ARCHS=1 JOBS=1` on smaller machines. Building LLVM needs tens
+of GB of temporary disk space. The full campaign used 64–96 core servers with
+256 GB RAM; extending the analysis to a library depends on its build size
+and the number of configurations. See [AE.md](AE.md#reference-hardware-and-measured-runtimes)
+for the measured runtimes and [parallelism settings](AE.md#4-rerun-experiments-optional).
+
 Use the prebuilt image to get started without compiling LLVM:
 
 ```sh

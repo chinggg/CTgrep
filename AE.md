@@ -187,6 +187,14 @@ bearssl_levels_X8664_unique.csv                    12         12      0
 cjump locations: 50/50 recorded locations reproduced, 0 new
 ```
 
+If a location is missing, inspect `results/bearssl_levels_clang18/logs/<arch>.log`
+and the corresponding `compiler_message_*.txt` and `llvm_message_*.json` files
+in `results/bearssl_levels_clang18/` (including any `.error<code>` suffix).
+The latter contain compiler diagnostics as well as instrumentation output.
+Missing output may indicate an incomplete build, rather than a filtering issue.
+In particular, the build uses `make -k` so cross-target link failures do not
+prevent independent files such as `tools/ta.c` from being compiled.
+
 For a concrete BearSSL finding, open
 `results/bearssl_levels_clang18_filtered/bearssl_levels_X8664_unique.csv`:
 
@@ -218,6 +226,10 @@ now carries a `pass-<type>` field, for instance
 
 This is the mechanism behind the paper's Table 4; the table itself aggregates such
 outputs over all libraries.
+
+To select platforms, use `ARCHS="X8664 RISCV" make rootcause`. Run Step 2.1
+with the same `ARCHS` first; the script reports any missing platform inputs.
+The default for root-cause analysis is `X8664`.
 
 ## 3 Reproduce paper figures and tables from the recorded experimental results
 
