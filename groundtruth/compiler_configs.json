@@ -1,0 +1,192 @@
+[
+  {
+    "snippet": "bearssl-modpow_opt-x8664.c",
+    "link": "https://godbolt.org/z/nx1crrxv3",
+    "language": "c",
+    "compiler_id": "cclang1301",
+    "compiler_name": "x86-64 clang 13.0.1",
+    "options": "-Os",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-11.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "bearssl-modpow_opt-x86i386.c",
+    "link": "https://godbolt.org/z/bnE1PrfKG",
+    "language": "c",
+    "compiler_id": "cclang1301",
+    "compiler_name": "x86-64 clang 13.0.1",
+    "options": "-Os -m32",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-11.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "bearssl-br_i31_muladd_small-x86i386.c",
+    "link": "https://godbolt.org/z/qM9KT31vz",
+    "language": "c",
+    "compiler_id": "cclang1300",
+    "compiler_name": "x86-64 clang 13.0.0",
+    "options": "-O2 -m32 -march=i386",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-11.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "bearssl-check_scalar-riscv64.c",
+    "link": "https://godbolt.org/z/zvh6Pjzar",
+    "language": "c",
+    "compiler_id": "rv64-cclang1500",
+    "compiler_name": "RISC-V rv64gc clang 15.0.0",
+    "options": "-O2",
+    "compiler_defaults": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d --gcc-toolchain=/opt/compiler-explorer/riscv64/gcc-8.2.0/riscv64-unknown-linux-gnu --sysroot=/opt/compiler-explorer/riscv64/gcc-8.2.0/riscv64-unknown-linux-gnu/riscv64-unknown-linux-gnu/sysroot -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d"
+  },
+  {
+    "snippet": "botan-hex_decode-riscv64.cpp",
+    "link": "https://godbolt.org/z/hhs1KWfz7",
+    "language": "c++",
+    "compiler_id": "rv64-clang1500",
+    "compiler_name": "RISC-V rv64gc clang 15.0.0",
+    "options": "-std=c++20 -O1",
+    "compiler_defaults": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d --gcc-toolchain=/opt/compiler-explorer/riscv64/gcc-10.2.0/riscv64-unknown-linux-gnu --sysroot=/opt/compiler-explorer/riscv64/gcc-10.2.0/riscv64-unknown-linux-gnu/riscv64-unknown-linux-gnu/sysroot -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d"
+  },
+  {
+    "snippet": "botan-key_schedule-riscv64.cpp",
+    "link": "https://godbolt.org/z/xGh6Kjzfh",
+    "language": "c++",
+    "compiler_id": "rv64-clang1500",
+    "compiler_name": "RISC-V rv64gc clang 15.0.0",
+    "options": "-std=c++20 -O1",
+    "compiler_defaults": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d --gcc-toolchain=/opt/compiler-explorer/riscv64/gcc-10.2.0/riscv64-unknown-linux-gnu --sysroot=/opt/compiler-explorer/riscv64/gcc-10.2.0/riscv64-unknown-linux-gnu/riscv64-unknown-linux-gnu/sysroot -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d"
+  },
+  {
+    "snippet": "hacl-cmovznz4-riscv64.c",
+    "link": "https://godbolt.org/z/z71Wv5b7j",
+    "language": "c",
+    "compiler_id": "rv64-cclang1500",
+    "compiler_name": "RISC-V rv64gc clang 15.0.0",
+    "options": "-Os",
+    "compiler_defaults": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d --gcc-toolchain=/opt/compiler-explorer/riscv64/gcc-8.2.0/riscv64-unknown-linux-gnu --sysroot=/opt/compiler-explorer/riscv64/gcc-8.2.0/riscv64-unknown-linux-gnu/riscv64-unknown-linux-gnu/sysroot -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target riscv64-unknown-linux-gnu -march=rv64gc -mabi=lp64d"
+  },
+  {
+    "snippet": "hacl-point_mul-x8664.c",
+    "link": "https://godbolt.org/z/6s9daKhxr",
+    "language": "c",
+    "compiler_id": "cclang1500",
+    "compiler_name": "x86-64 clang 15.0.0",
+    "options": "-O2",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-12.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "binsec-ct_select_u32_v1-x8664.c",
+    "link": "https://godbolt.org/z/jjK3EjP48",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "binsec-ct_select_u32_v2-x8664.c",
+    "link": "https://godbolt.org/z/j4dnGb1sP",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "binsec-ct_select_u32_v3-x8664.c",
+    "link": "https://godbolt.org/z/G3Mhq7Th5",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "binsec-ct_select_u32_v4-x8664.c",
+    "link": "https://godbolt.org/z/o4b96Wfhz",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "binsec-sort2_multiplex-x8664.c",
+    "link": "https://godbolt.org/z/Y7M9n63bM",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "godbolt-vect_set_random_fixed_weight-x8664.c",
+    "link": "https://godbolt.org/z/fdMWPq5d5",
+    "language": "c++",
+    "compiler_id": "clang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O1 -c",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "godbolt-crypto_uint32_signed_negative_mask-x8664.c",
+    "link": "https://godbolt.org/z/YnxMTh657",
+    "language": "c++",
+    "compiler_id": "clang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O1 -c",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "godbolt-base_mul-x8664.c",
+    "link": "https://godbolt.org/z/MPjq5odz1",
+    "language": "c++",
+    "compiler_id": "clang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -c -g",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "wolfssl-sp_clamp_ct-x8664.c",
+    "link": "https://godbolt.org/z/EvsaW56j9",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "wolfssl-Base64_Char2Val-x8664.c",
+    "link": "https://godbolt.org/z/W53n1vKh3",
+    "language": "c",
+    "compiler_id": "cclang1810",
+    "compiler_name": "x86-64 clang 18.1.0",
+    "options": "-O2 -mllvm --x86-cmov-converter-force-all",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-13.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  },
+  {
+    "snippet": "godbolt-constant_time_msb_w-x8632.c",
+    "link": "https://godbolt.org/z/7Gs53hTG6",
+    "language": "c++",
+    "compiler_id": "clang1400",
+    "compiler_name": "x86-64 clang 14.0.0",
+    "options": "-Os -m32 -march=i386",
+    "compiler_defaults": "--gcc-toolchain=/opt/compiler-explorer/gcc-11.2.0 -fcolor-diagnostics -fno-crash-diagnostics",
+    "target_options": "-target x86_64-linux-gnu"
+  }
+]

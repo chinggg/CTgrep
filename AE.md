@@ -158,6 +158,10 @@ therefore contain 12, 16 and 17 of the 19 functions, and the check above
 compares the branch locations for its version; it does not revalidate all
 19 original reports under their original compiler configurations.
 
+The original compiler versions, target settings and flags are saved in
+`groundtruth/compiler_configs.json`. [groundtruth/README.md](groundtruth/README.md)
+explains how to compile a snippet with those options without accessing Godbolt.
+
 ### 2.2 Run BearSSL across optimization levels
 
 ```sh
