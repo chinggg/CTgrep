@@ -309,6 +309,13 @@ competing. Interrupted runs continue where they stopped; deleting
 `work/<name>` and `results/<name>*` starts a run over. Per-platform build
 logs are in `results/<name>/logs/`.
 
+Stop experiments with Ctrl+C before running `make clean`. The build driver now
+stops its child processes on interruption; previously they could keep files
+open and prevent cleanup on NFS. `make clean` removes `work/`, `badsnippets/`
+and plugins, while keeping `results/`. It does not stop running experiments.
+If an older run left a busy `.nfs*` file, stop the process holding it before
+retrying cleanup.
+
 ## Reference: hardware and measured runtimes
 
 The campaign of the paper ran on one AMD Ryzen Threadripper PRO 7995WX (96

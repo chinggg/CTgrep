@@ -21,6 +21,7 @@ help:
 	@echo "make phase2          supplied problematic flags on the other four libraries"
 	@echo "make shell           enter the image; persist results and work directories"
 	@echo "make rootcause       attribute the kick-tires violations to compiler passes"
+	@echo "make clean           remove build caches and plugins after stopping experiments"
 
 shell:
 	mkdir -p results work

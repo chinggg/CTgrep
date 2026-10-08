@@ -243,7 +243,8 @@ def run_build_job(cmd: str, env: Optional[Dict[str, str]] = None, timeout: int =
     start_time = time.time()
     
     try:
-        # Start process in new session so we can kill the whole group if needed
+        # A private session lets cleanup target this build without stopping peers.
+        # Terminal Ctrl+C does not reach it; handle cancellation explicitly below.
         process = subprocess.Popen(
             cmd,
             env=env or os.environ,
@@ -271,23 +272,27 @@ def run_build_job(cmd: str, env: Optional[Dict[str, str]] = None, timeout: int =
             else:
                 logging.info(f"Build completed successfully in {duration:.2f} seconds")
                 
-        except subprocess.TimeoutExpired:
+        except (subprocess.TimeoutExpired, KeyboardInterrupt) as error:
             duration = time.time() - start_time
-            logging.error(f"Build timed out after {duration:.2f} seconds")
-            
+            reason = "interrupted" if isinstance(error, KeyboardInterrupt) else "timed out"
+            logging.error(f"Build {reason} after {duration:.2f} seconds")
+
             try:
                 # Kill the entire process group
                 os.killpg(os.getpgid(process.pid), signal.SIGTERM)
-                
+
                 # Try to collect any output that was produced before timeout
                 stdout, stderr = process.communicate(timeout=2)
             except Exception as e:
                 logging.error(f"Error killing process group: {str(e)}")
                 stdout = ""
                 stderr = ""
-            
+
+            if isinstance(error, KeyboardInterrupt):
+                raise
+
             retcode = 124  # Standard timeout exit code
-            
+
     except Exception as e:
         duration = time.time() - start_time
         logging.error(f"Exception running command: {str(e)}")

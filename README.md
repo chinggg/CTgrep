@@ -45,6 +45,9 @@ make shell  # mkdir -p results work && docker run --rm -it -v "$PWD/results:/ctg
 `make pull-image` downloads `ghcr.io/chinggg/ctgrep:clang18` and tags it locally
 as `ctgrep:clang18`. Use `LLVM_VERSION=14` or `LLVM_VERSION=20` for those versions. `GHCR_IMAGE` can also specify a release tag or an image digest.
 
+After stopping an experiment with Ctrl+C, `make clean` removes working
+copies and plugins. Results in `results/` are kept.
+
 ## Part 1: differential analysis of one compilation
 
 ```
