@@ -198,6 +198,22 @@ paper's numbers are computed from the `_unique.csv` files; `reproduce/`
 does that computation and `experiments/compare_unique.py` compares fresh
 tables with recorded ones.
 
+**Column matching.** The `cjump` oracle and the filter compare source lines,
+so a branch the compiler adds to a line that already has one, such as a
+one-line loop body, is not reported. With `--match-col`, given to both
+`run.py` and `filteres.py`, the oracle compares line and column with the
+unoptimized IR, and a branch keyword (`if`, `for`, `while`, `switch`) removes
+a report only when the column is inside its parentheses; the other
+heuristics are unchanged. This reports such branches at the cost of a few
+more false positives, mostly at conditions that span several lines. The
+records already carry columns, so existing results can be reanalyzed:
+
+```sh
+python3 scripts/run.py configs/bearssl.env --archs="X8664" \
+    --levels="O0 O1 O2 O3 Os Oz" --analyze-only --match-col --resdir=res_col
+python3 scripts/filteres.py --match-col bearssl/res_col   # writes bearssl/res_col_filtered/
+```
+
 **Running many platforms.** Builds are in-tree, so two platforms cannot
 share one checkout. `run_campaign` in `experiments/common.sh` copies the
 checkout per platform under `work/`, runs the platforms concurrently, and

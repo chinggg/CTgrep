@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 global_cjump_locs = set()  # store (file, line, col) cjump tuples for later mmem filter
 
-def apply_src_filter_to_json(json_path):
+def apply_src_filter_to_json(json_path, match_col=False):
     """Apply src-based filtering to a JSON file in place."""
     if not os.path.exists(json_path):
         logger.warning(f"JSON file not found: {json_path}")
@@ -56,7 +56,7 @@ def apply_src_filter_to_json(json_path):
                         keep_case = False
                         if case_type == "cjump":
                             # For cjump, keep only if source have no branch semantics
-                            keep_case = src and not src_has_branch(src, col)
+                            keep_case = src and not src_has_branch(src, col, match_col)
                             if keep_case:
                                 global_cjump_locs.add((file, line, col))
                         elif case_type == "mmem":
@@ -435,7 +435,7 @@ def exclude_unreal_flag(flag_json, levels_json):
     except Exception as e:
         logger.error(f"Error filtering flag JSON {flag_json}: {e}")
 
-def process_directory(input_dir):
+def process_directory(input_dir, match_col=False):
     """Accept a directory containing result files and store filtered results in _filtered."""
     if not os.path.isdir(input_dir):
         logger.error(f"Input directory not found: {input_dir}")
@@ -457,7 +457,7 @@ def process_directory(input_dir):
     logger.info("Step 1: Deduplicating redundant cases and apply src-based filter in all JSON files")
     for json_path in sorted(json_files):
         dedup_json_cases(json_path)
-        apply_src_filter_to_json(json_path)
+        apply_src_filter_to_json(json_path, match_col)
     for json_path in sorted(json_files):
         # filter mmem to keep only cases where cjump leakage exists
         filter_mmem_with_cjump_loc(json_path)
@@ -481,13 +481,16 @@ def process_directory(input_dir):
     logger.info(f"Processing completed. Results saved to: {output_dir}")
 
 def main():
-    if len(sys.argv) != 2:
-        logger.error("Usage: python filteres.py <input_directory>")
+    match_col = "--match-col" in sys.argv
+    argv = [a for a in sys.argv if a != "--match-col"]
+    if len(argv) != 2:
+        logger.error("Usage: python filteres.py [--match-col] <input_directory>")
         logger.error("  Input directory should contain JSON result files")
+        logger.error("  --match-col: an if/for/while/switch keyword drops a cjump only if its column is in the condition")
         sys.exit(1)
     
-    input_dir = sys.argv[1]
-    process_directory(input_dir)
+    input_dir = argv[1]
+    process_directory(input_dir, match_col)
 
 if __name__ == "__main__":
     main()

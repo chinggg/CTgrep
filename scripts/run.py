@@ -50,7 +50,7 @@ def setup_logging(proj_name):
     return log_file
 
 
-def analyze_optimization(base_json, opt_json, opt_name, res_dir, proj_name, arch):
+def analyze_optimization(base_json, opt_json, opt_name, res_dir, proj_name, arch, match_col=False):
     """Analyze and save results comparing base and optimized builds."""
     opt_data = load_json_data(opt_json)
     
@@ -68,10 +68,10 @@ def analyze_optimization(base_json, opt_json, opt_name, res_dir, proj_name, arch
     if base_json:
         # Flag mode: compare against base
         base_data = load_json_data(base_json)
-        results = compare_data(base_data, opt_data)
+        results = compare_data(base_data, opt_data, match_col)
     else:
         # Levels mode: extract problems directly using oracle
-        results = extract_problems(opt_data)
+        results = extract_problems(opt_data, match_col)
         
     if results:
         logger.info(f"[{result_type}] Found {len(results)} problems introduced by {opt_name}. Saving data from {opt_json} to {res_dir}/ dir.")
@@ -205,7 +205,7 @@ def run_optimization_levels(proj_name, arch, levels, args):
         # NOTE: now analyze all levels, including O0, no compare with base
         if os.path.exists(json_path):
             analyze_optimization(None, json_path, level, 
-                                res_dir, proj_name, arch)
+                                res_dir, proj_name, arch, args.match_col)
         else:
             logger.error(f"[Levels] JSON file not found: {json_path}")
             return 0, 0
@@ -264,7 +264,7 @@ def run_optimization_flag1(proj_name, arch, levels, flags, args):
                     
             if os.path.exists(json_path):
                 analyzed = analyze_optimization(base_json, json_path, f"{level}{flag}",
-                                  res_dir, proj_name, arch)
+                                  res_dir, proj_name, arch, args.match_col)
                 if not analyzed:
                     logger.info(f"[Flag1] No problems found for {level}{flag} in {json_path}, removing build log and json")
                     try:
@@ -287,6 +287,7 @@ def main():
     parser.add_argument("--concrete-flags", action="store_true", help="Flag files already contain concrete values; do not expand boolean variants")
     parser.add_argument("--analyze-only", action="store_true", help="Only analyze existing JSON data without rebuilding")
     parser.add_argument("--resdir", default="res", help="Directory for storing results (relative to project dir)")
+    parser.add_argument("--match-col", action="store_true", help="Match cjumps against IR branches by line and column instead of line only")
     args = parser.parse_args()
 
     config_file = args.config
