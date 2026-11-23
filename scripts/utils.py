@@ -119,8 +119,24 @@ def is_trivial(s: str):
     # project-specific trivial keywords manually found in results
     return any(keyword in s for keyword in trivial_keywords)
 
+# for match_col: is col inside the "(...)" of an if/for/while/switch on this line?
+# else, do and ?: have no such span, so a line with them still counts as a branch
+def col_in_branch_header(s: str, col: int):
+    if re.search(r"else\s*\{|do \{|\?.*\:", s):
+        return True
+    for m in re.finditer(r"\b(?:if|for|while|switch)\s*\(", s):
+        depth, end = 0, len(s) - 1  # no closing ")" on this line: condition continues on the next line
+        for i in range(m.end() - 1, len(s)):
+            depth += (s[i] == "(") - (s[i] == ")")
+            if depth == 0:
+                end = i
+                break
+        if m.start() < col <= end + 1:
+            return True
+    return False
+
 # check if C source has branch semantic, like if, switch, ==, !=, >, < &&, || etc.
-def src_has_branch(s: str, col: Optional[int] = None):
+def src_has_branch(s: str, col: Optional[int] = None, match_col: bool = False):
     """Check if C source has branch semantic."""
     logic_ops = ["&&", "||"]
     branch_keywords = ["if (", "else {", "switch (", "for (", "while (", "do {"]
@@ -137,8 +153,10 @@ def src_has_branch(s: str, col: Optional[int] = None):
             return True
         if s[col-1:col+6] == "} catch":
             return True
-        if any(keyword in s for keyword in branch_keywords) \
-            or any(re.search(keyword, s) for keyword in branch_regexes):
+        # with match_col, a keyword counts only if col is inside its condition, otherwise fall through to the call check
+        if (any(keyword in s for keyword in branch_keywords) \
+            or any(re.search(keyword, s) for keyword in branch_regexes)) \
+            and (not match_col or col_in_branch_header(s, col)):
             return True  # char not always reliable, so just be strict and assume branch
             # at branch keyword, end/beginning of loop body
             if s2.isalnum() or s2 in ['+)', '++'] or ch_prev == '(':

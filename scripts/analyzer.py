@@ -29,8 +29,9 @@ def load_json_data(filepath):
         return None
     return data
 
-def extract_problems(data):
+def extract_problems(data, match_col=False):
     """Extract problems from a single dataset using oracle approach.
+    match_col: a cjump is new unless an IR branch has the same "line:col", instead of the same line
     Returns: dict with key (function, file) -> dict in final result format
     """
     problems = {}
@@ -40,11 +41,13 @@ def extract_problems(data):
     data_ir = data.get("IRCountInstr", {})
     data_mf = data.get("MFCountInstr", {})
     cond_lines_by_file = defaultdict(set)
+    cond_locs_by_file = defaultdict(set)
     
     for key, ir_obj in data_ir.items():
         function, filepath = key
         cond_lines = ir_obj.get("cond_lines", [])
         cond_lines_by_file[filepath].update(cond_lines)
+        cond_locs_by_file[filepath].update(f"{line}:{col}" for line, col in zip(cond_lines, ir_obj.get("cond_cols", [])))
 
     for key, mf_obj in data_mf.items():
         # check data_ir not empty first as IRCountInstr may not work on edge cases, eg. clang14 -flegacy-pass-manager
@@ -83,6 +86,11 @@ def extract_problems(data):
         ## (Deprecated) Oracle for mmem: MIR has new mmems (on unique location) beyond IR, and fewer mmem_insts than IR mem_insts
         # Oracle for mmem: MIR has mmems using cmov def reg as address, and located on same source loc
         new_cjumps = set(cjump_lines) - set(cond_lines)
+        cjump_locs = cjump_lines
+        if match_col:
+            # Oracle for cjump with match_col: MIR has new "line:col" beyond IR, so a cjump added on a line with a source branch (e.g. one-line loop body) is kept
+            cjump_locs = [f"{line}:{col}" for line, col in zip(cjump_lines, mf_obj.get("cjump_cols", []))]
+            new_cjumps = set(cjump_locs) - cond_locs_by_file[filepath]
         new_mdivs = set(mdivs)
         # new_mmems = set(mmem_locs) - set(mem_locs)  # Deprecated, check cmov instead
         # intersection of cmov_locs and mmem_locs
@@ -96,10 +104,10 @@ def extract_problems(data):
                 new_mmems.add(mmem_locs[i])
         # Get corresponding source lines and instructions for new cjumps
         cjump_candidates = []
-        for line in new_cjumps:
+        for loc in new_cjumps:
             try:
                 # line may have muliple occurance, find all indices where this line appears
-                indices = [i for i, x in enumerate(cjump_lines) if x == line]
+                indices = [i for i, x in enumerate(cjump_locs) if x == loc]
                 for idx in indices:
                     src = mf_obj["cjump_srcs"][idx]
                     inst = mf_obj["cjump_insts"][idx]
@@ -108,7 +116,7 @@ def extract_problems(data):
                     # cjump FP filter: corresponding source no branch semantic
                     # NOTE: disable src-based filter to make csv complete, allow flexible post-processing
                     if src:# and not src_has_branch(src, col):
-                        cjump_candidates.append((line, src, inst, char, col))
+                        cjump_candidates.append((cjump_lines[idx], src, inst, char, col))
             except (IndexError):
                 continue
 
@@ -175,14 +183,14 @@ def extract_problems(data):
     
     return problems
 
-def compare_data(base_data, opt_data):
+def compare_data(base_data, opt_data, match_col=False):
     """Compare two sets of LLVM message data to find optimization-introduced problems."""
     # Extract problems from optimized data
-    opt_problems = extract_problems(opt_data)
+    opt_problems = extract_problems(opt_data, match_col)
     
     if base_data:
         # Flag mode: need to compare optimized data against base data
-        base_problems = extract_problems(base_data)
+        base_problems = extract_problems(base_data, match_col)
         
         # Keep only problems that are new in opt_data (not in base_data)
         results = {}
